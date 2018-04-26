@@ -31,7 +31,7 @@ before_script:
   - adb shell input keyevent 82 &
   - chmod +x gradlew
   - chmod +x auto_deploy_linux.sh
-  - chmod 400 key_linux.ppk
+  #- chmod 400 key_linux.ppk
   - ./gradlew dependencies || true
 
 script: ./gradlew connectedAndroidtest --stacktrace
