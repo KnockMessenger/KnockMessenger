@@ -25,14 +25,15 @@ before_script:
   - mkdir "$ANDROID_HOME/licenses" || true
   - echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-  - echo no | android create avd --force -n test -t android-$ANDROID_EMULATOR --abi armeabi-v7a
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
+  #- echo no | android create avd --force -n test -t android-$ANDROID_EMULATOR --abi armeabi-v7a
+  #- emulator -avd test -no-skin -no-audio -no-window &
+  #- android-wait-for-emulator
   - adb shell input keyevent 82 &
   - chmod +x gradlew
   - chmod +x auto_deploy_linux.sh
   #- chmod 400 key_linux.ppk
   - ./gradlew dependencies || true
 
-script: ./gradlew connectedAndroidtest --stacktrace
+script: ./gradlew test
+#./gradlew connectedAndroidtest --stacktrace
 #after_script: ./auto_deploy_linux.sh
