@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hu.vadasz.peter.knockmessenger.Activities.MessageSendingActivity"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true" >
+
+    <RelativeLayout
+        android:id="@+id/messageSendingActivity_states"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/messageSendingActivity_modeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_mode_edit_black_48dp" />
+
+        <ImageView
+            android:id="@+id/detectorIsListening_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/messageSendingActivity_modeButton"
+            android:src="@mipmap/ic_hearing_black_48dp"/>
+
+        <ProgressBar
+            android:id="@+id/messageSendingActivity_sending_inProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/detectorIsListening_icon" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/messageSendingActivity_progressbar"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:progress="0"
+        android:layout_width="@dimen/timeToLive_width"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/messageSendingActivity_states"/>
+
+    <TextView
+        android:id="@+id/detected_Syllable_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/messageSendingActivity_progressbar"
+        android:textSize="@dimen/detectedSyllable_textSize"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/messageSendingActivity_messages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detected_Syllable_text"
+        android:layout_above="@id/messageSendingActivity_messageCard"
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/messageSendingActivity_messageCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/controlPane"
+        android:layout_margin="@dimen/messageSending_messageCard_marginAll" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/messageSending_messageCard_paddingAll">
+
+            <TextView
+                android:id="@+id/DetectedMessage_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/detectedMessage_text"/>
+
+            <ImageButton
+                android:id="@+id/Message_sendButton"
+                android:text="@string/KnockDetector_sendButton_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_send_black_24dp"
+                android:background="@null" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/controlPane"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/messageSending_controlPane_padding">
+
+            <ImageButton
+                android:id="@+id/KnockDetector_startButton"
+                android:text="@string/KnockDetector_startButton_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_mic_white_48dp"
+                android:background="@null"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,253 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ComplexAudioKnockDetector</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockdetector.Detector</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ComplexAudioKnockDetector (hu.vadasz.peter.knockdetector.Detector)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ComplexAudioKnockDetector</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95,7%
+  </span>
+  <span class="absValue">
+    (45/ 47)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ComplexAudioKnockDetector$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95,8%
+  </span>
+  <span class="absValue">
+    (46/ 48)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockdetector.Detector;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.concurrent.ConcurrentLinkedQueue;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import hu.vadasz.peter.knockdetector.Interfaces.DetectionVisualizer;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * This class is based on Morse-coding methods. This class detects the rythm of the raw signal coming
+<i>9</i>&nbsp; * from AudioRecorder and transforms to byte series, which represents short, long syllables, gaps
+<i>10</i>&nbsp; * and spaces. The detector can have for states, depending on the time between two knocks.
+<i>11</i>&nbsp; * Depending on time between two knocks the detector changes its state. In FIRST_PHASE the
+<i>12</i>&nbsp; * detector detect short syllables, in SECOND_PHASE long syllables, in THIRD_PHASE gaps and spaces
+<i>13</i>&nbsp; * can be detected. At the end of the detection the detector is also in WAITING state. If there was
+<i>14</i>&nbsp; * no knock until the end of the THIRD_PHASE space is detected and the detection terminates.
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;public class ComplexAudioKnockDetector extends AbstractAudioKnockDetector {
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>20</i>&nbsp;    /// CONSTRUCTION
+<i>21</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>22</i>&nbsp;
+<b class="fc"><i>23</i>&nbsp;    public ComplexAudioKnockDetector(DetectionVisualizer visualizer, ConcurrentLinkedQueue&lt;Integer&gt; signalReceiverBuffer, int shortUnitTime) {</b>
+<b class="fc"><i>24</i>&nbsp;        audioRecorder.setRawSignalReceiver(this);</b>
+<b class="fc"><i>25</i>&nbsp;        audioRecorder.setShortUnitLength(shortUnitTime);</b>
+<b class="fc"><i>26</i>&nbsp;        audioRecorder.setAmplitudeThreshold(AudioRecorder.DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND);</b>
+<b class="fc"><i>27</i>&nbsp;        this.visualizer = visualizer;</b>
+<b class="fc"><i>28</i>&nbsp;        this.shortUnitTime = shortUnitTime;</b>
+<b class="fc"><i>29</i>&nbsp;        longSyllableLength = SHORT_SYLLABLE_LENGTH * LONG_SYLLABLE_MULTIPLICATOR;</b>
+<b class="fc"><i>30</i>&nbsp;        this.signalReceiverBuffer = signalReceiverBuffer;</b>
+<b class="fc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>34</i>&nbsp;    /// CONSTRUCTION -- END
+<i>35</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>38</i>&nbsp;    /// CONTENT UTILS
+<i>39</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /**
+<i>42</i>&nbsp;     * This method is called at the at of the detection.
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    private void terminateDetection() {
+<b class="fc"><i>46</i>&nbsp;        sendDetectedSignal(SPACE);</b>
+<b class="fc"><i>47</i>&nbsp;        detectorState = State.WAITING;</b>
+<b class="fc"><i>48</i>&nbsp;        counter = START_COUNTING;</b>
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>52</i>&nbsp;    /// CONTENT UTILS -- END
+<i>53</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>56</i>&nbsp;    /// AbstractAudioKnockDetector OVERRIDES
+<i>57</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * This method changes the state of the detector based on the current state and time.
+<i>61</i>&nbsp;     * @param rawSignal signal coming from audio recorder, 1 = Knock, 0 = None
+<i>62</i>&nbsp;     */
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    @Override
+<i>65</i>&nbsp;    protected void changeState(int rawSignal) {
+<b class="fc"><i>66</i>&nbsp;        switch (detectorState) {</b>
+<i>67</i>&nbsp;            case WAITING:
+<b class="fc"><i>68</i>&nbsp;                if (rawSignal == AudioRecorder.KNOCK) {</b>
+<b class="fc"><i>69</i>&nbsp;                    detectorState = State.FIRST_PHASE;</b>
+<b class="fc"><i>70</i>&nbsp;                    counter = START_COUNTING;</b>
+<i>71</i>&nbsp;                }
+<i>72</i>&nbsp;                break;
+<i>73</i>&nbsp;            case FIRST_PHASE:
+<b class="fc"><i>74</i>&nbsp;                if (rawSignal == AudioRecorder.NONE) {</b>
+<b class="fc"><i>75</i>&nbsp;                    counter++;</b>
+<b class="fc"><i>76</i>&nbsp;                    if (counter &gt; SHORT_SYLLABLE_LENGTH) {</b>
+<b class="fc"><i>77</i>&nbsp;                        detectorState = State.SECOND_PHASE;</b>
+<i>78</i>&nbsp;                    }
+<i>79</i>&nbsp;                } else {
+<b class="fc"><i>80</i>&nbsp;                    administrateSyllableDetection(SHORT_SYLLABLE);</b>
+<i>81</i>&nbsp;                }
+<b class="fc"><i>82</i>&nbsp;                break;</b>
+<i>83</i>&nbsp;            case SECOND_PHASE:
+<b class="fc"><i>84</i>&nbsp;                if (rawSignal == AudioRecorder.NONE) {</b>
+<b class="fc"><i>85</i>&nbsp;                    counter++;</b>
+<b class="fc"><i>86</i>&nbsp;                    if (counter &gt; longSyllableLength) {</b>
+<b class="fc"><i>87</i>&nbsp;                        detectorState = State.THIRD_PHASE;</b>
+<i>88</i>&nbsp;                    }
+<i>89</i>&nbsp;                } else {
+<b class="fc"><i>90</i>&nbsp;                    administrateSyllableDetection(LONG_SYLLABLE);</b>
+<i>91</i>&nbsp;                }
+<b class="fc"><i>92</i>&nbsp;                break;</b>
+<i>93</i>&nbsp;            case THIRD_PHASE:
+<b class="fc"><i>94</i>&nbsp;                if (rawSignal == AudioRecorder.NONE) {</b>
+<b class="fc"><i>95</i>&nbsp;                    counter++;</b>
+<b class="fc"><i>96</i>&nbsp;                    if (counter &gt;= MAX_LENGTH) {</b>
+<b class="fc"><i>97</i>&nbsp;                        detectorState = State.WAITING;</b>
+<b class="fc"><i>98</i>&nbsp;                        terminateDetection();</b>
+<i>99</i>&nbsp;                    }
+<i>100</i>&nbsp;                } else {
+<b class="nc"><i>101</i>&nbsp;                    if (counter &lt; MAX_LENGTH) {</b>
+<b class="nc"><i>102</i>&nbsp;                        administrateSyllableDetection(GAP);</b>
+<i>103</i>&nbsp;                    }
+<i>104</i>&nbsp;                }
+<i>105</i>&nbsp;                break;
+<i>106</i>&nbsp;        }
+<b class="fc"><i>107</i>&nbsp;        visualizer.actualState(detectorState.ordinal());</b>
+<b class="fc"><i>108</i>&nbsp;    }</b>
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>111</i>&nbsp;    /// AbstractAudioKnockDetector OVERRIDES -- END
+<i>112</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>115</i>&nbsp;    /// KnockDetector OVERRIDES
+<i>116</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;    /**
+<i>119</i>&nbsp;     * This method starts the AudioRecorder which sends raw signals from microphone.
+<i>120</i>&nbsp;     */
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    @Override
+<i>123</i>&nbsp;    public void start() {
+<b class="fc"><i>124</i>&nbsp;        visualizer.detectorIsWaiting();</b>
+<b class="fc"><i>125</i>&nbsp;        detectorState = State.WAITING;</b>
+<b class="fc"><i>126</i>&nbsp;        audioRecorder.start();</b>
+<b class="fc"><i>127</i>&nbsp;    }</b>
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;    /**
+<i>130</i>&nbsp;     * This method stops the AudioRecorder.
+<i>131</i>&nbsp;     */
+<i>132</i>&nbsp;
+<i>133</i>&nbsp;    @Override
+<i>134</i>&nbsp;    public void stop() {
+<b class="fc"><i>135</i>&nbsp;        syllableDetecting = !DETECTOR_IS_DETECTING;</b>
+<b class="fc"><i>136</i>&nbsp;        audioRecorder.stop();</b>
+<b class="fc"><i>137</i>&nbsp;        visualizer.detectionFinished();</b>
+<b class="fc"><i>138</i>&nbsp;        detectorState = State.WAITING;</b>
+<b class="fc"><i>139</i>&nbsp;    }</b>
+<i>140</i>&nbsp;
+<i>141</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>142</i>&nbsp;    /// KnockDetector OVERRIDES-- END
+<i>143</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>144</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

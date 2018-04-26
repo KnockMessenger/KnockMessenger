@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="hu.vadasz.peter.knockmessenger">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application
+        android:name=".Application.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning ">
+
+        <receiver
+            android:name=".BroadcastReceivers.AlarmReceiver" />
+
+        <receiver
+            android:name=".BroadcastReceivers.RebootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BOOT_COMPLETED" />
+                <category
+                    android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Services.MessageReceiverService"
+            android:enabled="true" />
+
+        <provider
+            android:name=".Activities.SearchSuggesters.CodeSearchSuggestionProvider"
+            android:authorities="hu.vadasz.peter.knockmessenger.Activities.SearchSuggesters.CodeSearchSuggestionProvider" />
+
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.MainScreenActivity"
+            android:label="@string/title_activity_main_screen"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.MessageSendingActivity"
+            android:parentActivityName=".Activities.FriendsActivity" />
+        <activity
+            android:name=".Activities.MainSettingsActivity"
+            android:parentActivityName=".Activities.MainScreenActivity" />
+        <activity
+            android:name=".Activities.CodesActivity"
+            android:parentActivityName=".Activities.MainScreenActivity" />
+        <activity
+            android:name=".Activities.CodeSettingActivity"
+            android:parentActivityName=".Activities.CodesActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activities.PermissionDeniedActivity" />
+        <activity
+            android:name=".Activities.KnockGraphActivity"
+            android:parentActivityName=".Activities.MainScreenActivity" />
+        <activity
+            android:name=".Activities.ProfileActivity"
+            android:parentActivityName=".Activities.MainScreenActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Activities.FriendsActivity"
+            android:parentActivityName=".Activities.MainScreenActivity" />
+        <activity
+            android:name=".Activities.BrowseFriendsActivity"
+            android:parentActivityName=".Activities.FriendsActivity" />
+
+    </application>
+
+</manifest>

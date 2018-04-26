@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Preferences -->
+
+    <integer name="pref_measure_time_default_value">500</integer>
+    <integer name="pref_measure_time_min_value">100</integer>
+    <integer name="pref_measure_time_max_value">2000</integer>
+    <integer name="mainScreenActivity_wait_if_storageError_time">3000</integer>
+    <integer name="pref_mic_sensitivity_defaultValue">5</integer>
+    <integer name="pref_mic_sensitivity_maxValue">10</integer>
+    <integer name="pref_mic_sensitivity_minValue">1</integer>
+    <integer name="messageCard_incomingMessageLeftMargin">10</integer>
+    <integer name="messageCard_incomingMessageBottomMargin">10</integer>
+    <integer name="messageCard_incomingMessageRightMargin">100</integer>
+    <integer name="messageCard_incomingMessageTopMargin">10</integer>
+    <integer name="messageCard_sentMessageLeftMargin">100</integer>
+    <integer name="messageCard_sentMessageBottomMargin">10</integer>
+    <integer name="messageCard_sentMessageRightMargin">10</integer>
+    <integer name="messageCard_sentMessageTopMargin">10</integer>
+
+</resources>

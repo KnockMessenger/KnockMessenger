@@ -1,0 +1,128 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CodeTreeBuilder</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.morsecodedecoder.CodeTree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CodeTreeBuilder (hu.vadasz.peter.morsecodedecoder.CodeTree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CodeTreeBuilder</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88,9%
+  </span>
+  <span class="absValue">
+    (16/ 18)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.morsecodedecoder.CodeTree;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.List;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * This class is responsible for building code trees from list of codes. The code tree is built based
+<i>7</i>&nbsp; * on three items (0=left, 1=right, 2=middle child).
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;
+<b class="nc"><i>10</i>&nbsp;public class CodeTreeBuilder {</b>
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * Builds a code tree from the list of the codes.
+<i>14</i>&nbsp;     * @param codes the codes must be prefix!
+<i>15</i>&nbsp;     * @return
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    public static Node build(List&lt;String&gt; codes) {
+<b class="fc"><i>19</i>&nbsp;        Node startNode = new Node(Node.START_NODE);</b>
+<b class="fc"><i>20</i>&nbsp;        for (String code : codes) {</b>
+<b class="fc"><i>21</i>&nbsp;            Node currentNode = startNode;</b>
+<b class="fc"><i>22</i>&nbsp;            for (int i = 0; i &lt; code.length(); ++i) {</b>
+<b class="fc"><i>23</i>&nbsp;                if (Node.SHORT_EDGE.equals(Character.toString(code.charAt(i)))) {</b>
+<b class="fc"><i>24</i>&nbsp;                    if (currentNode.hasShortChild()) {</b>
+<b class="nc"><i>25</i>&nbsp;                        currentNode = currentNode.getShortTone();</b>
+<i>26</i>&nbsp;                    } else {
+<b class="fc"><i>27</i>&nbsp;                        currentNode.setShortTone(new Node());</b>
+<b class="fc"><i>28</i>&nbsp;                        currentNode = currentNode.getShortTone();</b>
+<i>29</i>&nbsp;                    }
+<b class="fc"><i>30</i>&nbsp;                } else if (Node.LONG_EDGE.equals(Character.toString(code.charAt(i)))) {</b>
+<b class="fc"><i>31</i>&nbsp;                    if (currentNode.hasLongChild()) {</b>
+<b class="fc"><i>32</i>&nbsp;                        currentNode = currentNode.getLongTone();</b>
+<i>33</i>&nbsp;                    } else {
+<b class="fc"><i>34</i>&nbsp;                        currentNode.setLongTone(new Node());</b>
+<b class="fc"><i>35</i>&nbsp;                        currentNode = currentNode.getLongTone();</b>
+<i>36</i>&nbsp;                    }
+<i>37</i>&nbsp;                } else {
+<b class="fc"><i>38</i>&nbsp;                    currentNode.setGap(new Node());</b>
+<i>39</i>&nbsp;                }
+<i>40</i>&nbsp;            }
+<b class="fc"><i>41</i>&nbsp;        }</b>
+<i>42</i>&nbsp;
+<b class="fc"><i>43</i>&nbsp;        return startNode;</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

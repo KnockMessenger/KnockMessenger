@@ -1,0 +1,258 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MessageDetectingController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Controllers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MessageDetectingController (hu.vadasz.peter.knockmessenger.Controllers)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MessageDetectingController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 19)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MessageDetectingController$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">MessageDetectingController$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 26)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Controllers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.HashMap;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockdetector.Detector.AbstractAudioKnockDetector;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetector;
+<i>8</i>&nbsp;import hu.vadasz.peter.knockdetector.Detector.SimpleAudioKnockDetector;
+<i>9</i>&nbsp;import hu.vadasz.peter.knockdetector.Interfaces.KnockDetector;
+<i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivityWithKnockDecoder;
+<i>11</i>&nbsp;import hu.vadasz.peter.morsecodedecoder.Code.Code;
+<i>12</i>&nbsp;import hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoder;
+<i>13</i>&nbsp;import hu.vadasz.peter.morsecodedecoder.Interfaces.MorseCodeDecoderInterface;
+<i>14</i>&nbsp;import lombok.Getter;
+<i>15</i>&nbsp;import lombok.Setter;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;/**
+<i>18</i>&nbsp; * Main class of the MessageDetecting service&#39;s controller layer. This class is responsible for message
+<i>19</i>&nbsp; * detecting features, error handling, and exceptions.
+<i>20</i>&nbsp; * The message sending activity should
+<i>21</i>&nbsp; * have az instance of this class.
+<i>22</i>&nbsp; */
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;public class MessageDetectingController {
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>27</i>&nbsp;    /// FIELDS
+<i>28</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /// CONSTANTS
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    private static final boolean START_DECODER = true;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    public static final boolean MORSE_MODE = true;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /// CONSTANTS -- END
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    private Thread detectorThread;
+<i>39</i>&nbsp;    private Thread decoderThread;
+<i>40</i>&nbsp;
+<b class="nc"><i>41</i>&nbsp;    @Getter</b>
+<i>42</i>&nbsp;    private boolean decoderRunning;
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    protected MorseCodeDecoderInterface morseCodeDecoder;
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    protected KnockDetector knockDetector;
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    private BaseActivityWithKnockDecoder activityWithKnockDecoder;
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>51</i>&nbsp;    /// FIELDS -- END
+<i>52</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>55</i>&nbsp;    /// CONSTRUCTION
+<i>56</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    public MessageDetectingController(BaseActivityWithKnockDecoder activityWithKnockDecoder, int measureTime, List&lt;Code&gt; codeTable,
+<b class="nc"><i>59</i>&nbsp;            boolean morseMode, int amplitudeTheresold) {</b>
+<i>60</i>&nbsp;
+<b class="nc"><i>61</i>&nbsp;        this.activityWithKnockDecoder = activityWithKnockDecoder;</b>
+<b class="nc"><i>62</i>&nbsp;        morseCodeDecoder = new MorseCodeDecoder(activityWithKnockDecoder, codeTable, morseMode);</b>
+<i>63</i>&nbsp;
+<b class="nc"><i>64</i>&nbsp;        if (morseMode) {</b>
+<b class="nc"><i>65</i>&nbsp;            knockDetector = new ComplexAudioKnockDetector(activityWithKnockDecoder, morseCodeDecoder.getBuffer(), measureTime);</b>
+<i>66</i>&nbsp;        } else {
+<b class="nc"><i>67</i>&nbsp;            knockDetector = new SimpleAudioKnockDetector(activityWithKnockDecoder, morseCodeDecoder.getBuffer(), measureTime);</b>
+<i>68</i>&nbsp;        }
+<i>69</i>&nbsp;
+<b class="nc"><i>70</i>&nbsp;        ((AbstractAudioKnockDetector) knockDetector).setSensitivity(amplitudeTheresold);</b>
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>74</i>&nbsp;    /// CONSTRUCTION -- END
+<i>75</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>78</i>&nbsp;    /// METHODS
+<i>79</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;    /**
+<i>82</i>&nbsp;     * Starts the Decoder and Detector module in new threads, and stores the state of the decoder
+<i>83</i>&nbsp;     * in the decoderRunning variable.
+<i>84</i>&nbsp;     */
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;    public void startDecoder() {
+<b class="nc"><i>87</i>&nbsp;        decoderRunning = START_DECODER;</b>
+<i>88</i>&nbsp;
+<b class="nc"><i>89</i>&nbsp;        decoderThread = new Thread(new Runnable() {</b>
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;            @Override
+<i>92</i>&nbsp;            public void run() {
+<b class="nc"><i>93</i>&nbsp;                morseCodeDecoder.start();</b>
+<i>94</i>&nbsp;            }
+<i>95</i>&nbsp;        });
+<b class="nc"><i>96</i>&nbsp;        decoderThread.start();</b>
+<i>97</i>&nbsp;
+<b class="nc"><i>98</i>&nbsp;        detectorThread = new Thread(new Runnable() {</b>
+<i>99</i>&nbsp;            @Override
+<i>100</i>&nbsp;            public void run() {
+<i>101</i>&nbsp;                try {
+<b class="nc"><i>102</i>&nbsp;                    knockDetector.start();</b>
+<b class="nc"><i>103</i>&nbsp;                } catch (Exception e) {</b>
+<b class="nc"><i>104</i>&nbsp;                    stopDecoder();</b>
+<b class="nc"><i>105</i>&nbsp;                }</b>
+<i>106</i>&nbsp;            }
+<i>107</i>&nbsp;        });
+<b class="nc"><i>108</i>&nbsp;        detectorThread.start();</b>
+<i>109</i>&nbsp;    }
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    /**
+<i>112</i>&nbsp;     * Stops the decoder, marks the thread to be killed.
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    public void stopDecoder() {
+<b class="nc"><i>116</i>&nbsp;        if (decoderRunning) {</b>
+<b class="nc"><i>117</i>&nbsp;            decoderRunning = !START_DECODER;</b>
+<i>118</i>&nbsp;
+<b class="nc"><i>119</i>&nbsp;            knockDetector.stop();</b>
+<b class="nc"><i>120</i>&nbsp;            decoderThread.interrupt();</b>
+<i>121</i>&nbsp;
+<b class="nc"><i>122</i>&nbsp;            morseCodeDecoder.stop();</b>
+<b class="nc"><i>123</i>&nbsp;            decoderThread.interrupt();</b>
+<i>124</i>&nbsp;        }
+<i>125</i>&nbsp;    }
+<i>126</i>&nbsp;
+<i>127</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>128</i>&nbsp;    /// METHODS -- END
+<i>129</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>130</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

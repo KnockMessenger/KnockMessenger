@@ -1,0 +1,347 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CodesActivity</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Activities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CodesActivity (hu.vadasz.peter.knockmessenger.Activities)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CodesActivity</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 46)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CodesActivity$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 8)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CodesActivity$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">CodesActivity$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 60)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Activities;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.app.SearchManager;
+<i>4</i>&nbsp;import android.content.Context;
+<i>5</i>&nbsp;import android.content.Intent;
+<i>6</i>&nbsp;import android.os.Bundle;
+<i>7</i>&nbsp;import android.support.design.widget.Snackbar;
+<i>8</i>&nbsp;import android.support.v7.widget.LinearLayoutManager;
+<i>9</i>&nbsp;import android.support.v7.widget.RecyclerView;
+<i>10</i>&nbsp;import android.support.v7.widget.SearchView;
+<i>11</i>&nbsp;import android.support.v7.widget.helper.ItemTouchHelper;
+<i>12</i>&nbsp;import android.view.Menu;
+<i>13</i>&nbsp;import android.view.MenuItem;
+<i>14</i>&nbsp;import android.view.View;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;import butterknife.BindView;
+<i>17</i>&nbsp;import butterknife.ButterKnife;
+<i>18</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.DragAndDrop.CodeCardTouchHelper;
+<i>19</i>&nbsp;import hu.vadasz.peter.knockmessenger.Adapters.CodeAdapter;
+<i>20</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManager;
+<i>21</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
+<i>22</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>23</i>&nbsp;import hu.vadasz.peter.morsecodedecoder.Code.Code;
+<i>24</i>&nbsp;import hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTable;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;/**
+<i>27</i>&nbsp; * This activity provide code operations. Codes can be listed, deleted, updated.
+<i>28</i>&nbsp; */
+<i>29</i>&nbsp;
+<b class="nc"><i>30</i>&nbsp;public class CodesActivity extends BaseActivity implements CodeAdapter.CodeSettingsListener {</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>33</i>&nbsp;    /// FIELDS
+<i>34</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public static final int SUGGESTION_LIMIT = 3;
+<i>37</i>&nbsp;    public static final int COLUMN_SUGGESTION_INDEX = 2;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    @BindView(R.id.code_recyclerView)
+<i>40</i>&nbsp;    RecyclerView codes;
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    private SearchView searchView;
+<i>43</i>&nbsp;    private String searchedText;
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    private CodeAdapter codeAdapter;
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>48</i>&nbsp;    /// FIELDS -- END
+<i>49</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>52</i>&nbsp;    /// ACTIVITY OVERRIDES
+<i>53</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    @Override
+<i>56</i>&nbsp;    public void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>57</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>58</i>&nbsp;        setContentView(R.layout.activity_codes);</b>
+<b class="nc"><i>59</i>&nbsp;        ButterKnife.bind(this);</b>
+<i>60</i>&nbsp;
+<b class="nc"><i>61</i>&nbsp;        codes.setLayoutManager(new LinearLayoutManager(this));</b>
+<b class="nc"><i>62</i>&nbsp;        codeAdapter = new CodeAdapter(codeDataManager.getActualCodes(), this);</b>
+<b class="nc"><i>63</i>&nbsp;        codes.setAdapter(codeAdapter);</b>
+<i>64</i>&nbsp;
+<b class="nc"><i>65</i>&nbsp;        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new CardTouchHelper(codeAdapter));</b>
+<b class="nc"><i>66</i>&nbsp;        itemTouchHelper.attachToRecyclerView(codes);</b>
+<i>67</i>&nbsp;    }
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    @Override
+<i>70</i>&nbsp;    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+<b class="nc"><i>71</i>&nbsp;        super.onActivityResult(requestCode, resultCode, data);</b>
+<b class="nc"><i>72</i>&nbsp;        if (requestCode == CodeSettingActivity.CODE_UPDATE_REQUEST &amp;&amp; resultCode == CodeSettingActivity.CODE_UPDATE_SUCCESS) {</b>
+<b class="nc"><i>73</i>&nbsp;            updateCode((Code) data.getParcelableExtra(CodeSettingActivity.EXTRA_CODE));</b>
+<b class="nc"><i>74</i>&nbsp;            codeAdapter.setCodes(codeDataManager.getActualCodes());</b>
+<b class="nc"><i>75</i>&nbsp;        } else if (requestCode == CodeSettingActivity.CODE_CREATE_REQUEST &amp;&amp; resultCode == CodeSettingActivity.CODE_CREATE_SUCCESS) {</b>
+<b class="nc"><i>76</i>&nbsp;            saveCode((Code) data.getParcelableExtra(CodeSettingActivity.EXTRA_CODE));</b>
+<b class="nc"><i>77</i>&nbsp;            codeAdapter.setCodes(codeDataManager.getActualCodes());</b>
+<i>78</i>&nbsp;        }
+<i>79</i>&nbsp;    }
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;    @Override
+<i>82</i>&nbsp;    public boolean onCreateOptionsMenu(Menu menu) {
+<b class="nc"><i>83</i>&nbsp;        getMenuInflater().inflate(R.menu.codes_activity_menu, menu);</b>
+<i>84</i>&nbsp;
+<b class="nc"><i>85</i>&nbsp;        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);</b>
+<b class="nc"><i>86</i>&nbsp;        searchView = (SearchView) menu.findItem(R.id.codesActivity_search).getActionView();</b>
+<b class="nc"><i>87</i>&nbsp;        searchView.setSubmitButtonEnabled(true);</b>
+<b class="nc"><i>88</i>&nbsp;        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));</b>
+<i>89</i>&nbsp;
+<b class="nc"><i>90</i>&nbsp;        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {</b>
+<i>91</i>&nbsp;            @Override
+<i>92</i>&nbsp;            public boolean onQueryTextSubmit(String newText) {
+<b class="nc"><i>93</i>&nbsp;                searchedText = newText;</b>
+<b class="nc"><i>94</i>&nbsp;                codeAdapter.filter(newText);</b>
+<b class="nc"><i>95</i>&nbsp;                searchView.clearFocus();</b>
+<i>96</i>&nbsp;
+<b class="nc"><i>97</i>&nbsp;                return true;</b>
+<i>98</i>&nbsp;            }
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;            @Override
+<i>101</i>&nbsp;            public boolean onQueryTextChange(String newText) {
+<b class="nc"><i>102</i>&nbsp;                searchedText = newText;</b>
+<b class="nc"><i>103</i>&nbsp;                codeAdapter.filter(newText);</b>
+<i>104</i>&nbsp;
+<b class="nc"><i>105</i>&nbsp;                return true;</b>
+<i>106</i>&nbsp;            }
+<i>107</i>&nbsp;        });
+<i>108</i>&nbsp;
+<b class="nc"><i>109</i>&nbsp;        return super.onCreateOptionsMenu(menu);</b>
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    @Override
+<i>113</i>&nbsp;    public boolean onOptionsItemSelected(MenuItem menuItem) {
+<b class="nc"><i>114</i>&nbsp;        switch (menuItem.getItemId()) {</b>
+<i>115</i>&nbsp;            case R.id.codesActivity_addCode:
+<b class="nc"><i>116</i>&nbsp;                Intent intent = new Intent(this, CodeSettingActivity.class);</b>
+<b class="nc"><i>117</i>&nbsp;                intent.putExtra(CodeSettingActivity.EXTRA_IS_CREATE_CODE,true);</b>
+<b class="nc"><i>118</i>&nbsp;                startActivityForResult(intent, CodeSettingActivity.CODE_CREATE_REQUEST);</b>
+<b class="nc"><i>119</i>&nbsp;                break;</b>
+<i>120</i>&nbsp;            case R.id.codesActivity_resetCodes:
+<b class="nc"><i>121</i>&nbsp;                resetCodes();</b>
+<i>122</i>&nbsp;        }
+<b class="nc"><i>123</i>&nbsp;        return super.onOptionsItemSelected(menuItem);</b>
+<i>124</i>&nbsp;    }
+<i>125</i>&nbsp;
+<i>126</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>127</i>&nbsp;    /// FIELDS -- END
+<i>128</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>131</i>&nbsp;    /// CodeAdapter.CodeSettingsListener INTERFACE OVERRIDES
+<i>132</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>133</i>&nbsp;
+<i>134</i>&nbsp;    @Override
+<i>135</i>&nbsp;    public BaseActivity getActivity() {
+<b class="nc"><i>136</i>&nbsp;        return this;</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;    @Override
+<i>140</i>&nbsp;    public void deleteCode(Code code) {
+<b class="nc"><i>141</i>&nbsp;        conFirmDelete(code);</b>
+<i>142</i>&nbsp;    }
+<i>143</i>&nbsp;
+<i>144</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>145</i>&nbsp;    /// CodeAdapter.CodeSettingsListener INTERFACE OVERRIDES -- END
+<i>146</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>149</i>&nbsp;    /// CONTENT UTILS
+<i>150</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;    /**
+<i>153</i>&nbsp;     * This method provides opportunity to reset the default Morse codes.
+<i>154</i>&nbsp;     */
+<i>155</i>&nbsp;
+<i>156</i>&nbsp;    private void resetCodes() {
+<b class="nc"><i>157</i>&nbsp;        codeDataManager.saveAllCodesJson(MorseCodeTable.getDefaultCodeTable(), CodeDataManager.CODE_TABLE_NAME);</b>
+<b class="nc"><i>158</i>&nbsp;        if (sharedPreferenceManager.getBoolean(SharedPreferenceManager.MODE_PREFERENCE_KEY)) {</b>
+<b class="nc"><i>159</i>&nbsp;            codeDataManager.loadMorseCodes();</b>
+<i>160</i>&nbsp;        } else {
+<b class="nc"><i>161</i>&nbsp;            codeDataManager.loadHuffmanCodes();</b>
+<i>162</i>&nbsp;        }
+<i>163</i>&nbsp;
+<b class="nc"><i>164</i>&nbsp;        codeAdapter.setCodes(codeDataManager.getActualCodes());</b>
+<b class="nc"><i>165</i>&nbsp;        codeAdapter.sortCodes();</b>
+<b class="nc"><i>166</i>&nbsp;        codeAdapter.notifyDataSetChanged();</b>
+<i>167</i>&nbsp;    }
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;    private void saveCode(Code code) {
+<b class="nc"><i>170</i>&nbsp;        codeDataManager.addCode(code);</b>
+<i>171</i>&nbsp;    }
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;    private void updateCode(Code code) {
+<b class="nc"><i>174</i>&nbsp;        codeDataManager.updateCode(code);</b>
+<i>175</i>&nbsp;    }
+<i>176</i>&nbsp;
+<i>177</i>&nbsp;    private void conFirmDelete(final Code code) {
+<b class="nc"><i>178</i>&nbsp;        Snackbar.make(findViewById(android.R.id.content), getString(R.string.codesActivity_confirm_delete_text), Snackbar.LENGTH_LONG)</b>
+<b class="nc"><i>179</i>&nbsp;                .setAction(getString(R.string.codesActivity_confirm_delete_yes_text), new View.OnClickListener() {</b>
+<i>180</i>&nbsp;                    @Override
+<i>181</i>&nbsp;                    public void onClick(View v) {
+<b class="nc"><i>182</i>&nbsp;                        codeDataManager.deleteCode(code);</b>
+<b class="nc"><i>183</i>&nbsp;                        codeAdapter.sortCodes();</b>
+<i>184</i>&nbsp;                    }
+<i>185</i>&nbsp;                })
+<b class="nc"><i>186</i>&nbsp;                .setActionTextColor(getColor(android.R.color.holo_red_light))</b>
+<b class="nc"><i>187</i>&nbsp;                .addCallback(new Snackbar.Callback() {</b>
+<i>188</i>&nbsp;                    @Override
+<i>189</i>&nbsp;                    public void onDismissed(Snackbar snackbar, int event) {
+<b class="nc"><i>190</i>&nbsp;                        codeAdapter.setCodes(codeDataManager.getActualCodes());</b>
+<b class="nc"><i>191</i>&nbsp;                        codeAdapter.notifyDataSetChanged();</b>
+<i>192</i>&nbsp;                    }
+<i>193</i>&nbsp;                })
+<b class="nc"><i>194</i>&nbsp;                .show();</b>
+<i>195</i>&nbsp;    }
+<i>196</i>&nbsp;
+<i>197</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>198</i>&nbsp;    /// CONTENT UTILS -- END
+<i>199</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>200</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

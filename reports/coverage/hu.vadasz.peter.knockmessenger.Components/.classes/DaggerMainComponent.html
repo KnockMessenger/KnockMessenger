@@ -1,0 +1,363 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DaggerMainComponent</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Components</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DaggerMainComponent (hu.vadasz.peter.knockmessenger.Components)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DaggerMainComponent</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 57)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">DaggerMainComponent$Builder</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 30)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 87)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Components;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Context;
+<i>4</i>&nbsp;import dagger.MembersInjector;
+<i>5</i>&nbsp;import dagger.internal.DoubleCheck;
+<i>6</i>&nbsp;import dagger.internal.Preconditions;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivity;
+<i>8</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivityWithKnockDecoder;
+<i>9</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivityWithKnockDecoder_MembersInjector;
+<i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivity_MembersInjector;
+<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator;
+<i>12</i>&nbsp;import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator_MembersInjector;
+<i>13</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.DaoSession;
+<i>14</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.JSON.JsonParser;
+<i>15</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManager;
+<i>16</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManager;
+<i>17</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
+<i>18</i>&nbsp;import hu.vadasz.peter.knockmessenger.Fragments.SettingsFragment;
+<i>19</i>&nbsp;import hu.vadasz.peter.knockmessenger.Fragments.SettingsFragment_MembersInjector;
+<i>20</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
+<i>21</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ApplicationModule;
+<i>22</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ApplicationModule_ProvideContextFactory;
+<i>23</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.InternetConnectionCheckerModule;
+<i>24</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory;
+<i>25</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.PermissionHandlerModule;
+<i>26</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.PermissionHandlerModule_ProvidePermissionHandlerFactory;
+<i>27</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.SharedPreferenceManagerModule;
+<i>28</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.SharedPreferenceManagerModule_ProvideSharedPreferenceManagerFactory;
+<i>29</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule;
+<i>30</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideCodeDataManagerFactory;
+<i>31</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideDaoSessionFactory;
+<i>32</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideDatabaseManagerFactory;
+<i>33</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideJsonParserFactory;
+<i>34</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideMessagesDataManagerFactory;
+<i>35</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.VibratorEngineModule;
+<i>36</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.VibratorEngineModule_ProvideVibratorEngineFactory;
+<i>37</i>&nbsp;import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
+<i>38</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
+<i>39</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
+<i>40</i>&nbsp;import javax.annotation.Generated;
+<i>41</i>&nbsp;import javax.inject.Provider;
+<i>42</i>&nbsp;
+<b class="nc"><i>43</i>&nbsp;@Generated(</b>
+<i>44</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>45</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>46</i>&nbsp;)
+<b class="nc"><i>47</i>&nbsp;public final class DaggerMainComponent implements MainComponent {</b>
+<i>48</i>&nbsp;  private Provider&lt;Context&gt; provideContextProvider;
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;  private Provider&lt;DaoSession&gt; provideDaoSessionProvider;
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;  private Provider&lt;DataBaseManager&gt; provideDatabaseManagerProvider;
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;  private Provider&lt;JsonParser&gt; provideJsonParserProvider;
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;  private Provider&lt;CodeDataManager&gt; provideCodeDataManagerProvider;
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;  private Provider&lt;MessagesDataManager&gt; provideMessagesDataManagerProvider;
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;  private Provider&lt;PermissionHandler&gt; providePermissionHandlerProvider;
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;  private Provider&lt;VibratorEngine&gt; provideVibratorEngineProvider;
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;  private Provider&lt;SharedPreferenceManager&gt; provideSharedPreferenceManagerProvider;
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;  private MembersInjector&lt;BaseActivity&gt; baseActivityMembersInjector;
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;  private Provider&lt;InternetConnectionChecker&gt; provideInternetConnectionCheckerProvider;
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;  private MembersInjector&lt;BaseActivityWithKnockDecoder&gt; baseActivityWithKnockDecoderMembersInjector;
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;  private MembersInjector&lt;InternetConnectionValidator&gt; internetConnectionValidatorMembersInjector;
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;  private MembersInjector&lt;SettingsFragment&gt; settingsFragmentMembersInjector;
+<i>75</i>&nbsp;
+<b class="nc"><i>76</i>&nbsp;  private DaggerMainComponent(Builder builder) {</b>
+<b class="nc"><i>77</i>&nbsp;    assert builder != null;</b>
+<b class="nc"><i>78</i>&nbsp;    initialize(builder);</b>
+<i>79</i>&nbsp;  }
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;  public static Builder builder() {
+<b class="nc"><i>82</i>&nbsp;    return new Builder();</b>
+<i>83</i>&nbsp;  }
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;  @SuppressWarnings(&quot;unchecked&quot;)
+<i>86</i>&nbsp;  private void initialize(final Builder builder) {
+<i>87</i>&nbsp;
+<b class="nc"><i>88</i>&nbsp;    this.provideContextProvider =</b>
+<b class="nc"><i>89</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>90</i>&nbsp;            ApplicationModule_ProvideContextFactory.create(builder.applicationModule));</b>
+<i>91</i>&nbsp;
+<b class="nc"><i>92</i>&nbsp;    this.provideDaoSessionProvider =</b>
+<b class="nc"><i>93</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>94</i>&nbsp;            StorageModule_ProvideDaoSessionFactory.create(</b>
+<b class="nc"><i>95</i>&nbsp;                builder.storageModule, provideContextProvider));</b>
+<i>96</i>&nbsp;
+<b class="nc"><i>97</i>&nbsp;    this.provideDatabaseManagerProvider =</b>
+<b class="nc"><i>98</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>99</i>&nbsp;            StorageModule_ProvideDatabaseManagerFactory.create(</b>
+<b class="nc"><i>100</i>&nbsp;                builder.storageModule, provideDaoSessionProvider));</b>
+<i>101</i>&nbsp;
+<b class="nc"><i>102</i>&nbsp;    this.provideJsonParserProvider =</b>
+<b class="nc"><i>103</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>104</i>&nbsp;            StorageModule_ProvideJsonParserFactory.create(</b>
+<b class="nc"><i>105</i>&nbsp;                builder.storageModule, provideContextProvider));</b>
+<i>106</i>&nbsp;
+<b class="nc"><i>107</i>&nbsp;    this.provideCodeDataManagerProvider =</b>
+<b class="nc"><i>108</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>109</i>&nbsp;            StorageModule_ProvideCodeDataManagerFactory.create(</b>
+<b class="nc"><i>110</i>&nbsp;                builder.storageModule, provideDatabaseManagerProvider, provideJsonParserProvider));</b>
+<i>111</i>&nbsp;
+<b class="nc"><i>112</i>&nbsp;    this.provideMessagesDataManagerProvider =</b>
+<b class="nc"><i>113</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>114</i>&nbsp;            StorageModule_ProvideMessagesDataManagerFactory.create(</b>
+<b class="nc"><i>115</i>&nbsp;                builder.storageModule, provideDatabaseManagerProvider));</b>
+<i>116</i>&nbsp;
+<b class="nc"><i>117</i>&nbsp;    this.providePermissionHandlerProvider =</b>
+<b class="nc"><i>118</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>119</i>&nbsp;            PermissionHandlerModule_ProvidePermissionHandlerFactory.create(</b>
+<b class="nc"><i>120</i>&nbsp;                builder.permissionHandlerModule));</b>
+<i>121</i>&nbsp;
+<b class="nc"><i>122</i>&nbsp;    this.provideVibratorEngineProvider =</b>
+<b class="nc"><i>123</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>124</i>&nbsp;            VibratorEngineModule_ProvideVibratorEngineFactory.create(</b>
+<b class="nc"><i>125</i>&nbsp;                builder.vibratorEngineModule, provideContextProvider));</b>
+<i>126</i>&nbsp;
+<b class="nc"><i>127</i>&nbsp;    this.provideSharedPreferenceManagerProvider =</b>
+<b class="nc"><i>128</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>129</i>&nbsp;            SharedPreferenceManagerModule_ProvideSharedPreferenceManagerFactory.create(</b>
+<b class="nc"><i>130</i>&nbsp;                builder.sharedPreferenceManagerModule, provideContextProvider));</b>
+<i>131</i>&nbsp;
+<b class="nc"><i>132</i>&nbsp;    this.baseActivityMembersInjector =</b>
+<b class="nc"><i>133</i>&nbsp;        BaseActivity_MembersInjector.create(</b>
+<i>134</i>&nbsp;            provideCodeDataManagerProvider,
+<i>135</i>&nbsp;            provideMessagesDataManagerProvider,
+<i>136</i>&nbsp;            providePermissionHandlerProvider,
+<i>137</i>&nbsp;            provideVibratorEngineProvider,
+<i>138</i>&nbsp;            provideSharedPreferenceManagerProvider);
+<i>139</i>&nbsp;
+<b class="nc"><i>140</i>&nbsp;    this.provideInternetConnectionCheckerProvider =</b>
+<b class="nc"><i>141</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>142</i>&nbsp;            InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory.create(</b>
+<b class="nc"><i>143</i>&nbsp;                builder.internetConnectionCheckerModule, provideContextProvider));</b>
+<i>144</i>&nbsp;
+<b class="nc"><i>145</i>&nbsp;    this.baseActivityWithKnockDecoderMembersInjector =</b>
+<b class="nc"><i>146</i>&nbsp;        BaseActivityWithKnockDecoder_MembersInjector.create(</b>
+<i>147</i>&nbsp;            provideCodeDataManagerProvider,
+<i>148</i>&nbsp;            provideMessagesDataManagerProvider,
+<i>149</i>&nbsp;            providePermissionHandlerProvider,
+<i>150</i>&nbsp;            provideVibratorEngineProvider,
+<i>151</i>&nbsp;            provideSharedPreferenceManagerProvider,
+<i>152</i>&nbsp;            provideInternetConnectionCheckerProvider);
+<i>153</i>&nbsp;
+<b class="nc"><i>154</i>&nbsp;    this.internetConnectionValidatorMembersInjector =</b>
+<b class="nc"><i>155</i>&nbsp;        InternetConnectionValidator_MembersInjector.create(</b>
+<i>156</i>&nbsp;            provideInternetConnectionCheckerProvider);
+<i>157</i>&nbsp;
+<b class="nc"><i>158</i>&nbsp;    this.settingsFragmentMembersInjector =</b>
+<b class="nc"><i>159</i>&nbsp;        SettingsFragment_MembersInjector.create(provideSharedPreferenceManagerProvider);</b>
+<i>160</i>&nbsp;  }
+<i>161</i>&nbsp;
+<i>162</i>&nbsp;  @Override
+<i>163</i>&nbsp;  public void inject(BaseActivity baseActivity) {
+<b class="nc"><i>164</i>&nbsp;    baseActivityMembersInjector.injectMembers(baseActivity);</b>
+<i>165</i>&nbsp;  }
+<i>166</i>&nbsp;
+<i>167</i>&nbsp;  @Override
+<i>168</i>&nbsp;  public void inject(BaseActivityWithKnockDecoder baseActivityWithKnockDecoder) {
+<b class="nc"><i>169</i>&nbsp;    baseActivityWithKnockDecoderMembersInjector.injectMembers(baseActivityWithKnockDecoder);</b>
+<i>170</i>&nbsp;  }
+<i>171</i>&nbsp;
+<i>172</i>&nbsp;  @Override
+<i>173</i>&nbsp;  public void inject(InternetConnectionValidator internetConnectionValidator) {
+<b class="nc"><i>174</i>&nbsp;    internetConnectionValidatorMembersInjector.injectMembers(internetConnectionValidator);</b>
+<i>175</i>&nbsp;  }
+<i>176</i>&nbsp;
+<i>177</i>&nbsp;  @Override
+<i>178</i>&nbsp;  public void inject(SettingsFragment settingsFragment) {
+<b class="nc"><i>179</i>&nbsp;    settingsFragmentMembersInjector.injectMembers(settingsFragment);</b>
+<i>180</i>&nbsp;  }
+<i>181</i>&nbsp;
+<b class="nc"><i>182</i>&nbsp;  public static final class Builder {</b>
+<i>183</i>&nbsp;    private ApplicationModule applicationModule;
+<i>184</i>&nbsp;
+<i>185</i>&nbsp;    private StorageModule storageModule;
+<i>186</i>&nbsp;
+<i>187</i>&nbsp;    private PermissionHandlerModule permissionHandlerModule;
+<i>188</i>&nbsp;
+<i>189</i>&nbsp;    private VibratorEngineModule vibratorEngineModule;
+<i>190</i>&nbsp;
+<i>191</i>&nbsp;    private SharedPreferenceManagerModule sharedPreferenceManagerModule;
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;    private InternetConnectionCheckerModule internetConnectionCheckerModule;
+<i>194</i>&nbsp;
+<b class="nc"><i>195</i>&nbsp;    private Builder() {}</b>
+<i>196</i>&nbsp;
+<i>197</i>&nbsp;    public MainComponent build() {
+<b class="nc"><i>198</i>&nbsp;      if (applicationModule == null) {</b>
+<b class="nc"><i>199</i>&nbsp;        throw new IllegalStateException(</b>
+<b class="nc"><i>200</i>&nbsp;            ApplicationModule.class.getCanonicalName() + &quot; must be set&quot;);</b>
+<i>201</i>&nbsp;      }
+<b class="nc"><i>202</i>&nbsp;      if (storageModule == null) {</b>
+<b class="nc"><i>203</i>&nbsp;        this.storageModule = new StorageModule();</b>
+<i>204</i>&nbsp;      }
+<b class="nc"><i>205</i>&nbsp;      if (permissionHandlerModule == null) {</b>
+<b class="nc"><i>206</i>&nbsp;        this.permissionHandlerModule = new PermissionHandlerModule();</b>
+<i>207</i>&nbsp;      }
+<b class="nc"><i>208</i>&nbsp;      if (vibratorEngineModule == null) {</b>
+<b class="nc"><i>209</i>&nbsp;        this.vibratorEngineModule = new VibratorEngineModule();</b>
+<i>210</i>&nbsp;      }
+<b class="nc"><i>211</i>&nbsp;      if (sharedPreferenceManagerModule == null) {</b>
+<b class="nc"><i>212</i>&nbsp;        this.sharedPreferenceManagerModule = new SharedPreferenceManagerModule();</b>
+<i>213</i>&nbsp;      }
+<b class="nc"><i>214</i>&nbsp;      if (internetConnectionCheckerModule == null) {</b>
+<b class="nc"><i>215</i>&nbsp;        this.internetConnectionCheckerModule = new InternetConnectionCheckerModule();</b>
+<i>216</i>&nbsp;      }
+<b class="nc"><i>217</i>&nbsp;      return new DaggerMainComponent(this);</b>
+<i>218</i>&nbsp;    }
+<i>219</i>&nbsp;
+<i>220</i>&nbsp;    public Builder applicationModule(ApplicationModule applicationModule) {
+<b class="nc"><i>221</i>&nbsp;      this.applicationModule = Preconditions.checkNotNull(applicationModule);</b>
+<b class="nc"><i>222</i>&nbsp;      return this;</b>
+<i>223</i>&nbsp;    }
+<i>224</i>&nbsp;
+<i>225</i>&nbsp;    public Builder storageModule(StorageModule storageModule) {
+<b class="nc"><i>226</i>&nbsp;      this.storageModule = Preconditions.checkNotNull(storageModule);</b>
+<b class="nc"><i>227</i>&nbsp;      return this;</b>
+<i>228</i>&nbsp;    }
+<i>229</i>&nbsp;
+<i>230</i>&nbsp;    public Builder permissionHandlerModule(PermissionHandlerModule permissionHandlerModule) {
+<b class="nc"><i>231</i>&nbsp;      this.permissionHandlerModule = Preconditions.checkNotNull(permissionHandlerModule);</b>
+<b class="nc"><i>232</i>&nbsp;      return this;</b>
+<i>233</i>&nbsp;    }
+<i>234</i>&nbsp;
+<i>235</i>&nbsp;    public Builder vibratorEngineModule(VibratorEngineModule vibratorEngineModule) {
+<b class="nc"><i>236</i>&nbsp;      this.vibratorEngineModule = Preconditions.checkNotNull(vibratorEngineModule);</b>
+<b class="nc"><i>237</i>&nbsp;      return this;</b>
+<i>238</i>&nbsp;    }
+<i>239</i>&nbsp;
+<i>240</i>&nbsp;    public Builder internetConnectionCheckerModule(
+<i>241</i>&nbsp;        InternetConnectionCheckerModule internetConnectionCheckerModule) {
+<b class="nc"><i>242</i>&nbsp;      this.internetConnectionCheckerModule =</b>
+<b class="nc"><i>243</i>&nbsp;          Preconditions.checkNotNull(internetConnectionCheckerModule);</b>
+<b class="nc"><i>244</i>&nbsp;      return this;</b>
+<i>245</i>&nbsp;    }
+<i>246</i>&nbsp;
+<i>247</i>&nbsp;    public Builder sharedPreferenceManagerModule(
+<i>248</i>&nbsp;        SharedPreferenceManagerModule sharedPreferenceManagerModule) {
+<b class="nc"><i>249</i>&nbsp;      this.sharedPreferenceManagerModule =</b>
+<b class="nc"><i>250</i>&nbsp;          Preconditions.checkNotNull(sharedPreferenceManagerModule);</b>
+<b class="nc"><i>251</i>&nbsp;      return this;</b>
+<i>252</i>&nbsp;    }
+<i>253</i>&nbsp;  }
+<i>254</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

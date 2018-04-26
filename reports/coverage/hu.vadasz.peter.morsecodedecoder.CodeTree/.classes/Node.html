@@ -1,0 +1,211 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Node</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.morsecodedecoder.CodeTree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Node (hu.vadasz.peter.morsecodedecoder.CodeTree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Node</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    77,8%
+  </span>
+  <span class="absValue">
+    (14/ 18)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    65,8%
+  </span>
+  <span class="absValue">
+    (25/ 38)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.morsecodedecoder.CodeTree;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import lombok.Getter;
+<i>4</i>&nbsp;import lombok.NoArgsConstructor;
+<i>5</i>&nbsp;import lombok.Setter;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;/**
+<i>8</i>&nbsp; * This class represents a Node of the code-tree. By using this code Morse-codes with gaps at the end
+<i>9</i>&nbsp; * and prefix codes can be decoded. Each Node can have three child, a short syllable child (left),
+<i>10</i>&nbsp; * which represents 0, a long syllable child (right) = 1, and a middle child which represents the gap.
+<i>11</i>&nbsp; * A leaf child does not have any children.
+<i>12</i>&nbsp; */
+<i>13</i>&nbsp;
+<b class="fc"><i>14</i>&nbsp;@NoArgsConstructor</b>
+<i>15</i>&nbsp;public class Node {
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>18</i>&nbsp;    /// FIELDS
+<i>19</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /// CONSTANTS
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public static final boolean START_NODE = true;
+<i>24</i>&nbsp;    public static final String SHORT_EDGE = &quot;0&quot;;
+<i>25</i>&nbsp;    public static final String LONG_EDGE = &quot;1&quot;;
+<i>26</i>&nbsp;    public static final String GAP_EDGE = &quot;2&quot;;
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    /// CONSTANTS -- END
+<i>29</i>&nbsp;
+<b class="fc"><i>30</i>&nbsp;    @Getter</b>
+<b class="fc"><i>31</i>&nbsp;    @Setter</b>
+<i>32</i>&nbsp;    private Node longTone;
+<i>33</i>&nbsp;
+<b class="fc"><i>34</i>&nbsp;    @Getter</b>
+<b class="fc"><i>35</i>&nbsp;    @Setter</b>
+<i>36</i>&nbsp;    private Node shortTone;
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;    @Getter</b>
+<b class="fc"><i>39</i>&nbsp;    @Setter</b>
+<i>40</i>&nbsp;    private Node gap;
+<i>41</i>&nbsp;
+<b class="nc"><i>42</i>&nbsp;    @Getter</b>
+<b class="nc"><i>43</i>&nbsp;    @Setter</b>
+<i>44</i>&nbsp;    private boolean startNode;
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>47</i>&nbsp;    /// FIELDS -- END
+<i>48</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>51</i>&nbsp;    /// CONSTRUCTION
+<i>52</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;    public Node(boolean startNode) {</b>
+<b class="fc"><i>55</i>&nbsp;        this.startNode = startNode;</b>
+<b class="fc"><i>56</i>&nbsp;    }</b>
+<i>57</i>&nbsp;
+<b class="fc"><i>58</i>&nbsp;    public Node(Node other) {</b>
+<b class="fc"><i>59</i>&nbsp;        this.startNode = other.startNode;</b>
+<b class="fc"><i>60</i>&nbsp;        this.longTone = other.longTone;</b>
+<b class="fc"><i>61</i>&nbsp;        this.shortTone = other.shortTone;</b>
+<b class="fc"><i>62</i>&nbsp;        this.gap = other.gap;</b>
+<b class="fc"><i>63</i>&nbsp;    }</b>
+<i>64</i>&nbsp;
+<b class="fc"><i>65</i>&nbsp;    public Node(Node shortTone, Node longTone) {</b>
+<b class="fc"><i>66</i>&nbsp;        this.shortTone = shortTone;</b>
+<b class="fc"><i>67</i>&nbsp;        this.longTone = longTone;</b>
+<b class="fc"><i>68</i>&nbsp;        startNode = !START_NODE;</b>
+<b class="fc"><i>69</i>&nbsp;    }</b>
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;    public Node(Node shortTone, Node longTone, Node gap) {</b>
+<b class="nc"><i>72</i>&nbsp;        this.shortTone = shortTone;</b>
+<b class="nc"><i>73</i>&nbsp;        this.longTone = longTone;</b>
+<b class="nc"><i>74</i>&nbsp;        this.gap = gap;</b>
+<b class="nc"><i>75</i>&nbsp;        startNode = !START_NODE;</b>
+<b class="nc"><i>76</i>&nbsp;    }</b>
+<i>77</i>&nbsp;
+<b class="nc"><i>78</i>&nbsp;    public Node(Node shortTone, Node longTone, boolean startNode) {</b>
+<b class="nc"><i>79</i>&nbsp;        this.shortTone = shortTone;</b>
+<b class="nc"><i>80</i>&nbsp;        this.longTone = longTone;</b>
+<b class="nc"><i>81</i>&nbsp;        this.startNode = startNode;</b>
+<b class="nc"><i>82</i>&nbsp;    }</b>
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>85</i>&nbsp;    /// CONSTRUCTION -- END
+<i>86</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>89</i>&nbsp;    /// CONTENT METHODS
+<i>90</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    /**
+<i>93</i>&nbsp;     * This methods return true if this node has no children.
+<i>94</i>&nbsp;     * @return
+<i>95</i>&nbsp;     */
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;    public boolean isLeaf() {
+<b class="fc"><i>98</i>&nbsp;        return longTone == null &amp;&amp; shortTone == null &amp;&amp; gap == null;</b>
+<i>99</i>&nbsp;    }
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;    /**
+<i>102</i>&nbsp;     * This method returns true if this node has a long child.
+<i>103</i>&nbsp;     * @return
+<i>104</i>&nbsp;     */
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    public boolean hasLongChild() {
+<b class="fc"><i>107</i>&nbsp;        return longTone != null;</b>
+<i>108</i>&nbsp;    }
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    /**
+<i>111</i>&nbsp;     * This method return true if this node has a short child.
+<i>112</i>&nbsp;     * @return
+<i>113</i>&nbsp;     */
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    public boolean hasShortChild() {
+<b class="fc"><i>116</i>&nbsp;        return shortTone != null;</b>
+<i>117</i>&nbsp;    }
+<i>118</i>&nbsp;
+<i>119</i>&nbsp;    /**
+<i>120</i>&nbsp;     * This method returns true if the node ha a gap child.
+<i>121</i>&nbsp;     * @return
+<i>122</i>&nbsp;     */
+<b class="fc"><i>123</i>&nbsp;    public boolean hasGapChild() { return gap != null; }</b>
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>126</i>&nbsp;    /// CONTENT METHODS -- END
+<i>127</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>128</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "59645241846",
+    "firebase_url": "https://knockmessenger.firebaseio.com",
+    "project_id": "knockmessenger",
+    "storage_bucket": "knockmessenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59645241846:android:fd792384bca4bf7c",
+        "android_client_info": {
+          "package_name": "hu.vadasz.peter.knockmessenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59645241846-j04tsh5l01ra0g5l6q9vge2vi788sm8j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hu.vadasz.peter.knockmessenger",
+            "certificate_hash": "be29553fe11a742b452cce730064195e17e8f269"
+          }
+        },
+        {
+          "client_id": "59645241846-v1082pf1e3btosijoc8gqha4kftrsb7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcgeRIkqXx0Nomue7y4xeXLB5o2Wi-mrs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59645241846-v1082pf1e3btosijoc8gqha4kftrsb7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

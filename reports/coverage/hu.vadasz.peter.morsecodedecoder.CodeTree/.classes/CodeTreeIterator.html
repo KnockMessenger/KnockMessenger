@@ -1,0 +1,185 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CodeTreeIterator</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.morsecodedecoder.CodeTree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CodeTreeIterator (hu.vadasz.peter.morsecodedecoder.CodeTree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CodeTreeIterator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (21/ 21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.morsecodedecoder.CodeTree;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import lombok.Getter;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * This class is responsible for iterating a code tree. The iterator iterates over the nodes of the tree.
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;public class CodeTreeIterator {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>12</i>&nbsp;    /// FIELDS
+<i>13</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /// CONSTANTS
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public static final String NEW_PATH = &quot;&quot;;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /// CONSTANTS -- END
+<i>20</i>&nbsp;
+<b class="fc"><i>21</i>&nbsp;    @Getter</b>
+<i>22</i>&nbsp;    private Node currentNode;
+<i>23</i>&nbsp;
+<b class="fc"><i>24</i>&nbsp;    @Getter</b>
+<i>25</i>&nbsp;    private String path;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>28</i>&nbsp;    /// FIELDS -- END
+<i>29</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>32</i>&nbsp;    /// CONSTRUCTION
+<i>33</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>34</i>&nbsp;
+<b class="fc"><i>35</i>&nbsp;    public CodeTreeIterator(Node startNode) {</b>
+<b class="fc"><i>36</i>&nbsp;        reset(startNode);</b>
+<b class="fc"><i>37</i>&nbsp;    }</b>
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>40</i>&nbsp;    /// CONSTRUCTION -- END
+<i>41</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>44</i>&nbsp;    /// CONTENT METHODS
+<i>45</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * This methods decides whether the current node has children or not.
+<i>49</i>&nbsp;     * @return
+<i>50</i>&nbsp;     */
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    public boolean hasNext() {
+<b class="fc"><i>53</i>&nbsp;        return !currentNode.isLeaf();</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    /**
+<i>57</i>&nbsp;     * This methods sets the current node to the current node&#39;s short child.
+<i>58</i>&nbsp;     */
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    public void nextShort() {
+<b class="fc"><i>61</i>&nbsp;        if (currentNode.hasShortChild()) {</b>
+<b class="fc"><i>62</i>&nbsp;            currentNode = currentNode.getShortTone();</b>
+<b class="fc"><i>63</i>&nbsp;            path += Node.SHORT_EDGE;</b>
+<i>64</i>&nbsp;        }
+<b class="fc"><i>65</i>&nbsp;    }</b>
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;    /**
+<i>68</i>&nbsp;     * This methods sets the current node to the current node&#39;s long child.
+<i>69</i>&nbsp;     */
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    public void nextLong() {
+<b class="fc"><i>72</i>&nbsp;        if (currentNode.hasLongChild()) {</b>
+<b class="fc"><i>73</i>&nbsp;            currentNode = currentNode.getLongTone();</b>
+<b class="fc"><i>74</i>&nbsp;            path += Node.LONG_EDGE;</b>
+<i>75</i>&nbsp;        }
+<b class="fc"><i>76</i>&nbsp;    }</b>
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    /**
+<i>79</i>&nbsp;     * This methods sets the current node to the current node&#39;s gap child.
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;    public void nextGap() {
+<b class="fc"><i>83</i>&nbsp;        if (currentNode.hasGapChild()) {</b>
+<b class="fc"><i>84</i>&nbsp;            currentNode = currentNode.getGap();</b>
+<b class="fc"><i>85</i>&nbsp;            path += Node.GAP_EDGE;</b>
+<i>86</i>&nbsp;        }
+<b class="fc"><i>87</i>&nbsp;    }</b>
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    /**
+<i>90</i>&nbsp;     * This method sets the iterator to a specified node and clears the path.
+<i>91</i>&nbsp;     * @param startNode
+<i>92</i>&nbsp;     */
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;    public void reset(Node startNode) {
+<b class="fc"><i>95</i>&nbsp;        currentNode = new Node(startNode);</b>
+<b class="fc"><i>96</i>&nbsp;        path = NEW_PATH;</b>
+<b class="fc"><i>97</i>&nbsp;    }</b>
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>100</i>&nbsp;    /// CONTENT METHODS -- END
+<i>101</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>102</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

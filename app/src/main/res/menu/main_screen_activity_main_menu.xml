@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:KnockMessenger="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mainScreenActivity_profile"
+        android:title="@string/mainScreenActivity_profile_title"
+        android:icon="@mipmap/ic_person_white_48dp"
+        KnockMessenger:showAsAction="always" />
+
+    <item
+        android:id="@+id/mainScreenActivity_codes"
+        android:title="@string/mainScreenActivity_codes_text"
+        android:icon="@mipmap/ic_font_download_white_48dp"
+        KnockMessenger:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mainScreenActivity_friends"
+        android:title="@string/mainScreenActivity_friends_text"
+        android:icon="@mipmap/ic_group_white_48dp"
+        KnockMessenger:showAsAction="always" />
+
+    <item
+        android:id="@+id/mainScreenActivity_deleteMessages"
+        android:title="@string/mainScreenActivity_deleteMessages"
+        android:icon="@mipmap/ic_delete_white_48dp"
+        KnockMessenger:showAsAction="always" />
+
+    <item
+        android:id="@+id/mainScreenActivity_settings"
+        android:title="@string/mainScreenActivity_settings_text"
+        android:icon="@mipmap/ic_settings_white_48dp"
+        KnockMessenger:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mainScreenActivity_exit"
+        android:title="@string/mainScreenActivity_exit"
+        android:icon="@mipmap/ic_settings_power_white_48dp"
+        KnockMessenger:showAsAction="always" />
+
+</menu>

@@ -1,0 +1,127 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: StorageModule_ProvideDatabaseManagerFactory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Modules</a> ]
+</div>
+
+<h1>Coverage Summary for Class: StorageModule_ProvideDatabaseManagerFactory (hu.vadasz.peter.knockmessenger.Modules)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StorageModule_ProvideDatabaseManagerFactory</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Modules;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import dagger.internal.Factory;
+<i>4</i>&nbsp;import dagger.internal.Preconditions;
+<i>5</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.DaoSession;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManager;
+<i>7</i>&nbsp;import javax.annotation.Generated;
+<i>8</i>&nbsp;import javax.inject.Provider;
+<i>9</i>&nbsp;
+<b class="nc"><i>10</i>&nbsp;@Generated(</b>
+<i>11</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>12</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>13</i>&nbsp;)
+<i>14</i>&nbsp;public final class StorageModule_ProvideDatabaseManagerFactory implements Factory&lt;DataBaseManager&gt; {
+<i>15</i>&nbsp;  private final StorageModule module;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;  private final Provider&lt;DaoSession&gt; daoSessionProvider;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;  public StorageModule_ProvideDatabaseManagerFactory(
+<b class="nc"><i>20</i>&nbsp;      StorageModule module, Provider&lt;DaoSession&gt; daoSessionProvider) {</b>
+<b class="nc"><i>21</i>&nbsp;    assert module != null;</b>
+<b class="nc"><i>22</i>&nbsp;    this.module = module;</b>
+<b class="nc"><i>23</i>&nbsp;    assert daoSessionProvider != null;</b>
+<b class="nc"><i>24</i>&nbsp;    this.daoSessionProvider = daoSessionProvider;</b>
+<i>25</i>&nbsp;  }
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;  @Override
+<i>28</i>&nbsp;  public DataBaseManager get() {
+<b class="nc"><i>29</i>&nbsp;    return Preconditions.checkNotNull(</b>
+<b class="nc"><i>30</i>&nbsp;        module.provideDatabaseManager(daoSessionProvider.get()),</b>
+<i>31</i>&nbsp;        &quot;Cannot return null from a non-@Nullable @Provides method&quot;);
+<i>32</i>&nbsp;  }
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;  public static Factory&lt;DataBaseManager&gt; create(
+<i>35</i>&nbsp;      StorageModule module, Provider&lt;DaoSession&gt; daoSessionProvider) {
+<b class="nc"><i>36</i>&nbsp;    return new StorageModule_ProvideDatabaseManagerFactory(module, daoSessionProvider);</b>
+<i>37</i>&nbsp;  }
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;  /** Proxies {@link StorageModule#provideDatabaseManager(DaoSession)}. */
+<i>40</i>&nbsp;  public static DataBaseManager proxyProvideDatabaseManager(
+<i>41</i>&nbsp;      StorageModule instance, DaoSession daoSession) {
+<b class="nc"><i>42</i>&nbsp;    return instance.provideDatabaseManager(daoSession);</b>
+<i>43</i>&nbsp;  }
+<i>44</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

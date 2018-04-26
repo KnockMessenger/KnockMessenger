@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2018-04-03T18:06:30" hostname="DESKTOP-GBLJLQR" time="0.03">
+  <properties/>
+  <testcase name="testBuild_ShouldReturnRootWithOnlyLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.012"/>
+  <testcase name="testBuild_ShouldReturnWithShortChildWhichHasLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.005"/>
+  <testcase name="testBuild_ShouldReturnRootNodeWithOnlyShortChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.002"/>
+  <testcase name="testBuild_ShouldReturnWithLongChildWhichHasShortChildAndGap" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.001"/>
+  <testcase name="testBuild_MoreLevels" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.001"/>
+  <testcase name="testBuild_ShouldReturnWithOnlyGapChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.002"/>
+  <testcase name="testBuild_ShouldReturnWithShortAndLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.002"/>
+  <testcase name="testBuild_ShouldReturnWithShortChildLongChildGapChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeBuilderTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

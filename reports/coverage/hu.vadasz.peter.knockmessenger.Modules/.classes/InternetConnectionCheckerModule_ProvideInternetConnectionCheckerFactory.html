@@ -1,0 +1,129 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Modules</a> ]
+</div>
+
+<h1>Coverage Summary for Class: InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory (hu.vadasz.peter.knockmessenger.Modules)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Modules;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.content.Context;
+<i>4</i>&nbsp;import dagger.internal.Factory;
+<i>5</i>&nbsp;import dagger.internal.Preconditions;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
+<i>7</i>&nbsp;import javax.annotation.Generated;
+<i>8</i>&nbsp;import javax.inject.Provider;
+<i>9</i>&nbsp;
+<b class="nc"><i>10</i>&nbsp;@Generated(</b>
+<i>11</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>12</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>13</i>&nbsp;)
+<i>14</i>&nbsp;public final class InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory
+<i>15</i>&nbsp;    implements Factory&lt;InternetConnectionChecker&gt; {
+<i>16</i>&nbsp;  private final InternetConnectionCheckerModule module;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;  private final Provider&lt;Context&gt; contextProvider;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;  public InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory(
+<b class="nc"><i>21</i>&nbsp;      InternetConnectionCheckerModule module, Provider&lt;Context&gt; contextProvider) {</b>
+<b class="nc"><i>22</i>&nbsp;    assert module != null;</b>
+<b class="nc"><i>23</i>&nbsp;    this.module = module;</b>
+<b class="nc"><i>24</i>&nbsp;    assert contextProvider != null;</b>
+<b class="nc"><i>25</i>&nbsp;    this.contextProvider = contextProvider;</b>
+<i>26</i>&nbsp;  }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;  @Override
+<i>29</i>&nbsp;  public InternetConnectionChecker get() {
+<b class="nc"><i>30</i>&nbsp;    return Preconditions.checkNotNull(</b>
+<b class="nc"><i>31</i>&nbsp;        module.provideInternetConnectionChecker(contextProvider.get()),</b>
+<i>32</i>&nbsp;        &quot;Cannot return null from a non-@Nullable @Provides method&quot;);
+<i>33</i>&nbsp;  }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;  public static Factory&lt;InternetConnectionChecker&gt; create(
+<i>36</i>&nbsp;      InternetConnectionCheckerModule module, Provider&lt;Context&gt; contextProvider) {
+<b class="nc"><i>37</i>&nbsp;    return new InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory(</b>
+<i>38</i>&nbsp;        module, contextProvider);
+<i>39</i>&nbsp;  }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;  /** Proxies {@link InternetConnectionCheckerModule#provideInternetConnectionChecker(Context)}. */
+<i>42</i>&nbsp;  public static InternetConnectionChecker proxyProvideInternetConnectionChecker(
+<i>43</i>&nbsp;      InternetConnectionCheckerModule instance, Context context) {
+<b class="nc"><i>44</i>&nbsp;    return instance.provideInternetConnectionChecker(context);</b>
+<i>45</i>&nbsp;  }
+<i>46</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

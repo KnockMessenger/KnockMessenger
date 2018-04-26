@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/friendCard_marginAll"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="@dimen/friendCard_cornerRadius"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/friendCard_mainPanel"
+        android:background="@drawable/friend_card_rounded_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/friendCard_padding" >
+
+        <TextView
+            android:id="@+id/friendCard_nameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/friendCard_telText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/friendCard_nameText" />
+
+        <ImageButton
+            android:id="@+id/friendCard_addFriend_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_add_box_black_36dp"
+            android:layout_alignParentEnd="true"
+            android:background="@null"/>
+
+        <ImageButton
+            android:id="@+id/friendCard_removeFriend_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_remove_circle_outline_black_36dp"
+            android:layout_alignParentEnd="true"
+            android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/friendCard_sendMessageToFriend_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_sms_black_36dp"
+            android:layout_toLeftOf="@id/friendCard_removeFriend_button"
+            android:background="@null" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

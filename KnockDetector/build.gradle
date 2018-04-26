@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+
+    defaultConfig {
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            testCoverageEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+
+        unitTests.returnDefaultValues = true
+
+        unitTests.all {
+
+            reports.junitXml.destination = file("$rootDir/reports/test_results/detector")
+            reports.html.destination = file("$rootDir/reports/test_results/detector")
+
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen {false}
+                showStandardStreams = true
+            }
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:27.+'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+
+    //Lombok
+
+    provided 'org.projectlombok:lombok:1.16.18'
+    provided 'javax.annotation:jsr250-api:1.0'
+    annotationProcessor 'org.projectlombok:lombok:1.16.18'
+
+    //Dagger
+
+    compile 'com.google.dagger:dagger:2.11'
+    compile 'com.google.dagger:dagger-android:2.11' //only for support library
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.11'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
+
+    //GreenDAO
+
+    compile 'org.greenrobot:greendao:3.2.2'
+
+    //Stetho
+
+    compile 'com.facebook.stetho:stetho:1.5.0'
+
+    compile project(path: ':MorsecodeDecoder')
+}

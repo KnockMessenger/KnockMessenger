@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:KnockMessenger="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/codeSettingsActivity_save"
+        android:title="@string/codeSettingsActivity_save_title"
+        android:icon="@mipmap/ic_save_white_48dp"
+        KnockMessenger:showAsAction="always"/>
+
+</menu>

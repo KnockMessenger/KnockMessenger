@@ -1,0 +1,197 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: KnockDetector</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockdetector.Interfaces</a> ]
+</div>
+
+<h1>Coverage Summary for Class: KnockDetector (hu.vadasz.peter.knockdetector.Interfaces)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">KnockDetector</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90%
+  </span>
+  <span class="absValue">
+    (9/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockdetector.Interfaces;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import hu.vadasz.peter.knockdetector.Components.DaggerMainComponent;
+<i>4</i>&nbsp;import hu.vadasz.peter.knockdetector.Components.MainComponent;
+<i>5</i>&nbsp;import hu.vadasz.peter.knockdetector.Exceptions.UnrecognizedSyllableException;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockdetector.Modules.AudioRecorderModule;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockdetector.Modules.MediaRecorderModule;
+<i>8</i>&nbsp;import lombok.Getter;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * This interface provides interface for knock detection. Every detector class should be a subclass
+<i>12</i>&nbsp; * of this class.
+<i>13</i>&nbsp; */
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;public abstract class KnockDetector {
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>18</i>&nbsp;    /// FIELDS
+<i>19</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /// CONSTANTS
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public static final int SHORT_SYLLABLE = 0;
+<i>24</i>&nbsp;    public static final int LONG_SYLLABLE = 1;
+<i>25</i>&nbsp;    public static final int GAP = 2;
+<i>26</i>&nbsp;    public static final int SPACE = 3;
+<i>27</i>&nbsp;    public static final int START_COUNTING = 0;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public static final int LONG_SYLLABLE_MULTIPLICATOR = 3;
+<i>30</i>&nbsp;    public static final int GAP_MULTIPLICATOR = 3;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public static final int SHORT_SYLLABLE_LENGTH = 1;
+<i>33</i>&nbsp;    public static final int MAX_LENGTH = 7;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public static final boolean PAUSE_BETWEEN_SYLLABLES = true;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public static final String SIGNAL_RECEIVER_NOT_FOUND_ERROR_MESSAGE = &quot;Internal error: signal receiver not found!&quot;;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    protected static final boolean DETECTOR_IS_DETECTING = true;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    /// CONSTANTS -- END
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    private static KnockDetector instance;
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    public static KnockDetector getInstance() {
+<b class="fc"><i>46</i>&nbsp;        return instance;</b>
+<i>47</i>&nbsp;    }
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;    @Getter</b>
+<i>50</i>&nbsp;    protected MainComponent mainComponent;
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>53</i>&nbsp;    /// FIELDS -- END
+<i>54</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>57</i>&nbsp;    /// CONSTRUCTION
+<i>58</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>59</i>&nbsp;
+<b class="fc"><i>60</i>&nbsp;    public KnockDetector() {</b>
+<b class="fc"><i>61</i>&nbsp;        instance = this;</b>
+<i>62</i>&nbsp;
+<b class="fc"><i>63</i>&nbsp;        mainComponent = DaggerMainComponent.builder()</b>
+<b class="fc"><i>64</i>&nbsp;                .mediaRecorderModule(new MediaRecorderModule())</b>
+<b class="fc"><i>65</i>&nbsp;                .audioRecorderModule(new AudioRecorderModule())</b>
+<b class="fc"><i>66</i>&nbsp;                .build();</b>
+<b class="fc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>70</i>&nbsp;    /// CONSTRUCTION -- END
+<i>71</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>74</i>&nbsp;    /// ABSTRACT METHODS
+<i>75</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    public abstract void start();
+<i>78</i>&nbsp;    public abstract void stop();
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>81</i>&nbsp;    /// ABSTRACT METHODS -- END
+<i>82</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * This method operates in an other way, and represents experiments.
+<i>86</i>&nbsp;     * Detects a short or a long syllable, depends on the time between two knocks.
+<i>87</i>&nbsp;     * @param rawSignal signal from audio recorder.
+<i>88</i>&nbsp;     * @throws UnrecognizedSyllableException
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;    @Deprecated
+<i>92</i>&nbsp;    protected void detectSyllable(int rawSignal) throws UnrecognizedSyllableException {
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;        /*if (detectorState != State.SYLLABLE_DETECTING &amp;&amp; rawSignal == AudioRecorder.KNOCK) {
+<i>95</i>&nbsp;            detectorState = State.SYLLABLE_DETECTING;
+<i>96</i>&nbsp;            counter = 0;
+<i>97</i>&nbsp;        } else if (detectorState == State.SYLLABLE_DETECTING &amp;&amp; counter &lt;= longSyllableLength &amp;&amp; rawSignal == AudioRecorder.NONE) {
+<i>98</i>&nbsp;            counter++;
+<i>99</i>&nbsp;        } else if (detectorState == State.SYLLABLE_DETECTING &amp;&amp; rawSignal == AudioRecorder.KNOCK) {
+<i>100</i>&nbsp;            if (counter &gt;= 0 &amp;&amp; counter &lt;= SHORT_SYLLABLE_LENGTH) {
+<i>101</i>&nbsp;                administrateSyllableDetection(SHORT_SYLLABLE);
+<i>102</i>&nbsp;            } else if (counter &gt; SHORT_SYLLABLE_LENGTH &amp;&amp; counter &lt;= longSyllableLength) {
+<i>103</i>&nbsp;                administrateSyllableDetection(LONG_SYLLABLE);
+<i>104</i>&nbsp;            }
+<i>105</i>&nbsp;        } else if (syllableDetecting &amp;&amp; counter &gt; longSyllableLength) {
+<i>106</i>&nbsp;            detectorState = State.WAITING;
+<i>107</i>&nbsp;            throw new UnrecognizedSyllableException(UNRECOGNIZED_SYLLABLE_ERROR);
+<i>108</i>&nbsp;        }
+<i>109</i>&nbsp;        if (syllableDetecting) {
+<i>110</i>&nbsp;            visualizer.actualState(counter);
+<i>111</i>&nbsp;        }*/
+<b class="nc"><i>112</i>&nbsp;    }</b>
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

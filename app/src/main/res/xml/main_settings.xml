@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:preference="http://schemas.android.com/apk/res-auto">
+
+    <CheckBoxPreference
+        android:key="@string/pref_key_vibration"
+        android:summary="@string/pref_summary_vibration"
+        android:title="@string/pref_title_auto_vibration"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="@string/pref_key_sounds"
+        android:summary="@string/pref_sounds_summary"
+        android:title="@string/pref_sounds_title"
+        android:defaultValue="true" />
+
+    <CheckBoxPreference
+        android:key="@string/pref_key_mode"
+        android:summary="@string/pref_mode_summary"
+        android:title="@string/pref_mode_title"
+        android:defaultValue="true" />
+
+    <hu.vadasz.peter.knockmessenger.Dialogs.MeasureTimeNumberPickerDialogPreference
+        android:key="@string/pref_shortUnit_time_key"
+        android:title="@string/pref_shortUnit_time_title"
+        android:summary="@string/pref_shortUnit_time_summary"
+        android:defaultValue="@integer/pref_measure_time_default_value"
+        preference:maxValue="@integer/pref_measure_time_max_value"
+        preference:minValue="@integer/pref_measure_time_min_value"
+        preference:wrapSelectorWheel="false" />
+
+    <hu.vadasz.peter.knockmessenger.Dialogs.MicrophoneSensitivityNumberPickerDialogPreference
+        android:key="@string/pref_mic_sensitivity"
+        android:title="@string/pref_mic_sensitivity_title"
+        android:summary="@string/pref_mic_sensitivity_summary"
+        android:defaultValue="@integer/pref_mic_sensitivity_defaultValue"
+        preference:maxValue="@integer/pref_mic_sensitivity_maxValue"
+        preference:minValue="@integer/pref_mic_sensitivity_minValue"
+        preference:wrapSelectorWheel="false" />
+
+</PreferenceScreen>

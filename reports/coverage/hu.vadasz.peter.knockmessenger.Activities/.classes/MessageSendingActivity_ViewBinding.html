@@ -1,0 +1,136 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MessageSendingActivity_ViewBinding</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Activities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MessageSendingActivity_ViewBinding (hu.vadasz.peter.knockmessenger.Activities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MessageSendingActivity_ViewBinding</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 20)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;// Generated code from Butter Knife. Do not modify!
+<i>2</i>&nbsp;package hu.vadasz.peter.knockmessenger.Activities;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import android.support.annotation.CallSuper;
+<i>5</i>&nbsp;import android.support.annotation.UiThread;
+<i>6</i>&nbsp;import android.view.View;
+<i>7</i>&nbsp;import android.widget.ImageButton;
+<i>8</i>&nbsp;import android.widget.ImageView;
+<i>9</i>&nbsp;import android.widget.ProgressBar;
+<i>10</i>&nbsp;import android.widget.TextView;
+<i>11</i>&nbsp;import butterknife.Unbinder;
+<i>12</i>&nbsp;import butterknife.internal.Utils;
+<i>13</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>14</i>&nbsp;import java.lang.IllegalStateException;
+<i>15</i>&nbsp;import java.lang.Override;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;public class MessageSendingActivity_ViewBinding implements Unbinder {
+<i>18</i>&nbsp;  private MessageSendingActivity target;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;  @UiThread
+<i>21</i>&nbsp;  public MessageSendingActivity_ViewBinding(MessageSendingActivity target) {
+<b class="nc"><i>22</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
+<i>23</i>&nbsp;  }
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;  @UiThread
+<b class="nc"><i>26</i>&nbsp;  public MessageSendingActivity_ViewBinding(MessageSendingActivity target, View source) {</b>
+<b class="nc"><i>27</i>&nbsp;    this.target = target;</b>
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;    target.knockDetectorStartButton = Utils.findRequiredViewAsType(source, R.id.KnockDetector_startButton, &quot;field &#39;knockDetectorStartButton&#39;&quot;, ImageButton.class);</b>
+<b class="nc"><i>30</i>&nbsp;    target.messageSendingButton = Utils.findRequiredViewAsType(source, R.id.Message_sendButton, &quot;field &#39;messageSendingButton&#39;&quot;, ImageButton.class);</b>
+<b class="nc"><i>31</i>&nbsp;    target.modeIcon = Utils.findRequiredViewAsType(source, R.id.messageSendingActivity_modeButton, &quot;field &#39;modeIcon&#39;&quot;, ImageView.class);</b>
+<b class="nc"><i>32</i>&nbsp;    target.detectedMessageText = Utils.findRequiredViewAsType(source, R.id.DetectedMessage_text, &quot;field &#39;detectedMessageText&#39;&quot;, TextView.class);</b>
+<b class="nc"><i>33</i>&nbsp;    target.detectorIsListeningIcon = Utils.findRequiredViewAsType(source, R.id.detectorIsListening_icon, &quot;field &#39;detectorIsListeningIcon&#39;&quot;, ImageView.class);</b>
+<b class="nc"><i>34</i>&nbsp;    target.detectedSyllableText = Utils.findRequiredViewAsType(source, R.id.detected_Syllable_text, &quot;field &#39;detectedSyllableText&#39;&quot;, TextView.class);</b>
+<b class="nc"><i>35</i>&nbsp;    target.timeToLive = Utils.findRequiredViewAsType(source, R.id.messageSendingActivity_progressbar, &quot;field &#39;timeToLive&#39;&quot;, ProgressBar.class);</b>
+<i>36</i>&nbsp;  }
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;  @Override
+<i>39</i>&nbsp;  @CallSuper
+<i>40</i>&nbsp;  public void unbind() {
+<b class="nc"><i>41</i>&nbsp;    MessageSendingActivity target = this.target;</b>
+<b class="nc"><i>42</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
+<b class="nc"><i>43</i>&nbsp;    this.target = null;</b>
+<i>44</i>&nbsp;
+<b class="nc"><i>45</i>&nbsp;    target.knockDetectorStartButton = null;</b>
+<b class="nc"><i>46</i>&nbsp;    target.messageSendingButton = null;</b>
+<b class="nc"><i>47</i>&nbsp;    target.modeIcon = null;</b>
+<b class="nc"><i>48</i>&nbsp;    target.detectedMessageText = null;</b>
+<b class="nc"><i>49</i>&nbsp;    target.detectorIsListeningIcon = null;</b>
+<b class="nc"><i>50</i>&nbsp;    target.detectedSyllableText = null;</b>
+<b class="nc"><i>51</i>&nbsp;    target.timeToLive = null;</b>
+<i>52</i>&nbsp;  }
+<i>53</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

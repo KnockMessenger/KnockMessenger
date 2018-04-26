@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:KnockMessenger="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/codesActivity_search"
+        android:title="@string/codesActivity_search_title"
+        android:icon="@mipmap/ic_search_white_48dp"
+        KnockMessenger:actionViewClass="android.support.v7.widget.SearchView"
+        KnockMessenger:showAsAction="collapseActionView|ifRoom"/>
+
+    <item
+        android:id="@+id/codesActivity_addCode"
+        android:title="@string/codesActivity_addCode"
+        android:icon="@mipmap/ic_add_circle_outline_white_48dp"
+        KnockMessenger:showAsAction="always"/>
+
+    <item
+        android:id="@+id/codesActivity_resetCodes"
+        android:title="@string/codesActivity_resetCodes"
+        android:icon="@mipmap/ic_settings_backup_restore_white_36dp"
+        KnockMessenger:showAsAction="always" />
+
+</menu>

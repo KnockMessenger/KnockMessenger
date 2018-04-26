@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="detectorIsListening_textSize">40dp</dimen>
+    <dimen name="detectedSyllable_textSize">50dp</dimen>
+    <dimen name="detectedMessage_text">20dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="message_sendingActivity_button_bottomMargin">20dp</dimen>
+    <dimen name="timeToLive_width">150dp</dimen>
+    <dimen name="timeToLive_height">30dp</dimen>
+    <dimen name="codeCard_marginAll">10dp</dimen>
+    <dimen name="codeCard_paddingAll">10dp</dimen>
+    <dimen name="splash_appLogo_size">250dp</dimen>
+    <dimen name="messageSending_controlPane_padding">20dp</dimen>
+    <dimen name="messageSending_sendButton">80dp</dimen>
+    <dimen name="messageSending_messageCard_marginAll">20dp</dimen>
+    <dimen name="messageSending_messageCard_paddingAll">15dp</dimen>
+    <dimen name="codeCard_deleteButton_leftMargin">10dp</dimen>
+    <dimen name="codeCard_textSize">25dp</dimen>
+    <dimen name="codeCard_codeSize">20dp</dimen>
+    <dimen name="permissionDeniedActivity_sadFaceMargin">20dp</dimen>
+    <dimen name="message_sendingActivity_button_rightMargin">20dp</dimen>
+    <dimen name="mainActivity_buttons_marginBottom">20</dimen>
+    <dimen name="knockGraphActivity_graph_padding">15dp</dimen>
+    <dimen name="profileActivity_nameText_length">250dp</dimen>
+    <dimen name="profileActivity_telText_length">250dp</dimen>
+    <dimen name="knockGraphActivity_progressBar_width">200dp</dimen>
+    <dimen name="knockGraphActivity_progressBar_marginBottom">10dp</dimen>
+    <dimen name="friendCard_padding">10dp</dimen>
+    <dimen name="friendCard_marginAll">10dp</dimen>
+    <dimen name="messageCard_marginAll">10dp</dimen>
+    <dimen name="messageCard_paddingAll">20dp</dimen>
+    <dimen name="messageCard_messageText_size">18dp</dimen>
+    <dimen name="messageCard_cornerRadius">35dp</dimen>
+    <dimen name="codeCard_cornerRadius">15dp</dimen>
+    <dimen name="friendCard_cornerRadius">15dp</dimen>
+</resources>

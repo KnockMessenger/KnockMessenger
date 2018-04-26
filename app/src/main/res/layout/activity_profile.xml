@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="user"
+            type="hu.vadasz.peter.knockmessenger.DataPersister.Entities.User" />
+    </data>
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="hu.vadasz.peter.knockmessenger.Activities.ProfileActivity"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true" >
+
+        <ProgressBar
+            android:id="@+id/profileActivity_progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/profileActivity_form"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:id="@+id/profileActivity_form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/profileActivity_nameIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_person_black_48dp"/>
+
+            <ImageView
+                android:id="@+id/profileActivity_telIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_local_phone_black_48dp"
+                android:layout_below="@id/profileActivity_nameIcon"/>
+
+            <EditText
+                android:id="@+id/profileActivity_nameText"
+                android:layout_width="@dimen/profileActivity_nameText_length"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/profileActivity_nameIcon"
+                android:hint="@string/profileActivity_nameText_hint"
+                android:text="@{user.name}"/>
+
+            <EditText
+                android:id="@+id/profileActivity_telText"
+                android:layout_width="@dimen/profileActivity_telText_length"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/profileActivity_telIcon"
+                android:layout_below="@id/profileActivity_nameText"
+                android:hint="@string/profileActivity_telText_hint"
+                android:text="@{user.telephone}"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

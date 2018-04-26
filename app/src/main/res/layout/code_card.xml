@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/codeCard_marginAll"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="@dimen/codeCard_cornerRadius"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/codeCard_mainPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/code_card_rounded_corner"
+        android:padding="@dimen/codeCard_paddingAll" >
+
+        <TextView
+            android:id="@+id/codeCard_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/codeCard_textSize"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/codeCard_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/codeCard_text"
+            android:textSize="@dimen/codeCard_codeSize" />
+
+        <ImageButton
+            android:id="@+id/codeCard_deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_delete_sweep_black_36dp"
+            android:background="@null"
+            android:layout_toLeftOf="@id/codeCard_settingsButton"
+            android:layout_centerVertical="true" />
+
+        <ImageButton
+            android:id="@+id/codeCard_settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_create_black_36dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:background="@null" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

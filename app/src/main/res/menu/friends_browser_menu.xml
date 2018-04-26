@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:KnockMessenger="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/browseFriendsActivity_search"
+        android:title="@string/codesActivity_search_title"
+        android:icon="@mipmap/ic_search_white_48dp"
+        KnockMessenger:actionViewClass="android.support.v7.widget.SearchView"
+        KnockMessenger:showAsAction="collapseActionView|ifRoom"/>
+
+</menu>

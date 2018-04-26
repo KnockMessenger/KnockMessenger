@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#309630</color>
+    <color name="colorPrimaryDark">#116615</color>
+    <color name="colorAccent">#0c740c</color>
+
+    <color name="black_overlay">#66000000</color>
+
+    <color name = "codeCard_controlSymbol_background_color">#ad6aac71</color>
+    <color name = "codeCard_default_background_color">#66129ce6</color>
+
+    <color name = "messageCard_lightBackground">#a2a3cea7</color>
+
+    <color name = "lightBackground">#a0aed6a2</color>
+    <color name = "lightFontColor">#8c8c8c</color>
+</resources>

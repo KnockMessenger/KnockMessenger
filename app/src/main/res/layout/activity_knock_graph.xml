@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hu.vadasz.peter.knockmessenger.Activities.KnockGraphActivity">
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/knockGraphActivity_graph"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/detected_Syllable_text"
+        android:padding="@dimen/knockGraphActivity_graph_padding"/>
+
+    <ProgressBar
+        android:id="@+id/knockGraphActivity_progressBar"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="@dimen/knockGraphActivity_progressBar_width"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/knockGraphActivity_progressBar_marginBottom"/>
+
+</RelativeLayout>

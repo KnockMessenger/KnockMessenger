@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="code"
+            type="hu.vadasz.peter.morsecodedecoder.Code.Code" />
+    </data>
+
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="hu.vadasz.peter.knockmessenger.Activities.CodeSettingActivity">
+
+        <EditText
+            android:id="@+id/codeSettings_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@{code.text}"/>
+
+        <TextView
+            android:id="@+id/codeSettings_codeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/codeSettings_text"
+            android:layout_centerHorizontal="true"
+            android:text="@{code.code}"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/codeSettings_codeText"
+            android:layout_centerHorizontal="true" >
+
+        <ImageButton
+            android:id="@+id/codeSettings_shortSyllable_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_fiber_manual_record_black_48dp"
+            android:background="@null"/>
+
+        <ImageButton
+            android:id="@+id/codeSettings_longSyllable_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_stop_black_48dp"
+            android:layout_toRightOf="@id/codeSettings_shortSyllable_button"
+            android:background="@null" />
+
+        <ImageButton
+            android:id="@+id/codeSettings_deleteSyllable_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/codeSettings_longSyllable_button"
+            android:background="@null"
+            android:src="@mipmap/ic_clear_black_48dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+</layout>

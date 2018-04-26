@@ -1,0 +1,109 @@
+<resources>
+
+    <!-- Global section -->
+
+    <string name="app_name">KnockMessenger</string>
+
+    <!-- MainScreenActivity captions -->
+
+    <string name="title_activity_main_screen">KnockMessenger</string>
+
+    <!-- MessageSendingActivity captions -->
+
+    <string name="KnockDetector_startButton_text">Detect</string>
+    <string name="KnockDetector_stopButton_text">Stop</string>
+    <string name="KnockDetector_sendButton_text">Send</string>
+
+    <!-- MainScreenActivity -->
+
+    <string name="mainScreenActivity_settings_text">Settings</string>
+    <string name="title_activity_main_settings">MainSettingsActivity</string>
+
+    <string name="mainScreenActivity_storageError_title">Storage error</string>
+    <string name="mainScreenActivity_storageError_message">SD card is not available, application will exit!</string>
+
+    <!-- Preferences -->
+
+    <string name="pref_summary_vibration">Vibrate device when knock detected.</string>
+    <string name="pref_title_auto_vibration">Vibrator</string>
+    <string name="pref_key_vibration">pref_key_vibration</string>
+
+    <string name="pref_key_sounds">pref_key_sounds</string>
+    <string name="pref_sounds_summary">Enable app to play sounds.</string>
+    <string name="pref_sounds_title">Sounds</string>
+
+    <string name="pref_number_picker_ok">OK</string>
+    <string name="pref_number_picker_cancel">Cancel</string>
+
+    <string name="pref_shortUnit_time_key">pref_short_unit_time_key</string>
+    <string name="pref_shortUnit_time_title">Short unit length</string>
+    <string name="pref_shortUnit_time_summary">Specify the length of the short unit in millis.</string>
+
+    <string name="pref_pause_time_key">pref_pause_time_key</string>
+    <string name="pref_pause_time_title">Pause between knocks</string>
+    <string name="pref_pause_time_summary">Pause between knocks in millis.</string>
+
+    <string name="pref_key_mode">pref_key_mode</string>
+    <string name="pref_mode_summary">Use international Morse-code with gaps and spaces after symbols.</string>
+
+    <string name="pref_mic_sensitivity">pref_mic_sensitivity</string>
+    <string name="pref_mic_sensitivity_title">Knock strength level</string>
+    <string name="pref_mic_sensitivity_summary">Set the strength of the knock with the scale.</string>
+    <string name="pref_mode_title">Use standard Morse-code</string>
+
+    <!-- Menus -->
+
+    <string name="codesActivity_addCode">Add code</string>
+    <string name="mainScreenActivity_codes_text">Code abc</string>
+
+    <!--CodesActivity -->
+
+    <string name="codesActivity_confirm_delete_text">Are you sure you want to delete?</string>
+    <string name="codesActivity_confirm_delete_yes_text">YES</string>
+    <string name="codesActivity_confirm_delete_no_text">NO</string>
+
+    <!-- CodeSettingsActivity -->
+
+    <string name="codeSettingsActivity_save_title">Save</string>
+    <string name="codeSettingsActivity_code_exists_error">Code already exists!</string>
+    <string name="codeSettingsActivity_code_invalid_error">Code is invalid!</string>
+    <string name="codeSettingsActivity_code_is_not_prefix_error">Code is not prefix!</string>
+    <string name="codesActivity_resetCodes">Reset</string>
+
+    <!-- CodesActivity -->
+
+    <string name="codesActivity_search_title">Search...</string>
+
+    <!-- PermissionDeniedActivity -->
+
+    <string name="permissionDeniedActivity_message">KnockMessenger requires permissions to work perfectly!</string>
+    <string name="mainScreenActivity_user_dataNotFound_error">No user data found, please registrate!</string>
+    <string name="mainScreenActivity_profile_title">Profile</string>
+    <string name="profileActivity_nameText_hint">Name...</string>
+    <string name="profileActivity_telText_hint">Telephone...</string>
+    <string name="profileActivity_saveMenuItem_title">Save</string>
+    <string name="profileActivity_invalidUser_error">Invalid data!</string>
+    <string name="profileActivity_deleteMenuItemTitle">Delete</string>
+    <string name="profileActivity_invalid_delete_error">What do you want to delete? :)</string>
+    <string name="profileActivity_disconnectedError">Device is disconnected!</string>
+    <string name="profileActivity_userExistsError">Telephone number already exists!</string>
+    <string name="device_offline_error">Device is offline!</string>
+    <string name="profileActivity_userNotExistsError">Profile not exists!</string>
+    <string name="mainScreenNavHeader_title">KnockMessenger</string>
+    <string name="mainScreenActivity_open_drawer_title">Main menu</string>
+    <string name="mainScreenActivity_friends_text">Friends</string>
+    <string name="friendsActivity_browse_friends">Browse new friends</string>
+    <string name="connection_timeout_error">Connection timeout!</string>
+    <string name="mainScreenActivity_exit">Exit</string>
+    <string name="syncError">Network error! Data may not be refreshed!</string>
+    <string name="friendsActivity_sync">Sync</string>
+    <string name="user_notExists">User not exists any more!</string>
+    <string name="notificationTitle">KnockMessenger message</string>
+    <string name="messageSendingActivity_userLeft">(left)</string>
+    <string name="notificationChannel_id">1</string>
+    <string name="notificationChannel_description">allMessages</string>
+    <string name="messageCard_today_timestamp">HH:mm</string>
+    <string name="messageCard_old_timestamp">yyyy-MM-dd, HH:mm</string>
+    <string name="mainScreenActivity_deleteMessages">Delete messages</string>
+
+</resources>

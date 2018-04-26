@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UserValidator</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Controllers.Validators</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UserValidator (hu.vadasz.peter.knockmessenger.Controllers.Validators)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserValidator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (2/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (8/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Controllers.Validators;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * This class is to validate user&#39;s data.
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;
+<b class="nc"><i>9</i>&nbsp;public class UserValidator {</b>
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>12</i>&nbsp;    /// FIELDS
+<i>13</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /// CONSTANTS
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    public static final boolean VALID = true;
+<i>18</i>&nbsp;    public static final char PLUS = &#39;+&#39;;
+<i>19</i>&nbsp;    public static final int MIN_TEL_LENGTH = 9;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /// CONSTANTS -- END
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>24</i>&nbsp;    /// FIELDS -- END
+<i>25</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * This method validates a user, the name and the telephone number, the name can not be empty.
+<i>29</i>&nbsp;     * @param user the user to validate.
+<i>30</i>&nbsp;     * @return
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    public static boolean userIsValid(User user) {
+<b class="fc"><i>34</i>&nbsp;        return !user.getName().isEmpty() &amp;&amp; telephoneIsValid(user.getTelephone());</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    /**
+<i>38</i>&nbsp;     * This method validates telephone numbers. A valid telephone number contains digits only
+<i>39</i>&nbsp;     * the first character can be a + symbol and has a minimum length.
+<i>40</i>&nbsp;     * @param tel the telephone number to validate.
+<i>41</i>&nbsp;     * @return
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public static boolean telephoneIsValid(String tel) {
+<b class="fc"><i>45</i>&nbsp;        if (tel == null || tel.length() &lt; MIN_TEL_LENGTH) {</b>
+<b class="fc"><i>46</i>&nbsp;            return !VALID;</b>
+<i>47</i>&nbsp;        }
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;        for (int i = 0; i &lt; tel.length(); ++i) {</b>
+<b class="fc"><i>50</i>&nbsp;            if (i == 0 &amp;&amp; !Character.isDigit(tel.charAt(i)) &amp;&amp; tel.charAt(i) != PLUS) {</b>
+<b class="nc"><i>51</i>&nbsp;                return !VALID;</b>
+<b class="fc"><i>52</i>&nbsp;            } else if ( i &gt; 0 &amp;&amp; !Character.isDigit(tel.charAt(i))) {</b>
+<b class="fc"><i>53</i>&nbsp;                return !VALID;</b>
+<i>54</i>&nbsp;            }
+<i>55</i>&nbsp;        }
+<i>56</i>&nbsp;
+<b class="fc"><i>57</i>&nbsp;        return VALID;</b>
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

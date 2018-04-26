@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DataBaseManager</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.DataPersister.Managers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DataBaseManager (hu.vadasz.peter.knockmessenger.DataPersister.Managers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DataBaseManager</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.DataPersister.Managers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.DaoSession;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
+<i>8</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.UserDao;
+<i>9</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.UserSettings;
+<i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.UserSettingsDao;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;/**
+<i>13</i>&nbsp; * This class is responsible for collecting database operations.
+<i>14</i>&nbsp; */
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;public class DataBaseManager {
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>19</i>&nbsp;    /// FIELDS
+<i>20</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    private UserDao userDao;
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>25</i>&nbsp;    /// FIELDS -- END
+<i>26</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>29</i>&nbsp;    /// CONSTRUCTION
+<i>30</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>31</i>&nbsp;
+<b class="nc"><i>32</i>&nbsp;    public DataBaseManager(DaoSession daoSession) {</b>
+<b class="nc"><i>33</i>&nbsp;        userDao = daoSession.getUserDao();</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>37</i>&nbsp;    /// CONSTRUCTION -- END
+<i>38</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>41</i>&nbsp;    /// DATABASE OPERATIONS
+<i>42</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    /// USER OPERATIONS
+<i>45</i>&nbsp;
+<b class="nc"><i>46</i>&nbsp;    public Long insertUser(User user) { return  userDao.insert(user); }</b>
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;    public void updateUser(User user) { userDao.update(user); }</b>
+<i>49</i>&nbsp;
+<b class="nc"><i>50</i>&nbsp;    public void deleteUser(User user) { userDao.delete(user); }</b>
+<i>51</i>&nbsp;
+<b class="nc"><i>52</i>&nbsp;    public User findUser() { return userDao.loadAll().isEmpty() ? null : userDao.loadAll().get(0); }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    /// USER OPERATIONS -- END
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>57</i>&nbsp;    /// DATABASE OPERATIONS -- END
+<i>58</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>59</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>

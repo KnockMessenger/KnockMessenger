@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: KnockGraphActivity_ViewBinding</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Activities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: KnockGraphActivity_ViewBinding (hu.vadasz.peter.knockmessenger.Activities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">KnockGraphActivity_ViewBinding</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;// Generated code from Butter Knife. Do not modify!
+<i>2</i>&nbsp;package hu.vadasz.peter.knockmessenger.Activities;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import android.support.annotation.CallSuper;
+<i>5</i>&nbsp;import android.support.annotation.UiThread;
+<i>6</i>&nbsp;import android.view.View;
+<i>7</i>&nbsp;import android.widget.ProgressBar;
+<i>8</i>&nbsp;import butterknife.Unbinder;
+<i>9</i>&nbsp;import butterknife.internal.Utils;
+<i>10</i>&nbsp;import com.jjoe64.graphview.GraphView;
+<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>12</i>&nbsp;import java.lang.IllegalStateException;
+<i>13</i>&nbsp;import java.lang.Override;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;public class KnockGraphActivity_ViewBinding implements Unbinder {
+<i>16</i>&nbsp;  private KnockGraphActivity target;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;  @UiThread
+<i>19</i>&nbsp;  public KnockGraphActivity_ViewBinding(KnockGraphActivity target) {
+<b class="nc"><i>20</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
+<i>21</i>&nbsp;  }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;  @UiThread
+<b class="nc"><i>24</i>&nbsp;  public KnockGraphActivity_ViewBinding(KnockGraphActivity target, View source) {</b>
+<b class="nc"><i>25</i>&nbsp;    this.target = target;</b>
+<i>26</i>&nbsp;
+<b class="nc"><i>27</i>&nbsp;    target.graph = Utils.findRequiredViewAsType(source, R.id.knockGraphActivity_graph, &quot;field &#39;graph&#39;&quot;, GraphView.class);</b>
+<b class="nc"><i>28</i>&nbsp;    target.timeLeft = Utils.findRequiredViewAsType(source, R.id.knockGraphActivity_progressBar, &quot;field &#39;timeLeft&#39;&quot;, ProgressBar.class);</b>
+<i>29</i>&nbsp;  }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;  @Override
+<i>32</i>&nbsp;  @CallSuper
+<i>33</i>&nbsp;  public void unbind() {
+<b class="nc"><i>34</i>&nbsp;    KnockGraphActivity target = this.target;</b>
+<b class="nc"><i>35</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
+<b class="nc"><i>36</i>&nbsp;    this.target = null;</b>
+<i>37</i>&nbsp;
+<b class="nc"><i>38</i>&nbsp;    target.graph = null;</b>
+<b class="nc"><i>39</i>&nbsp;    target.timeLeft = null;</b>
+<i>40</i>&nbsp;  }
+<i>41</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-04-03 20:16</div>
+</div>
+</body>
+</html>
