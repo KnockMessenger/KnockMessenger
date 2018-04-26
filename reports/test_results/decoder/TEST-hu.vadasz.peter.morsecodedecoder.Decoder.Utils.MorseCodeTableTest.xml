@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2018-04-03T18:06:31" hostname="DESKTOP-GBLJLQR" time="0.033">
+<testsuite name="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2018-04-26T20:53:41" hostname="DESKTOP-GBLJLQR" time="0.019">
   <properties/>
-  <testcase name="testFindSymbol_ShouldReturnNull" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.002"/>
+  <testcase name="testFindSymbol_ShouldReturnNull" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
   <testcase name="testFindSymbol_ShouldNotReturnControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
   <testcase name="testGetControlCodesList" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
-  <testcase name="testFindControlSymbol_ShouldNotReturnInputSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
-  <testcase name="testFindControlSymbol_ShouldReturnCorrectHuffmanControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.007"/>
-  <testcase name="testFindSymbol_ShouldReturnCorrectMorseSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
+  <testcase name="testFindControlSymbol_ShouldNotReturnInputSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.0"/>
+  <testcase name="testFindControlSymbol_ShouldReturnCorrectHuffmanControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.005"/>
+  <testcase name="testFindSymbol_ShouldReturnCorrectMorseSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.0"/>
   <testcase name="testFindSymbol_WithoutChangeModeSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
   <testcase name="testGetCodeList" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.003"/>
-  <testcase name="testFindSymbol_ShouldReturnChangeSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.002"/>
-  <testcase name="testFindControlSymbol_ShouldReturnNull" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.006"/>
+  <testcase name="testFindSymbol_ShouldReturnChangeSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.0"/>
+  <testcase name="testFindControlSymbol_ShouldReturnNull" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.0"/>
   <testcase name="testGetControlCodeList_ShouldReturnEmptyList" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
-  <testcase name="testFindControlSymbol_ShouldReturnCorrectMorseControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
-  <testcase name="testGetCodeList_ShouldReturnEmptyList" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
+  <testcase name="testFindControlSymbol_ShouldReturnCorrectMorseControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.0"/>
+  <testcase name="testGetCodeList_ShouldReturnEmptyList" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.0"/>
   <testcase name="testFindSymbol_SholdReturnCorrectHuffmanSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTableTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
