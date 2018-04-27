@@ -105,6 +105,7 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
             m.setDateTime(new DateTime().getMillis());
             m.setFromTelephone("111111111");
             m.setToTelephone("123456789");
+            m.setMessage("aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbcccccccccccccccccccccccccc");
             messageDataManager.newMessage(m);
         }*/
         setContentView(R.layout.activity_main_screen);
@@ -128,6 +129,8 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MessageAdapter(messageDataManager.getMessages(), this);
         messagesRecyclerView.setAdapter(adapter);
+
+        messagesRecyclerView.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
     }
 
     @Override
