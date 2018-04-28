@@ -199,7 +199,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ChildEve
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
             showErrorMessage(getString(R.string.android_alarmManager_versionNotification));
             notificationManager.createNotification(getString(R.string.android_system_title), getString(R.string.android_alarmManager_versionNotification),
-                    NotificationManager.SYSTEM_NOTIFICATION_ID, !NotificationManager.NOTIFICATION_WITH_MEDIA);
+                    NotificationManager.SYSTEM_NOTIFICATION_ID, !NotificationManager.NOTIFICATION_WITH_MEDIA, null);
         }
     }
 

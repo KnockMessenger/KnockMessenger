@@ -11,7 +11,6 @@ import hu.vadasz.peter.knockmessenger.Application.BaseApplication;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
 import hu.vadasz.peter.knockmessenger.Managers.ServiceAlarmManager;
 import hu.vadasz.peter.knockmessenger.Services.MessageReceiverService;
-import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
 
 /**
  * Created by Peti on 2018. 04. 22..
