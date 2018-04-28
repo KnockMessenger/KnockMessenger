@@ -54,6 +54,7 @@ public class SettingsFragment extends PreferenceFragment {
     private CheckBoxPreference vibrationCheck;
     private CheckBoxPreference soundsCheck;
     private CheckBoxPreference modeCheck;
+    private CheckBoxPreference systemNotificationCheck;
     private MeasureTimeNumberPickerDialogPreference measureTimePickerDialogPreference;
     private MicrophoneSensitivityNumberPickerDialogPreference microphoneSensitivityNumberPickerDialogPreference;
 
@@ -91,6 +92,7 @@ public class SettingsFragment extends PreferenceFragment {
         vibrationCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.VIBRATION_PREFERENCE_KEY);
         soundsCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.SOUNDS_PREFERENCE_KEY);
         modeCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.MODE_PREFERENCE_KEY);
+        systemNotificationCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.SYSTEM_NOTIFICATION_PREFERENCE_KEY);
         measureTimePickerDialogPreference = (MeasureTimeNumberPickerDialogPreference)
                 findPreference(SharedPreferenceManager.SHORT_UNIT_TIME_PREFERENCE_KEY);
         microphoneSensitivityNumberPickerDialogPreference = (MicrophoneSensitivityNumberPickerDialogPreference)
@@ -105,6 +107,7 @@ public class SettingsFragment extends PreferenceFragment {
         vibrationCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());
         soundsCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());
         modeCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());
+        systemNotificationCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

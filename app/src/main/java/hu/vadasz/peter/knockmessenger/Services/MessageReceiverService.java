@@ -57,7 +57,7 @@ public class MessageReceiverService extends IntentService implements ValueEventL
             if (!cachedMessages.contains(message)) {
                 messageDataManager.newMessage(message);
                 Friend from = userDataManager.getFriendByTelephone(message.getFromTelephone());
-                notificationManager.createNotification(from == null ? message.getFromTelephone() : from.getName(),
+                notificationManager.createMessageNotification(from == null ? message.getFromTelephone() : from.getName(),
                         message.getMessage());
             }
         }

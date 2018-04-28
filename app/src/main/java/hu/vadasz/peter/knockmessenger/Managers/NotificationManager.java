@@ -29,6 +29,11 @@ public class NotificationManager {
     public static final String CHANNEL_ID = "1";
     public static final int NOTIFICATION_NOT_FOUND = -1;
 
+    public static final int MESSAGE_NOTIFICATION_ID = 1;
+    public static final int SYSTEM_NOTIFICATION_ID = 2;
+
+    public static boolean NOTIFICATION_WITH_MEDIA = true;
+
     private Context context;
 
     @Inject
@@ -60,10 +65,10 @@ public class NotificationManager {
         }
     }
 
-    public void createNotification(String from, String message) {
+    public void createNotification(String title, String message, int id, boolean media) {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(context.getString(R.string.notificationTitle) + " - " + from)
+                .setContentTitle(title)
                 .setContentText(message);
 
         Intent notificationIntent = new Intent(context, MainScreenActivity.class);
@@ -76,17 +81,23 @@ public class NotificationManager {
 
         createNotificationChannel();
 
-        showNotification(notificationBuilder.build(), 1);
+        showNotification(notificationBuilder.build(), id, media);
     }
 
-    private void showNotification(Notification notification, int notificationId) {
+    public void createMessageNotification(String from, String message) {
+        createNotification(from + " - " + context.getString(R.string.notificationTitle), message, MESSAGE_NOTIFICATION_ID, NOTIFICATION_WITH_MEDIA);
+    }
+
+    private void showNotification(Notification notification, int notificationId, boolean media) {
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
 
         if (notificationId != NOTIFICATION_NOT_FOUND) {
             notificationManager.notify(notificationId, notification);
-            SongPlayer songPlayer = new SongPlayer(context, R.raw.knock);
-            songPlayer.playSong();
-            vibratorEngine.vibrate(VibratorEngine.LONG_VIBRATION_TIME);
+            if (media) {
+                SongPlayer songPlayer = new SongPlayer(context, R.raw.knock);
+                songPlayer.playSong();
+                vibratorEngine.vibrate(VibratorEngine.LONG_VIBRATION_TIME);
+            }
         }
     }
 
