@@ -44,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ChildEve
     public static final String EXTRA_NETWORK_ERROR_KEY = "EXTRA_NETWORK_ERROR_KEY";
     public static final boolean EXTRA_NETWORK_ERROR = true;
     public static final String EMPTY_TEXT = "";
+    public static final boolean RECYCLER_VIEW_HAS_FIXED_SIZE = true;
     /// CONSTANTS -- END
 
     @Inject

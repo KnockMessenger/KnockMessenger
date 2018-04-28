@@ -62,6 +62,8 @@ public class CodesActivity extends BaseActivity implements CodeAdapter.CodeSetti
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new CodeCardTouchHelper(codeAdapter));
         itemTouchHelper.attachToRecyclerView(codes);
+
+        codes.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
     }
 
     @Override

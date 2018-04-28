@@ -217,6 +217,7 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MessageAdapter(messageDataManager.getMessages(), this);
         messagesRecyclerView.setAdapter(adapter);
+        messagesRecyclerView.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
     }
 
     /**

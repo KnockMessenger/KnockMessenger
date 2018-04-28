@@ -66,6 +66,8 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
         timeoutHandler = new TimeoutHandler(TimeoutHandler.DEFAULT_LONG_TIME_OUT, this);
 
         setTitle(EMPTY_TEXT);
+
+        friendsRecyclerView.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
     }
 
     @Override
