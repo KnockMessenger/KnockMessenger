@@ -136,6 +136,10 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
     @Override
     public void onResume() {
         super.onResume();
+
+        if (sharedPreferenceManager.getBoolean(SharedPreferenceManager.SYSTEM_NOTIFICATION_PREFERENCE_KEY)) {
+            showMarshmallowError();
+        }
         serverDataChangeHandler.addMessageReceivedListener(this);
     }
 

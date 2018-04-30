@@ -21,6 +21,12 @@
         android:title="@string/pref_mode_title"
         android:defaultValue="true" />
 
+    <CheckBoxPreference
+        android:key="@string/pref_system_notification"
+        android:summary="@string/pref_system_notification_summary"
+        android:title="@string/pref_system_notification_title"
+        android:defaultValue="true" />
+
     <hu.vadasz.peter.knockmessenger.Dialogs.MeasureTimeNumberPickerDialogPreference
         android:key="@string/pref_shortUnit_time_key"
         android:title="@string/pref_shortUnit_time_title"

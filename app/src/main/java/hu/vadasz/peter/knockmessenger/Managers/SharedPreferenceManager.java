@@ -23,6 +23,7 @@ public class SharedPreferenceManager {
     public static String MODE_PREFERENCE_KEY;
     public static String SHORT_UNIT_TIME_PREFERENCE_KEY;
     public static String MIC_SENSITIVITY_PREFERENCE_KEY;
+    public static String SYSTEM_NOTIFICATION_PREFERENCE_KEY;
 
     public static final boolean DEFAULT_BOOLEAN = false;
     public static final String DEFAULT_STRING = "";
@@ -61,6 +62,7 @@ public class SharedPreferenceManager {
         MODE_PREFERENCE_KEY = context.getString(R.string.pref_key_mode);
         SHORT_UNIT_TIME_PREFERENCE_KEY = context.getString(R.string.pref_shortUnit_time_key);
         MIC_SENSITIVITY_PREFERENCE_KEY = context.getString(R.string.pref_mic_sensitivity);
+        SYSTEM_NOTIFICATION_PREFERENCE_KEY = context.getString(R.string.pref_system_notification);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

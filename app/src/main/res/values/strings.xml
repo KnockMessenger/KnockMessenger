@@ -105,5 +105,11 @@
     <string name="messageCard_today_timestamp">HH:mm</string>
     <string name="messageCard_old_timestamp">yyyy-MM-dd, HH:mm</string>
     <string name="mainScreenActivity_deleteMessages">Delete messages</string>
+    <string name="android_alarmManager_versionNotification">Be careful! You only arrive messages if app is not force closed!</string>
+    <string name="android_system_title">KnockMessenger system</string>
+    <string name="pref_system_notification">pref_system_notification</string>
+    <string name="pref_system_notification_summary">Show notification fired by system.</string>
+    <string name="pref_system_notification_title">Show system notifications</string>
+    <string name="moreMessage_notification_title">You received new mwssages...</string>
 
 </resources>
