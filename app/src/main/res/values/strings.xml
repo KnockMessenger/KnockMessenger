@@ -4,6 +4,18 @@
 
     <string name="app_name">KnockMessenger</string>
 
+    <!-- Welcome messages -->
+
+    <string-array
+        name="splashScreen_welcomeMessages">
+        <item>Welcome!</item>
+        <item>We are here!</item>
+        <item>Nice to see you!</item>
+        <item>You look nice today!</item>
+        <item>Be cool!</item>
+        <item>Thank You for using\n KnockMessenger!</item>
+    </string-array>
+
     <!-- MainScreenActivity captions -->
 
     <string name="title_activity_main_screen">KnockMessenger</string>

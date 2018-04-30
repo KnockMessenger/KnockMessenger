@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.knockmessenger.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-04-30T15:08:24" hostname="DESKTOP-GBLJLQR" time="0.0">
+<testsuite name="hu.vadasz.peter.knockmessenger.ExampleUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-04-30T20:42:13" hostname="DESKTOP-GBLJLQR" time="0.0">
   <properties/>
   <testcase name="addition_isCorrect" classname="hu.vadasz.peter.knockmessenger.ExampleUnitTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

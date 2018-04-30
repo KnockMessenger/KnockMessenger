@@ -18,13 +18,16 @@
         <TextView
             android:id="@+id/friendCard_nameText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/friendCard_text_marginRight"
+            android:fontFamily="@font/exo_regular"/>
 
         <TextView
             android:id="@+id/friendCard_telText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/friendCard_nameText" />
+            android:layout_below="@id/friendCard_nameText"
+            android:layout_marginEnd="@dimen/friendCard_text_marginRight"/>
 
         <ImageButton
             android:id="@+id/friendCard_addFriend_button"
@@ -32,6 +35,7 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_add_box_black_36dp"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:background="@null"/>
 
         <ImageButton
@@ -40,6 +44,7 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_remove_circle_outline_black_36dp"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:background="@null" />
 
         <ImageButton
@@ -48,6 +53,7 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_sms_black_36dp"
             android:layout_toLeftOf="@id/friendCard_removeFriend_button"
+            android:layout_centerVertical="true"
             android:background="@null" />
 
     </RelativeLayout>
