@@ -21,6 +21,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import org.joda.time.DateTime;
@@ -83,6 +84,9 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
     @BindView(R.id.mainScreen_progressBar)
     ProgressBar progressBar;
 
+    @BindView(R.id.mainScreenActivity_messages_icon)
+    ImageView imageView;
+
     /// VIEWS -- END
 
     private MessageAdapter adapter;
@@ -131,6 +135,12 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         messagesRecyclerView.setAdapter(adapter);
 
         messagesRecyclerView.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
+
+        if (adapter.getItemCount() == 0) {
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -396,12 +406,14 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
     @Override
     public void noMessages() {
         Log.i("MAIN_SCREEN", "NO messages");
+        imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void messageReceived() {
         adapter.dataSetChanged();
         adapter.notifyDataSetChanged();
+        imageView.setVisibility(View.INVISIBLE);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

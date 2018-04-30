@@ -26,6 +26,8 @@ public class SharedPreferenceManager {
     public static String SYSTEM_NOTIFICATION_PREFERENCE_KEY;
 
     public static final boolean DEFAULT_BOOLEAN = true;
+    public static final int DEFAULT_MIC_SENSITIVITY = 5;
+    public static final int DEFAULT_MEASURE_TIME = 500;
     public static final String DEFAULT_STRING = "";
     public static final int DEFAULT_INT = 0;
 

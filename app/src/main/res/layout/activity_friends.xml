@@ -14,6 +14,15 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"/>
 
+    <ImageView
+        android:id="@+id/friendsActivity_image"
+        android:layout_width="@dimen/friendsActivity_image_size"
+        android:layout_height="@dimen/friendsActivity_image_size"
+        android:src="@drawable/friends_512"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@null"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/friendsActivity_recyclerView"
         android:layout_width="match_parent"

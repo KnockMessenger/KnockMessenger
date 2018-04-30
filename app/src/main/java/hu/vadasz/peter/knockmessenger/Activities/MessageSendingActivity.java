@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -118,12 +119,20 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         ButterKnife.bind(this);
 
         int measureTime = sharedPreferenceManager.getInt(SharedPreferenceManager.SHORT_UNIT_TIME_PREFERENCE_KEY);
+        if (measureTime == 0) {
+            measureTime = SharedPreferenceManager.DEFAULT_MEASURE_TIME;
+        }
+
+        int micSensitivity = sharedPreferenceManager.getInt(SharedPreferenceManager.MIC_SENSITIVITY_PREFERENCE_KEY);
+        if (micSensitivity == 0) {
+            micSensitivity = SharedPreferenceManager.DEFAULT_MIC_SENSITIVITY;
+        }
 
         messageDetectingController = new MessageDetectingController(this,
                 measureTime,
                 codeDataManager.getActualCodes(),
                 sharedPreferenceManager.getBoolean(SharedPreferenceManager.MODE_PREFERENCE_KEY),
-                sharedPreferenceManager.getInt(SharedPreferenceManager.MIC_SENSITIVITY_PREFERENCE_KEY));
+                micSensitivity);
 
         messageSendingController = new MessageSendingController(this, messageDataManager, this);
 

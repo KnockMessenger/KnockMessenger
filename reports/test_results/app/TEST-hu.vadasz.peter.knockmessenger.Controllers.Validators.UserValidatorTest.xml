@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2018-04-30T15:08:24" hostname="DESKTOP-GBLJLQR" time="0.055">
+<testsuite name="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2018-04-30T20:42:13" hostname="DESKTOP-GBLJLQR" time="0.016">
   <properties/>
-  <testcase name="testTelephoneIsValid_NumberIsValidWithoutPlusSymbolShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
-  <testcase name="testTelephoneIsValid_NumberIsNullShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
+  <testcase name="testTelephoneIsValid_NumberIsValidWithoutPlusSymbolShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.002"/>
+  <testcase name="testTelephoneIsValid_NumberIsNullShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.005"/>
   <testcase name="testTelephoneIsValid_NumberIsTooShortShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
-  <testcase name="testTelephoneIsValid_NumberIsValidWithPlusSymbolShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.002"/>
-  <testcase name="testTelephoneIsValid_NumberIsEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.008"/>
-  <testcase name="testUserIsValid_UserIsCorrectShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.003"/>
-  <testcase name="testTelephoneIsValid_NumberContainsNonDigitCharactersShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.003"/>
+  <testcase name="testTelephoneIsValid_NumberIsValidWithPlusSymbolShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
+  <testcase name="testTelephoneIsValid_NumberIsEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.0"/>
+  <testcase name="testUserIsValid_UserIsCorrectShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.002"/>
+  <testcase name="testTelephoneIsValid_NumberContainsNonDigitCharactersShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
   <testcase name="testTelephoneIsValid_NumbersSecondCharacterIsPlusShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
-  <testcase name="testUserIsValid_TelephoneIsIncorrectShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
-  <testcase name="testUserIsValid_NameIsEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.03"/>
+  <testcase name="testUserIsValid_TelephoneIsIncorrectShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.0"/>
+  <testcase name="testUserIsValid_NameIsEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidatorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

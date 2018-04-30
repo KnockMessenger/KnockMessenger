@@ -105,6 +105,15 @@ public class KnockGraphActivity extends BaseActivity implements AudioRecorder.No
 
         limit = sharedPreferenceManager.getInt(SharedPreferenceManager.MIC_SENSITIVITY_PREFERENCE_KEY);
         periodTime = sharedPreferenceManager.getInt(SharedPreferenceManager.SHORT_UNIT_TIME_PREFERENCE_KEY);
+
+        if (periodTime == 0) {
+            periodTime = SharedPreferenceManager.DEFAULT_MEASURE_TIME;
+        }
+
+        if (limit == 0) {
+            limit = SharedPreferenceManager.DEFAULT_MIC_SENSITIVITY;
+        }
+
         initAudioRecorder();
         initGraph();
 

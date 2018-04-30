@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2018-04-30T15:07:00" hostname="DESKTOP-GBLJLQR" time="0.023">
+<testsuite name="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2018-04-30T20:41:02" hostname="DESKTOP-GBLJLQR" time="0.01">
   <properties/>
-  <testcase name="testIsLeaf_LongChildShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.009"/>
-  <testcase name="testHasLongChild_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
-  <testcase name="testHasShortChild_ShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.0"/>
+  <testcase name="testIsLeaf_LongChildShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.0"/>
+  <testcase name="testHasLongChild_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.0"/>
+  <testcase name="testHasShortChild_ShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
   <testcase name="testIsLeaf_EachChildShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
   <testcase name="testHasGapChild_ShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
   <testcase name="testHasLongChild_ShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
-  <testcase name="testIsLeaf_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
-  <testcase name="testHasShortChild_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.003"/>
+  <testcase name="testIsLeaf_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.0"/>
+  <testcase name="testHasShortChild_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.0"/>
   <testcase name="testIsLeaf_GapChildShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
-  <testcase name="testIsLeaf_ShortChildShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
+  <testcase name="testIsLeaf_ShortChildShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.0"/>
   <testcase name="testHasGapChild_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.NodeTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

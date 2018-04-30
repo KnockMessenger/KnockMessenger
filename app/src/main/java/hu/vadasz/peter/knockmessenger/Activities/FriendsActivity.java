@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -11,6 +12,7 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +42,9 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
     @BindView(R.id.friendsActivity_progressbar)
     ProgressBar progressBar;
 
+    @BindView(R.id.friendsActivity_image)
+    ImageView friendsImage;
+
     private SearchView searchView;
 
     private AbstractFriendAdapter friendsAdapter;
@@ -68,6 +73,10 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
         setTitle(EMPTY_TEXT);
 
         friendsRecyclerView.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
+
+        if (friendsAdapter.getItemCount() != 0) {
+            friendsImage.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -132,6 +141,9 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
     @Override
     public void removeFriend(Friend friend) {
         userDataManager.deleteFriend(friend);
+        if (friendsAdapter.getItemCount() == 0) {
+            friendsImage.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
