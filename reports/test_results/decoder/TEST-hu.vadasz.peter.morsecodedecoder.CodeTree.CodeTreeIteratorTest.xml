@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2018-04-30T20:41:01" hostname="DESKTOP-GBLJLQR" time="0.034">
+<testsuite name="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" tests="26" skipped="0" failures="0" errors="0" timestamp="2018-04-30T22:47:50" hostname="DESKTOP-GBLJLQR" time="0.025">
   <properties/>
-  <testcase name="testNextLong_ShouldIterateToLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testPath_WithWrongDirectionsShouldReturnCorrectMixedPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testHasNext_LongChildShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
+  <testcase name="testNextLong_ShouldIterateToLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.003"/>
+  <testcase name="testPath_WithWrongDirectionsShouldReturnCorrectMixedPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
+  <testcase name="testHasNext_LongChildShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
   <testcase name="testHasNext_ShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testNextLong_WithMoreChildren" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
   <testcase name="testHasNext_ShortChildShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testNextGap_WithMoreLevels" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testPath_ShouldReturnGapPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testNextGap_WithMoreChildren" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testNextGap_WithMoreChildren" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testNextGap_ShouldDoNothing" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testPath_ShouldReturnShortPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testPath_ShouldReturnShortPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="reset_NodeShouldBeNewNode" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
-  <testcase name="testNextLong_WithMoreLevels" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.006"/>
-  <testcase name="testNextShort_MoreLevels" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.002"/>
-  <testcase name="testNextShort_ShouldIterateToShortChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testNextLong_WithMoreLevels" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
+  <testcase name="testNextShort_MoreLevels" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testNextShort_ShouldIterateToShortChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.002"/>
   <testcase name="testPath_ShouldReturnLongPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testNextShort_WithGapShouldIterateToShort" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testNextShort_WithGapShouldIterateToShort" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testNextShort_WithOneShortChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
   <testcase name="testPath_ShouldReturnNewPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
   <testcase name="testReset_PathShouldBeNewPath" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testNextLong_ShouldDoNothing" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testNextShort_ShouldDoNothing" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
-  <testcase name="testPath_ShouldReturnMixedPah" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.002"/>
-  <testcase name="testNextLong_WitOneLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.003"/>
+  <testcase name="testNextShort_ShouldDoNothing" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
+  <testcase name="testPath_ShouldReturnMixedPah" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testNextLong_WitOneLongChild" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
   <testcase name="testHasNext_GapChildShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.0"/>
-  <testcase name="testNextGap_ShouldIterateGap" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.001"/>
+  <testcase name="testNextGap_ShouldIterateGap" classname="hu.vadasz.peter.morsecodedecoder.CodeTree.CodeTreeIteratorTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
