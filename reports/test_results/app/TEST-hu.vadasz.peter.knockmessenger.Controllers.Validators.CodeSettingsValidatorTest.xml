@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2018-04-30T20:42:13" hostname="DESKTOP-GBLJLQR" time="0.038">
+<testsuite name="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" tests="28" skipped="0" failures="0" errors="0" timestamp="2018-04-30T22:48:24" hostname="DESKTOP-GBLJLQR" time="0.036">
   <properties/>
   <testcase name="testCodeExists_EmptyCodesShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.007"/>
   <testcase name="testCodeIsValid_HuffmanCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeIsPrefix_ShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeIsPrefix_CodeStartsWithAnotherShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeIsValid_MorseCodeShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testHuffmanCodeIsValid_CodeLengthIsOkShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
+  <testcase name="testHuffmanCodeIsValid_CodeLengthIsOkShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testControlCodeIsValid_HuffmanControlCodeShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testMorseCodeIsValid_CodeIsCorrectShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testMorseCodeIsValid_CodeExistsShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
-  <testcase name="testControlCodeIsValid_EmptyListShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
+  <testcase name="testMorseCodeIsValid_CodeIsCorrectShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
+  <testcase name="testMorseCodeIsValid_CodeExistsShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
+  <testcase name="testControlCodeIsValid_EmptyListShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeExists_ShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testMorseCodeIsValid_CodeIsTooShortShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
+  <testcase name="testMorseCodeIsValid_CodeIsTooShortShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeExists_SameCodeWithSameIdShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
   <testcase name="testMorseCodeIsValid_CodeEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testHuffmanCodeIsValid_CodeIsCorrectShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
-  <testcase name="testCodeIsPrefix_EmptyListShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
-  <testcase name="testCodeIsValid_MorseCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
+  <testcase name="testCodeIsPrefix_EmptyListShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.002"/>
+  <testcase name="testCodeIsValid_MorseCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
   <testcase name="testControlCodeIsValid_MorseControlCodeShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testHuffmanCodeIsValid_CodeExistsShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testControlCodeIsValid_MorseControlCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
-  <testcase name="testCodeExists_ShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testControlCodeIsValid_HuffmanControlCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.006"/>
+  <testcase name="testControlCodeIsValid_MorseControlCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
+  <testcase name="testCodeExists_ShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
+  <testcase name="testControlCodeIsValid_HuffmanControlCodeShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.005"/>
   <testcase name="testCodeIsValid_HuffmanCodeShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeIsPrefix_ShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testCodeIsPrefix_CodeExistsShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <testcase name="testHuffmanCodeIsValid_CodeIsNotPrefixShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
-  <testcase name="testHuffmanCodeIsValid_CodeIsEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
+  <testcase name="testHuffmanCodeIsValid_CodeIsEmptyShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.0"/>
   <testcase name="testMorseCodeIsValid_CodeLengthIsValidShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.Controllers.Validators.CodeSettingsValidatorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

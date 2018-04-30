@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockdetector.Detector.AudioRecorderTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-04-30T22:47:45" hostname="DESKTOP-GBLJLQR" time="0.421">
+  <properties/>
+  <testcase name="testAudioRecorder_ShouldReturnWithKnocks" classname="hu.vadasz.peter.knockdetector.Detector.AudioRecorderTest" time="0.205"/>
+  <testcase name="testAudioRecorder_ShouldReturnWithNoKnocks" classname="hu.vadasz.peter.knockdetector.Detector.AudioRecorderTest" time="0.215"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
