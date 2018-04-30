@@ -140,6 +140,7 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         if (sharedPreferenceManager.getBoolean(SharedPreferenceManager.SYSTEM_NOTIFICATION_PREFERENCE_KEY)) {
             showMarshmallowError();
         }
+
         serverDataChangeHandler.addMessageReceivedListener(this);
     }
 

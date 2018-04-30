@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2018-04-26T20:53:41" hostname="DESKTOP-GBLJLQR" time="0.044">
+<testsuite name="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2018-04-30T15:07:00" hostname="DESKTOP-GBLJLQR" time="0.103">
   <properties/>
-  <testcase name="testSetCode_HuffmanCodeShouldBeEmpty" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.01"/>
+  <testcase name="testSetCode_HuffmanCodeShouldBeEmpty" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.057"/>
   <testcase name="testSetCode_HuffmanCodeShouldBeMixed" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
-  <testcase name="testSetCode_HuffmanCodeShouldBeShortSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
+  <testcase name="testSetCode_HuffmanCodeShouldBeShortSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
   <testcase name="testGetCode_MorseShouldReturnShortSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
   <testcase name="testGetCode_MorseShouldReturnMixedSyllables" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
-  <testcase name="testDelete_MorseCodeShouldDeleteLastCharacter" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
+  <testcase name="testDelete_MorseCodeShouldDeleteLastCharacter" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
   <testcase name="testDelete_HuffmanCodeShouldBeEmpty" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
-  <testcase name="testEquals_SameObjectsShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
-  <testcase name="testDelete_MorseCodeShouldNotDeleteGap" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
+  <testcase name="testEquals_SameObjectsShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
+  <testcase name="testDelete_MorseCodeShouldNotDeleteGap" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
   <testcase name="testSetCode_MorseCodeShouldBeGapSymbol" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
-  <testcase name="testToString" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
+  <testcase name="testToString" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
   <testcase name="testGetCode_HuffmanShouldReturnShortSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
-  <testcase name="testSetCode_MorseCodeShouldBeLongSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
-  <testcase name="testSetCode_MorseCodeShouldBeShortSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
+  <testcase name="testSetCode_MorseCodeShouldBeLongSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.004"/>
+  <testcase name="testSetCode_MorseCodeShouldBeShortSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
   <testcase name="testEquals_DifferentCodesShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
   <testcase name="testEquals_ShouldReturnTrue" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
   <testcase name="testGetCode_MorseShouldReturnLongSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
   <testcase name="testEquals_DifferentObjectTypesShouldReturnFalse" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
-  <testcase name="testDelete_HuffmanCodeShouldDeleteLastCharacter" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
-  <testcase name="testGetCode_HuffmanShouldReturnLongSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.0"/>
-  <testcase name="testGetCode_MorseShouldReturnEmptyString" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
+  <testcase name="testDelete_HuffmanCodeShouldDeleteLastCharacter" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
+  <testcase name="testGetCode_HuffmanShouldReturnLongSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.003"/>
+  <testcase name="testGetCode_MorseShouldReturnEmptyString" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.002"/>
   <testcase name="testSetCode_MorseCodeShouldBeMixedSyllables" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
   <testcase name="testGetCode_HuffmanShouldReturnMixedSyllables" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
   <testcase name="testSetCode_HuffmanCodeShouldBeLongSyllable" classname="hu.vadasz.peter.morsecodedecoder.Code.CodeTest" time="0.001"/>
