@@ -52,16 +52,16 @@ public class UserValidatorTest {
 
     @Test(timeout = MAX_TIME)
     public void testUserIsValid_NameIsEmptyShouldReturnFalse() {
-        assertEquals(!OK, UserValidator.userIsValid(new User(1L, "", "123456789")));
+        assertEquals(!OK, UserValidator.userIsValid(new User(1L, "", "123456789", "")));
     }
 
     @Test(timeout = MAX_TIME)
     public void testUserIsValid_TelephoneIsIncorrectShouldReturnFalse() {
-        assertEquals(!OK, UserValidator.userIsValid(new User(1L, "XY", "123A")));
+        assertEquals(!OK, UserValidator.userIsValid(new User(1L, "XY", "123A", "")));
     }
 
     @Test(timeout = MAX_TIME)
     public void testUserIsValid_UserIsCorrectShouldReturnTrue() {
-        assertEquals(OK, UserValidator.userIsValid(new User(1L, "XY", "+123456789")));
+        assertEquals(OK, UserValidator.userIsValid(new User(1L, "XY", "+123456789", "")));
     }
 }

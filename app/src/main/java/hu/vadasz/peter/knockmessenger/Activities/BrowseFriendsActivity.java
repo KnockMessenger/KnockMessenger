@@ -52,6 +52,7 @@ public class BrowseFriendsActivity extends BaseActivity implements ValueEventLis
 
         timeoutHandler = new TimeoutHandler(TimeoutHandler.DEFAULT_SHORT_TIMEOUT, this);
         serverDataChangeHandler.addFriendDataChangeListener(this);
+        friendsRecyclerView.setHasFixedSize(RECYCLER_VIEW_HAS_FIXED_SIZE);
     }
 
     @Override

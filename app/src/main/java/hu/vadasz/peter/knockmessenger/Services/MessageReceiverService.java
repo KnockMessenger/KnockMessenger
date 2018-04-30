@@ -20,6 +20,7 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
 import hu.vadasz.peter.knockmessenger.Managers.NotificationManager;
+import hu.vadasz.peter.knockmessenger.R;
 import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
 
 /**
@@ -53,13 +54,18 @@ public class MessageReceiverService extends IntentService implements ValueEventL
 
     private void handleMessages(ArrayList<Message> messages) {
         List<Message> cachedMessages = new ArrayList<>(messageDataManager.getMessages());
+        int numOfNewMessages = 0;
         for (Message message : messages) {
             if (!cachedMessages.contains(message)) {
+                numOfNewMessages++;
                 messageDataManager.newMessage(message);
                 Friend from = userDataManager.getFriendByTelephone(message.getFromTelephone());
-                notificationManager.createNotification(from == null ? message.getFromTelephone() : from.getName(),
-                        message.getMessage());
+                notificationManager.createMessageNotification(from == null ? message.getFromTelephone() : from.getName(),
+                        message.getMessage(), message.getFromTelephone());
             }
+        }
+        if (numOfNewMessages > 1) {
+            notificationManager.createMoreMessageNotification();
         }
         serverDataChangeHandler.messageReceived();
     }

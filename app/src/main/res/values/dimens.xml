@@ -33,4 +33,11 @@
     <dimen name="messageCard_cornerRadius">35dp</dimen>
     <dimen name="codeCard_cornerRadius">15dp</dimen>
     <dimen name="friendCard_cornerRadius">15dp</dimen>
+    <dimen name="splashScreen_welcomeText_marginTop">30dp</dimen>
+    <dimen name="splashScreenActivity_lgog_marginTop">100dp</dimen>
+    <dimen name="splashScreen_welcomeText_fontSize">25dp</dimen>
+    <dimen name="codeCard_text_marginRight">100dp</dimen>
+    <dimen name="friendCard_text_marginRight">100dp</dimen>
+    <dimen name="mainScreen_messageLogo_size">180dp</dimen>
+    <dimen name="friendsActivity_image_size">180dp</dimen>
 </resources>

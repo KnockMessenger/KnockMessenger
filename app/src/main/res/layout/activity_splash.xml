@@ -12,7 +12,7 @@
         android:layout_width="@dimen/splash_appLogo_size"
         android:layout_height="@dimen/splash_appLogo_size"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/splashScreenActivity_lgog_marginTop"
         android:src="@drawable/web_hi_res_512"/>
 
     <ProgressBar
@@ -21,5 +21,16 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/splash_AppLogo" />
+
+    <TextView
+        android:id="@+id/splashScreenActivity_welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/splashScreenIndeterminateProgressBar"
+        android:layout_margin="@dimen/splashScreen_welcomeText_marginTop"
+        android:fontFamily="@font/exo_regular"
+        android:gravity="center"
+        android:textSize="@dimen/splashScreen_welcomeText_fontSize"/>
 
 </RelativeLayout>

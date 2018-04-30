@@ -3,6 +3,7 @@ package hu.vadasz.peter.knockmessenger.Activities;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +28,7 @@ import hu.vadasz.peter.knockmessenger.Managers.NotificationManager;
 import hu.vadasz.peter.knockmessenger.Managers.ServiceAlarmManager;
 import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
 import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
+import hu.vadasz.peter.knockmessenger.R;
 import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
 
 /**
@@ -44,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ChildEve
     public static final String EXTRA_NETWORK_ERROR_KEY = "EXTRA_NETWORK_ERROR_KEY";
     public static final boolean EXTRA_NETWORK_ERROR = true;
     public static final String EMPTY_TEXT = "";
+    public static final boolean RECYCLER_VIEW_HAS_FIXED_SIZE = true;
     /// CONSTANTS -- END
 
     @Inject
@@ -192,6 +195,13 @@ public abstract class BaseActivity extends AppCompatActivity implements ChildEve
                 .show();
     }
 
+    protected void showMarshmallowError() {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.M) {
+            showErrorMessage(getString(R.string.android_alarmManager_versionNotification));
+            notificationManager.createNotification(getString(R.string.android_system_title), getString(R.string.android_alarmManager_versionNotification),
+                    NotificationManager.SYSTEM_NOTIFICATION_ID, !NotificationManager.NOTIFICATION_WITH_MEDIA, null);
+        }
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     /// UTILS -- END

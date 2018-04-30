@@ -20,14 +20,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/codeCard_textSize"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:layout_marginEnd="@dimen/codeCard_text_marginRight"
+            android:fontFamily="@font/exo_regular"/>
 
         <TextView
             android:id="@+id/codeCard_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/codeCard_text"
-            android:textSize="@dimen/codeCard_codeSize" />
+            android:textSize="@dimen/codeCard_codeSize"
+            android:layout_marginEnd="@dimen/codeCard_text_marginRight"/>
 
         <ImageButton
             android:id="@+id/codeCard_deleteButton"
