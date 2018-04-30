@@ -49,23 +49,23 @@ A felületen kártyákon megjelennek a tárolt ábécé karakterei s vezérlő s
 
 ![Codes](screen_shots/codes_small.png)
 
-## [Friends](#friends)
+### [Friends]
 
 Az ismerősök lapon a felvett ismerősök jelennek meg, a mensorban lévő szinkronizációs gomb (nyilak) segítségével bármikor kérhetjük az aadatok frissítését, de ez a funkció indulásakor magától is megtörténik. A kártyákon lévő gombok segítségével törölhetjük az ismerősöket illetve üzenetküldést kezdeményezhetünk. A menüsorban található jobboldali ikon segítségével pedig az alkalmazás felhasználói között böngészhetünk és ismerősöket vehetünk fel. Üzenetküldés csak ismerősnek lehetséges, azonban nincs szükség az ismerettség visszaigazolására fogadó oldalon. Ha nincs internetkapcsolat, az adatok nem frissülnek, ezt jelzi az alkalmazás.
 
 ![Friends](screen_shots/friends_small.png)
 
-## [Delete messages](#delMes)
+### [Delete messages]
 
 Lehetőség van az összes üzenet (küldött/fogadott) törlésére, jelenleg kíséreleti funkció.
 
-## [Settings](#settings)
+### [Settings]
 
 A beállítások fülön az alklamazás paramétereit kalibrálhatjuk. Lehetőség van a rezgőmotor használatára, a detektálás során segítő hangjelzések aktiválására, rendszerüzenetek megjelenítésére (kritikus pontok esetén). Továbbá kiválaszthatóóó, hogy Morse vagy Huffman formában szeretnénk üzenetet küldeni. Megadható, hogy hány milisec legyen a "ti" szótag ideje, minden további ennek lesz a többszöröse. Illetve, kiválasztható, hogy milyen erősségű zajt ismerjünk fel kopogásnak egy 10-es skálán.
 
 ![Settings](screen_shots/settings_small.png)
 
-## [Messages](#messages)
+### [Messages]
 
 Az üzenetküldő ablakon legfelül megjelenik, hogy milyen üzemmódban vagyunk, beviteli vagy szekesztő. Illetve, hogy az alkalmazás adott időpillanatban milyen szótagot tud detektálni kopogás hatására. A detektálást a felület alján lévő mikrofon ikon segítségével indíthatjuk el. Az első kopogás hatására elindul a detektálás. A detektál szótagok megjelennek e felületen *(ti), -(tá).
 
