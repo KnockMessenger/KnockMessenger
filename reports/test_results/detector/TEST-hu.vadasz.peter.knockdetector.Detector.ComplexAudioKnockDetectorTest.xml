@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2018-04-30T20:40:57" hostname="DESKTOP-GBLJLQR" time="1.071">
+<testsuite name="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2018-04-30T21:44:00" hostname="DESKTOP-GBLJLQR" time="1.071">
   <properties/>
-  <testcase name="testChangeState_CounterShouldBeZeroAfterShortSyllableDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.126"/>
-  <testcase name="testChangeState_StateShouldBeFirstPhaseAfterShortSyllableDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.104"/>
+  <testcase name="testChangeState_CounterShouldBeZeroAfterShortSyllableDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.127"/>
+  <testcase name="testChangeState_StateShouldBeFirstPhaseAfterShortSyllableDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.103"/>
   <testcase name="testStart_StateShouldBeWaiting" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
   <testcase name="testChangeState_CounterShouldBeLessOrEqualThanLongSyllableLength" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
-  <testcase name="testChangeState_detectionShouldBeTerminated" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.002"/>
-  <testcase name="testChangeState_longSyllableShouldBeDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.101"/>
+  <testcase name="testChangeState_detectionShouldBeTerminated" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
+  <testcase name="testChangeState_longSyllableShouldBeDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.1"/>
   <testcase name="testPause" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.201"/>
   <testcase name="testChangeState_gapShouldBeDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
-  <testcase name="testChangeState_CounterShouldBeLessOrEqualThanMaxLength" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.101"/>
-  <testcase name="testChangeState_StateShouldBeSecondPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
+  <testcase name="testChangeState_CounterShouldBeLessOrEqualThanMaxLength" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.102"/>
+  <testcase name="testChangeState_StateShouldBeSecondPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.0"/>
   <testcase name="testChangeState_StateShouldBeSecondState" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
-  <testcase name="testAdministrateSyllableDetection_StateShouldBeFirstPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.102"/>
-  <testcase name="testChangeState_shortSyllableShouldBeDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.107"/>
+  <testcase name="testAdministrateSyllableDetection_StateShouldBeFirstPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.108"/>
+  <testcase name="testChangeState_shortSyllableShouldBeDetected" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.102"/>
   <testcase name="testChangeState_StateShouldBeWaiting" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
-  <testcase name="testChangeState_StateShouldBeThirdPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.101"/>
-  <testcase name="testChangeState_CounterShouldBeZero" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.002"/>
-  <testcase name="testChangeState_StateShouldBeFirstPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.0"/>
-  <testcase name="testChangeState_CounterShouldBeLessOrEqualThenShortSyllableLength" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
+  <testcase name="testChangeState_StateShouldBeThirdPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.103"/>
+  <testcase name="testChangeState_CounterShouldBeZero" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
+  <testcase name="testChangeState_StateShouldBeFirstPhase" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.002"/>
+  <testcase name="testChangeState_CounterShouldBeLessOrEqualThenShortSyllableLength" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.0"/>
   <testcase name="testStop_StateShouldBeWaiting" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.001"/>
   <testcase name="testAdministrateSyllableDetection_CounterShouldBeZero" classname="hu.vadasz.peter.knockdetector.Detector.ComplexAudioKnockDetectorTest" time="0.102"/>
   <system-out><![CDATA[]]></system-out>
