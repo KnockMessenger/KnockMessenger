@@ -82,7 +82,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         Collections.sort(messages, new Comparator<Message>() {
             @Override
             public int compare(Message o1, Message o2) {
-                return (int) (o1.getDateTime() - o2.getDateTime());
+                return (int) (o2.getDateTime() - o1.getDateTime());
             }
         });
     }
