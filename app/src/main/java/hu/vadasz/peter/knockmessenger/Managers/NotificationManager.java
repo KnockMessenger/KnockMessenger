@@ -92,8 +92,7 @@ public class NotificationManager {
         }
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        //stackBuilder.addParentStack(SelectTaskActivity.class);
-        stackBuilder.addNextIntent(notificationIntent);
+        stackBuilder.addNextIntentWithParentStack(notificationIntent);
 
         PendingIntent notPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationBuilder.setContentIntent(notPendingIntent);
