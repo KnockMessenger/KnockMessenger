@@ -83,15 +83,16 @@ public class NotificationManager {
         if (from == null) {
             notificationIntent = new Intent(context, MainScreenActivity.class);
         } else {
-            notificationIntent = new Intent(context, MessageSendingActivity.class);
             if (userDataManager.isFriend(from)) {
+                notificationIntent = new Intent(context, MessageSendingActivity.class);
                 notificationIntent.putExtra(MessageSendingActivity.EXTRA_FRIEND_TELEPHONE_KEY, from);
+            } else {
+                notificationIntent = new Intent(context, MainScreenActivity.class);
             }
         }
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        //stackBuilder.addParentStack(SelectTaskActivity.class);
-                                                     stackBuilder.addNextIntent(notificationIntent);
+        stackBuilder.addNextIntentWithParentStack(notificationIntent);
 
         PendingIntent notPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         notificationBuilder.setContentIntent(notPendingIntent);
