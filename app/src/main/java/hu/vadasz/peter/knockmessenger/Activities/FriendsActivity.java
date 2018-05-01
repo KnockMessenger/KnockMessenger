@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -32,6 +33,7 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
 import hu.vadasz.peter.knockmessenger.R;
+import hu.vadasz.peter.morsecodedecoder.Code.Code;
 
 public class FriendsActivity extends BaseActivity implements FriendsAdapter.FriendListener,
         ServerDataChangeHandler.FriendChangeListener, ValueEventListener, TimeoutHandler.TimeoutListener {
@@ -64,8 +66,6 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new FriendCardTouchHelper((FriendsAdapter) friendsAdapter));
         itemTouchHelper.attachToRecyclerView(friendsRecyclerView);
 
-        serverDataChangeHandler.addFriendDataChangeListener(this);
-
         internetConnectionValidator = new InternetConnectionValidator();
 
         timeoutHandler = new TimeoutHandler(TimeoutHandler.DEFAULT_LONG_TIME_OUT, this);
@@ -82,6 +82,7 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
     @Override
     public void onResume() {
         super.onResume();
+        serverDataChangeHandler.addFriendDataChangeListener(this);
         syncFriends();
 
     }
@@ -179,6 +180,26 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
         } else {
             showErrorMessage(getString(R.string.syncError));
         }
+    }
+
+    @Override
+    public void confirmDelete(final Friend friend) {
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.friendsActivity_confirm_delete_text), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.friendsActivity_confirm_delete_yes_text), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        removeFriend(friend);
+                        friendsAdapter.dataSetChanged();
+                    }
+                })
+                .setActionTextColor(getColor(android.R.color.holo_red_light))
+                .addCallback(new Snackbar.Callback() {
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        friendsAdapter.notifyDataSetChanged();
+                    }
+                })
+                .show();
     }
 
     @Override

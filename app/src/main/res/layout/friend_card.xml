@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/friendCard_text_marginRight"
+            android:singleLine="true"
             android:fontFamily="@font/exo_regular"/>
 
         <TextView
@@ -27,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/friendCard_nameText"
+            android:singleLine="true"
             android:layout_marginEnd="@dimen/friendCard_text_marginRight"/>
 
         <ImageButton
@@ -54,6 +56,7 @@
             android:src="@mipmap/ic_sms_black_36dp"
             android:layout_toLeftOf="@id/friendCard_removeFriend_button"
             android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/friendCard_messageIcon_rightMargin"
             android:background="@null" />
 
     </RelativeLayout>

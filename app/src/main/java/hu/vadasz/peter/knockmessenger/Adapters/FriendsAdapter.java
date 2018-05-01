@@ -15,6 +15,7 @@ public class FriendsAdapter extends AbstractFriendAdapter {
     public interface FriendListener {
         void removeFriend(Friend friend);
         void sendMessage(String telephone);
+        void confirmDelete(Friend friend);
     }
 
     private FriendListener listener;
@@ -35,7 +36,16 @@ public class FriendsAdapter extends AbstractFriendAdapter {
                 removeFriend(friends.get(position));
             }
         });
+
         holder.sendMessage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                listener.sendMessage(friends.get(holder.getAdapterPosition()).getTel());
+            }
+        });
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -45,15 +55,17 @@ public class FriendsAdapter extends AbstractFriendAdapter {
     }
 
     public void onItemDismiss(int position) {
-        removeFriend(friends.get(position));
+        listener.confirmDelete(friends.get(position));
+        //removeFriend(friends.get(position));
     }
 
     private void removeFriend(Friend friend) {
-        listener.removeFriend(friend);
-        if (filteredFriends != friend) {
+        /*listener.removeFriend(friend);
+        if (filteredFriends.contains(friend)) {
             filteredFriends.remove(friend);
         }
-        notifyDataSetChanged();
+        notifyDataSetChanged();*/
+        listener.confirmDelete(friend);
     }
 
 }
