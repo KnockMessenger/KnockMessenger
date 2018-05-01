@@ -147,7 +147,8 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         initPreferenceVariables();
 
         Intent intent = getIntent();
-        friend = new Friend(userDataManager.getFriendByTelephone(intent.getStringExtra(EXTRA_FRIEND_TELEPHONE_KEY)));
+        String telephone = intent.getStringExtra(EXTRA_FRIEND_TELEPHONE_KEY);
+        friend = new Friend(userDataManager.getFriendByTelephone(telephone));
         setTitle(friend.getName());
 
         initRecyclerView();
