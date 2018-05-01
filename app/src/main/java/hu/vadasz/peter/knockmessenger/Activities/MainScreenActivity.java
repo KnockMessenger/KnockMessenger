@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -264,7 +265,7 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
                         exit();
                         break;
                     case R.id.mainScreenActivity_deleteMessages:
-                        deleteAllMessages();
+                        conFirmDelete();
                 }
 
                 return true;
@@ -364,10 +365,23 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         System.exit(SYSTEM_HALT);
     }
 
+    private void conFirmDelete() {
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.mainScreenActivity_confirm_delete_text), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.codesActivity_confirm_delete_yes_text), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteAllMessages();
+                    }
+                })
+                .setActionTextColor(getColor(android.R.color.holo_red_light))
+                .show();
+    }
+
     private void deleteAllMessages() {
         messageDataManager.deleteAllMessages();
         adapter.dataSetChanged();
         adapter.notifyDataSetChanged();
+        imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -413,7 +427,9 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
     public void messageReceived() {
         adapter.dataSetChanged();
         adapter.notifyDataSetChanged();
-        imageView.setVisibility(View.INVISIBLE);
+        if (adapter.getItemCount() != 0) {
+            imageView.setVisibility(View.INVISIBLE);
+        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
