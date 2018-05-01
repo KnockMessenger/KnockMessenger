@@ -195,11 +195,11 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
             public void onClick(View v) {
                 if (!messageDetectingController.isDecoderRunning()) {
                     messageDetectingController.startDecoder();
-                    knockDetectorStartButton.setImageResource(R.mipmap.ic_mic_off_white_48dp);
+                    knockDetectorStartButton.setImageResource(R.mipmap.ic_mic_white_48dp);
                     knockDetectorStartButton.setEnabled(!START_DETECTING_ENABLED);
                 } else {
                     messageDetectingController.stopDecoder();
-                    knockDetectorStartButton.setImageResource(R.mipmap.ic_mic_white_48dp);
+                    knockDetectorStartButton.setImageResource(R.mipmap.ic_mic_off_white_48dp);
                     timeToLive.setProgress(0);
                 }
             }
