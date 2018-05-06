@@ -115,7 +115,7 @@ public class MorseCodeTable {
         defaultCodeTable.add(new Code(60, "1001001", "C", !Code.MORSE_CODE));
         defaultCodeTable.add(new Code(61, "1001000", "Ü", !Code.MORSE_CODE));
         defaultCodeTable.add(new Code(62, "11100010", "Í", !Code.MORSE_CODE));
-        defaultCodeTable.add(new Code(63, "111000111", "Ú", !Code.MORSE_CODE));
+        defaultCodeTable.add(new Code(63, "111000111000111", "Ú", !Code.MORSE_CODE));
         defaultCodeTable.add(new Code(64, "1110001101", "Ű", !Code.MORSE_CODE));
         defaultCodeTable.add(new Code(65, "11100011001", "X", !Code.MORSE_CODE));
         defaultCodeTable.add(new Code(66, "111000110000", "W", !Code.MORSE_CODE));
@@ -137,6 +137,25 @@ public class MorseCodeTable {
         }
 
         return defaultCodeTable;
+    }
+
+    /**
+     * This method returns the default the Huffman - codes.
+     * @return
+     */
+
+    public static List<Code> getDefaultHuffmanCodes() {
+        List <Code> codes = new ArrayList<>();
+        if (defaultCodeTable.isEmpty()) {
+            initDefaultCodeTable();
+        }
+        for (Code code : defaultCodeTable) {
+            if (!code.isMorse()) {
+                codes.add(code);
+            }
+        }
+
+        return codes;
     }
 
     /**

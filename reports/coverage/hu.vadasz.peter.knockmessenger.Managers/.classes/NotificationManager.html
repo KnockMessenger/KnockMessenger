@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: NotificationManager</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Managers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: NotificationManager (hu.vadasz.peter.knockmessenger.Managers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">NotificationManager</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 36)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Managers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.app.Notification;
+<i>4</i>&nbsp;import android.app.NotificationChannel;
+<i>5</i>&nbsp;import android.app.PendingIntent;
+<i>6</i>&nbsp;import android.app.TaskStackBuilder;
+<i>7</i>&nbsp;import android.content.Context;
+<i>8</i>&nbsp;import android.content.Intent;
+<i>9</i>&nbsp;import android.os.Build;
+<i>10</i>&nbsp;import android.support.v4.app.NotificationCompat;
+<i>11</i>&nbsp;import android.support.v4.app.NotificationManagerCompat;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import javax.inject.Inject;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.FriendsActivity;
+<i>16</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.MainScreenActivity;
+<i>17</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.MessageSendingActivity;
+<i>18</i>&nbsp;import hu.vadasz.peter.knockmessenger.Application.BaseApplication;
+<i>19</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Friend;
+<i>20</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Message;
+<i>21</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
+<i>22</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
+<i>23</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>24</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.SongPlayer;
+<i>25</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;/**
+<i>28</i>&nbsp; * Created by Peti on 2018. 04. 21..
+<i>29</i>&nbsp; */
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;public class NotificationManager {
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    public static final String CHANNEL_ID = &quot;1&quot;;
+<i>34</i>&nbsp;    public static final int NOTIFICATION_NOT_FOUND = -1;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public static final int MESSAGE_NOTIFICATION_ID = 1;
+<i>37</i>&nbsp;    public static final int MORE_MESSAGE_NOTIFICATION = 2;
+<i>38</i>&nbsp;    public static final int SYSTEM_NOTIFICATION_ID = 3;
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;    public static boolean NOTIFICATION_WITH_MEDIA = true;</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    private Context context;
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    @Inject
+<i>45</i>&nbsp;    protected MessageDataManager messageDataManager;
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    @Inject
+<i>48</i>&nbsp;    protected UserDataManager userDataManager;
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    @Inject
+<i>51</i>&nbsp;    protected VibratorEngine vibratorEngine;
+<i>52</i>&nbsp;
+<b class="nc"><i>53</i>&nbsp;    public NotificationManager(Context context) {</b>
+<b class="nc"><i>54</i>&nbsp;        this.context = context;</b>
+<b class="nc"><i>55</i>&nbsp;        BaseApplication.getInstance().getmMainComponent().inject(this);</b>
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<i>59</i>&nbsp;    /// NOTIFICATION OPERATIONS
+<i>60</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    private void createNotificationChannel() {
+<b class="nc"><i>63</i>&nbsp;        if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) {</b>
+<i>64</i>&nbsp;            // Create the NotificationChannel, but only on API 26+ because
+<i>65</i>&nbsp;            // the NotificationChannel class is new and not in the support library
+<b class="nc"><i>66</i>&nbsp;            CharSequence name = context.getString(R.string.notificationChannel_id);</b>
+<b class="nc"><i>67</i>&nbsp;            String description = context.getString(R.string.notificationChannel_description);</b>
+<b class="nc"><i>68</i>&nbsp;            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, android.app.NotificationManager.IMPORTANCE_HIGH);</b>
+<b class="nc"><i>69</i>&nbsp;            channel.setDescription(description);</b>
+<i>70</i>&nbsp;            // Register the channel with the system
+<b class="nc"><i>71</i>&nbsp;            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);</b>
+<i>72</i>&nbsp;            //notificationManager.createNotificationChannel(channel);
+<i>73</i>&nbsp;        }
+<i>74</i>&nbsp;    }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    public void createNotification(String title, String message, int id, boolean media, String from) {
+<b class="nc"><i>77</i>&nbsp;        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context, CHANNEL_ID)</b>
+<b class="nc"><i>78</i>&nbsp;                .setSmallIcon(R.mipmap.ic_launcher)</b>
+<b class="nc"><i>79</i>&nbsp;                .setContentTitle(title)</b>
+<b class="nc"><i>80</i>&nbsp;                .setContentText(message);</b>
+<i>81</i>&nbsp;
+<b class="nc"><i>82</i>&nbsp;        Intent notificationIntent = null;</b>
+<b class="nc"><i>83</i>&nbsp;        if (from == null) {</b>
+<b class="nc"><i>84</i>&nbsp;            notificationIntent = new Intent(context, MainScreenActivity.class);</b>
+<i>85</i>&nbsp;        } else {
+<b class="nc"><i>86</i>&nbsp;            if (userDataManager.isFriend(from)) {</b>
+<b class="nc"><i>87</i>&nbsp;                notificationIntent = new Intent(context, MessageSendingActivity.class);</b>
+<b class="nc"><i>88</i>&nbsp;                notificationIntent.putExtra(MessageSendingActivity.EXTRA_FRIEND_TELEPHONE_KEY, from);</b>
+<i>89</i>&nbsp;            } else {
+<b class="nc"><i>90</i>&nbsp;                notificationIntent = new Intent(context, MainScreenActivity.class);</b>
+<i>91</i>&nbsp;            }
+<i>92</i>&nbsp;        }
+<i>93</i>&nbsp;
+<b class="nc"><i>94</i>&nbsp;        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);</b>
+<b class="nc"><i>95</i>&nbsp;        stackBuilder.addNextIntentWithParentStack(notificationIntent);</b>
+<i>96</i>&nbsp;
+<b class="nc"><i>97</i>&nbsp;        PendingIntent notPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);</b>
+<b class="nc"><i>98</i>&nbsp;        notificationBuilder.setContentIntent(notPendingIntent);</b>
+<i>99</i>&nbsp;
+<b class="nc"><i>100</i>&nbsp;        createNotificationChannel();</b>
+<i>101</i>&nbsp;
+<b class="nc"><i>102</i>&nbsp;        showNotification(notificationBuilder.build(), id, media);</b>
+<i>103</i>&nbsp;    }
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;    public void createMessageNotification(String from, String message, String fromTel) {
+<b class="nc"><i>106</i>&nbsp;        createNotification(from + &quot; - &quot; + context.getString(R.string.notificationTitle), message, MESSAGE_NOTIFICATION_ID,</b>
+<i>107</i>&nbsp;                NOTIFICATION_WITH_MEDIA, fromTel);
+<i>108</i>&nbsp;    }
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    public void createMoreMessageNotification() {
+<b class="nc"><i>111</i>&nbsp;        createNotification(context.getString(R.string.notificationTitle), context.getString(R.string.moreMessage_notification_title)</b>
+<i>112</i>&nbsp;                , MORE_MESSAGE_NOTIFICATION, NOTIFICATION_WITH_MEDIA, null);
+<i>113</i>&nbsp;    }
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    private void showNotification(Notification notification, int notificationId, boolean media) {
+<b class="nc"><i>116</i>&nbsp;        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);</b>
+<i>117</i>&nbsp;
+<b class="nc"><i>118</i>&nbsp;        if (notificationId != NOTIFICATION_NOT_FOUND) {</b>
+<b class="nc"><i>119</i>&nbsp;            notificationManager.notify(notificationId, notification);</b>
+<b class="nc"><i>120</i>&nbsp;            if (media) {</b>
+<b class="nc"><i>121</i>&nbsp;                SongPlayer songPlayer = new SongPlayer(context, R.raw.knock);</b>
+<b class="nc"><i>122</i>&nbsp;                songPlayer.playSong();</b>
+<b class="nc"><i>123</i>&nbsp;                vibratorEngine.vibrate(VibratorEngine.LONG_VIBRATION_TIME);</b>
+<i>124</i>&nbsp;            }
+<i>125</i>&nbsp;        }
+<i>126</i>&nbsp;    }
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<i>129</i>&nbsp;    /// NOTIFICATION OPERATIONS - - END
+<i>130</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<i>131</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

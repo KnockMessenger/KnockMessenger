@@ -42,7 +42,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 9)
+    (0/ 14)
   </span>
 </td>
 <td class="coverageStat">
@@ -50,7 +50,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 57)
+    (0/ 91)
   </span>
 </td>
 </tr>
@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 9)
+    (0/ 12)
   </span>
 </td>
 <td class="coverageStat">
@@ -69,7 +69,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 30)
+    (0/ 43)
   </span>
 </td>
   </tr>
@@ -80,7 +80,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 18)
+    (0/ 26)
   </span>
 </td>
 <td class="coverageStat">
@@ -88,7 +88,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 87)
+    (0/ 134)
   </span>
 </td>
 </tr>
@@ -108,256 +108,426 @@
 <i>8</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivityWithKnockDecoder;
 <i>9</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivityWithKnockDecoder_MembersInjector;
 <i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BaseActivity_MembersInjector;
-<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator;
-<i>12</i>&nbsp;import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator_MembersInjector;
-<i>13</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.DaoSession;
-<i>14</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.JSON.JsonParser;
-<i>15</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManager;
-<i>16</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManager;
-<i>17</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
-<i>18</i>&nbsp;import hu.vadasz.peter.knockmessenger.Fragments.SettingsFragment;
-<i>19</i>&nbsp;import hu.vadasz.peter.knockmessenger.Fragments.SettingsFragment_MembersInjector;
-<i>20</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
-<i>21</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ApplicationModule;
-<i>22</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ApplicationModule_ProvideContextFactory;
-<i>23</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.InternetConnectionCheckerModule;
-<i>24</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory;
-<i>25</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.PermissionHandlerModule;
-<i>26</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.PermissionHandlerModule_ProvidePermissionHandlerFactory;
-<i>27</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.SharedPreferenceManagerModule;
-<i>28</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.SharedPreferenceManagerModule_ProvideSharedPreferenceManagerFactory;
-<i>29</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule;
-<i>30</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideCodeDataManagerFactory;
-<i>31</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideDaoSessionFactory;
-<i>32</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideDatabaseManagerFactory;
-<i>33</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideJsonParserFactory;
-<i>34</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideMessagesDataManagerFactory;
-<i>35</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.VibratorEngineModule;
-<i>36</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.VibratorEngineModule_ProvideVibratorEngineFactory;
-<i>37</i>&nbsp;import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
-<i>38</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
-<i>39</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
-<i>40</i>&nbsp;import javax.annotation.Generated;
-<i>41</i>&nbsp;import javax.inject.Provider;
-<i>42</i>&nbsp;
-<b class="nc"><i>43</i>&nbsp;@Generated(</b>
-<i>44</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
-<i>45</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
-<i>46</i>&nbsp;)
-<b class="nc"><i>47</i>&nbsp;public final class DaggerMainComponent implements MainComponent {</b>
-<i>48</i>&nbsp;  private Provider&lt;Context&gt; provideContextProvider;
-<i>49</i>&nbsp;
-<i>50</i>&nbsp;  private Provider&lt;DaoSession&gt; provideDaoSessionProvider;
-<i>51</i>&nbsp;
-<i>52</i>&nbsp;  private Provider&lt;DataBaseManager&gt; provideDatabaseManagerProvider;
-<i>53</i>&nbsp;
-<i>54</i>&nbsp;  private Provider&lt;JsonParser&gt; provideJsonParserProvider;
-<i>55</i>&nbsp;
-<i>56</i>&nbsp;  private Provider&lt;CodeDataManager&gt; provideCodeDataManagerProvider;
-<i>57</i>&nbsp;
-<i>58</i>&nbsp;  private Provider&lt;MessagesDataManager&gt; provideMessagesDataManagerProvider;
-<i>59</i>&nbsp;
-<i>60</i>&nbsp;  private Provider&lt;PermissionHandler&gt; providePermissionHandlerProvider;
-<i>61</i>&nbsp;
-<i>62</i>&nbsp;  private Provider&lt;VibratorEngine&gt; provideVibratorEngineProvider;
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;  private Provider&lt;SharedPreferenceManager&gt; provideSharedPreferenceManagerProvider;
-<i>65</i>&nbsp;
-<i>66</i>&nbsp;  private MembersInjector&lt;BaseActivity&gt; baseActivityMembersInjector;
-<i>67</i>&nbsp;
-<i>68</i>&nbsp;  private Provider&lt;InternetConnectionChecker&gt; provideInternetConnectionCheckerProvider;
-<i>69</i>&nbsp;
-<i>70</i>&nbsp;  private MembersInjector&lt;BaseActivityWithKnockDecoder&gt; baseActivityWithKnockDecoderMembersInjector;
+<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BrowseFriendsActivity;
+<i>12</i>&nbsp;import hu.vadasz.peter.knockmessenger.Activities.BrowseFriendsActivity_MembersInjector;
+<i>13</i>&nbsp;import hu.vadasz.peter.knockmessenger.BroadcastReceivers.AlarmReceiver;
+<i>14</i>&nbsp;import hu.vadasz.peter.knockmessenger.BroadcastReceivers.AlarmReceiver_MembersInjector;
+<i>15</i>&nbsp;import hu.vadasz.peter.knockmessenger.BroadcastReceivers.RebootReceiver;
+<i>16</i>&nbsp;import hu.vadasz.peter.knockmessenger.BroadcastReceivers.RebootReceiver_MembersInjector;
+<i>17</i>&nbsp;import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator;
+<i>18</i>&nbsp;import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator_MembersInjector;
+<i>19</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.DaoSession;
+<i>20</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.JSON.JsonParser;
+<i>21</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManager;
+<i>22</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManager;
+<i>23</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
+<i>24</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
+<i>25</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
+<i>26</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerSideDatabase;
+<i>27</i>&nbsp;import hu.vadasz.peter.knockmessenger.Fragments.SettingsFragment;
+<i>28</i>&nbsp;import hu.vadasz.peter.knockmessenger.Fragments.SettingsFragment_MembersInjector;
+<i>29</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.NotificationManager;
+<i>30</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.NotificationManager_MembersInjector;
+<i>31</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.ServiceAlarmManager;
+<i>32</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
+<i>33</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ApplicationModule;
+<i>34</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ApplicationModule_ProvideContextFactory;
+<i>35</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.InternetConnectionCheckerModule;
+<i>36</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory;
+<i>37</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.NotificationManagerModule;
+<i>38</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.NotificationManagerModule_ProvideNotificationManagerModuleFactory;
+<i>39</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.PermissionHandlerModule;
+<i>40</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.PermissionHandlerModule_ProvidePermissionHandlerFactory;
+<i>41</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ServerDataChangeHandlerModule;
+<i>42</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory;
+<i>43</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ServiceAlarmManagerModule;
+<i>44</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.ServiceAlarmManagerModule_ProvideServiceAlarmManageFactory;
+<i>45</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.SharedPreferenceManagerModule;
+<i>46</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.SharedPreferenceManagerModule_ProvideSharedPreferenceManagerFactory;
+<i>47</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule;
+<i>48</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideCodeDataManagerFactory;
+<i>49</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideDaoSessionFactory;
+<i>50</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideDatabaseManagerFactory;
+<i>51</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideJsonParserFactory;
+<i>52</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideMessageDataManagerFactory;
+<i>53</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideServerSideDatabaseFactory;
+<i>54</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.StorageModule_ProvideUserDataManagerFactory;
+<i>55</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.VibratorEngineModule;
+<i>56</i>&nbsp;import hu.vadasz.peter.knockmessenger.Modules.VibratorEngineModule_ProvideVibratorEngineFactory;
+<i>57</i>&nbsp;import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
+<i>58</i>&nbsp;import hu.vadasz.peter.knockmessenger.Services.MessageReceiverService;
+<i>59</i>&nbsp;import hu.vadasz.peter.knockmessenger.Services.MessageReceiverService_MembersInjector;
+<i>60</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
+<i>61</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
+<i>62</i>&nbsp;import javax.annotation.Generated;
+<i>63</i>&nbsp;import javax.inject.Provider;
+<i>64</i>&nbsp;
+<b class="nc"><i>65</i>&nbsp;@Generated(</b>
+<i>66</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>67</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>68</i>&nbsp;)
+<b class="nc"><i>69</i>&nbsp;public final class DaggerMainComponent implements MainComponent {</b>
+<i>70</i>&nbsp;  private Provider&lt;Context&gt; provideContextProvider;
 <i>71</i>&nbsp;
-<i>72</i>&nbsp;  private MembersInjector&lt;InternetConnectionValidator&gt; internetConnectionValidatorMembersInjector;
+<i>72</i>&nbsp;  private Provider&lt;DaoSession&gt; provideDaoSessionProvider;
 <i>73</i>&nbsp;
-<i>74</i>&nbsp;  private MembersInjector&lt;SettingsFragment&gt; settingsFragmentMembersInjector;
+<i>74</i>&nbsp;  private Provider&lt;DataBaseManager&gt; provideDatabaseManagerProvider;
 <i>75</i>&nbsp;
-<b class="nc"><i>76</i>&nbsp;  private DaggerMainComponent(Builder builder) {</b>
-<b class="nc"><i>77</i>&nbsp;    assert builder != null;</b>
-<b class="nc"><i>78</i>&nbsp;    initialize(builder);</b>
-<i>79</i>&nbsp;  }
-<i>80</i>&nbsp;
-<i>81</i>&nbsp;  public static Builder builder() {
-<b class="nc"><i>82</i>&nbsp;    return new Builder();</b>
-<i>83</i>&nbsp;  }
-<i>84</i>&nbsp;
-<i>85</i>&nbsp;  @SuppressWarnings(&quot;unchecked&quot;)
-<i>86</i>&nbsp;  private void initialize(final Builder builder) {
+<i>76</i>&nbsp;  private Provider&lt;JsonParser&gt; provideJsonParserProvider;
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;  private Provider&lt;CodeDataManager&gt; provideCodeDataManagerProvider;
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;  private Provider&lt;ServerSideDatabase&gt; provideServerSideDatabaseProvider;
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;  private Provider&lt;UserDataManager&gt; provideUserDataManagerProvider;
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;  private Provider&lt;PermissionHandler&gt; providePermissionHandlerProvider;
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;  private Provider&lt;VibratorEngine&gt; provideVibratorEngineProvider;
 <i>87</i>&nbsp;
-<b class="nc"><i>88</i>&nbsp;    this.provideContextProvider =</b>
-<b class="nc"><i>89</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>90</i>&nbsp;            ApplicationModule_ProvideContextFactory.create(builder.applicationModule));</b>
+<i>88</i>&nbsp;  private Provider&lt;SharedPreferenceManager&gt; provideSharedPreferenceManagerProvider;
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;  private Provider&lt;ServerDataChangeHandler&gt; provideServerDataChangeHandlerProvider;
 <i>91</i>&nbsp;
-<b class="nc"><i>92</i>&nbsp;    this.provideDaoSessionProvider =</b>
-<b class="nc"><i>93</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>94</i>&nbsp;            StorageModule_ProvideDaoSessionFactory.create(</b>
-<b class="nc"><i>95</i>&nbsp;                builder.storageModule, provideContextProvider));</b>
-<i>96</i>&nbsp;
-<b class="nc"><i>97</i>&nbsp;    this.provideDatabaseManagerProvider =</b>
-<b class="nc"><i>98</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>99</i>&nbsp;            StorageModule_ProvideDatabaseManagerFactory.create(</b>
-<b class="nc"><i>100</i>&nbsp;                builder.storageModule, provideDaoSessionProvider));</b>
+<i>92</i>&nbsp;  private Provider&lt;MessageDataManager&gt; provideMessageDataManagerProvider;
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;  private Provider&lt;NotificationManager&gt; provideNotificationManagerModuleProvider;
+<i>95</i>&nbsp;
+<i>96</i>&nbsp;  private Provider&lt;ServiceAlarmManager&gt; provideServiceAlarmManageProvider;
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;  private MembersInjector&lt;BaseActivity&gt; baseActivityMembersInjector;
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;  private MembersInjector&lt;BrowseFriendsActivity&gt; browseFriendsActivityMembersInjector;
 <i>101</i>&nbsp;
-<b class="nc"><i>102</i>&nbsp;    this.provideJsonParserProvider =</b>
-<b class="nc"><i>103</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>104</i>&nbsp;            StorageModule_ProvideJsonParserFactory.create(</b>
-<b class="nc"><i>105</i>&nbsp;                builder.storageModule, provideContextProvider));</b>
-<i>106</i>&nbsp;
-<b class="nc"><i>107</i>&nbsp;    this.provideCodeDataManagerProvider =</b>
-<b class="nc"><i>108</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>109</i>&nbsp;            StorageModule_ProvideCodeDataManagerFactory.create(</b>
-<b class="nc"><i>110</i>&nbsp;                builder.storageModule, provideDatabaseManagerProvider, provideJsonParserProvider));</b>
+<i>102</i>&nbsp;  private Provider&lt;InternetConnectionChecker&gt; provideInternetConnectionCheckerProvider;
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;  private MembersInjector&lt;BaseActivityWithKnockDecoder&gt; baseActivityWithKnockDecoderMembersInjector;
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;  private MembersInjector&lt;InternetConnectionValidator&gt; internetConnectionValidatorMembersInjector;
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;  private MembersInjector&lt;SettingsFragment&gt; settingsFragmentMembersInjector;
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;  private MembersInjector&lt;NotificationManager&gt; notificationManagerMembersInjector;
 <i>111</i>&nbsp;
-<b class="nc"><i>112</i>&nbsp;    this.provideMessagesDataManagerProvider =</b>
-<b class="nc"><i>113</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>114</i>&nbsp;            StorageModule_ProvideMessagesDataManagerFactory.create(</b>
-<b class="nc"><i>115</i>&nbsp;                builder.storageModule, provideDatabaseManagerProvider));</b>
-<i>116</i>&nbsp;
-<b class="nc"><i>117</i>&nbsp;    this.providePermissionHandlerProvider =</b>
-<b class="nc"><i>118</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>119</i>&nbsp;            PermissionHandlerModule_ProvidePermissionHandlerFactory.create(</b>
-<b class="nc"><i>120</i>&nbsp;                builder.permissionHandlerModule));</b>
-<i>121</i>&nbsp;
-<b class="nc"><i>122</i>&nbsp;    this.provideVibratorEngineProvider =</b>
-<b class="nc"><i>123</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>124</i>&nbsp;            VibratorEngineModule_ProvideVibratorEngineFactory.create(</b>
-<b class="nc"><i>125</i>&nbsp;                builder.vibratorEngineModule, provideContextProvider));</b>
+<i>112</i>&nbsp;  private MembersInjector&lt;AlarmReceiver&gt; alarmReceiverMembersInjector;
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;  private MembersInjector&lt;MessageReceiverService&gt; messageReceiverServiceMembersInjector;
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;  private MembersInjector&lt;RebootReceiver&gt; rebootReceiverMembersInjector;
+<i>117</i>&nbsp;
+<b class="nc"><i>118</i>&nbsp;  private DaggerMainComponent(Builder builder) {</b>
+<b class="nc"><i>119</i>&nbsp;    assert builder != null;</b>
+<b class="nc"><i>120</i>&nbsp;    initialize(builder);</b>
+<i>121</i>&nbsp;  }
+<i>122</i>&nbsp;
+<i>123</i>&nbsp;  public static Builder builder() {
+<b class="nc"><i>124</i>&nbsp;    return new Builder();</b>
+<i>125</i>&nbsp;  }
 <i>126</i>&nbsp;
-<b class="nc"><i>127</i>&nbsp;    this.provideSharedPreferenceManagerProvider =</b>
-<b class="nc"><i>128</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>129</i>&nbsp;            SharedPreferenceManagerModule_ProvideSharedPreferenceManagerFactory.create(</b>
-<b class="nc"><i>130</i>&nbsp;                builder.sharedPreferenceManagerModule, provideContextProvider));</b>
-<i>131</i>&nbsp;
-<b class="nc"><i>132</i>&nbsp;    this.baseActivityMembersInjector =</b>
-<b class="nc"><i>133</i>&nbsp;        BaseActivity_MembersInjector.create(</b>
-<i>134</i>&nbsp;            provideCodeDataManagerProvider,
-<i>135</i>&nbsp;            provideMessagesDataManagerProvider,
-<i>136</i>&nbsp;            providePermissionHandlerProvider,
-<i>137</i>&nbsp;            provideVibratorEngineProvider,
-<i>138</i>&nbsp;            provideSharedPreferenceManagerProvider);
-<i>139</i>&nbsp;
-<b class="nc"><i>140</i>&nbsp;    this.provideInternetConnectionCheckerProvider =</b>
-<b class="nc"><i>141</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="nc"><i>142</i>&nbsp;            InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory.create(</b>
-<b class="nc"><i>143</i>&nbsp;                builder.internetConnectionCheckerModule, provideContextProvider));</b>
-<i>144</i>&nbsp;
-<b class="nc"><i>145</i>&nbsp;    this.baseActivityWithKnockDecoderMembersInjector =</b>
-<b class="nc"><i>146</i>&nbsp;        BaseActivityWithKnockDecoder_MembersInjector.create(</b>
-<i>147</i>&nbsp;            provideCodeDataManagerProvider,
-<i>148</i>&nbsp;            provideMessagesDataManagerProvider,
-<i>149</i>&nbsp;            providePermissionHandlerProvider,
-<i>150</i>&nbsp;            provideVibratorEngineProvider,
-<i>151</i>&nbsp;            provideSharedPreferenceManagerProvider,
-<i>152</i>&nbsp;            provideInternetConnectionCheckerProvider);
+<i>127</i>&nbsp;  @SuppressWarnings(&quot;unchecked&quot;)
+<i>128</i>&nbsp;  private void initialize(final Builder builder) {
+<i>129</i>&nbsp;
+<b class="nc"><i>130</i>&nbsp;    this.provideContextProvider =</b>
+<b class="nc"><i>131</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>132</i>&nbsp;            ApplicationModule_ProvideContextFactory.create(builder.applicationModule));</b>
+<i>133</i>&nbsp;
+<b class="nc"><i>134</i>&nbsp;    this.provideDaoSessionProvider =</b>
+<b class="nc"><i>135</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>136</i>&nbsp;            StorageModule_ProvideDaoSessionFactory.create(</b>
+<b class="nc"><i>137</i>&nbsp;                builder.storageModule, provideContextProvider));</b>
+<i>138</i>&nbsp;
+<b class="nc"><i>139</i>&nbsp;    this.provideDatabaseManagerProvider =</b>
+<b class="nc"><i>140</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>141</i>&nbsp;            StorageModule_ProvideDatabaseManagerFactory.create(</b>
+<b class="nc"><i>142</i>&nbsp;                builder.storageModule, provideDaoSessionProvider));</b>
+<i>143</i>&nbsp;
+<b class="nc"><i>144</i>&nbsp;    this.provideJsonParserProvider =</b>
+<b class="nc"><i>145</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>146</i>&nbsp;            StorageModule_ProvideJsonParserFactory.create(</b>
+<b class="nc"><i>147</i>&nbsp;                builder.storageModule, provideContextProvider));</b>
+<i>148</i>&nbsp;
+<b class="nc"><i>149</i>&nbsp;    this.provideCodeDataManagerProvider =</b>
+<b class="nc"><i>150</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>151</i>&nbsp;            StorageModule_ProvideCodeDataManagerFactory.create(</b>
+<b class="nc"><i>152</i>&nbsp;                builder.storageModule, provideDatabaseManagerProvider, provideJsonParserProvider));</b>
 <i>153</i>&nbsp;
-<b class="nc"><i>154</i>&nbsp;    this.internetConnectionValidatorMembersInjector =</b>
-<b class="nc"><i>155</i>&nbsp;        InternetConnectionValidator_MembersInjector.create(</b>
-<i>156</i>&nbsp;            provideInternetConnectionCheckerProvider);
+<b class="nc"><i>154</i>&nbsp;    this.provideServerSideDatabaseProvider =</b>
+<b class="nc"><i>155</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>156</i>&nbsp;            StorageModule_ProvideServerSideDatabaseFactory.create(builder.storageModule));</b>
 <i>157</i>&nbsp;
-<b class="nc"><i>158</i>&nbsp;    this.settingsFragmentMembersInjector =</b>
-<b class="nc"><i>159</i>&nbsp;        SettingsFragment_MembersInjector.create(provideSharedPreferenceManagerProvider);</b>
-<i>160</i>&nbsp;  }
-<i>161</i>&nbsp;
-<i>162</i>&nbsp;  @Override
-<i>163</i>&nbsp;  public void inject(BaseActivity baseActivity) {
-<b class="nc"><i>164</i>&nbsp;    baseActivityMembersInjector.injectMembers(baseActivity);</b>
-<i>165</i>&nbsp;  }
-<i>166</i>&nbsp;
-<i>167</i>&nbsp;  @Override
-<i>168</i>&nbsp;  public void inject(BaseActivityWithKnockDecoder baseActivityWithKnockDecoder) {
-<b class="nc"><i>169</i>&nbsp;    baseActivityWithKnockDecoderMembersInjector.injectMembers(baseActivityWithKnockDecoder);</b>
-<i>170</i>&nbsp;  }
-<i>171</i>&nbsp;
-<i>172</i>&nbsp;  @Override
-<i>173</i>&nbsp;  public void inject(InternetConnectionValidator internetConnectionValidator) {
-<b class="nc"><i>174</i>&nbsp;    internetConnectionValidatorMembersInjector.injectMembers(internetConnectionValidator);</b>
-<i>175</i>&nbsp;  }
-<i>176</i>&nbsp;
-<i>177</i>&nbsp;  @Override
-<i>178</i>&nbsp;  public void inject(SettingsFragment settingsFragment) {
-<b class="nc"><i>179</i>&nbsp;    settingsFragmentMembersInjector.injectMembers(settingsFragment);</b>
-<i>180</i>&nbsp;  }
-<i>181</i>&nbsp;
-<b class="nc"><i>182</i>&nbsp;  public static final class Builder {</b>
-<i>183</i>&nbsp;    private ApplicationModule applicationModule;
+<b class="nc"><i>158</i>&nbsp;    this.provideUserDataManagerProvider =</b>
+<b class="nc"><i>159</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>160</i>&nbsp;            StorageModule_ProvideUserDataManagerFactory.create(</b>
+<b class="nc"><i>161</i>&nbsp;                builder.storageModule,</b>
+<i>162</i>&nbsp;                provideDatabaseManagerProvider,
+<i>163</i>&nbsp;                provideServerSideDatabaseProvider));
+<i>164</i>&nbsp;
+<b class="nc"><i>165</i>&nbsp;    this.providePermissionHandlerProvider =</b>
+<b class="nc"><i>166</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>167</i>&nbsp;            PermissionHandlerModule_ProvidePermissionHandlerFactory.create(</b>
+<b class="nc"><i>168</i>&nbsp;                builder.permissionHandlerModule));</b>
+<i>169</i>&nbsp;
+<b class="nc"><i>170</i>&nbsp;    this.provideVibratorEngineProvider =</b>
+<b class="nc"><i>171</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>172</i>&nbsp;            VibratorEngineModule_ProvideVibratorEngineFactory.create(</b>
+<b class="nc"><i>173</i>&nbsp;                builder.vibratorEngineModule, provideContextProvider));</b>
+<i>174</i>&nbsp;
+<b class="nc"><i>175</i>&nbsp;    this.provideSharedPreferenceManagerProvider =</b>
+<b class="nc"><i>176</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>177</i>&nbsp;            SharedPreferenceManagerModule_ProvideSharedPreferenceManagerFactory.create(</b>
+<b class="nc"><i>178</i>&nbsp;                builder.sharedPreferenceManagerModule, provideContextProvider));</b>
+<i>179</i>&nbsp;
+<b class="nc"><i>180</i>&nbsp;    this.provideServerDataChangeHandlerProvider =</b>
+<b class="nc"><i>181</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>182</i>&nbsp;            ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory.create(</b>
+<b class="nc"><i>183</i>&nbsp;                builder.serverDataChangeHandlerModule));</b>
 <i>184</i>&nbsp;
-<i>185</i>&nbsp;    private StorageModule storageModule;
-<i>186</i>&nbsp;
-<i>187</i>&nbsp;    private PermissionHandlerModule permissionHandlerModule;
-<i>188</i>&nbsp;
-<i>189</i>&nbsp;    private VibratorEngineModule vibratorEngineModule;
-<i>190</i>&nbsp;
-<i>191</i>&nbsp;    private SharedPreferenceManagerModule sharedPreferenceManagerModule;
-<i>192</i>&nbsp;
-<i>193</i>&nbsp;    private InternetConnectionCheckerModule internetConnectionCheckerModule;
-<i>194</i>&nbsp;
-<b class="nc"><i>195</i>&nbsp;    private Builder() {}</b>
+<b class="nc"><i>185</i>&nbsp;    this.provideMessageDataManagerProvider =</b>
+<b class="nc"><i>186</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>187</i>&nbsp;            StorageModule_ProvideMessageDataManagerFactory.create(</b>
+<b class="nc"><i>188</i>&nbsp;                builder.storageModule,</b>
+<i>189</i>&nbsp;                provideDatabaseManagerProvider,
+<i>190</i>&nbsp;                provideServerSideDatabaseProvider));
+<i>191</i>&nbsp;
+<b class="nc"><i>192</i>&nbsp;    this.provideNotificationManagerModuleProvider =</b>
+<b class="nc"><i>193</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>194</i>&nbsp;            NotificationManagerModule_ProvideNotificationManagerModuleFactory.create(</b>
+<b class="nc"><i>195</i>&nbsp;                builder.notificationManagerModule, provideContextProvider));</b>
 <i>196</i>&nbsp;
-<i>197</i>&nbsp;    public MainComponent build() {
-<b class="nc"><i>198</i>&nbsp;      if (applicationModule == null) {</b>
-<b class="nc"><i>199</i>&nbsp;        throw new IllegalStateException(</b>
-<b class="nc"><i>200</i>&nbsp;            ApplicationModule.class.getCanonicalName() + &quot; must be set&quot;);</b>
-<i>201</i>&nbsp;      }
-<b class="nc"><i>202</i>&nbsp;      if (storageModule == null) {</b>
-<b class="nc"><i>203</i>&nbsp;        this.storageModule = new StorageModule();</b>
-<i>204</i>&nbsp;      }
-<b class="nc"><i>205</i>&nbsp;      if (permissionHandlerModule == null) {</b>
-<b class="nc"><i>206</i>&nbsp;        this.permissionHandlerModule = new PermissionHandlerModule();</b>
-<i>207</i>&nbsp;      }
-<b class="nc"><i>208</i>&nbsp;      if (vibratorEngineModule == null) {</b>
-<b class="nc"><i>209</i>&nbsp;        this.vibratorEngineModule = new VibratorEngineModule();</b>
-<i>210</i>&nbsp;      }
-<b class="nc"><i>211</i>&nbsp;      if (sharedPreferenceManagerModule == null) {</b>
-<b class="nc"><i>212</i>&nbsp;        this.sharedPreferenceManagerModule = new SharedPreferenceManagerModule();</b>
-<i>213</i>&nbsp;      }
-<b class="nc"><i>214</i>&nbsp;      if (internetConnectionCheckerModule == null) {</b>
-<b class="nc"><i>215</i>&nbsp;        this.internetConnectionCheckerModule = new InternetConnectionCheckerModule();</b>
-<i>216</i>&nbsp;      }
-<b class="nc"><i>217</i>&nbsp;      return new DaggerMainComponent(this);</b>
-<i>218</i>&nbsp;    }
-<i>219</i>&nbsp;
-<i>220</i>&nbsp;    public Builder applicationModule(ApplicationModule applicationModule) {
-<b class="nc"><i>221</i>&nbsp;      this.applicationModule = Preconditions.checkNotNull(applicationModule);</b>
-<b class="nc"><i>222</i>&nbsp;      return this;</b>
-<i>223</i>&nbsp;    }
-<i>224</i>&nbsp;
-<i>225</i>&nbsp;    public Builder storageModule(StorageModule storageModule) {
-<b class="nc"><i>226</i>&nbsp;      this.storageModule = Preconditions.checkNotNull(storageModule);</b>
-<b class="nc"><i>227</i>&nbsp;      return this;</b>
-<i>228</i>&nbsp;    }
-<i>229</i>&nbsp;
-<i>230</i>&nbsp;    public Builder permissionHandlerModule(PermissionHandlerModule permissionHandlerModule) {
-<b class="nc"><i>231</i>&nbsp;      this.permissionHandlerModule = Preconditions.checkNotNull(permissionHandlerModule);</b>
-<b class="nc"><i>232</i>&nbsp;      return this;</b>
-<i>233</i>&nbsp;    }
-<i>234</i>&nbsp;
-<i>235</i>&nbsp;    public Builder vibratorEngineModule(VibratorEngineModule vibratorEngineModule) {
-<b class="nc"><i>236</i>&nbsp;      this.vibratorEngineModule = Preconditions.checkNotNull(vibratorEngineModule);</b>
-<b class="nc"><i>237</i>&nbsp;      return this;</b>
-<i>238</i>&nbsp;    }
-<i>239</i>&nbsp;
-<i>240</i>&nbsp;    public Builder internetConnectionCheckerModule(
-<i>241</i>&nbsp;        InternetConnectionCheckerModule internetConnectionCheckerModule) {
-<b class="nc"><i>242</i>&nbsp;      this.internetConnectionCheckerModule =</b>
-<b class="nc"><i>243</i>&nbsp;          Preconditions.checkNotNull(internetConnectionCheckerModule);</b>
-<b class="nc"><i>244</i>&nbsp;      return this;</b>
-<i>245</i>&nbsp;    }
-<i>246</i>&nbsp;
-<i>247</i>&nbsp;    public Builder sharedPreferenceManagerModule(
-<i>248</i>&nbsp;        SharedPreferenceManagerModule sharedPreferenceManagerModule) {
-<b class="nc"><i>249</i>&nbsp;      this.sharedPreferenceManagerModule =</b>
-<b class="nc"><i>250</i>&nbsp;          Preconditions.checkNotNull(sharedPreferenceManagerModule);</b>
-<b class="nc"><i>251</i>&nbsp;      return this;</b>
-<i>252</i>&nbsp;    }
-<i>253</i>&nbsp;  }
-<i>254</i>&nbsp;}
+<b class="nc"><i>197</i>&nbsp;    this.provideServiceAlarmManageProvider =</b>
+<b class="nc"><i>198</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>199</i>&nbsp;            ServiceAlarmManagerModule_ProvideServiceAlarmManageFactory.create(</b>
+<b class="nc"><i>200</i>&nbsp;                builder.serviceAlarmManagerModule, provideContextProvider));</b>
+<i>201</i>&nbsp;
+<b class="nc"><i>202</i>&nbsp;    this.baseActivityMembersInjector =</b>
+<b class="nc"><i>203</i>&nbsp;        BaseActivity_MembersInjector.create(</b>
+<i>204</i>&nbsp;            provideCodeDataManagerProvider,
+<i>205</i>&nbsp;            provideUserDataManagerProvider,
+<i>206</i>&nbsp;            providePermissionHandlerProvider,
+<i>207</i>&nbsp;            provideVibratorEngineProvider,
+<i>208</i>&nbsp;            provideSharedPreferenceManagerProvider,
+<i>209</i>&nbsp;            provideServerDataChangeHandlerProvider,
+<i>210</i>&nbsp;            provideMessageDataManagerProvider,
+<i>211</i>&nbsp;            provideNotificationManagerModuleProvider,
+<i>212</i>&nbsp;            provideServiceAlarmManageProvider);
+<i>213</i>&nbsp;
+<b class="nc"><i>214</i>&nbsp;    this.browseFriendsActivityMembersInjector =</b>
+<b class="nc"><i>215</i>&nbsp;        BrowseFriendsActivity_MembersInjector.create(</b>
+<i>216</i>&nbsp;            provideCodeDataManagerProvider,
+<i>217</i>&nbsp;            provideUserDataManagerProvider,
+<i>218</i>&nbsp;            providePermissionHandlerProvider,
+<i>219</i>&nbsp;            provideVibratorEngineProvider,
+<i>220</i>&nbsp;            provideSharedPreferenceManagerProvider,
+<i>221</i>&nbsp;            provideServerDataChangeHandlerProvider,
+<i>222</i>&nbsp;            provideMessageDataManagerProvider,
+<i>223</i>&nbsp;            provideNotificationManagerModuleProvider,
+<i>224</i>&nbsp;            provideServiceAlarmManageProvider);
+<i>225</i>&nbsp;
+<b class="nc"><i>226</i>&nbsp;    this.provideInternetConnectionCheckerProvider =</b>
+<b class="nc"><i>227</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>228</i>&nbsp;            InternetConnectionCheckerModule_ProvideInternetConnectionCheckerFactory.create(</b>
+<b class="nc"><i>229</i>&nbsp;                builder.internetConnectionCheckerModule, provideContextProvider));</b>
+<i>230</i>&nbsp;
+<b class="nc"><i>231</i>&nbsp;    this.baseActivityWithKnockDecoderMembersInjector =</b>
+<b class="nc"><i>232</i>&nbsp;        BaseActivityWithKnockDecoder_MembersInjector.create(</b>
+<i>233</i>&nbsp;            provideCodeDataManagerProvider,
+<i>234</i>&nbsp;            provideUserDataManagerProvider,
+<i>235</i>&nbsp;            providePermissionHandlerProvider,
+<i>236</i>&nbsp;            provideVibratorEngineProvider,
+<i>237</i>&nbsp;            provideSharedPreferenceManagerProvider,
+<i>238</i>&nbsp;            provideServerDataChangeHandlerProvider,
+<i>239</i>&nbsp;            provideMessageDataManagerProvider,
+<i>240</i>&nbsp;            provideNotificationManagerModuleProvider,
+<i>241</i>&nbsp;            provideServiceAlarmManageProvider,
+<i>242</i>&nbsp;            provideInternetConnectionCheckerProvider);
+<i>243</i>&nbsp;
+<b class="nc"><i>244</i>&nbsp;    this.internetConnectionValidatorMembersInjector =</b>
+<b class="nc"><i>245</i>&nbsp;        InternetConnectionValidator_MembersInjector.create(</b>
+<i>246</i>&nbsp;            provideInternetConnectionCheckerProvider);
+<i>247</i>&nbsp;
+<b class="nc"><i>248</i>&nbsp;    this.settingsFragmentMembersInjector =</b>
+<b class="nc"><i>249</i>&nbsp;        SettingsFragment_MembersInjector.create(provideSharedPreferenceManagerProvider);</b>
+<i>250</i>&nbsp;
+<b class="nc"><i>251</i>&nbsp;    this.notificationManagerMembersInjector =</b>
+<b class="nc"><i>252</i>&nbsp;        NotificationManager_MembersInjector.create(</b>
+<i>253</i>&nbsp;            provideMessageDataManagerProvider,
+<i>254</i>&nbsp;            provideUserDataManagerProvider,
+<i>255</i>&nbsp;            provideVibratorEngineProvider);
+<i>256</i>&nbsp;
+<b class="nc"><i>257</i>&nbsp;    this.alarmReceiverMembersInjector =</b>
+<b class="nc"><i>258</i>&nbsp;        AlarmReceiver_MembersInjector.create(</b>
+<i>259</i>&nbsp;            provideServiceAlarmManageProvider, provideUserDataManagerProvider);
+<i>260</i>&nbsp;
+<b class="nc"><i>261</i>&nbsp;    this.messageReceiverServiceMembersInjector =</b>
+<b class="nc"><i>262</i>&nbsp;        MessageReceiverService_MembersInjector.create(</b>
+<i>263</i>&nbsp;            provideMessageDataManagerProvider,
+<i>264</i>&nbsp;            provideUserDataManagerProvider,
+<i>265</i>&nbsp;            provideNotificationManagerModuleProvider,
+<i>266</i>&nbsp;            provideServerDataChangeHandlerProvider);
+<i>267</i>&nbsp;
+<b class="nc"><i>268</i>&nbsp;    this.rebootReceiverMembersInjector =</b>
+<b class="nc"><i>269</i>&nbsp;        RebootReceiver_MembersInjector.create(</b>
+<i>270</i>&nbsp;            provideUserDataManagerProvider,
+<i>271</i>&nbsp;            provideServiceAlarmManageProvider,
+<i>272</i>&nbsp;            provideVibratorEngineProvider);
+<i>273</i>&nbsp;  }
+<i>274</i>&nbsp;
+<i>275</i>&nbsp;  @Override
+<i>276</i>&nbsp;  public void inject(BaseActivity baseActivity) {
+<b class="nc"><i>277</i>&nbsp;    baseActivityMembersInjector.injectMembers(baseActivity);</b>
+<i>278</i>&nbsp;  }
+<i>279</i>&nbsp;
+<i>280</i>&nbsp;  @Override
+<i>281</i>&nbsp;  public void inject(BrowseFriendsActivity browseFriendsActivity) {
+<b class="nc"><i>282</i>&nbsp;    browseFriendsActivityMembersInjector.injectMembers(browseFriendsActivity);</b>
+<i>283</i>&nbsp;  }
+<i>284</i>&nbsp;
+<i>285</i>&nbsp;  @Override
+<i>286</i>&nbsp;  public void inject(BaseActivityWithKnockDecoder baseActivityWithKnockDecoder) {
+<b class="nc"><i>287</i>&nbsp;    baseActivityWithKnockDecoderMembersInjector.injectMembers(baseActivityWithKnockDecoder);</b>
+<i>288</i>&nbsp;  }
+<i>289</i>&nbsp;
+<i>290</i>&nbsp;  @Override
+<i>291</i>&nbsp;  public void inject(InternetConnectionValidator internetConnectionValidator) {
+<b class="nc"><i>292</i>&nbsp;    internetConnectionValidatorMembersInjector.injectMembers(internetConnectionValidator);</b>
+<i>293</i>&nbsp;  }
+<i>294</i>&nbsp;
+<i>295</i>&nbsp;  @Override
+<i>296</i>&nbsp;  public void inject(SettingsFragment settingsFragment) {
+<b class="nc"><i>297</i>&nbsp;    settingsFragmentMembersInjector.injectMembers(settingsFragment);</b>
+<i>298</i>&nbsp;  }
+<i>299</i>&nbsp;
+<i>300</i>&nbsp;  @Override
+<i>301</i>&nbsp;  public void inject(NotificationManager notificationManager) {
+<b class="nc"><i>302</i>&nbsp;    notificationManagerMembersInjector.injectMembers(notificationManager);</b>
+<i>303</i>&nbsp;  }
+<i>304</i>&nbsp;
+<i>305</i>&nbsp;  @Override
+<i>306</i>&nbsp;  public void inject(AlarmReceiver alarmReceiver) {
+<b class="nc"><i>307</i>&nbsp;    alarmReceiverMembersInjector.injectMembers(alarmReceiver);</b>
+<i>308</i>&nbsp;  }
+<i>309</i>&nbsp;
+<i>310</i>&nbsp;  @Override
+<i>311</i>&nbsp;  public void inject(MessageReceiverService messageReceiverService) {
+<b class="nc"><i>312</i>&nbsp;    messageReceiverServiceMembersInjector.injectMembers(messageReceiverService);</b>
+<i>313</i>&nbsp;  }
+<i>314</i>&nbsp;
+<i>315</i>&nbsp;  @Override
+<i>316</i>&nbsp;  public void inject(RebootReceiver rebootReceiver) {
+<b class="nc"><i>317</i>&nbsp;    rebootReceiverMembersInjector.injectMembers(rebootReceiver);</b>
+<i>318</i>&nbsp;  }
+<i>319</i>&nbsp;
+<b class="nc"><i>320</i>&nbsp;  public static final class Builder {</b>
+<i>321</i>&nbsp;    private ApplicationModule applicationModule;
+<i>322</i>&nbsp;
+<i>323</i>&nbsp;    private StorageModule storageModule;
+<i>324</i>&nbsp;
+<i>325</i>&nbsp;    private PermissionHandlerModule permissionHandlerModule;
+<i>326</i>&nbsp;
+<i>327</i>&nbsp;    private VibratorEngineModule vibratorEngineModule;
+<i>328</i>&nbsp;
+<i>329</i>&nbsp;    private SharedPreferenceManagerModule sharedPreferenceManagerModule;
+<i>330</i>&nbsp;
+<i>331</i>&nbsp;    private ServerDataChangeHandlerModule serverDataChangeHandlerModule;
+<i>332</i>&nbsp;
+<i>333</i>&nbsp;    private NotificationManagerModule notificationManagerModule;
+<i>334</i>&nbsp;
+<i>335</i>&nbsp;    private ServiceAlarmManagerModule serviceAlarmManagerModule;
+<i>336</i>&nbsp;
+<i>337</i>&nbsp;    private InternetConnectionCheckerModule internetConnectionCheckerModule;
+<i>338</i>&nbsp;
+<b class="nc"><i>339</i>&nbsp;    private Builder() {}</b>
+<i>340</i>&nbsp;
+<i>341</i>&nbsp;    public MainComponent build() {
+<b class="nc"><i>342</i>&nbsp;      if (applicationModule == null) {</b>
+<b class="nc"><i>343</i>&nbsp;        throw new IllegalStateException(</b>
+<b class="nc"><i>344</i>&nbsp;            ApplicationModule.class.getCanonicalName() + &quot; must be set&quot;);</b>
+<i>345</i>&nbsp;      }
+<b class="nc"><i>346</i>&nbsp;      if (storageModule == null) {</b>
+<b class="nc"><i>347</i>&nbsp;        this.storageModule = new StorageModule();</b>
+<i>348</i>&nbsp;      }
+<b class="nc"><i>349</i>&nbsp;      if (permissionHandlerModule == null) {</b>
+<b class="nc"><i>350</i>&nbsp;        this.permissionHandlerModule = new PermissionHandlerModule();</b>
+<i>351</i>&nbsp;      }
+<b class="nc"><i>352</i>&nbsp;      if (vibratorEngineModule == null) {</b>
+<b class="nc"><i>353</i>&nbsp;        this.vibratorEngineModule = new VibratorEngineModule();</b>
+<i>354</i>&nbsp;      }
+<b class="nc"><i>355</i>&nbsp;      if (sharedPreferenceManagerModule == null) {</b>
+<b class="nc"><i>356</i>&nbsp;        this.sharedPreferenceManagerModule = new SharedPreferenceManagerModule();</b>
+<i>357</i>&nbsp;      }
+<b class="nc"><i>358</i>&nbsp;      if (serverDataChangeHandlerModule == null) {</b>
+<b class="nc"><i>359</i>&nbsp;        this.serverDataChangeHandlerModule = new ServerDataChangeHandlerModule();</b>
+<i>360</i>&nbsp;      }
+<b class="nc"><i>361</i>&nbsp;      if (notificationManagerModule == null) {</b>
+<b class="nc"><i>362</i>&nbsp;        this.notificationManagerModule = new NotificationManagerModule();</b>
+<i>363</i>&nbsp;      }
+<b class="nc"><i>364</i>&nbsp;      if (serviceAlarmManagerModule == null) {</b>
+<b class="nc"><i>365</i>&nbsp;        this.serviceAlarmManagerModule = new ServiceAlarmManagerModule();</b>
+<i>366</i>&nbsp;      }
+<b class="nc"><i>367</i>&nbsp;      if (internetConnectionCheckerModule == null) {</b>
+<b class="nc"><i>368</i>&nbsp;        this.internetConnectionCheckerModule = new InternetConnectionCheckerModule();</b>
+<i>369</i>&nbsp;      }
+<b class="nc"><i>370</i>&nbsp;      return new DaggerMainComponent(this);</b>
+<i>371</i>&nbsp;    }
+<i>372</i>&nbsp;
+<i>373</i>&nbsp;    public Builder applicationModule(ApplicationModule applicationModule) {
+<b class="nc"><i>374</i>&nbsp;      this.applicationModule = Preconditions.checkNotNull(applicationModule);</b>
+<b class="nc"><i>375</i>&nbsp;      return this;</b>
+<i>376</i>&nbsp;    }
+<i>377</i>&nbsp;
+<i>378</i>&nbsp;    public Builder storageModule(StorageModule storageModule) {
+<b class="nc"><i>379</i>&nbsp;      this.storageModule = Preconditions.checkNotNull(storageModule);</b>
+<b class="nc"><i>380</i>&nbsp;      return this;</b>
+<i>381</i>&nbsp;    }
+<i>382</i>&nbsp;
+<i>383</i>&nbsp;    public Builder permissionHandlerModule(PermissionHandlerModule permissionHandlerModule) {
+<b class="nc"><i>384</i>&nbsp;      this.permissionHandlerModule = Preconditions.checkNotNull(permissionHandlerModule);</b>
+<b class="nc"><i>385</i>&nbsp;      return this;</b>
+<i>386</i>&nbsp;    }
+<i>387</i>&nbsp;
+<i>388</i>&nbsp;    public Builder vibratorEngineModule(VibratorEngineModule vibratorEngineModule) {
+<b class="nc"><i>389</i>&nbsp;      this.vibratorEngineModule = Preconditions.checkNotNull(vibratorEngineModule);</b>
+<b class="nc"><i>390</i>&nbsp;      return this;</b>
+<i>391</i>&nbsp;    }
+<i>392</i>&nbsp;
+<i>393</i>&nbsp;    public Builder internetConnectionCheckerModule(
+<i>394</i>&nbsp;        InternetConnectionCheckerModule internetConnectionCheckerModule) {
+<b class="nc"><i>395</i>&nbsp;      this.internetConnectionCheckerModule =</b>
+<b class="nc"><i>396</i>&nbsp;          Preconditions.checkNotNull(internetConnectionCheckerModule);</b>
+<b class="nc"><i>397</i>&nbsp;      return this;</b>
+<i>398</i>&nbsp;    }
+<i>399</i>&nbsp;
+<i>400</i>&nbsp;    public Builder sharedPreferenceManagerModule(
+<i>401</i>&nbsp;        SharedPreferenceManagerModule sharedPreferenceManagerModule) {
+<b class="nc"><i>402</i>&nbsp;      this.sharedPreferenceManagerModule =</b>
+<b class="nc"><i>403</i>&nbsp;          Preconditions.checkNotNull(sharedPreferenceManagerModule);</b>
+<b class="nc"><i>404</i>&nbsp;      return this;</b>
+<i>405</i>&nbsp;    }
+<i>406</i>&nbsp;
+<i>407</i>&nbsp;    public Builder serverDataChangeHandlerModule(
+<i>408</i>&nbsp;        ServerDataChangeHandlerModule serverDataChangeHandlerModule) {
+<b class="nc"><i>409</i>&nbsp;      this.serverDataChangeHandlerModule =</b>
+<b class="nc"><i>410</i>&nbsp;          Preconditions.checkNotNull(serverDataChangeHandlerModule);</b>
+<b class="nc"><i>411</i>&nbsp;      return this;</b>
+<i>412</i>&nbsp;    }
+<i>413</i>&nbsp;
+<i>414</i>&nbsp;    public Builder notificationManagerModule(NotificationManagerModule notificationManagerModule) {
+<b class="nc"><i>415</i>&nbsp;      this.notificationManagerModule = Preconditions.checkNotNull(notificationManagerModule);</b>
+<b class="nc"><i>416</i>&nbsp;      return this;</b>
+<i>417</i>&nbsp;    }
+<i>418</i>&nbsp;
+<i>419</i>&nbsp;    public Builder serviceAlarmManagerModule(ServiceAlarmManagerModule serviceAlarmManagerModule) {
+<b class="nc"><i>420</i>&nbsp;      this.serviceAlarmManagerModule = Preconditions.checkNotNull(serviceAlarmManagerModule);</b>
+<b class="nc"><i>421</i>&nbsp;      return this;</b>
+<i>422</i>&nbsp;    }
+<i>423</i>&nbsp;  }
+<i>424</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

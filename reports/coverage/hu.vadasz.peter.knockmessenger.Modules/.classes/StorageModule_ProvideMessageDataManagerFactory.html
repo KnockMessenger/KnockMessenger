@@ -1,0 +1,143 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: StorageModule_ProvideMessageDataManagerFactory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Modules</a> ]
+</div>
+
+<h1>Coverage Summary for Class: StorageModule_ProvideMessageDataManagerFactory (hu.vadasz.peter.knockmessenger.Modules)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">StorageModule_ProvideMessageDataManagerFactory</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Modules;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import dagger.internal.Factory;
+<i>4</i>&nbsp;import dagger.internal.Preconditions;
+<i>5</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManager;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerSideDatabase;
+<i>8</i>&nbsp;import javax.annotation.Generated;
+<i>9</i>&nbsp;import javax.inject.Provider;
+<i>10</i>&nbsp;
+<b class="nc"><i>11</i>&nbsp;@Generated(</b>
+<i>12</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>13</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>14</i>&nbsp;)
+<i>15</i>&nbsp;public final class StorageModule_ProvideMessageDataManagerFactory
+<i>16</i>&nbsp;    implements Factory&lt;MessageDataManager&gt; {
+<i>17</i>&nbsp;  private final StorageModule module;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;  private final Provider&lt;DataBaseManager&gt; dataBaseManagerProvider;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;  private final Provider&lt;ServerSideDatabase&gt; serverSideDatabaseProvider;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;  public StorageModule_ProvideMessageDataManagerFactory(
+<i>24</i>&nbsp;      StorageModule module,
+<i>25</i>&nbsp;      Provider&lt;DataBaseManager&gt; dataBaseManagerProvider,
+<b class="nc"><i>26</i>&nbsp;      Provider&lt;ServerSideDatabase&gt; serverSideDatabaseProvider) {</b>
+<b class="nc"><i>27</i>&nbsp;    assert module != null;</b>
+<b class="nc"><i>28</i>&nbsp;    this.module = module;</b>
+<b class="nc"><i>29</i>&nbsp;    assert dataBaseManagerProvider != null;</b>
+<b class="nc"><i>30</i>&nbsp;    this.dataBaseManagerProvider = dataBaseManagerProvider;</b>
+<b class="nc"><i>31</i>&nbsp;    assert serverSideDatabaseProvider != null;</b>
+<b class="nc"><i>32</i>&nbsp;    this.serverSideDatabaseProvider = serverSideDatabaseProvider;</b>
+<i>33</i>&nbsp;  }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;  @Override
+<i>36</i>&nbsp;  public MessageDataManager get() {
+<b class="nc"><i>37</i>&nbsp;    return Preconditions.checkNotNull(</b>
+<b class="nc"><i>38</i>&nbsp;        module.provideMessageDataManager(</b>
+<b class="nc"><i>39</i>&nbsp;            dataBaseManagerProvider.get(), serverSideDatabaseProvider.get()),</b>
+<i>40</i>&nbsp;        &quot;Cannot return null from a non-@Nullable @Provides method&quot;);
+<i>41</i>&nbsp;  }
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;  public static Factory&lt;MessageDataManager&gt; create(
+<i>44</i>&nbsp;      StorageModule module,
+<i>45</i>&nbsp;      Provider&lt;DataBaseManager&gt; dataBaseManagerProvider,
+<i>46</i>&nbsp;      Provider&lt;ServerSideDatabase&gt; serverSideDatabaseProvider) {
+<b class="nc"><i>47</i>&nbsp;    return new StorageModule_ProvideMessageDataManagerFactory(</b>
+<i>48</i>&nbsp;        module, dataBaseManagerProvider, serverSideDatabaseProvider);
+<i>49</i>&nbsp;  }
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;  /**
+<i>52</i>&nbsp;   * Proxies {@link StorageModule#provideMessageDataManager(DataBaseManager, ServerSideDatabase)}.
+<i>53</i>&nbsp;   */
+<i>54</i>&nbsp;  public static MessageDataManager proxyProvideMessageDataManager(
+<i>55</i>&nbsp;      StorageModule instance,
+<i>56</i>&nbsp;      DataBaseManager dataBaseManager,
+<i>57</i>&nbsp;      ServerSideDatabase serverSideDatabase) {
+<b class="nc"><i>58</i>&nbsp;    return instance.provideMessageDataManager(dataBaseManager, serverSideDatabase);</b>
+<i>59</i>&nbsp;  }
+<i>60</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

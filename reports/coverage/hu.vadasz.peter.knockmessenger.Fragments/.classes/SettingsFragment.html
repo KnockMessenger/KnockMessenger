@@ -50,7 +50,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 16)
+    (0/ 18)
   </span>
 </td>
 </tr>
@@ -88,7 +88,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 19)
+    (0/ 21)
   </span>
 </td>
 </tr>
@@ -154,69 +154,72 @@
 <i>54</i>&nbsp;    private CheckBoxPreference vibrationCheck;
 <i>55</i>&nbsp;    private CheckBoxPreference soundsCheck;
 <i>56</i>&nbsp;    private CheckBoxPreference modeCheck;
-<i>57</i>&nbsp;    private MeasureTimeNumberPickerDialogPreference measureTimePickerDialogPreference;
-<i>58</i>&nbsp;    private MicrophoneSensitivityNumberPickerDialogPreference microphoneSensitivityNumberPickerDialogPreference;
-<i>59</i>&nbsp;
-<i>60</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>61</i>&nbsp;    /// FIELDS -- END
-<i>62</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>63</i>&nbsp;
-<i>64</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>65</i>&nbsp;    /// FRAGMENT OVERRIDES
-<i>66</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>67</i>&nbsp;
-<i>68</i>&nbsp;    @Override
-<i>69</i>&nbsp;    public void onCreate(Bundle savedInstanceState) {
-<b class="nc"><i>70</i>&nbsp;        super.onCreate(savedInstanceState);</b>
-<b class="nc"><i>71</i>&nbsp;        addPreferencesFromResource(R.xml.main_settings);</b>
-<b class="nc"><i>72</i>&nbsp;        BaseApplication.getInstance().getmMainComponent().inject(this);</b>
-<i>73</i>&nbsp;
-<b class="nc"><i>74</i>&nbsp;        getPreferences();</b>
-<b class="nc"><i>75</i>&nbsp;        setChangeListeners();</b>
-<i>76</i>&nbsp;    }
-<i>77</i>&nbsp;
-<i>78</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>79</i>&nbsp;    /// FRAGMENT OVERRIDES -- END
-<i>80</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>81</i>&nbsp;
-<i>82</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>83</i>&nbsp;    /// METHODS
-<i>84</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>85</i>&nbsp;
-<i>86</i>&nbsp;    /**
-<i>87</i>&nbsp;     * This method queries the references of the used preferences from the resource files.
-<i>88</i>&nbsp;     */
-<i>89</i>&nbsp;
-<i>90</i>&nbsp;    private void getPreferences() {
-<b class="nc"><i>91</i>&nbsp;        vibrationCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.VIBRATION_PREFERENCE_KEY);</b>
-<b class="nc"><i>92</i>&nbsp;        soundsCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.SOUNDS_PREFERENCE_KEY);</b>
-<b class="nc"><i>93</i>&nbsp;        modeCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.MODE_PREFERENCE_KEY);</b>
-<b class="nc"><i>94</i>&nbsp;        measureTimePickerDialogPreference = (MeasureTimeNumberPickerDialogPreference)</b>
-<b class="nc"><i>95</i>&nbsp;                findPreference(SharedPreferenceManager.SHORT_UNIT_TIME_PREFERENCE_KEY);</b>
-<b class="nc"><i>96</i>&nbsp;        microphoneSensitivityNumberPickerDialogPreference = (MicrophoneSensitivityNumberPickerDialogPreference)</b>
-<b class="nc"><i>97</i>&nbsp;                findPreference(SharedPreferenceManager.MIC_SENSITIVITY_PREFERENCE_KEY);</b>
-<i>98</i>&nbsp;    }
-<i>99</i>&nbsp;
-<i>100</i>&nbsp;    /**
-<i>101</i>&nbsp;     * This method sets the changeListeners of the preferences where needed.
-<i>102</i>&nbsp;     */
-<i>103</i>&nbsp;
-<i>104</i>&nbsp;    private void setChangeListeners() {
-<b class="nc"><i>105</i>&nbsp;        vibrationCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
-<b class="nc"><i>106</i>&nbsp;        soundsCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
-<b class="nc"><i>107</i>&nbsp;        modeCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
-<i>108</i>&nbsp;    }
-<i>109</i>&nbsp;
-<i>110</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>111</i>&nbsp;    /// METHODS -- END
-<i>112</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>113</i>&nbsp;}
+<i>57</i>&nbsp;    private CheckBoxPreference systemNotificationCheck;
+<i>58</i>&nbsp;    private MeasureTimeNumberPickerDialogPreference measureTimePickerDialogPreference;
+<i>59</i>&nbsp;    private MicrophoneSensitivityNumberPickerDialogPreference microphoneSensitivityNumberPickerDialogPreference;
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>62</i>&nbsp;    /// FIELDS -- END
+<i>63</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>66</i>&nbsp;    /// FRAGMENT OVERRIDES
+<i>67</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    @Override
+<i>70</i>&nbsp;    public void onCreate(Bundle savedInstanceState) {
+<b class="nc"><i>71</i>&nbsp;        super.onCreate(savedInstanceState);</b>
+<b class="nc"><i>72</i>&nbsp;        addPreferencesFromResource(R.xml.main_settings);</b>
+<b class="nc"><i>73</i>&nbsp;        BaseApplication.getInstance().getmMainComponent().inject(this);</b>
+<i>74</i>&nbsp;
+<b class="nc"><i>75</i>&nbsp;        getPreferences();</b>
+<b class="nc"><i>76</i>&nbsp;        setChangeListeners();</b>
+<i>77</i>&nbsp;    }
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>80</i>&nbsp;    /// FRAGMENT OVERRIDES -- END
+<i>81</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>84</i>&nbsp;    /// METHODS
+<i>85</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    /**
+<i>88</i>&nbsp;     * This method queries the references of the used preferences from the resource files.
+<i>89</i>&nbsp;     */
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;    private void getPreferences() {
+<b class="nc"><i>92</i>&nbsp;        vibrationCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.VIBRATION_PREFERENCE_KEY);</b>
+<b class="nc"><i>93</i>&nbsp;        soundsCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.SOUNDS_PREFERENCE_KEY);</b>
+<b class="nc"><i>94</i>&nbsp;        modeCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.MODE_PREFERENCE_KEY);</b>
+<b class="nc"><i>95</i>&nbsp;        systemNotificationCheck = (CheckBoxPreference) findPreference(SharedPreferenceManager.SYSTEM_NOTIFICATION_PREFERENCE_KEY);</b>
+<b class="nc"><i>96</i>&nbsp;        measureTimePickerDialogPreference = (MeasureTimeNumberPickerDialogPreference)</b>
+<b class="nc"><i>97</i>&nbsp;                findPreference(SharedPreferenceManager.SHORT_UNIT_TIME_PREFERENCE_KEY);</b>
+<b class="nc"><i>98</i>&nbsp;        microphoneSensitivityNumberPickerDialogPreference = (MicrophoneSensitivityNumberPickerDialogPreference)</b>
+<b class="nc"><i>99</i>&nbsp;                findPreference(SharedPreferenceManager.MIC_SENSITIVITY_PREFERENCE_KEY);</b>
+<i>100</i>&nbsp;    }
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;    /**
+<i>103</i>&nbsp;     * This method sets the changeListeners of the preferences where needed.
+<i>104</i>&nbsp;     */
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    private void setChangeListeners() {
+<b class="nc"><i>107</i>&nbsp;        vibrationCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
+<b class="nc"><i>108</i>&nbsp;        soundsCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
+<b class="nc"><i>109</i>&nbsp;        modeCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
+<b class="nc"><i>110</i>&nbsp;        systemNotificationCheck.setOnPreferenceChangeListener(new CheckBoxPreferenceChangeListener());</b>
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>114</i>&nbsp;    /// METHODS -- END
+<i>115</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>116</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>
