@@ -39,18 +39,18 @@
   <td class="name">AbstractAudioKnockDetector</td>
 <td class="coverageStat">
   <span class="percent">
-    80%
+    0%
   </span>
   <span class="absValue">
-    (8/ 10)
+    (0/ 10)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    83,3%
+    0%
   </span>
   <span class="absValue">
-    (20/ 24)
+    (0/ 18)
   </span>
 </td>
 </tr>
@@ -58,18 +58,18 @@
     <td class="name">AbstractAudioKnockDetector$State</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/ 1)
+    (0/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/ 1)
+    (0/ 1)
   </span>
 </td>
   </tr>
@@ -77,18 +77,18 @@
   <td class="name"><strong>total</strong></td>
 <td class="coverageStat">
   <span class="percent">
-    81,8%
+    0%
   </span>
   <span class="absValue">
-    (9/ 11)
+    (0/ 11)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    84%
+    0%
   </span>
   <span class="absValue">
-    (21/ 25)
+    (0/ 19)
   </span>
 </td>
 </tr>
@@ -119,13 +119,13 @@
 <i>19</i>&nbsp;
 <i>20</i>&nbsp;public abstract class AbstractAudioKnockDetector extends KnockDetector implements AudioRecorder.RawSignalReceiver {
 <i>21</i>&nbsp;
-<b class="fc"><i>22</i>&nbsp;    public enum State {WAITING, FIRST_PHASE, SECOND_PHASE, THIRD_PHASE}</b>
+<b class="nc"><i>22</i>&nbsp;    public enum State {WAITING, FIRST_PHASE, SECOND_PHASE, THIRD_PHASE}</b>
 <i>23</i>&nbsp;
 <i>24</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>25</i>&nbsp;    /// FIELDS
 <i>26</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>27</i>&nbsp;
-<b class="fc"><i>28</i>&nbsp;    @Setter</b>
+<b class="nc"><i>28</i>&nbsp;    @Setter</b>
 <i>29</i>&nbsp;    @Inject
 <i>30</i>&nbsp;    protected AudioRecorder audioRecorder;
 <i>31</i>&nbsp;
@@ -135,24 +135,24 @@
 <i>35</i>&nbsp;
 <i>36</i>&nbsp;    protected int shortUnitTime;
 <i>37</i>&nbsp;
-<b class="fc"><i>38</i>&nbsp;    @Getter</b>
+<b class="nc"><i>38</i>&nbsp;    @Getter</b>
 <i>39</i>&nbsp;    protected int longSyllableLength;
 <i>40</i>&nbsp;
 <i>41</i>&nbsp;    protected boolean syllableDetecting;
 <i>42</i>&nbsp;
-<b class="fc"><i>43</i>&nbsp;    @Getter</b>
+<b class="nc"><i>43</i>&nbsp;    @Getter</b>
 <i>44</i>&nbsp;    protected int counter;
 <i>45</i>&nbsp;
-<b class="fc"><i>46</i>&nbsp;    @Getter</b>
+<b class="nc"><i>46</i>&nbsp;    @Getter</b>
 <i>47</i>&nbsp;    protected State detectorState;
 <i>48</i>&nbsp;
 <i>49</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>50</i>&nbsp;    /// FIELDS -- END
 <i>51</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>52</i>&nbsp;
-<b class="fc"><i>53</i>&nbsp;    public AbstractAudioKnockDetector() {</b>
-<b class="fc"><i>54</i>&nbsp;        mainComponent.inject(this);</b>
-<b class="fc"><i>55</i>&nbsp;    }</b>
+<b class="nc"><i>53</i>&nbsp;    public AbstractAudioKnockDetector() {</b>
+<b class="nc"><i>54</i>&nbsp;        mainComponent.inject(this);</b>
+<i>55</i>&nbsp;    }
 <i>56</i>&nbsp;
 <i>57</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>58</i>&nbsp;    /// ABSTRACT METHODS
@@ -180,12 +180,12 @@
 <i>80</i>&nbsp;     */
 <i>81</i>&nbsp;
 <i>82</i>&nbsp;    protected void administrateSyllableDetection(int signal) {
-<b class="fc"><i>83</i>&nbsp;        sendDetectedSignal(signal);</b>
-<b class="fc"><i>84</i>&nbsp;        visualizer.syllableDetected(signal);</b>
-<b class="fc"><i>85</i>&nbsp;        detectorState = State.FIRST_PHASE;</b>
-<b class="fc"><i>86</i>&nbsp;        counter = START_COUNTING;</b>
-<b class="fc"><i>87</i>&nbsp;        pause(shortUnitTime);</b>
-<b class="fc"><i>88</i>&nbsp;    }</b>
+<b class="nc"><i>83</i>&nbsp;        sendDetectedSignal(signal);</b>
+<b class="nc"><i>84</i>&nbsp;        visualizer.syllableDetected(signal);</b>
+<b class="nc"><i>85</i>&nbsp;        detectorState = State.FIRST_PHASE;</b>
+<b class="nc"><i>86</i>&nbsp;        counter = START_COUNTING;</b>
+<b class="nc"><i>87</i>&nbsp;        pause(shortUnitTime);</b>
+<i>88</i>&nbsp;    }
 <i>89</i>&nbsp;
 <i>90</i>&nbsp;    /**
 <i>91</i>&nbsp;     * Sends the detected signal to the DetectedSignalReceiver (decoder) by pushing to it&#39;s buffer.
@@ -193,8 +193,8 @@
 <i>93</i>&nbsp;     */
 <i>94</i>&nbsp;
 <i>95</i>&nbsp;    protected void sendDetectedSignal(int signal) {
-<b class="fc"><i>96</i>&nbsp;        signalReceiverBuffer.add(signal);</b>
-<b class="fc"><i>97</i>&nbsp;    }</b>
+<b class="nc"><i>96</i>&nbsp;        signalReceiverBuffer.add(signal);</b>
+<i>97</i>&nbsp;    }
 <i>98</i>&nbsp;
 <i>99</i>&nbsp;    /**
 <i>100</i>&nbsp;     * Waits between two signal interval.
@@ -203,15 +203,15 @@
 <i>103</i>&nbsp;
 <i>104</i>&nbsp;    protected void pause(int time) {
 <i>105</i>&nbsp;        try {
-<b class="fc"><i>106</i>&nbsp;            visualizer.pauseBetweenSyllables(PAUSE_BETWEEN_SYLLABLES);</b>
-<b class="fc"><i>107</i>&nbsp;            Thread.sleep(time);</b>
-<b class="fc"><i>108</i>&nbsp;            visualizer.pauseBetweenSyllables(!PAUSE_BETWEEN_SYLLABLES);</b>
-<b class="fc"><i>109</i>&nbsp;        } catch (InterruptedException e) {}</b>
-<b class="fc"><i>110</i>&nbsp;    }</b>
+<b class="nc"><i>106</i>&nbsp;            visualizer.pauseBetweenSyllables(PAUSE_BETWEEN_SYLLABLES);</b>
+<b class="nc"><i>107</i>&nbsp;            Thread.sleep(time);</b>
+<b class="nc"><i>108</i>&nbsp;            visualizer.pauseBetweenSyllables(!PAUSE_BETWEEN_SYLLABLES);</b>
+<b class="nc"><i>109</i>&nbsp;        } catch (InterruptedException e) {}</b>
+<i>110</i>&nbsp;    }
 <i>111</i>&nbsp;
 <i>112</i>&nbsp;    public void setSensitivity(int sensitivity) {
 <b class="nc"><i>113</i>&nbsp;        audioRecorder.setAmplitudeThreshold(sensitivity * AudioRecorder.SENSITIVITY_MULTIPLICATOR);</b>
-<b class="nc"><i>114</i>&nbsp;    }</b>
+<i>114</i>&nbsp;    }
 <i>115</i>&nbsp;
 <i>116</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>117</i>&nbsp;    /// CONTENT UTILS -- END
@@ -224,7 +224,7 @@
 <i>124</i>&nbsp;    @Override
 <i>125</i>&nbsp;    public void rawSignalReceived(int signal) {
 <b class="nc"><i>126</i>&nbsp;        changeState(signal);</b>
-<b class="nc"><i>127</i>&nbsp;    }</b>
+<i>127</i>&nbsp;    }
 <i>128</i>&nbsp;
 <i>129</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>130</i>&nbsp;    /// AudioRecorder.RawSignalReceiver INTERFACE OVERRIDES -- END
@@ -235,7 +235,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

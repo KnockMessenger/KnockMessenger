@@ -1,0 +1,115 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Modules</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory (hu.vadasz.peter.knockmessenger.Modules)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Modules;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import dagger.internal.Factory;
+<i>4</i>&nbsp;import dagger.internal.Preconditions;
+<i>5</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
+<i>6</i>&nbsp;import javax.annotation.Generated;
+<i>7</i>&nbsp;
+<b class="nc"><i>8</i>&nbsp;@Generated(</b>
+<i>9</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>10</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>11</i>&nbsp;)
+<i>12</i>&nbsp;public final class ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory
+<i>13</i>&nbsp;    implements Factory&lt;ServerDataChangeHandler&gt; {
+<i>14</i>&nbsp;  private final ServerDataChangeHandlerModule module;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;  public ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory(
+<b class="nc"><i>17</i>&nbsp;      ServerDataChangeHandlerModule module) {</b>
+<b class="nc"><i>18</i>&nbsp;    assert module != null;</b>
+<b class="nc"><i>19</i>&nbsp;    this.module = module;</b>
+<i>20</i>&nbsp;  }
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;  @Override
+<i>23</i>&nbsp;  public ServerDataChangeHandler get() {
+<b class="nc"><i>24</i>&nbsp;    return Preconditions.checkNotNull(</b>
+<b class="nc"><i>25</i>&nbsp;        module.provideServerDataChangeHandler(),</b>
+<i>26</i>&nbsp;        &quot;Cannot return null from a non-@Nullable @Provides method&quot;);
+<i>27</i>&nbsp;  }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;  public static Factory&lt;ServerDataChangeHandler&gt; create(ServerDataChangeHandlerModule module) {
+<b class="nc"><i>30</i>&nbsp;    return new ServerDataChangeHandlerModule_ProvideServerDataChangeHandlerFactory(module);</b>
+<i>31</i>&nbsp;  }
+<i>32</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

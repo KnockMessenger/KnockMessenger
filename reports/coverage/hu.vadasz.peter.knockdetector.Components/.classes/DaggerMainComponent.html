@@ -39,18 +39,18 @@
   <td class="name">DaggerMainComponent</td>
 <td class="coverageStat">
   <span class="percent">
-    87,5%
+    0%
   </span>
   <span class="absValue">
-    (7/ 8)
+    (0/ 8)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    95,7%
+    0%
   </span>
   <span class="absValue">
-    (22/ 23)
+    (0/ 19)
   </span>
 </td>
 </tr>
@@ -58,18 +58,18 @@
     <td class="name">DaggerMainComponent$Builder</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (5/ 5)
+    (0/ 5)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    81,8%
+    0%
   </span>
   <span class="absValue">
-    (9/ 11)
+    (0/ 11)
   </span>
 </td>
   </tr>
@@ -77,18 +77,18 @@
   <td class="name"><strong>total</strong></td>
 <td class="coverageStat">
   <span class="percent">
-    92,3%
+    0%
   </span>
   <span class="absValue">
-    (12/ 13)
+    (0/ 13)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    91,2%
+    0%
   </span>
   <span class="absValue">
-    (31/ 34)
+    (0/ 30)
   </span>
 </td>
 </tr>
@@ -115,11 +115,11 @@
 <i>15</i>&nbsp;import javax.annotation.Generated;
 <i>16</i>&nbsp;import javax.inject.Provider;
 <i>17</i>&nbsp;
-<b class="fc"><i>18</i>&nbsp;@Generated(</b>
+<b class="nc"><i>18</i>&nbsp;@Generated(</b>
 <i>19</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
 <i>20</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
 <i>21</i>&nbsp;)
-<b class="fc"><i>22</i>&nbsp;public final class DaggerMainComponent implements MainComponent {</b>
+<b class="nc"><i>22</i>&nbsp;public final class DaggerMainComponent implements MainComponent {</b>
 <i>23</i>&nbsp;  private Provider&lt;MediaRecorder&gt; provideMediaRecorderProvider;
 <i>24</i>&nbsp;
 <i>25</i>&nbsp;  private MembersInjector&lt;AudioRecorder&gt; audioRecorderMembersInjector;
@@ -128,13 +128,13 @@
 <i>28</i>&nbsp;
 <i>29</i>&nbsp;  private MembersInjector&lt;AbstractAudioKnockDetector&gt; abstractAudioKnockDetectorMembersInjector;
 <i>30</i>&nbsp;
-<b class="fc"><i>31</i>&nbsp;  private DaggerMainComponent(Builder builder) {</b>
-<b class="fc"><i>32</i>&nbsp;    assert builder != null;</b>
-<b class="fc"><i>33</i>&nbsp;    initialize(builder);</b>
-<b class="fc"><i>34</i>&nbsp;  }</b>
+<b class="nc"><i>31</i>&nbsp;  private DaggerMainComponent(Builder builder) {</b>
+<b class="nc"><i>32</i>&nbsp;    assert builder != null;</b>
+<b class="nc"><i>33</i>&nbsp;    initialize(builder);</b>
+<i>34</i>&nbsp;  }
 <i>35</i>&nbsp;
 <i>36</i>&nbsp;  public static Builder builder() {
-<b class="fc"><i>37</i>&nbsp;    return new Builder();</b>
+<b class="nc"><i>37</i>&nbsp;    return new Builder();</b>
 <i>38</i>&nbsp;  }
 <i>39</i>&nbsp;
 <i>40</i>&nbsp;  public static MainComponent create() {
@@ -144,56 +144,56 @@
 <i>44</i>&nbsp;  @SuppressWarnings(&quot;unchecked&quot;)
 <i>45</i>&nbsp;  private void initialize(final Builder builder) {
 <i>46</i>&nbsp;
-<b class="fc"><i>47</i>&nbsp;    this.provideMediaRecorderProvider =</b>
-<b class="fc"><i>48</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="fc"><i>49</i>&nbsp;            MediaRecorderModule_ProvideMediaRecorderFactory.create(builder.mediaRecorderModule));</b>
+<b class="nc"><i>47</i>&nbsp;    this.provideMediaRecorderProvider =</b>
+<b class="nc"><i>48</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>49</i>&nbsp;            MediaRecorderModule_ProvideMediaRecorderFactory.create(builder.mediaRecorderModule));</b>
 <i>50</i>&nbsp;
-<b class="fc"><i>51</i>&nbsp;    this.audioRecorderMembersInjector =</b>
-<b class="fc"><i>52</i>&nbsp;        AudioRecorder_MembersInjector.create(provideMediaRecorderProvider);</b>
+<b class="nc"><i>51</i>&nbsp;    this.audioRecorderMembersInjector =</b>
+<b class="nc"><i>52</i>&nbsp;        AudioRecorder_MembersInjector.create(provideMediaRecorderProvider);</b>
 <i>53</i>&nbsp;
-<b class="fc"><i>54</i>&nbsp;    this.provideAudioRecorderProvider =</b>
-<b class="fc"><i>55</i>&nbsp;        DoubleCheck.provider(</b>
-<b class="fc"><i>56</i>&nbsp;            AudioRecorderModule_ProvideAudioRecorderFactory.create(builder.audioRecorderModule));</b>
+<b class="nc"><i>54</i>&nbsp;    this.provideAudioRecorderProvider =</b>
+<b class="nc"><i>55</i>&nbsp;        DoubleCheck.provider(</b>
+<b class="nc"><i>56</i>&nbsp;            AudioRecorderModule_ProvideAudioRecorderFactory.create(builder.audioRecorderModule));</b>
 <i>57</i>&nbsp;
-<b class="fc"><i>58</i>&nbsp;    this.abstractAudioKnockDetectorMembersInjector =</b>
-<b class="fc"><i>59</i>&nbsp;        AbstractAudioKnockDetector_MembersInjector.create(provideAudioRecorderProvider);</b>
-<b class="fc"><i>60</i>&nbsp;  }</b>
+<b class="nc"><i>58</i>&nbsp;    this.abstractAudioKnockDetectorMembersInjector =</b>
+<b class="nc"><i>59</i>&nbsp;        AbstractAudioKnockDetector_MembersInjector.create(provideAudioRecorderProvider);</b>
+<i>60</i>&nbsp;  }
 <i>61</i>&nbsp;
 <i>62</i>&nbsp;  @Override
 <i>63</i>&nbsp;  public void inject(AudioRecorder audioRecorder) {
-<b class="fc"><i>64</i>&nbsp;    audioRecorderMembersInjector.injectMembers(audioRecorder);</b>
-<b class="fc"><i>65</i>&nbsp;  }</b>
+<b class="nc"><i>64</i>&nbsp;    audioRecorderMembersInjector.injectMembers(audioRecorder);</b>
+<i>65</i>&nbsp;  }
 <i>66</i>&nbsp;
 <i>67</i>&nbsp;  @Override
 <i>68</i>&nbsp;  public void inject(AbstractAudioKnockDetector abstractAudioKnockDetector) {
-<b class="fc"><i>69</i>&nbsp;    abstractAudioKnockDetectorMembersInjector.injectMembers(abstractAudioKnockDetector);</b>
-<b class="fc"><i>70</i>&nbsp;  }</b>
+<b class="nc"><i>69</i>&nbsp;    abstractAudioKnockDetectorMembersInjector.injectMembers(abstractAudioKnockDetector);</b>
+<i>70</i>&nbsp;  }
 <i>71</i>&nbsp;
-<b class="fc"><i>72</i>&nbsp;  public static final class Builder {</b>
+<b class="nc"><i>72</i>&nbsp;  public static final class Builder {</b>
 <i>73</i>&nbsp;    private MediaRecorderModule mediaRecorderModule;
 <i>74</i>&nbsp;
 <i>75</i>&nbsp;    private AudioRecorderModule audioRecorderModule;
 <i>76</i>&nbsp;
-<b class="fc"><i>77</i>&nbsp;    private Builder() {}</b>
+<b class="nc"><i>77</i>&nbsp;    private Builder() {}</b>
 <i>78</i>&nbsp;
 <i>79</i>&nbsp;    public MainComponent build() {
-<b class="fc"><i>80</i>&nbsp;      if (mediaRecorderModule == null) {</b>
+<b class="nc"><i>80</i>&nbsp;      if (mediaRecorderModule == null) {</b>
 <b class="nc"><i>81</i>&nbsp;        this.mediaRecorderModule = new MediaRecorderModule();</b>
 <i>82</i>&nbsp;      }
-<b class="fc"><i>83</i>&nbsp;      if (audioRecorderModule == null) {</b>
+<b class="nc"><i>83</i>&nbsp;      if (audioRecorderModule == null) {</b>
 <b class="nc"><i>84</i>&nbsp;        this.audioRecorderModule = new AudioRecorderModule();</b>
 <i>85</i>&nbsp;      }
-<b class="fc"><i>86</i>&nbsp;      return new DaggerMainComponent(this);</b>
+<b class="nc"><i>86</i>&nbsp;      return new DaggerMainComponent(this);</b>
 <i>87</i>&nbsp;    }
 <i>88</i>&nbsp;
 <i>89</i>&nbsp;    public Builder mediaRecorderModule(MediaRecorderModule mediaRecorderModule) {
-<b class="fc"><i>90</i>&nbsp;      this.mediaRecorderModule = Preconditions.checkNotNull(mediaRecorderModule);</b>
-<b class="fc"><i>91</i>&nbsp;      return this;</b>
+<b class="nc"><i>90</i>&nbsp;      this.mediaRecorderModule = Preconditions.checkNotNull(mediaRecorderModule);</b>
+<b class="nc"><i>91</i>&nbsp;      return this;</b>
 <i>92</i>&nbsp;    }
 <i>93</i>&nbsp;
 <i>94</i>&nbsp;    public Builder audioRecorderModule(AudioRecorderModule audioRecorderModule) {
-<b class="fc"><i>95</i>&nbsp;      this.audioRecorderModule = Preconditions.checkNotNull(audioRecorderModule);</b>
-<b class="fc"><i>96</i>&nbsp;      return this;</b>
+<b class="nc"><i>95</i>&nbsp;      this.audioRecorderModule = Preconditions.checkNotNull(audioRecorderModule);</b>
+<b class="nc"><i>96</i>&nbsp;      return this;</b>
 <i>97</i>&nbsp;    }
 <i>98</i>&nbsp;  }
 <i>99</i>&nbsp;}
@@ -202,7 +202,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

@@ -42,26 +42,26 @@
   <td class="name">AudioRecorderModule_ProvideAudioRecorderFactory</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/ 1)
+    (0/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (4/ 4)
+    (0/ 4)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (8/ 8)
+    (0/ 7)
   </span>
 </td>
 </tr>
@@ -79,7 +79,7 @@
 <i>5</i>&nbsp;import hu.vadasz.peter.knockdetector.Detector.AudioRecorder;
 <i>6</i>&nbsp;import javax.annotation.Generated;
 <i>7</i>&nbsp;
-<b class="fc"><i>8</i>&nbsp;@Generated(</b>
+<b class="nc"><i>8</i>&nbsp;@Generated(</b>
 <i>9</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
 <i>10</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
 <i>11</i>&nbsp;)
@@ -87,19 +87,19 @@
 <i>13</i>&nbsp;    implements Factory&lt;AudioRecorder&gt; {
 <i>14</i>&nbsp;  private final AudioRecorderModule module;
 <i>15</i>&nbsp;
-<b class="fc"><i>16</i>&nbsp;  public AudioRecorderModule_ProvideAudioRecorderFactory(AudioRecorderModule module) {</b>
-<b class="fc"><i>17</i>&nbsp;    assert module != null;</b>
-<b class="fc"><i>18</i>&nbsp;    this.module = module;</b>
-<b class="fc"><i>19</i>&nbsp;  }</b>
+<b class="nc"><i>16</i>&nbsp;  public AudioRecorderModule_ProvideAudioRecorderFactory(AudioRecorderModule module) {</b>
+<b class="nc"><i>17</i>&nbsp;    assert module != null;</b>
+<b class="nc"><i>18</i>&nbsp;    this.module = module;</b>
+<i>19</i>&nbsp;  }
 <i>20</i>&nbsp;
 <i>21</i>&nbsp;  @Override
 <i>22</i>&nbsp;  public AudioRecorder get() {
-<b class="fc"><i>23</i>&nbsp;    return Preconditions.checkNotNull(</b>
-<b class="fc"><i>24</i>&nbsp;        module.provideAudioRecorder(), &quot;Cannot return null from a non-@Nullable @Provides method&quot;);</b>
+<b class="nc"><i>23</i>&nbsp;    return Preconditions.checkNotNull(</b>
+<b class="nc"><i>24</i>&nbsp;        module.provideAudioRecorder(), &quot;Cannot return null from a non-@Nullable @Provides method&quot;);</b>
 <i>25</i>&nbsp;  }
 <i>26</i>&nbsp;
 <i>27</i>&nbsp;  public static Factory&lt;AudioRecorder&gt; create(AudioRecorderModule module) {
-<b class="fc"><i>28</i>&nbsp;    return new AudioRecorderModule_ProvideAudioRecorderFactory(module);</b>
+<b class="nc"><i>28</i>&nbsp;    return new AudioRecorderModule_ProvideAudioRecorderFactory(module);</b>
 <i>29</i>&nbsp;  }
 <i>30</i>&nbsp;}
 </div>
@@ -107,7 +107,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

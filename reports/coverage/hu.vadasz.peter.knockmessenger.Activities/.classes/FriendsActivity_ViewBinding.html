@@ -1,0 +1,127 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: FriendsActivity_ViewBinding</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Activities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: FriendsActivity_ViewBinding (hu.vadasz.peter.knockmessenger.Activities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FriendsActivity_ViewBinding</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;// Generated code from Butter Knife. Do not modify!
+<i>2</i>&nbsp;package hu.vadasz.peter.knockmessenger.Activities;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import android.support.annotation.CallSuper;
+<i>5</i>&nbsp;import android.support.annotation.UiThread;
+<i>6</i>&nbsp;import android.support.v7.widget.RecyclerView;
+<i>7</i>&nbsp;import android.view.View;
+<i>8</i>&nbsp;import android.widget.ImageView;
+<i>9</i>&nbsp;import android.widget.ProgressBar;
+<i>10</i>&nbsp;import butterknife.Unbinder;
+<i>11</i>&nbsp;import butterknife.internal.Utils;
+<i>12</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>13</i>&nbsp;import java.lang.IllegalStateException;
+<i>14</i>&nbsp;import java.lang.Override;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;public class FriendsActivity_ViewBinding implements Unbinder {
+<i>17</i>&nbsp;  private FriendsActivity target;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;  @UiThread
+<i>20</i>&nbsp;  public FriendsActivity_ViewBinding(FriendsActivity target) {
+<b class="nc"><i>21</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
+<i>22</i>&nbsp;  }
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;  @UiThread
+<b class="nc"><i>25</i>&nbsp;  public FriendsActivity_ViewBinding(FriendsActivity target, View source) {</b>
+<b class="nc"><i>26</i>&nbsp;    this.target = target;</b>
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;    target.friendsRecyclerView = Utils.findRequiredViewAsType(source, R.id.friendsActivity_recyclerView, &quot;field &#39;friendsRecyclerView&#39;&quot;, RecyclerView.class);</b>
+<b class="nc"><i>29</i>&nbsp;    target.progressBar = Utils.findRequiredViewAsType(source, R.id.friendsActivity_progressbar, &quot;field &#39;progressBar&#39;&quot;, ProgressBar.class);</b>
+<b class="nc"><i>30</i>&nbsp;    target.friendsImage = Utils.findRequiredViewAsType(source, R.id.friendsActivity_image, &quot;field &#39;friendsImage&#39;&quot;, ImageView.class);</b>
+<i>31</i>&nbsp;  }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;  @Override
+<i>34</i>&nbsp;  @CallSuper
+<i>35</i>&nbsp;  public void unbind() {
+<b class="nc"><i>36</i>&nbsp;    FriendsActivity target = this.target;</b>
+<b class="nc"><i>37</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
+<b class="nc"><i>38</i>&nbsp;    this.target = null;</b>
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;    target.friendsRecyclerView = null;</b>
+<b class="nc"><i>41</i>&nbsp;    target.progressBar = null;</b>
+<b class="nc"><i>42</i>&nbsp;    target.friendsImage = null;</b>
+<i>43</i>&nbsp;  }
+<i>44</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

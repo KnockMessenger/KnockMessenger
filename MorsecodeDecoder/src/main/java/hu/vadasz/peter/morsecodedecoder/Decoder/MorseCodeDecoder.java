@@ -14,6 +14,8 @@ import hu.vadasz.peter.morsecodedecoder.CodeTree.Node;
 import hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTable;
 import hu.vadasz.peter.morsecodedecoder.Exceptions.SymbolNotFoundException;
 import hu.vadasz.peter.morsecodedecoder.Interfaces.MorseCodeDecoderInterface;
+import lombok.Getter;
+import lombok.Setter;
 
 public class MorseCodeDecoder implements MorseCodeDecoderInterface {
 
@@ -92,6 +94,9 @@ public class MorseCodeDecoder implements MorseCodeDecoderInterface {
 
     private boolean running;
     private boolean morseMode;
+
+    @Getter
+    @Setter
     private int mode;
 
     private Node codeTree;
@@ -269,6 +274,10 @@ public class MorseCodeDecoder implements MorseCodeDecoderInterface {
         checkMode(codeTreeIterator.getPath());
         codeTreeIterator.reset(codeTree);
     }
+
+    /**
+     *
+     */
 
     private void sendResult() {
         if (!morseMode) {

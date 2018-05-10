@@ -50,7 +50,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 40)
+    (0/ 47)
   </span>
 </td>
 </tr>
@@ -69,7 +69,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 4)
+    (0/ 5)
   </span>
 </td>
   </tr>
@@ -88,7 +88,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 44)
+    (0/ 52)
   </span>
 </td>
 </tr>
@@ -125,123 +125,136 @@
 <b class="nc"><i>25</i>&nbsp;        public final static Property Id = new Property(0, Long.class, &quot;id&quot;, true, &quot;_id&quot;);</b>
 <b class="nc"><i>26</i>&nbsp;        public final static Property Name = new Property(1, String.class, &quot;name&quot;, false, &quot;NAME&quot;);</b>
 <b class="nc"><i>27</i>&nbsp;        public final static Property Telephone = new Property(2, String.class, &quot;telephone&quot;, false, &quot;TELEPHONE&quot;);</b>
-<i>28</i>&nbsp;    }
-<i>29</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;        public final static Property Password = new Property(3, String.class, &quot;password&quot;, false, &quot;PASSWORD&quot;);</b>
+<i>29</i>&nbsp;    }
 <i>30</i>&nbsp;
-<i>31</i>&nbsp;    public UserDao(DaoConfig config) {
-<b class="nc"><i>32</i>&nbsp;        super(config);</b>
-<i>33</i>&nbsp;    }
-<i>34</i>&nbsp;    
-<i>35</i>&nbsp;    public UserDao(DaoConfig config, DaoSession daoSession) {
-<b class="nc"><i>36</i>&nbsp;        super(config, daoSession);</b>
-<i>37</i>&nbsp;    }
-<i>38</i>&nbsp;
-<i>39</i>&nbsp;    /** Creates the underlying database table. */
-<i>40</i>&nbsp;    public static void createTable(Database db, boolean ifNotExists) {
-<b class="nc"><i>41</i>&nbsp;        String constraint = ifNotExists? &quot;IF NOT EXISTS &quot;: &quot;&quot;;</b>
-<b class="nc"><i>42</i>&nbsp;        db.execSQL(&quot;CREATE TABLE &quot; + constraint + &quot;\&quot;USER\&quot; (&quot; + //</b>
-<i>43</i>&nbsp;                &quot;\&quot;_id\&quot; INTEGER PRIMARY KEY ,&quot; + // 0: id
-<i>44</i>&nbsp;                &quot;\&quot;NAME\&quot; TEXT,&quot; + // 1: name
-<i>45</i>&nbsp;                &quot;\&quot;TELEPHONE\&quot; TEXT);&quot;); // 2: telephone
-<i>46</i>&nbsp;    }
-<i>47</i>&nbsp;
-<i>48</i>&nbsp;    /** Drops the underlying database table. */
-<i>49</i>&nbsp;    public static void dropTable(Database db, boolean ifExists) {
-<b class="nc"><i>50</i>&nbsp;        String sql = &quot;DROP TABLE &quot; + (ifExists ? &quot;IF EXISTS &quot; : &quot;&quot;) + &quot;\&quot;USER\&quot;&quot;;</b>
-<b class="nc"><i>51</i>&nbsp;        db.execSQL(sql);</b>
-<i>52</i>&nbsp;    }
-<i>53</i>&nbsp;
-<i>54</i>&nbsp;    @Override
-<i>55</i>&nbsp;    protected final void bindValues(DatabaseStatement stmt, User entity) {
-<b class="nc"><i>56</i>&nbsp;        stmt.clearBindings();</b>
-<i>57</i>&nbsp; 
-<b class="nc"><i>58</i>&nbsp;        Long id = entity.getId();</b>
-<b class="nc"><i>59</i>&nbsp;        if (id != null) {</b>
-<b class="nc"><i>60</i>&nbsp;            stmt.bindLong(1, id);</b>
-<i>61</i>&nbsp;        }
-<i>62</i>&nbsp; 
-<b class="nc"><i>63</i>&nbsp;        String name = entity.getName();</b>
-<b class="nc"><i>64</i>&nbsp;        if (name != null) {</b>
-<b class="nc"><i>65</i>&nbsp;            stmt.bindString(2, name);</b>
-<i>66</i>&nbsp;        }
-<i>67</i>&nbsp; 
-<b class="nc"><i>68</i>&nbsp;        String telephone = entity.getTelephone();</b>
-<b class="nc"><i>69</i>&nbsp;        if (telephone != null) {</b>
-<b class="nc"><i>70</i>&nbsp;            stmt.bindString(3, telephone);</b>
-<i>71</i>&nbsp;        }
-<i>72</i>&nbsp;    }
-<i>73</i>&nbsp;
-<i>74</i>&nbsp;    @Override
-<i>75</i>&nbsp;    protected final void bindValues(SQLiteStatement stmt, User entity) {
-<b class="nc"><i>76</i>&nbsp;        stmt.clearBindings();</b>
-<i>77</i>&nbsp; 
-<b class="nc"><i>78</i>&nbsp;        Long id = entity.getId();</b>
-<b class="nc"><i>79</i>&nbsp;        if (id != null) {</b>
-<b class="nc"><i>80</i>&nbsp;            stmt.bindLong(1, id);</b>
-<i>81</i>&nbsp;        }
-<i>82</i>&nbsp; 
-<b class="nc"><i>83</i>&nbsp;        String name = entity.getName();</b>
-<b class="nc"><i>84</i>&nbsp;        if (name != null) {</b>
-<b class="nc"><i>85</i>&nbsp;            stmt.bindString(2, name);</b>
-<i>86</i>&nbsp;        }
-<i>87</i>&nbsp; 
-<b class="nc"><i>88</i>&nbsp;        String telephone = entity.getTelephone();</b>
-<b class="nc"><i>89</i>&nbsp;        if (telephone != null) {</b>
-<b class="nc"><i>90</i>&nbsp;            stmt.bindString(3, telephone);</b>
-<i>91</i>&nbsp;        }
-<i>92</i>&nbsp;    }
-<i>93</i>&nbsp;
-<i>94</i>&nbsp;    @Override
-<i>95</i>&nbsp;    public Long readKey(Cursor cursor, int offset) {
-<b class="nc"><i>96</i>&nbsp;        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);</b>
-<i>97</i>&nbsp;    }    
-<i>98</i>&nbsp;
-<i>99</i>&nbsp;    @Override
-<i>100</i>&nbsp;    public User readEntity(Cursor cursor, int offset) {
-<b class="nc"><i>101</i>&nbsp;        User entity = new User();</b>
-<b class="nc"><i>102</i>&nbsp;        readEntity(cursor, entity, offset);</b>
-<b class="nc"><i>103</i>&nbsp;        return entity;</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public UserDao(DaoConfig config) {
+<b class="nc"><i>33</i>&nbsp;        super(config);</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;    
+<i>36</i>&nbsp;    public UserDao(DaoConfig config, DaoSession daoSession) {
+<b class="nc"><i>37</i>&nbsp;        super(config, daoSession);</b>
+<i>38</i>&nbsp;    }
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /** Creates the underlying database table. */
+<i>41</i>&nbsp;    public static void createTable(Database db, boolean ifNotExists) {
+<b class="nc"><i>42</i>&nbsp;        String constraint = ifNotExists? &quot;IF NOT EXISTS &quot;: &quot;&quot;;</b>
+<b class="nc"><i>43</i>&nbsp;        db.execSQL(&quot;CREATE TABLE &quot; + constraint + &quot;\&quot;USER\&quot; (&quot; + //</b>
+<i>44</i>&nbsp;                &quot;\&quot;_id\&quot; INTEGER PRIMARY KEY ,&quot; + // 0: id
+<i>45</i>&nbsp;                &quot;\&quot;NAME\&quot; TEXT,&quot; + // 1: name
+<i>46</i>&nbsp;                &quot;\&quot;TELEPHONE\&quot; TEXT,&quot; + // 2: telephone
+<i>47</i>&nbsp;                &quot;\&quot;PASSWORD\&quot; TEXT);&quot;); // 3: password
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    /** Drops the underlying database table. */
+<i>51</i>&nbsp;    public static void dropTable(Database db, boolean ifExists) {
+<b class="nc"><i>52</i>&nbsp;        String sql = &quot;DROP TABLE &quot; + (ifExists ? &quot;IF EXISTS &quot; : &quot;&quot;) + &quot;\&quot;USER\&quot;&quot;;</b>
+<b class="nc"><i>53</i>&nbsp;        db.execSQL(sql);</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    @Override
+<i>57</i>&nbsp;    protected final void bindValues(DatabaseStatement stmt, User entity) {
+<b class="nc"><i>58</i>&nbsp;        stmt.clearBindings();</b>
+<i>59</i>&nbsp; 
+<b class="nc"><i>60</i>&nbsp;        Long id = entity.getId();</b>
+<b class="nc"><i>61</i>&nbsp;        if (id != null) {</b>
+<b class="nc"><i>62</i>&nbsp;            stmt.bindLong(1, id);</b>
+<i>63</i>&nbsp;        }
+<i>64</i>&nbsp; 
+<b class="nc"><i>65</i>&nbsp;        String name = entity.getName();</b>
+<b class="nc"><i>66</i>&nbsp;        if (name != null) {</b>
+<b class="nc"><i>67</i>&nbsp;            stmt.bindString(2, name);</b>
+<i>68</i>&nbsp;        }
+<i>69</i>&nbsp; 
+<b class="nc"><i>70</i>&nbsp;        String telephone = entity.getTelephone();</b>
+<b class="nc"><i>71</i>&nbsp;        if (telephone != null) {</b>
+<b class="nc"><i>72</i>&nbsp;            stmt.bindString(3, telephone);</b>
+<i>73</i>&nbsp;        }
+<i>74</i>&nbsp; 
+<b class="nc"><i>75</i>&nbsp;        String password = entity.getPassword();</b>
+<b class="nc"><i>76</i>&nbsp;        if (password != null) {</b>
+<b class="nc"><i>77</i>&nbsp;            stmt.bindString(4, password);</b>
+<i>78</i>&nbsp;        }
+<i>79</i>&nbsp;    }
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;    @Override
+<i>82</i>&nbsp;    protected final void bindValues(SQLiteStatement stmt, User entity) {
+<b class="nc"><i>83</i>&nbsp;        stmt.clearBindings();</b>
+<i>84</i>&nbsp; 
+<b class="nc"><i>85</i>&nbsp;        Long id = entity.getId();</b>
+<b class="nc"><i>86</i>&nbsp;        if (id != null) {</b>
+<b class="nc"><i>87</i>&nbsp;            stmt.bindLong(1, id);</b>
+<i>88</i>&nbsp;        }
+<i>89</i>&nbsp; 
+<b class="nc"><i>90</i>&nbsp;        String name = entity.getName();</b>
+<b class="nc"><i>91</i>&nbsp;        if (name != null) {</b>
+<b class="nc"><i>92</i>&nbsp;            stmt.bindString(2, name);</b>
+<i>93</i>&nbsp;        }
+<i>94</i>&nbsp; 
+<b class="nc"><i>95</i>&nbsp;        String telephone = entity.getTelephone();</b>
+<b class="nc"><i>96</i>&nbsp;        if (telephone != null) {</b>
+<b class="nc"><i>97</i>&nbsp;            stmt.bindString(3, telephone);</b>
+<i>98</i>&nbsp;        }
+<i>99</i>&nbsp; 
+<b class="nc"><i>100</i>&nbsp;        String password = entity.getPassword();</b>
+<b class="nc"><i>101</i>&nbsp;        if (password != null) {</b>
+<b class="nc"><i>102</i>&nbsp;            stmt.bindString(4, password);</b>
+<i>103</i>&nbsp;        }
 <i>104</i>&nbsp;    }
-<i>105</i>&nbsp;     
+<i>105</i>&nbsp;
 <i>106</i>&nbsp;    @Override
-<i>107</i>&nbsp;    public void readEntity(Cursor cursor, User entity, int offset) {
-<b class="nc"><i>108</i>&nbsp;        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));</b>
-<b class="nc"><i>109</i>&nbsp;        entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));</b>
-<b class="nc"><i>110</i>&nbsp;        entity.setTelephone(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));</b>
-<i>111</i>&nbsp;     }
-<i>112</i>&nbsp;    
-<i>113</i>&nbsp;    @Override
-<i>114</i>&nbsp;    protected final Long updateKeyAfterInsert(User entity, long rowId) {
-<b class="nc"><i>115</i>&nbsp;        entity.setId(rowId);</b>
-<b class="nc"><i>116</i>&nbsp;        return rowId;</b>
-<i>117</i>&nbsp;    }
-<i>118</i>&nbsp;    
-<i>119</i>&nbsp;    @Override
-<i>120</i>&nbsp;    public Long getKey(User entity) {
-<b class="nc"><i>121</i>&nbsp;        if(entity != null) {</b>
-<b class="nc"><i>122</i>&nbsp;            return entity.getId();</b>
-<i>123</i>&nbsp;        } else {
-<b class="nc"><i>124</i>&nbsp;            return null;</b>
-<i>125</i>&nbsp;        }
-<i>126</i>&nbsp;    }
-<i>127</i>&nbsp;
-<i>128</i>&nbsp;    @Override
-<i>129</i>&nbsp;    public boolean hasKey(User entity) {
-<b class="nc"><i>130</i>&nbsp;        return entity.getId() != null;</b>
-<i>131</i>&nbsp;    }
-<i>132</i>&nbsp;
-<i>133</i>&nbsp;    @Override
-<i>134</i>&nbsp;    protected final boolean isEntityUpdateable() {
-<b class="nc"><i>135</i>&nbsp;        return true;</b>
-<i>136</i>&nbsp;    }
-<i>137</i>&nbsp;    
-<i>138</i>&nbsp;}
+<i>107</i>&nbsp;    public Long readKey(Cursor cursor, int offset) {
+<b class="nc"><i>108</i>&nbsp;        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);</b>
+<i>109</i>&nbsp;    }    
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    @Override
+<i>112</i>&nbsp;    public User readEntity(Cursor cursor, int offset) {
+<b class="nc"><i>113</i>&nbsp;        User entity = new User();</b>
+<b class="nc"><i>114</i>&nbsp;        readEntity(cursor, entity, offset);</b>
+<b class="nc"><i>115</i>&nbsp;        return entity;</b>
+<i>116</i>&nbsp;    }
+<i>117</i>&nbsp;     
+<i>118</i>&nbsp;    @Override
+<i>119</i>&nbsp;    public void readEntity(Cursor cursor, User entity, int offset) {
+<b class="nc"><i>120</i>&nbsp;        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));</b>
+<b class="nc"><i>121</i>&nbsp;        entity.setName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));</b>
+<b class="nc"><i>122</i>&nbsp;        entity.setTelephone(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));</b>
+<b class="nc"><i>123</i>&nbsp;        entity.setPassword(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));</b>
+<i>124</i>&nbsp;     }
+<i>125</i>&nbsp;    
+<i>126</i>&nbsp;    @Override
+<i>127</i>&nbsp;    protected final Long updateKeyAfterInsert(User entity, long rowId) {
+<b class="nc"><i>128</i>&nbsp;        entity.setId(rowId);</b>
+<b class="nc"><i>129</i>&nbsp;        return rowId;</b>
+<i>130</i>&nbsp;    }
+<i>131</i>&nbsp;    
+<i>132</i>&nbsp;    @Override
+<i>133</i>&nbsp;    public Long getKey(User entity) {
+<b class="nc"><i>134</i>&nbsp;        if(entity != null) {</b>
+<b class="nc"><i>135</i>&nbsp;            return entity.getId();</b>
+<i>136</i>&nbsp;        } else {
+<b class="nc"><i>137</i>&nbsp;            return null;</b>
+<i>138</i>&nbsp;        }
+<i>139</i>&nbsp;    }
+<i>140</i>&nbsp;
+<i>141</i>&nbsp;    @Override
+<i>142</i>&nbsp;    public boolean hasKey(User entity) {
+<b class="nc"><i>143</i>&nbsp;        return entity.getId() != null;</b>
+<i>144</i>&nbsp;    }
+<i>145</i>&nbsp;
+<i>146</i>&nbsp;    @Override
+<i>147</i>&nbsp;    protected final boolean isEntityUpdateable() {
+<b class="nc"><i>148</i>&nbsp;        return true;</b>
+<i>149</i>&nbsp;    }
+<i>150</i>&nbsp;    
+<i>151</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

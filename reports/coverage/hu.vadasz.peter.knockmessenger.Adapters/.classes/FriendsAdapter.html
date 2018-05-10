@@ -1,0 +1,218 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: FriendsAdapter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Adapters</a> ]
+</div>
+
+<h1>Coverage Summary for Class: FriendsAdapter (hu.vadasz.peter.knockmessenger.Adapters)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FriendsAdapter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">FriendsAdapter$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">FriendsAdapter$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">FriendsAdapter$3</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 15)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Adapters;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.view.View;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import java.util.List;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Friend;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;/**
+<i>10</i>&nbsp; * Created by Peti on 2018. 04. 14..
+<i>11</i>&nbsp; */
+<i>12</i>&nbsp;
+<b class="nc"><i>13</i>&nbsp;public class FriendsAdapter extends AbstractFriendAdapter {</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    public interface FriendListener {
+<i>16</i>&nbsp;        void removeFriend(Friend friend);
+<i>17</i>&nbsp;        void sendMessage(String telephone);
+<i>18</i>&nbsp;        void confirmDelete(Friend friend);
+<i>19</i>&nbsp;    }
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    private FriendListener listener;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public FriendsAdapter(List&lt;Friend&gt; friends, FriendListener listener) {
+<b class="nc"><i>24</i>&nbsp;        super(friends);</b>
+<b class="nc"><i>25</i>&nbsp;        this.listener = listener;</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    @Override
+<i>30</i>&nbsp;    public void setViewItems(final ViewHolder holder, final int position) {
+<b class="nc"><i>31</i>&nbsp;        holder.addFriend.setVisibility(View.GONE);</b>
+<b class="nc"><i>32</i>&nbsp;        holder.removeFriend.setOnClickListener(new View.OnClickListener() {</b>
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;            @Override
+<i>35</i>&nbsp;            public void onClick(View v) {
+<b class="nc"><i>36</i>&nbsp;                removeFriend(friends.get(position));</b>
+<i>37</i>&nbsp;            }
+<i>38</i>&nbsp;        });
+<i>39</i>&nbsp;
+<b class="nc"><i>40</i>&nbsp;        holder.sendMessage.setOnClickListener(new View.OnClickListener() {</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;            @Override
+<i>43</i>&nbsp;            public void onClick(View v) {
+<b class="nc"><i>44</i>&nbsp;                listener.sendMessage(friends.get(holder.getAdapterPosition()).getTel());</b>
+<i>45</i>&nbsp;            }
+<i>46</i>&nbsp;        });
+<i>47</i>&nbsp;
+<b class="nc"><i>48</i>&nbsp;        holder.card.setOnClickListener(new View.OnClickListener() {</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;            @Override
+<i>51</i>&nbsp;            public void onClick(View v) {
+<b class="nc"><i>52</i>&nbsp;                listener.sendMessage(friends.get(holder.getAdapterPosition()).getTel());</b>
+<i>53</i>&nbsp;            }
+<i>54</i>&nbsp;        });
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    public void onItemDismiss(int position) {
+<b class="nc"><i>58</i>&nbsp;        listener.confirmDelete(friends.get(position));</b>
+<i>59</i>&nbsp;        //removeFriend(friends.get(position));
+<i>60</i>&nbsp;    }
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    private void removeFriend(Friend friend) {
+<i>63</i>&nbsp;        /*listener.removeFriend(friend);
+<i>64</i>&nbsp;        if (filteredFriends.contains(friend)) {
+<i>65</i>&nbsp;            filteredFriends.remove(friend);
+<i>66</i>&nbsp;        }
+<i>67</i>&nbsp;        notifyDataSetChanged();*/
+<b class="nc"><i>68</i>&nbsp;        listener.confirmDelete(friend);</b>
+<i>69</i>&nbsp;    }
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

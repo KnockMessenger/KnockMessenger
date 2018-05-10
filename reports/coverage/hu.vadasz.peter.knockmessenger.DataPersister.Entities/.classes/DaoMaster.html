@@ -50,7 +50,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 13)
+    (0/ 19)
   </span>
 </td>
 </tr>
@@ -107,7 +107,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 22)
+    (0/ 28)
   </span>
 </td>
 </tr>
@@ -140,88 +140,94 @@
 <i>21</i>&nbsp;
 <i>22</i>&nbsp;    /** Creates underlying database table using DAOs. */
 <i>23</i>&nbsp;    public static void createAllTables(Database db, boolean ifNotExists) {
-<b class="nc"><i>24</i>&nbsp;        UserDao.createTable(db, ifNotExists);</b>
-<b class="nc"><i>25</i>&nbsp;        UserSettingsDao.createTable(db, ifNotExists);</b>
-<i>26</i>&nbsp;    }
-<i>27</i>&nbsp;
-<i>28</i>&nbsp;    /** Drops underlying database table using DAOs. */
-<i>29</i>&nbsp;    public static void dropAllTables(Database db, boolean ifExists) {
-<b class="nc"><i>30</i>&nbsp;        UserDao.dropTable(db, ifExists);</b>
-<b class="nc"><i>31</i>&nbsp;        UserSettingsDao.dropTable(db, ifExists);</b>
-<i>32</i>&nbsp;    }
-<i>33</i>&nbsp;
-<i>34</i>&nbsp;    /**
-<i>35</i>&nbsp;     * WARNING: Drops all table on Upgrade! Use only during development.
-<i>36</i>&nbsp;     * Convenience method using a {@link DevOpenHelper}.
-<i>37</i>&nbsp;     */
-<i>38</i>&nbsp;    public static DaoSession newDevSession(Context context, String name) {
-<b class="nc"><i>39</i>&nbsp;        Database db = new DevOpenHelper(context, name).getWritableDb();</b>
-<b class="nc"><i>40</i>&nbsp;        DaoMaster daoMaster = new DaoMaster(db);</b>
-<b class="nc"><i>41</i>&nbsp;        return daoMaster.newSession();</b>
-<i>42</i>&nbsp;    }
-<i>43</i>&nbsp;
-<i>44</i>&nbsp;    public DaoMaster(SQLiteDatabase db) {
-<b class="nc"><i>45</i>&nbsp;        this(new StandardDatabase(db));</b>
+<b class="nc"><i>24</i>&nbsp;        FriendDao.createTable(db, ifNotExists);</b>
+<b class="nc"><i>25</i>&nbsp;        MessageDao.createTable(db, ifNotExists);</b>
+<b class="nc"><i>26</i>&nbsp;        UserDao.createTable(db, ifNotExists);</b>
+<b class="nc"><i>27</i>&nbsp;        UserSettingsDao.createTable(db, ifNotExists);</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /** Drops underlying database table using DAOs. */
+<i>31</i>&nbsp;    public static void dropAllTables(Database db, boolean ifExists) {
+<b class="nc"><i>32</i>&nbsp;        FriendDao.dropTable(db, ifExists);</b>
+<b class="nc"><i>33</i>&nbsp;        MessageDao.dropTable(db, ifExists);</b>
+<b class="nc"><i>34</i>&nbsp;        UserDao.dropTable(db, ifExists);</b>
+<b class="nc"><i>35</i>&nbsp;        UserSettingsDao.dropTable(db, ifExists);</b>
+<i>36</i>&nbsp;    }
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    /**
+<i>39</i>&nbsp;     * WARNING: Drops all table on Upgrade! Use only during development.
+<i>40</i>&nbsp;     * Convenience method using a {@link DevOpenHelper}.
+<i>41</i>&nbsp;     */
+<i>42</i>&nbsp;    public static DaoSession newDevSession(Context context, String name) {
+<b class="nc"><i>43</i>&nbsp;        Database db = new DevOpenHelper(context, name).getWritableDb();</b>
+<b class="nc"><i>44</i>&nbsp;        DaoMaster daoMaster = new DaoMaster(db);</b>
+<b class="nc"><i>45</i>&nbsp;        return daoMaster.newSession();</b>
 <i>46</i>&nbsp;    }
 <i>47</i>&nbsp;
-<i>48</i>&nbsp;    public DaoMaster(Database db) {
-<b class="nc"><i>49</i>&nbsp;        super(db, SCHEMA_VERSION);</b>
-<b class="nc"><i>50</i>&nbsp;        registerDaoClass(UserDao.class);</b>
-<b class="nc"><i>51</i>&nbsp;        registerDaoClass(UserSettingsDao.class);</b>
-<i>52</i>&nbsp;    }
-<i>53</i>&nbsp;
-<i>54</i>&nbsp;    public DaoSession newSession() {
-<b class="nc"><i>55</i>&nbsp;        return new DaoSession(db, IdentityScopeType.Session, daoConfigMap);</b>
-<i>56</i>&nbsp;    }
-<i>57</i>&nbsp;
-<i>58</i>&nbsp;    public DaoSession newSession(IdentityScopeType type) {
-<b class="nc"><i>59</i>&nbsp;        return new DaoSession(db, type, daoConfigMap);</b>
-<i>60</i>&nbsp;    }
-<i>61</i>&nbsp;
-<i>62</i>&nbsp;    /**
-<i>63</i>&nbsp;     * Calls {@link #createAllTables(Database, boolean)} in {@link #onCreate(Database)} -
-<i>64</i>&nbsp;     */
-<i>65</i>&nbsp;    public static abstract class OpenHelper extends DatabaseOpenHelper {
-<i>66</i>&nbsp;        public OpenHelper(Context context, String name) {
-<b class="nc"><i>67</i>&nbsp;            super(context, name, SCHEMA_VERSION);</b>
-<i>68</i>&nbsp;        }
-<i>69</i>&nbsp;
-<i>70</i>&nbsp;        public OpenHelper(Context context, String name, CursorFactory factory) {
-<b class="nc"><i>71</i>&nbsp;            super(context, name, factory, SCHEMA_VERSION);</b>
-<i>72</i>&nbsp;        }
-<i>73</i>&nbsp;
-<i>74</i>&nbsp;        @Override
-<i>75</i>&nbsp;        public void onCreate(Database db) {
-<b class="nc"><i>76</i>&nbsp;            Log.i(&quot;greenDAO&quot;, &quot;Creating tables for schema version &quot; + SCHEMA_VERSION);</b>
-<b class="nc"><i>77</i>&nbsp;            createAllTables(db, false);</b>
+<i>48</i>&nbsp;    public DaoMaster(SQLiteDatabase db) {
+<b class="nc"><i>49</i>&nbsp;        this(new StandardDatabase(db));</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    public DaoMaster(Database db) {
+<b class="nc"><i>53</i>&nbsp;        super(db, SCHEMA_VERSION);</b>
+<b class="nc"><i>54</i>&nbsp;        registerDaoClass(FriendDao.class);</b>
+<b class="nc"><i>55</i>&nbsp;        registerDaoClass(MessageDao.class);</b>
+<b class="nc"><i>56</i>&nbsp;        registerDaoClass(UserDao.class);</b>
+<b class="nc"><i>57</i>&nbsp;        registerDaoClass(UserSettingsDao.class);</b>
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    public DaoSession newSession() {
+<b class="nc"><i>61</i>&nbsp;        return new DaoSession(db, IdentityScopeType.Session, daoConfigMap);</b>
+<i>62</i>&nbsp;    }
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;    public DaoSession newSession(IdentityScopeType type) {
+<b class="nc"><i>65</i>&nbsp;        return new DaoSession(db, type, daoConfigMap);</b>
+<i>66</i>&nbsp;    }
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    /**
+<i>69</i>&nbsp;     * Calls {@link #createAllTables(Database, boolean)} in {@link #onCreate(Database)} -
+<i>70</i>&nbsp;     */
+<i>71</i>&nbsp;    public static abstract class OpenHelper extends DatabaseOpenHelper {
+<i>72</i>&nbsp;        public OpenHelper(Context context, String name) {
+<b class="nc"><i>73</i>&nbsp;            super(context, name, SCHEMA_VERSION);</b>
+<i>74</i>&nbsp;        }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;        public OpenHelper(Context context, String name, CursorFactory factory) {
+<b class="nc"><i>77</i>&nbsp;            super(context, name, factory, SCHEMA_VERSION);</b>
 <i>78</i>&nbsp;        }
-<i>79</i>&nbsp;    }
-<i>80</i>&nbsp;
-<i>81</i>&nbsp;    /** WARNING: Drops all table on Upgrade! Use only during development. */
-<i>82</i>&nbsp;    public static class DevOpenHelper extends OpenHelper {
-<i>83</i>&nbsp;        public DevOpenHelper(Context context, String name) {
-<b class="nc"><i>84</i>&nbsp;            super(context, name);</b>
-<i>85</i>&nbsp;        }
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;        @Override
+<i>81</i>&nbsp;        public void onCreate(Database db) {
+<b class="nc"><i>82</i>&nbsp;            Log.i(&quot;greenDAO&quot;, &quot;Creating tables for schema version &quot; + SCHEMA_VERSION);</b>
+<b class="nc"><i>83</i>&nbsp;            createAllTables(db, false);</b>
+<i>84</i>&nbsp;        }
+<i>85</i>&nbsp;    }
 <i>86</i>&nbsp;
-<i>87</i>&nbsp;        public DevOpenHelper(Context context, String name, CursorFactory factory) {
-<b class="nc"><i>88</i>&nbsp;            super(context, name, factory);</b>
-<i>89</i>&nbsp;        }
-<i>90</i>&nbsp;
-<i>91</i>&nbsp;        @Override
-<i>92</i>&nbsp;        public void onUpgrade(Database db, int oldVersion, int newVersion) {
-<b class="nc"><i>93</i>&nbsp;            Log.i(&quot;greenDAO&quot;, &quot;Upgrading schema from version &quot; + oldVersion + &quot; to &quot; + newVersion + &quot; by dropping all tables&quot;);</b>
-<b class="nc"><i>94</i>&nbsp;            dropAllTables(db, true);</b>
-<b class="nc"><i>95</i>&nbsp;            onCreate(db);</b>
-<i>96</i>&nbsp;        }
-<i>97</i>&nbsp;    }
-<i>98</i>&nbsp;
-<i>99</i>&nbsp;}
+<i>87</i>&nbsp;    /** WARNING: Drops all table on Upgrade! Use only during development. */
+<i>88</i>&nbsp;    public static class DevOpenHelper extends OpenHelper {
+<i>89</i>&nbsp;        public DevOpenHelper(Context context, String name) {
+<b class="nc"><i>90</i>&nbsp;            super(context, name);</b>
+<i>91</i>&nbsp;        }
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;        public DevOpenHelper(Context context, String name, CursorFactory factory) {
+<b class="nc"><i>94</i>&nbsp;            super(context, name, factory);</b>
+<i>95</i>&nbsp;        }
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;        @Override
+<i>98</i>&nbsp;        public void onUpgrade(Database db, int oldVersion, int newVersion) {
+<b class="nc"><i>99</i>&nbsp;            Log.i(&quot;greenDAO&quot;, &quot;Upgrading schema from version &quot; + oldVersion + &quot; to &quot; + newVersion + &quot; by dropping all tables&quot;);</b>
+<b class="nc"><i>100</i>&nbsp;            dropAllTables(db, true);</b>
+<b class="nc"><i>101</i>&nbsp;            onCreate(db);</b>
+<i>102</i>&nbsp;        }
+<i>103</i>&nbsp;    }
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 10)
+    (0/ 12)
   </span>
 </td>
 </tr>
@@ -79,45 +79,48 @@
 <i>5</i>&nbsp;import android.support.annotation.UiThread;
 <i>6</i>&nbsp;import android.view.View;
 <i>7</i>&nbsp;import android.widget.EditText;
-<i>8</i>&nbsp;import butterknife.Unbinder;
-<i>9</i>&nbsp;import butterknife.internal.Utils;
-<i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
-<i>11</i>&nbsp;import java.lang.IllegalStateException;
-<i>12</i>&nbsp;import java.lang.Override;
-<i>13</i>&nbsp;
-<i>14</i>&nbsp;public class ProfileActivity_ViewBinding implements Unbinder {
-<i>15</i>&nbsp;  private ProfileActivity target;
-<i>16</i>&nbsp;
-<i>17</i>&nbsp;  @UiThread
-<i>18</i>&nbsp;  public ProfileActivity_ViewBinding(ProfileActivity target) {
-<b class="nc"><i>19</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
-<i>20</i>&nbsp;  }
-<i>21</i>&nbsp;
-<i>22</i>&nbsp;  @UiThread
-<b class="nc"><i>23</i>&nbsp;  public ProfileActivity_ViewBinding(ProfileActivity target, View source) {</b>
-<b class="nc"><i>24</i>&nbsp;    this.target = target;</b>
-<i>25</i>&nbsp;
-<b class="nc"><i>26</i>&nbsp;    target.name = Utils.findRequiredViewAsType(source, R.id.profileActivity_nameText, &quot;field &#39;name&#39;&quot;, EditText.class);</b>
-<b class="nc"><i>27</i>&nbsp;    target.tel = Utils.findRequiredViewAsType(source, R.id.profileActivity_telText, &quot;field &#39;tel&#39;&quot;, EditText.class);</b>
-<i>28</i>&nbsp;  }
-<i>29</i>&nbsp;
-<i>30</i>&nbsp;  @Override
-<i>31</i>&nbsp;  @CallSuper
-<i>32</i>&nbsp;  public void unbind() {
-<b class="nc"><i>33</i>&nbsp;    ProfileActivity target = this.target;</b>
-<b class="nc"><i>34</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
-<b class="nc"><i>35</i>&nbsp;    this.target = null;</b>
-<i>36</i>&nbsp;
-<b class="nc"><i>37</i>&nbsp;    target.name = null;</b>
-<b class="nc"><i>38</i>&nbsp;    target.tel = null;</b>
-<i>39</i>&nbsp;  }
-<i>40</i>&nbsp;}
+<i>8</i>&nbsp;import android.widget.ProgressBar;
+<i>9</i>&nbsp;import butterknife.Unbinder;
+<i>10</i>&nbsp;import butterknife.internal.Utils;
+<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>12</i>&nbsp;import java.lang.IllegalStateException;
+<i>13</i>&nbsp;import java.lang.Override;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;public class ProfileActivity_ViewBinding implements Unbinder {
+<i>16</i>&nbsp;  private ProfileActivity target;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;  @UiThread
+<i>19</i>&nbsp;  public ProfileActivity_ViewBinding(ProfileActivity target) {
+<b class="nc"><i>20</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
+<i>21</i>&nbsp;  }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;  @UiThread
+<b class="nc"><i>24</i>&nbsp;  public ProfileActivity_ViewBinding(ProfileActivity target, View source) {</b>
+<b class="nc"><i>25</i>&nbsp;    this.target = target;</b>
+<i>26</i>&nbsp;
+<b class="nc"><i>27</i>&nbsp;    target.name = Utils.findRequiredViewAsType(source, R.id.profileActivity_nameText, &quot;field &#39;name&#39;&quot;, EditText.class);</b>
+<b class="nc"><i>28</i>&nbsp;    target.tel = Utils.findRequiredViewAsType(source, R.id.profileActivity_telText, &quot;field &#39;tel&#39;&quot;, EditText.class);</b>
+<b class="nc"><i>29</i>&nbsp;    target.saveProgress = Utils.findRequiredViewAsType(source, R.id.profileActivity_progressBar, &quot;field &#39;saveProgress&#39;&quot;, ProgressBar.class);</b>
+<i>30</i>&nbsp;  }
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;  @Override
+<i>33</i>&nbsp;  @CallSuper
+<i>34</i>&nbsp;  public void unbind() {
+<b class="nc"><i>35</i>&nbsp;    ProfileActivity target = this.target;</b>
+<b class="nc"><i>36</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
+<b class="nc"><i>37</i>&nbsp;    this.target = null;</b>
+<i>38</i>&nbsp;
+<b class="nc"><i>39</i>&nbsp;    target.name = null;</b>
+<b class="nc"><i>40</i>&nbsp;    target.tel = null;</b>
+<b class="nc"><i>41</i>&nbsp;    target.saveProgress = null;</b>
+<i>42</i>&nbsp;  }
+<i>43</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

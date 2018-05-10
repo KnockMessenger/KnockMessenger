@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 15)
+    (0/ 16)
   </span>
 </td>
 </tr>
@@ -97,107 +97,111 @@
 <i>23</i>&nbsp;    public static String MODE_PREFERENCE_KEY;
 <i>24</i>&nbsp;    public static String SHORT_UNIT_TIME_PREFERENCE_KEY;
 <i>25</i>&nbsp;    public static String MIC_SENSITIVITY_PREFERENCE_KEY;
-<i>26</i>&nbsp;
-<i>27</i>&nbsp;    public static final boolean DEFAULT_BOOLEAN = false;
-<i>28</i>&nbsp;    public static final String DEFAULT_STRING = &quot;&quot;;
-<i>29</i>&nbsp;    public static final int DEFAULT_INT = 0;
-<i>30</i>&nbsp;
-<i>31</i>&nbsp;    public static final boolean MORSE_MODE_ENABLED = true;
-<i>32</i>&nbsp;
-<i>33</i>&nbsp;    /// CONSTANTS -- END
-<i>34</i>&nbsp;
-<i>35</i>&nbsp;    private SharedPreferences sharedPreferences;
-<i>36</i>&nbsp;    private SharedPreferences.Editor editor;
+<i>26</i>&nbsp;    public static String SYSTEM_NOTIFICATION_PREFERENCE_KEY;
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    public static final boolean DEFAULT_BOOLEAN = true;
+<i>29</i>&nbsp;    public static final int DEFAULT_MIC_SENSITIVITY = 5;
+<i>30</i>&nbsp;    public static final int DEFAULT_MEASURE_TIME = 500;
+<i>31</i>&nbsp;    public static final String DEFAULT_STRING = &quot;&quot;;
+<i>32</i>&nbsp;    public static final int DEFAULT_INT = 0;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    public static final boolean MORSE_MODE_ENABLED = true;
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /// CONSTANTS -- END
 <i>37</i>&nbsp;
-<i>38</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>39</i>&nbsp;    /// FIELDS -- END
-<i>40</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>41</i>&nbsp;
-<i>42</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>43</i>&nbsp;    /// CONSTRUCTION
-<i>44</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>45</i>&nbsp;
-<b class="nc"><i>46</i>&nbsp;    public SharedPreferenceManager(Context context) {</b>
-<b class="nc"><i>47</i>&nbsp;        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);</b>
-<b class="nc"><i>48</i>&nbsp;        editor = sharedPreferences.edit();</b>
-<i>49</i>&nbsp;
-<b class="nc"><i>50</i>&nbsp;        initPreferenceKeys(context);</b>
-<i>51</i>&nbsp;    }
+<i>38</i>&nbsp;    private SharedPreferences sharedPreferences;
+<i>39</i>&nbsp;    private SharedPreferences.Editor editor;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>42</i>&nbsp;    /// FIELDS -- END
+<i>43</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>46</i>&nbsp;    /// CONSTRUCTION
+<i>47</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>48</i>&nbsp;
+<b class="nc"><i>49</i>&nbsp;    public SharedPreferenceManager(Context context) {</b>
+<b class="nc"><i>50</i>&nbsp;        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);</b>
+<b class="nc"><i>51</i>&nbsp;        editor = sharedPreferences.edit();</b>
 <i>52</i>&nbsp;
-<i>53</i>&nbsp;    /**
-<i>54</i>&nbsp;     * This methods inits the keys of the preferences from the resource files.
-<i>55</i>&nbsp;     * @param context the application&#39;s context.
-<i>56</i>&nbsp;     */
-<i>57</i>&nbsp;
-<i>58</i>&nbsp;    private void initPreferenceKeys(Context context) {
-<b class="nc"><i>59</i>&nbsp;        VIBRATION_PREFERENCE_KEY = context.getString(R.string.pref_key_vibration);</b>
-<b class="nc"><i>60</i>&nbsp;        SOUNDS_PREFERENCE_KEY = context.getString(R.string.pref_key_sounds);</b>
-<b class="nc"><i>61</i>&nbsp;        MODE_PREFERENCE_KEY = context.getString(R.string.pref_key_mode);</b>
-<b class="nc"><i>62</i>&nbsp;        SHORT_UNIT_TIME_PREFERENCE_KEY = context.getString(R.string.pref_shortUnit_time_key);</b>
-<b class="nc"><i>63</i>&nbsp;        MIC_SENSITIVITY_PREFERENCE_KEY = context.getString(R.string.pref_mic_sensitivity);</b>
-<i>64</i>&nbsp;    }
-<i>65</i>&nbsp;
-<i>66</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>67</i>&nbsp;    /// CONSTRUCTION -- END
-<i>68</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<b class="nc"><i>53</i>&nbsp;        initPreferenceKeys(context);</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    /**
+<i>57</i>&nbsp;     * This methods inits the keys of the preferences from the resource files.
+<i>58</i>&nbsp;     * @param context the application&#39;s context.
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    private void initPreferenceKeys(Context context) {
+<b class="nc"><i>62</i>&nbsp;        VIBRATION_PREFERENCE_KEY = context.getString(R.string.pref_key_vibration);</b>
+<b class="nc"><i>63</i>&nbsp;        SOUNDS_PREFERENCE_KEY = context.getString(R.string.pref_key_sounds);</b>
+<b class="nc"><i>64</i>&nbsp;        MODE_PREFERENCE_KEY = context.getString(R.string.pref_key_mode);</b>
+<b class="nc"><i>65</i>&nbsp;        SHORT_UNIT_TIME_PREFERENCE_KEY = context.getString(R.string.pref_shortUnit_time_key);</b>
+<b class="nc"><i>66</i>&nbsp;        MIC_SENSITIVITY_PREFERENCE_KEY = context.getString(R.string.pref_mic_sensitivity);</b>
+<b class="nc"><i>67</i>&nbsp;        SYSTEM_NOTIFICATION_PREFERENCE_KEY = context.getString(R.string.pref_system_notification);</b>
+<i>68</i>&nbsp;    }
 <i>69</i>&nbsp;
 <i>70</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>71</i>&nbsp;    /// PREFERENCE HANDLING METHODS
+<i>71</i>&nbsp;    /// CONSTRUCTION -- END
 <i>72</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
 <i>73</i>&nbsp;
-<i>74</i>&nbsp;    /**
-<i>75</i>&nbsp;     * Persists a preference type of integer.
-<i>76</i>&nbsp;     * @param key the preference&#39;s key.
-<i>77</i>&nbsp;     * @param value the value to save.
-<i>78</i>&nbsp;     */
-<i>79</i>&nbsp;
-<i>80</i>&nbsp;    public void saveInt(String key, int value) {
-<b class="nc"><i>81</i>&nbsp;        editor.putInt(key, value);</b>
-<b class="nc"><i>82</i>&nbsp;        editor.commit();</b>
-<i>83</i>&nbsp;    }
-<i>84</i>&nbsp;
-<i>85</i>&nbsp;    /**
-<i>86</i>&nbsp;     * Persists a preference type of boolean.
-<i>87</i>&nbsp;     * @param key the preference&#39;s key.
-<i>88</i>&nbsp;     * @param value the value to save
-<i>89</i>&nbsp;     */
-<i>90</i>&nbsp;    public void saveBoolean(String key, boolean value) {
-<b class="nc"><i>91</i>&nbsp;        editor.putBoolean(key, value);</b>
-<b class="nc"><i>92</i>&nbsp;        editor.commit();</b>
-<i>93</i>&nbsp;    }
-<i>94</i>&nbsp;
-<i>95</i>&nbsp;    /**
-<i>96</i>&nbsp;     * Get the value of a persisted (int type) preference if exists, otherwise returns a default value
-<i>97</i>&nbsp;     * of the returning type.
-<i>98</i>&nbsp;     * @param key the preference&#39;s key.
-<i>99</i>&nbsp;     * @return
-<i>100</i>&nbsp;     */
-<i>101</i>&nbsp;
-<i>102</i>&nbsp;    public boolean getBoolean(String key) {
-<b class="nc"><i>103</i>&nbsp;        return sharedPreferences.getBoolean(key, DEFAULT_BOOLEAN);</b>
-<i>104</i>&nbsp;    }
+<i>74</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>75</i>&nbsp;    /// PREFERENCE HANDLING METHODS
+<i>76</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    /**
+<i>79</i>&nbsp;     * Persists a preference type of integer.
+<i>80</i>&nbsp;     * @param key the preference&#39;s key.
+<i>81</i>&nbsp;     * @param value the value to save.
+<i>82</i>&nbsp;     */
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    public void saveInt(String key, int value) {
+<b class="nc"><i>85</i>&nbsp;        editor.putInt(key, value);</b>
+<b class="nc"><i>86</i>&nbsp;        editor.commit();</b>
+<i>87</i>&nbsp;    }
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    /**
+<i>90</i>&nbsp;     * Persists a preference type of boolean.
+<i>91</i>&nbsp;     * @param key the preference&#39;s key.
+<i>92</i>&nbsp;     * @param value the value to save
+<i>93</i>&nbsp;     */
+<i>94</i>&nbsp;    public void saveBoolean(String key, boolean value) {
+<b class="nc"><i>95</i>&nbsp;        editor.putBoolean(key, value);</b>
+<b class="nc"><i>96</i>&nbsp;        editor.commit();</b>
+<i>97</i>&nbsp;    }
+<i>98</i>&nbsp;
+<i>99</i>&nbsp;    /**
+<i>100</i>&nbsp;     * Get the value of a persisted (int type) preference if exists, otherwise returns a default value
+<i>101</i>&nbsp;     * of the returning type.
+<i>102</i>&nbsp;     * @param key the preference&#39;s key.
+<i>103</i>&nbsp;     * @return
+<i>104</i>&nbsp;     */
 <i>105</i>&nbsp;
-<i>106</i>&nbsp;    /**
-<i>107</i>&nbsp;     * Get the value of a persisted (boolean type) preference if exists, otherwise returns a default value
-<i>108</i>&nbsp;     * of the returning type.
-<i>109</i>&nbsp;     * @param key the preference&#39;s key.
-<i>110</i>&nbsp;     * @return
-<i>111</i>&nbsp;     */
-<i>112</i>&nbsp;
-<i>113</i>&nbsp;    public int getInt(String key) {
-<b class="nc"><i>114</i>&nbsp;        return sharedPreferences.getInt(key, DEFAULT_INT);</b>
-<i>115</i>&nbsp;    }
+<i>106</i>&nbsp;    public boolean getBoolean(String key) {
+<b class="nc"><i>107</i>&nbsp;        return sharedPreferences.getBoolean(key, DEFAULT_BOOLEAN);</b>
+<i>108</i>&nbsp;    }
+<i>109</i>&nbsp;
+<i>110</i>&nbsp;    /**
+<i>111</i>&nbsp;     * Get the value of a persisted (boolean type) preference if exists, otherwise returns a default value
+<i>112</i>&nbsp;     * of the returning type.
+<i>113</i>&nbsp;     * @param key the preference&#39;s key.
+<i>114</i>&nbsp;     * @return
+<i>115</i>&nbsp;     */
 <i>116</i>&nbsp;
-<i>117</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>118</i>&nbsp;    /// PREFERENCE HANDLING METHODS -- END
-<i>119</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>120</i>&nbsp;}
+<i>117</i>&nbsp;    public int getInt(String key) {
+<b class="nc"><i>118</i>&nbsp;        return sharedPreferences.getInt(key, DEFAULT_INT);</b>
+<i>119</i>&nbsp;    }
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>122</i>&nbsp;    /// PREFERENCE HANDLING METHODS -- END
+<i>123</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>124</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

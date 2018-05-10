@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 24)
+    (0/ 36)
   </span>
 </td>
 </tr>
@@ -76,94 +76,130 @@
 <i>2</i>&nbsp;
 <i>3</i>&nbsp;import dagger.MembersInjector;
 <i>4</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManager;
-<i>5</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
-<i>6</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
-<i>7</i>&nbsp;import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
-<i>8</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
-<i>9</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
-<i>10</i>&nbsp;import javax.annotation.Generated;
-<i>11</i>&nbsp;import javax.inject.Provider;
-<i>12</i>&nbsp;
-<b class="nc"><i>13</i>&nbsp;@Generated(</b>
-<i>14</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
-<i>15</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
-<i>16</i>&nbsp;)
-<i>17</i>&nbsp;public final class BaseActivityWithKnockDecoder_MembersInjector
-<i>18</i>&nbsp;    implements MembersInjector&lt;BaseActivityWithKnockDecoder&gt; {
-<i>19</i>&nbsp;  private final Provider&lt;CodeDataManager&gt; codeDataManagerProvider;
-<i>20</i>&nbsp;
-<i>21</i>&nbsp;  private final Provider&lt;MessagesDataManager&gt; messagesDataManagerProvider;
-<i>22</i>&nbsp;
-<i>23</i>&nbsp;  private final Provider&lt;PermissionHandler&gt; permissionHandlerProvider;
+<i>5</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
+<i>6</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
+<i>7</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
+<i>8</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.NotificationManager;
+<i>9</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.ServiceAlarmManager;
+<i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.Managers.SharedPreferenceManager;
+<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
+<i>12</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
+<i>13</i>&nbsp;import hu.vadasz.peter.knockmessenger.Tools.VibratorEngine;
+<i>14</i>&nbsp;import javax.annotation.Generated;
+<i>15</i>&nbsp;import javax.inject.Provider;
+<i>16</i>&nbsp;
+<b class="nc"><i>17</i>&nbsp;@Generated(</b>
+<i>18</i>&nbsp;  value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+<i>19</i>&nbsp;  comments = &quot;https://google.github.io/dagger&quot;
+<i>20</i>&nbsp;)
+<i>21</i>&nbsp;public final class BaseActivityWithKnockDecoder_MembersInjector
+<i>22</i>&nbsp;    implements MembersInjector&lt;BaseActivityWithKnockDecoder&gt; {
+<i>23</i>&nbsp;  private final Provider&lt;CodeDataManager&gt; codeDataManagerProvider;
 <i>24</i>&nbsp;
-<i>25</i>&nbsp;  private final Provider&lt;VibratorEngine&gt; vibratorEngineProvider;
+<i>25</i>&nbsp;  private final Provider&lt;UserDataManager&gt; userDataManagerProvider;
 <i>26</i>&nbsp;
-<i>27</i>&nbsp;  private final Provider&lt;SharedPreferenceManager&gt; sharedPreferenceManagerProvider;
+<i>27</i>&nbsp;  private final Provider&lt;PermissionHandler&gt; permissionHandlerProvider;
 <i>28</i>&nbsp;
-<i>29</i>&nbsp;  private final Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider;
+<i>29</i>&nbsp;  private final Provider&lt;VibratorEngine&gt; vibratorEngineProvider;
 <i>30</i>&nbsp;
-<i>31</i>&nbsp;  public BaseActivityWithKnockDecoder_MembersInjector(
-<i>32</i>&nbsp;      Provider&lt;CodeDataManager&gt; codeDataManagerProvider,
-<i>33</i>&nbsp;      Provider&lt;MessagesDataManager&gt; messagesDataManagerProvider,
-<i>34</i>&nbsp;      Provider&lt;PermissionHandler&gt; permissionHandlerProvider,
-<i>35</i>&nbsp;      Provider&lt;VibratorEngine&gt; vibratorEngineProvider,
-<i>36</i>&nbsp;      Provider&lt;SharedPreferenceManager&gt; sharedPreferenceManagerProvider,
-<b class="nc"><i>37</i>&nbsp;      Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider) {</b>
-<b class="nc"><i>38</i>&nbsp;    assert codeDataManagerProvider != null;</b>
-<b class="nc"><i>39</i>&nbsp;    this.codeDataManagerProvider = codeDataManagerProvider;</b>
-<b class="nc"><i>40</i>&nbsp;    assert messagesDataManagerProvider != null;</b>
-<b class="nc"><i>41</i>&nbsp;    this.messagesDataManagerProvider = messagesDataManagerProvider;</b>
-<b class="nc"><i>42</i>&nbsp;    assert permissionHandlerProvider != null;</b>
-<b class="nc"><i>43</i>&nbsp;    this.permissionHandlerProvider = permissionHandlerProvider;</b>
-<b class="nc"><i>44</i>&nbsp;    assert vibratorEngineProvider != null;</b>
-<b class="nc"><i>45</i>&nbsp;    this.vibratorEngineProvider = vibratorEngineProvider;</b>
-<b class="nc"><i>46</i>&nbsp;    assert sharedPreferenceManagerProvider != null;</b>
-<b class="nc"><i>47</i>&nbsp;    this.sharedPreferenceManagerProvider = sharedPreferenceManagerProvider;</b>
-<b class="nc"><i>48</i>&nbsp;    assert internetConnectionCheckerProvider != null;</b>
-<b class="nc"><i>49</i>&nbsp;    this.internetConnectionCheckerProvider = internetConnectionCheckerProvider;</b>
-<i>50</i>&nbsp;  }
-<i>51</i>&nbsp;
-<i>52</i>&nbsp;  public static MembersInjector&lt;BaseActivityWithKnockDecoder&gt; create(
-<i>53</i>&nbsp;      Provider&lt;CodeDataManager&gt; codeDataManagerProvider,
-<i>54</i>&nbsp;      Provider&lt;MessagesDataManager&gt; messagesDataManagerProvider,
-<i>55</i>&nbsp;      Provider&lt;PermissionHandler&gt; permissionHandlerProvider,
-<i>56</i>&nbsp;      Provider&lt;VibratorEngine&gt; vibratorEngineProvider,
-<i>57</i>&nbsp;      Provider&lt;SharedPreferenceManager&gt; sharedPreferenceManagerProvider,
-<i>58</i>&nbsp;      Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider) {
-<b class="nc"><i>59</i>&nbsp;    return new BaseActivityWithKnockDecoder_MembersInjector(</b>
-<i>60</i>&nbsp;        codeDataManagerProvider,
-<i>61</i>&nbsp;        messagesDataManagerProvider,
-<i>62</i>&nbsp;        permissionHandlerProvider,
-<i>63</i>&nbsp;        vibratorEngineProvider,
-<i>64</i>&nbsp;        sharedPreferenceManagerProvider,
-<i>65</i>&nbsp;        internetConnectionCheckerProvider);
-<i>66</i>&nbsp;  }
-<i>67</i>&nbsp;
-<i>68</i>&nbsp;  @Override
-<i>69</i>&nbsp;  public void injectMembers(BaseActivityWithKnockDecoder instance) {
-<b class="nc"><i>70</i>&nbsp;    if (instance == null) {</b>
-<b class="nc"><i>71</i>&nbsp;      throw new NullPointerException(&quot;Cannot inject members into a null reference&quot;);</b>
-<i>72</i>&nbsp;    }
-<b class="nc"><i>73</i>&nbsp;    ((BaseActivity) instance).codeDataManager = codeDataManagerProvider.get();</b>
-<b class="nc"><i>74</i>&nbsp;    ((BaseActivity) instance).messagesDataManager = messagesDataManagerProvider.get();</b>
-<b class="nc"><i>75</i>&nbsp;    ((BaseActivity) instance).permissionHandler = permissionHandlerProvider.get();</b>
-<b class="nc"><i>76</i>&nbsp;    ((BaseActivity) instance).vibratorEngine = vibratorEngineProvider.get();</b>
-<b class="nc"><i>77</i>&nbsp;    ((BaseActivity) instance).sharedPreferenceManager = sharedPreferenceManagerProvider.get();</b>
-<b class="nc"><i>78</i>&nbsp;    instance.internetConnectionChecker = internetConnectionCheckerProvider.get();</b>
-<i>79</i>&nbsp;  }
-<i>80</i>&nbsp;
-<i>81</i>&nbsp;  public static void injectInternetConnectionChecker(
-<i>82</i>&nbsp;      BaseActivityWithKnockDecoder instance,
-<i>83</i>&nbsp;      Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider) {
-<b class="nc"><i>84</i>&nbsp;    instance.internetConnectionChecker = internetConnectionCheckerProvider.get();</b>
-<i>85</i>&nbsp;  }
-<i>86</i>&nbsp;}
+<i>31</i>&nbsp;  private final Provider&lt;SharedPreferenceManager&gt; sharedPreferenceManagerProvider;
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;  private final Provider&lt;ServerDataChangeHandler&gt; serverDataChangeHandlerProvider;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;  private final Provider&lt;MessageDataManager&gt; messageDataManagerProvider;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;  private final Provider&lt;NotificationManager&gt; notificationManagerProvider;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;  private final Provider&lt;ServiceAlarmManager&gt; serviceAlarmManagerProvider;
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;  private final Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider;
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;  public BaseActivityWithKnockDecoder_MembersInjector(
+<i>44</i>&nbsp;      Provider&lt;CodeDataManager&gt; codeDataManagerProvider,
+<i>45</i>&nbsp;      Provider&lt;UserDataManager&gt; userDataManagerProvider,
+<i>46</i>&nbsp;      Provider&lt;PermissionHandler&gt; permissionHandlerProvider,
+<i>47</i>&nbsp;      Provider&lt;VibratorEngine&gt; vibratorEngineProvider,
+<i>48</i>&nbsp;      Provider&lt;SharedPreferenceManager&gt; sharedPreferenceManagerProvider,
+<i>49</i>&nbsp;      Provider&lt;ServerDataChangeHandler&gt; serverDataChangeHandlerProvider,
+<i>50</i>&nbsp;      Provider&lt;MessageDataManager&gt; messageDataManagerProvider,
+<i>51</i>&nbsp;      Provider&lt;NotificationManager&gt; notificationManagerProvider,
+<i>52</i>&nbsp;      Provider&lt;ServiceAlarmManager&gt; serviceAlarmManagerProvider,
+<b class="nc"><i>53</i>&nbsp;      Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider) {</b>
+<b class="nc"><i>54</i>&nbsp;    assert codeDataManagerProvider != null;</b>
+<b class="nc"><i>55</i>&nbsp;    this.codeDataManagerProvider = codeDataManagerProvider;</b>
+<b class="nc"><i>56</i>&nbsp;    assert userDataManagerProvider != null;</b>
+<b class="nc"><i>57</i>&nbsp;    this.userDataManagerProvider = userDataManagerProvider;</b>
+<b class="nc"><i>58</i>&nbsp;    assert permissionHandlerProvider != null;</b>
+<b class="nc"><i>59</i>&nbsp;    this.permissionHandlerProvider = permissionHandlerProvider;</b>
+<b class="nc"><i>60</i>&nbsp;    assert vibratorEngineProvider != null;</b>
+<b class="nc"><i>61</i>&nbsp;    this.vibratorEngineProvider = vibratorEngineProvider;</b>
+<b class="nc"><i>62</i>&nbsp;    assert sharedPreferenceManagerProvider != null;</b>
+<b class="nc"><i>63</i>&nbsp;    this.sharedPreferenceManagerProvider = sharedPreferenceManagerProvider;</b>
+<b class="nc"><i>64</i>&nbsp;    assert serverDataChangeHandlerProvider != null;</b>
+<b class="nc"><i>65</i>&nbsp;    this.serverDataChangeHandlerProvider = serverDataChangeHandlerProvider;</b>
+<b class="nc"><i>66</i>&nbsp;    assert messageDataManagerProvider != null;</b>
+<b class="nc"><i>67</i>&nbsp;    this.messageDataManagerProvider = messageDataManagerProvider;</b>
+<b class="nc"><i>68</i>&nbsp;    assert notificationManagerProvider != null;</b>
+<b class="nc"><i>69</i>&nbsp;    this.notificationManagerProvider = notificationManagerProvider;</b>
+<b class="nc"><i>70</i>&nbsp;    assert serviceAlarmManagerProvider != null;</b>
+<b class="nc"><i>71</i>&nbsp;    this.serviceAlarmManagerProvider = serviceAlarmManagerProvider;</b>
+<b class="nc"><i>72</i>&nbsp;    assert internetConnectionCheckerProvider != null;</b>
+<b class="nc"><i>73</i>&nbsp;    this.internetConnectionCheckerProvider = internetConnectionCheckerProvider;</b>
+<i>74</i>&nbsp;  }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;  public static MembersInjector&lt;BaseActivityWithKnockDecoder&gt; create(
+<i>77</i>&nbsp;      Provider&lt;CodeDataManager&gt; codeDataManagerProvider,
+<i>78</i>&nbsp;      Provider&lt;UserDataManager&gt; userDataManagerProvider,
+<i>79</i>&nbsp;      Provider&lt;PermissionHandler&gt; permissionHandlerProvider,
+<i>80</i>&nbsp;      Provider&lt;VibratorEngine&gt; vibratorEngineProvider,
+<i>81</i>&nbsp;      Provider&lt;SharedPreferenceManager&gt; sharedPreferenceManagerProvider,
+<i>82</i>&nbsp;      Provider&lt;ServerDataChangeHandler&gt; serverDataChangeHandlerProvider,
+<i>83</i>&nbsp;      Provider&lt;MessageDataManager&gt; messageDataManagerProvider,
+<i>84</i>&nbsp;      Provider&lt;NotificationManager&gt; notificationManagerProvider,
+<i>85</i>&nbsp;      Provider&lt;ServiceAlarmManager&gt; serviceAlarmManagerProvider,
+<i>86</i>&nbsp;      Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider) {
+<b class="nc"><i>87</i>&nbsp;    return new BaseActivityWithKnockDecoder_MembersInjector(</b>
+<i>88</i>&nbsp;        codeDataManagerProvider,
+<i>89</i>&nbsp;        userDataManagerProvider,
+<i>90</i>&nbsp;        permissionHandlerProvider,
+<i>91</i>&nbsp;        vibratorEngineProvider,
+<i>92</i>&nbsp;        sharedPreferenceManagerProvider,
+<i>93</i>&nbsp;        serverDataChangeHandlerProvider,
+<i>94</i>&nbsp;        messageDataManagerProvider,
+<i>95</i>&nbsp;        notificationManagerProvider,
+<i>96</i>&nbsp;        serviceAlarmManagerProvider,
+<i>97</i>&nbsp;        internetConnectionCheckerProvider);
+<i>98</i>&nbsp;  }
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;  @Override
+<i>101</i>&nbsp;  public void injectMembers(BaseActivityWithKnockDecoder instance) {
+<b class="nc"><i>102</i>&nbsp;    if (instance == null) {</b>
+<b class="nc"><i>103</i>&nbsp;      throw new NullPointerException(&quot;Cannot inject members into a null reference&quot;);</b>
+<i>104</i>&nbsp;    }
+<b class="nc"><i>105</i>&nbsp;    ((BaseActivity) instance).codeDataManager = codeDataManagerProvider.get();</b>
+<b class="nc"><i>106</i>&nbsp;    ((BaseActivity) instance).userDataManager = userDataManagerProvider.get();</b>
+<b class="nc"><i>107</i>&nbsp;    ((BaseActivity) instance).permissionHandler = permissionHandlerProvider.get();</b>
+<b class="nc"><i>108</i>&nbsp;    ((BaseActivity) instance).vibratorEngine = vibratorEngineProvider.get();</b>
+<b class="nc"><i>109</i>&nbsp;    ((BaseActivity) instance).sharedPreferenceManager = sharedPreferenceManagerProvider.get();</b>
+<b class="nc"><i>110</i>&nbsp;    ((BaseActivity) instance).serverDataChangeHandler = serverDataChangeHandlerProvider.get();</b>
+<b class="nc"><i>111</i>&nbsp;    ((BaseActivity) instance).messageDataManager = messageDataManagerProvider.get();</b>
+<b class="nc"><i>112</i>&nbsp;    ((BaseActivity) instance).notificationManager = notificationManagerProvider.get();</b>
+<b class="nc"><i>113</i>&nbsp;    ((BaseActivity) instance).serviceAlarmManager = serviceAlarmManagerProvider.get();</b>
+<b class="nc"><i>114</i>&nbsp;    instance.internetConnectionChecker = internetConnectionCheckerProvider.get();</b>
+<i>115</i>&nbsp;  }
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;  public static void injectInternetConnectionChecker(
+<i>118</i>&nbsp;      BaseActivityWithKnockDecoder instance,
+<i>119</i>&nbsp;      Provider&lt;InternetConnectionChecker&gt; internetConnectionCheckerProvider) {
+<b class="nc"><i>120</i>&nbsp;    instance.internetConnectionChecker = internetConnectionCheckerProvider.get();</b>
+<i>121</i>&nbsp;  }
+<i>122</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

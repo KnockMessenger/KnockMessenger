@@ -42,26 +42,26 @@
   <td class="name">CodeSettingsValidator</td>
 <td class="coverageStat">
   <span class="percent">
-    100%
+    0%
   </span>
   <span class="absValue">
-    (1/ 1)
+    (0/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    85,7%
+    0%
   </span>
   <span class="absValue">
-    (6/ 7)
+    (0/ 7)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    97,2%
+    0%
   </span>
   <span class="absValue">
-    (35/ 36)
+    (0/ 36)
   </span>
 </td>
 </tr>
@@ -114,73 +114,73 @@
 <i>40</i>&nbsp;     */
 <i>41</i>&nbsp;
 <i>42</i>&nbsp;    public static boolean codeExists(List&lt;Code&gt; codes, Code code) {
-<b class="fc"><i>43</i>&nbsp;        for (Code c : codes) {</b>
-<b class="fc"><i>44</i>&nbsp;            if (!c.equals(code) &amp;&amp; c.getNumericCode().equals(code.getNumericCode())) {</b>
-<b class="fc"><i>45</i>&nbsp;                return CODE_EXISTS;</b>
+<b class="nc"><i>43</i>&nbsp;        for (Code c : codes) {</b>
+<b class="nc"><i>44</i>&nbsp;            if (!c.equals(code) &amp;&amp; c.getNumericCode().equals(code.getNumericCode())) {</b>
+<b class="nc"><i>45</i>&nbsp;                return CODE_EXISTS;</b>
 <i>46</i>&nbsp;            }
-<b class="fc"><i>47</i>&nbsp;        }</b>
+<b class="nc"><i>47</i>&nbsp;        }</b>
 <i>48</i>&nbsp;
-<b class="fc"><i>49</i>&nbsp;        return !CODE_EXISTS;</b>
+<b class="nc"><i>49</i>&nbsp;        return !CODE_EXISTS;</b>
 <i>50</i>&nbsp;    }
 <i>51</i>&nbsp;
 <i>52</i>&nbsp;    public static boolean morseCodeIsValid(List&lt;Code&gt; codes, Code code) {
-<b class="fc"><i>53</i>&nbsp;        if (code.getNumericCode().length() &lt; Code.MORSE_CODE_LENGTH_LOWER_LIMIT ||</b>
-<b class="fc"><i>54</i>&nbsp;                code.getText().isEmpty()) {</b>
-<b class="fc"><i>55</i>&nbsp;            return !CODE_IS_VALID;</b>
+<b class="nc"><i>53</i>&nbsp;        if (code.getNumericCode().length() &lt; Code.MORSE_CODE_LENGTH_LOWER_LIMIT ||</b>
+<b class="nc"><i>54</i>&nbsp;                code.getText().isEmpty()) {</b>
+<b class="nc"><i>55</i>&nbsp;            return !CODE_IS_VALID;</b>
 <i>56</i>&nbsp;        }
 <i>57</i>&nbsp;
-<b class="fc"><i>58</i>&nbsp;        return !codeExists(codes, code);</b>
+<b class="nc"><i>58</i>&nbsp;        return !codeExists(codes, code);</b>
 <i>59</i>&nbsp;    }
 <i>60</i>&nbsp;
 <i>61</i>&nbsp;    public static boolean huffmanCodeIsValid(List&lt;Code&gt; codes, Code code) {
-<b class="fc"><i>62</i>&nbsp;        if (code.getNumericCode().length() &lt; Code.HUFFMAN_CODE_LENGTH_LOWER_LIMIT ||</b>
-<b class="fc"><i>63</i>&nbsp;                code.getText().isEmpty()) {</b>
-<b class="fc"><i>64</i>&nbsp;            return !CODE_IS_VALID;</b>
+<b class="nc"><i>62</i>&nbsp;        if (code.getNumericCode().length() &lt; Code.HUFFMAN_CODE_LENGTH_LOWER_LIMIT ||</b>
+<b class="nc"><i>63</i>&nbsp;                code.getText().isEmpty()) {</b>
+<b class="nc"><i>64</i>&nbsp;            return !CODE_IS_VALID;</b>
 <i>65</i>&nbsp;        }
 <i>66</i>&nbsp;
-<b class="fc"><i>67</i>&nbsp;        return codeIsPrefix(codes, code) &amp;&amp; !codeExists(codes, code);</b>
+<b class="nc"><i>67</i>&nbsp;        return codeIsPrefix(codes, code) &amp;&amp; !codeExists(codes, code);</b>
 <i>68</i>&nbsp;    }
 <i>69</i>&nbsp;
 <i>70</i>&nbsp;    public static boolean controlCodeIsValid(List&lt;Code&gt; codes, Code code) {
-<b class="fc"><i>71</i>&nbsp;        List&lt;Code&gt; controls = new ArrayList&lt;&gt;();</b>
-<b class="fc"><i>72</i>&nbsp;        for (Code c : codes) {</b>
-<b class="fc"><i>73</i>&nbsp;            if (!c.isInputSymbol()) {</b>
-<b class="fc"><i>74</i>&nbsp;                controls.add(c);</b>
+<b class="nc"><i>71</i>&nbsp;        List&lt;Code&gt; controls = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>72</i>&nbsp;        for (Code c : codes) {</b>
+<b class="nc"><i>73</i>&nbsp;            if (!c.isInputSymbol()) {</b>
+<b class="nc"><i>74</i>&nbsp;                controls.add(c);</b>
 <i>75</i>&nbsp;            }
-<b class="fc"><i>76</i>&nbsp;        }</b>
+<b class="nc"><i>76</i>&nbsp;        }</b>
 <i>77</i>&nbsp;
-<b class="fc"><i>78</i>&nbsp;        if (code.isMorse()) {</b>
-<b class="fc"><i>79</i>&nbsp;            return morseCodeIsValid(controls, code);</b>
+<b class="nc"><i>78</i>&nbsp;        if (code.isMorse()) {</b>
+<b class="nc"><i>79</i>&nbsp;            return morseCodeIsValid(controls, code);</b>
 <i>80</i>&nbsp;        } else {
-<b class="fc"><i>81</i>&nbsp;            return huffmanCodeIsValid(controls, code);</b>
+<b class="nc"><i>81</i>&nbsp;            return huffmanCodeIsValid(controls, code);</b>
 <i>82</i>&nbsp;        }
 <i>83</i>&nbsp;    }
 <i>84</i>&nbsp;
 <i>85</i>&nbsp;    public static boolean codeIsValid(List&lt;Code&gt; codes, Code code) {
-<b class="fc"><i>86</i>&nbsp;        List&lt;Code&gt; inputs = new ArrayList&lt;&gt;();</b>
-<b class="fc"><i>87</i>&nbsp;        for (Code c : codes) {</b>
-<b class="fc"><i>88</i>&nbsp;            if (c.isInputSymbol()) {</b>
-<b class="fc"><i>89</i>&nbsp;                inputs.add(c);</b>
+<b class="nc"><i>86</i>&nbsp;        List&lt;Code&gt; inputs = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>87</i>&nbsp;        for (Code c : codes) {</b>
+<b class="nc"><i>88</i>&nbsp;            if (c.isInputSymbol()) {</b>
+<b class="nc"><i>89</i>&nbsp;                inputs.add(c);</b>
 <i>90</i>&nbsp;            }
-<b class="fc"><i>91</i>&nbsp;        }</b>
+<b class="nc"><i>91</i>&nbsp;        }</b>
 <i>92</i>&nbsp;
-<b class="fc"><i>93</i>&nbsp;        if (code.isMorse()) {</b>
-<b class="fc"><i>94</i>&nbsp;            return morseCodeIsValid(inputs, code);</b>
+<b class="nc"><i>93</i>&nbsp;        if (code.isMorse()) {</b>
+<b class="nc"><i>94</i>&nbsp;            return morseCodeIsValid(inputs, code);</b>
 <i>95</i>&nbsp;        } else {
-<b class="fc"><i>96</i>&nbsp;            return huffmanCodeIsValid(inputs, code);</b>
+<b class="nc"><i>96</i>&nbsp;            return huffmanCodeIsValid(inputs, code);</b>
 <i>97</i>&nbsp;        }
 <i>98</i>&nbsp;    }
 <i>99</i>&nbsp;
 <i>100</i>&nbsp;    public static boolean codeIsPrefix(List&lt;Code&gt; codes, Code code) {
-<b class="fc"><i>101</i>&nbsp;        if (!code.isMorse()) {</b>
-<b class="fc"><i>102</i>&nbsp;            for (Code c : codes) {</b>
-<b class="fc"><i>103</i>&nbsp;                if (!c.isMorse() &amp;&amp; (c.getNumericCode().startsWith(code.getNumericCode()) || code.getNumericCode().startsWith(c.getNumericCode()))) {</b>
-<b class="fc"><i>104</i>&nbsp;                    return !CODE_IS_PREFIX;</b>
+<b class="nc"><i>101</i>&nbsp;        if (!code.isMorse()) {</b>
+<b class="nc"><i>102</i>&nbsp;            for (Code c : codes) {</b>
+<b class="nc"><i>103</i>&nbsp;                if (!c.isMorse() &amp;&amp; !c.equals(code) &amp;&amp; (c.getNumericCode().startsWith(code.getNumericCode()) || code.getNumericCode().startsWith(c.getNumericCode()))) {</b>
+<b class="nc"><i>104</i>&nbsp;                    return !CODE_IS_PREFIX;</b>
 <i>105</i>&nbsp;                }
-<b class="fc"><i>106</i>&nbsp;            }</b>
+<b class="nc"><i>106</i>&nbsp;            }</b>
 <i>107</i>&nbsp;        }
 <i>108</i>&nbsp;
-<b class="fc"><i>109</i>&nbsp;        return CODE_IS_PREFIX;</b>
+<b class="nc"><i>109</i>&nbsp;        return CODE_IS_PREFIX;</b>
 <i>110</i>&nbsp;    }
 <i>111</i>&nbsp;
 <i>112</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,7 +192,7 @@
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>
