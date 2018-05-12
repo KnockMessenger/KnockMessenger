@@ -6,11 +6,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
-import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
-import hu.vadasz.peter.knockmessenger.Models.Interfaces.MessageSenderInterface;
-import hu.vadasz.peter.knockmessenger.Models.MessageSender;
+import hu.vadasz.peter.knockmessenger.MessageSending.Interfaces.MessageSenderInterface;
+import hu.vadasz.peter.knockmessenger.MessageSending.MessageSender;
 import hu.vadasz.peter.knockmessenger.Controllers.Exceptions.*;
+import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
+import lombok.Setter;
 
 /**
  * This class is responsible for controlling the message sending service, error handling,
@@ -39,8 +40,10 @@ public class MessageSendingController implements ValueEventListener, TimeoutHand
 
     /// CONSTANTS -- END
 
+    @Setter
     private MessageSenderInterface messageSender;
 
+    @Setter
     private InternetConnectionValidator internetConnectionValidator;
 
     private TimeoutHandler timeoutHandler;
@@ -62,6 +65,15 @@ public class MessageSendingController implements ValueEventListener, TimeoutHand
                                     MessageSendingControllerListener listener) {
         messageSender = new MessageSender(messageSendingVisualizer, messageDataManager);
         internetConnectionValidator = new InternetConnectionValidator();
+        timeoutHandler = new TimeoutHandler(TimeoutHandler.DEFAULT_MEDIUM_TIMEOUT, this);
+        this.listener = listener;
+
+    }
+
+    public MessageSendingController(MessageSender.MessageSendingVisualizer messageSendingVisualizer, MessageDataManager messageDataManager,
+                                    MessageSendingControllerListener listener, InternetConnectionChecker internetConnectionChecker) {
+        messageSender = new MessageSender(messageSendingVisualizer, messageDataManager);
+        internetConnectionValidator = new InternetConnectionValidator(internetConnectionChecker);
         timeoutHandler = new TimeoutHandler(TimeoutHandler.DEFAULT_MEDIUM_TIMEOUT, this);
         this.listener = listener;
 

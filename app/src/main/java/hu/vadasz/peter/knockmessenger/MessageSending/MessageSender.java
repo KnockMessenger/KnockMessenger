@@ -1,17 +1,16 @@
-package hu.vadasz.peter.knockmessenger.Models;
+package hu.vadasz.peter.knockmessenger.MessageSending;
 
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import org.joda.time.DateTime;
-import org.joda.time.LocalDateTime;
 
 import java.util.ArrayList;
 
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Message;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
-import hu.vadasz.peter.knockmessenger.Models.Interfaces.MessageSenderInterface;
+import hu.vadasz.peter.knockmessenger.MessageSending.Interfaces.MessageSenderInterface;
 import lombok.Getter;
 
 /**

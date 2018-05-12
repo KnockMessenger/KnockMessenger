@@ -11,6 +11,7 @@ import hu.vadasz.peter.knockmessenger.Controllers.Validators.UserValidator;
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManager;
 import hu.vadasz.peter.knockmessenger.R;
+import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
 
 /**
  * Created by Peti on 2018. 04. 11..
@@ -26,6 +27,12 @@ public class UserController {
         this.dataManager = dataManager;
         this.context = context;
         internetConnectionValidator = new InternetConnectionValidator();
+    }
+
+    public UserController(UserDataManager dataManager, Context context, InternetConnectionChecker internetConnectionChecker) {
+        this.dataManager = dataManager;
+        this.context = context;
+        internetConnectionValidator = new InternetConnectionValidator(internetConnectionChecker);
     }
 
     private void checkConditions(User user) throws DeviceIsOfflineException, InvalidUserException {

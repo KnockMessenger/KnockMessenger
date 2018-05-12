@@ -1,4 +1,4 @@
-package hu.vadasz.peter.knockmessenger.Models.Interfaces;
+package hu.vadasz.peter.knockmessenger.MessageSending.Interfaces;
 
 /**
  * This interface is for using the message sender feature.
