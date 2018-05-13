@@ -40,6 +40,22 @@ public class TimeoutHandler {
         };
     }
 
+    public TimeoutHandler(int timeout, int tickTime, final TimeoutListener listener) {
+        this.timeout = timeout;
+        this.listener = listener;
+
+        timer = new CountDownTimer(timeout, tickTime) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {}
+
+            @Override
+            public void onFinish() {
+                listener.timeout();
+            }
+        };
+    }
+
     public void start() {
         timer.start();
     }

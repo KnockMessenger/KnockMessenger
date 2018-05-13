@@ -95,7 +95,7 @@ public class CodeDataManager {
     }
 
     /**
-     * This methods loads the Morse allCodes from the stored json file to the cache.
+     * This methods loads the Morse Codes from the stored json file to the cache.
      */
 
     public void loadMorseCodes() {

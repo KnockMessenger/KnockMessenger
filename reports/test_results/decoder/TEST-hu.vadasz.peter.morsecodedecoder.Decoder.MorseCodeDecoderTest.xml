@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-05-06T23:15:53" hostname="DESKTOP-GBLJLQR" time="12.26">
+<testsuite name="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2018-05-13T14:18:12" hostname="DESKTOP-GBLJLQR" time="12.301">
   <properties/>
-  <testcase name="testDecode_morseModedecoderShouldChangeStateToInputMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.105"/>
-  <testcase name="testDecode_morseModeDecoderShouldChangeStateToEditMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.101"/>
-  <testcase name="testDecode_inputModeDecoderShouldDecodeCorrectHuffmanSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
-  <testcase name="testDecode_huffmanModeEditModeDecoderShouldReturnCorrectControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.101"/>
-  <testcase name="testDecode_huffmanModeDecoderShouldChangeStateToEditMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.103"/>
-  <testcase name="testDecode_huffmanModedecoderShouldChangeStateToInputMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.101"/>
-  <testcase name="testDecode_huffmanInputModeDecoderDecodeCorrectMorseSymbolTwoTimes" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.104"/>
-  <testcase name="testDecode_huffmanTimeout" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="11.01"/>
-  <testcase name="testDecode_morseModeEditModeDecoderShouldReturnCorrectControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.105"/>
-  <testcase name="testDecode_morseModeDecoderShouldCallErrorMethodBecauseCodeNotExists" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.101"/>
-  <testcase name="testDecode_inputModeDecoderStoppedWithGapShouldDecodeCorrectMorseSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.101"/>
-  <testcase name="testDecode_inputModeDecoderStoppedWithGapShouldDecodeCorrectMorseSymbolTwoTimes" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.103"/>
-  <testcase name="testDecode_inputModeDecoderStoppedWithSpaceShouldDecodeCorrectMorseSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.103"/>
+  <testcase name="testDecode_morseModedecoderShouldChangeStateToInputMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.137"/>
+  <testcase name="testDecode_morseModeDecoderShouldChangeStateToEditMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
+  <testcase name="testDecode_inputModeDecoderShouldDecodeCorrectHuffmanSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.103"/>
+  <testcase name="testDecode_huffmanModeEditModeDecoderShouldReturnCorrectControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.104"/>
+  <testcase name="testDecode_huffmanModeDecoderShouldChangeStateToEditMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
+  <testcase name="testDecode_huffmanInputModeDecoderDecodeCorrectMorseSymbolTwoTimes" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.101"/>
+  <testcase name="testDecode_huffmanTimeout" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="11.003"/>
+  <testcase name="testDecode_morseModeEditModeDecoderShouldReturnCorrectControlSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
+  <testcase name="testDecode_morseModeDecoderShouldCallErrorMethodBecauseCodeNotExists" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.104"/>
+  <testcase name="testDecode_huffmanModeDecoderShouldChangeStateToInputMode" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
+  <testcase name="testDecode_inputModeDecoderStoppedWithGapShouldDecodeCorrectMorseSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.103"/>
+  <testcase name="testDecode_inputModeDecoderStoppedWithGapShouldDecodeCorrectMorseSymbolTwoTimes" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
+  <testcase name="testDecode_inputModeDecoderStoppedWithSpaceShouldDecodeCorrectMorseSymbol" classname="hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoderTest" time="0.102"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

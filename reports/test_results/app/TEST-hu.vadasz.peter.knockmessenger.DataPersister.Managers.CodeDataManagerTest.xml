@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2018-05-13T14:19:48" hostname="DESKTOP-GBLJLQR" time="0.035">
+  <properties/>
+  <testcase name="testLoadMorseCodes_ShouldReturnCorrectCodeList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.002"/>
+  <testcase name="testGetCodeListsFromJson_ShouldReturnCorrectList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.004"/>
+  <testcase name="testJsonFileExists_ShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.001"/>
+  <testcase name="testSaveAllCodesJson_ShouldReturnSaveSuccess" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.002"/>
+  <testcase name="testUpdateCode_ShouldUpdateCode" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.009"/>
+  <testcase name="testAddCode_ShouldCacheCode" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.004"/>
+  <testcase name="testLoadHuffmanCodes_ShouldReturnCorrectCodeList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.001"/>
+  <testcase name="testJsonFileExists_ShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.001"/>
+  <testcase name="testDeleteCode_ShouldCacheCode" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManagerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -12,6 +12,7 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
 import hu.vadasz.peter.knockmessenger.MessageSending.Interfaces.MessageSenderInterface;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Main class for message sending. The message is stored in a buffer until it is sent.
@@ -43,12 +44,14 @@ public class MessageSender implements MessageSenderInterface, DatabaseReference.
 
     public static final String CURSOR = "_";
 
+    @Getter
     private ArrayList<String> buffer;
 
     private MessageSendingVisualizer messageSendingVisualizer;
 
     private MessageDataManager messageDataManager;
 
+    @Setter
     private TimeoutHandler timeoutHandler;
 
     private Message actualMessage;

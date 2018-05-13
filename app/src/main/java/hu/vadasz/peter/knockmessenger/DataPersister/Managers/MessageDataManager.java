@@ -3,11 +3,11 @@ package hu.vadasz.peter.knockmessenger.DataPersister.Managers;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Message;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerSideDatabase;
+import lombok.Getter;
 
 /**
  *
@@ -20,6 +20,7 @@ public class MessageDataManager {
     private DataBaseManager dataBaseManager;
     private ServerSideDatabase serverSideDatabase;
 
+    @Getter
     private List<Message> messages;
 
     public MessageDataManager(DataBaseManager dataBaseManager, ServerSideDatabase serverSideDatabase) {
@@ -34,26 +35,6 @@ public class MessageDataManager {
 
     public void loadMessages() {
         messages = dataBaseManager.loadAllMessages();
-    }
-
-    public List<Message> getMessagesFromTelephone(String fromTelephone) {
-        List<Message> messages = new ArrayList<>();
-        for (Message message : this.messages) {
-            if (message.getFromTelephone().equals(fromTelephone)) {
-                messages.add(message);
-            }
-        }
-        return messages;
-    }
-
-    public List<Message> getMessagesByTelephone(String telephone) {
-        List<Message> messages = new ArrayList<>();
-        for (Message message : this.messages) {
-            if (message.getFromTelephone().equals(telephone) || message.getToTelephone().equals(telephone)) {
-                messages.add(message);
-            }
-        }
-        return messages;
     }
 
     public void requestAllMessages(String telephone, ValueEventListener listener) {
@@ -81,8 +62,4 @@ public class MessageDataManager {
         }
     }
 
-    public synchronized void clearMessages() {
-        dataBaseManager.deleteAllMessages();
-        messages.clear();
-    }
 }

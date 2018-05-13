@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2018-05-13T14:19:48" hostname="DESKTOP-GBLJLQR" time="0.013">
+  <properties/>
+  <testcase name="testGetCursor_CursorPositionShouldBeZero" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.001"/>
+  <testcase name="testHome_CursorShouldBeOne" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.002"/>
+  <testcase name="testDeleteLastPart_ShouldDeleteCorrectly" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.002"/>
+  <testcase name="testGetCursor_CursorPositionShouldBeOne" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.001"/>
+  <testcase name="testAdd_MorePartsShouldContainMoreMessageParts" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.001"/>
+  <testcase name="testAdd_ShouldContainMessagePart" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.001"/>
+  <testcase name="testHome_CursorShouldBeZero" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.002"/>
+  <testcase name="testClear_MessageSenderShouldNotContainAnyMessagePart" classname="hu.vadasz.peter.knockmessenger.MessageSending.MessageSenderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
