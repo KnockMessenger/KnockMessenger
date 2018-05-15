@@ -3,10 +3,6 @@ package hu.vadasz.peter.knockmessenger.Controllers;
 import hu.vadasz.peter.knockmessenger.Activities.BaseActivityWithKnockDecoder;
 import hu.vadasz.peter.morsecodedecoder.Code.Code;
 
-/**
- * Created by Peti on 2018. 05. 12..
- */
-
 public class KnockDetectorActivityTest extends BaseActivityWithKnockDecoder {
     @Override
     public void syllableDetected(int signal) {

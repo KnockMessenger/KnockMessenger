@@ -3,7 +3,6 @@ package hu.vadasz.peter.knockmessenger.Activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,27 +12,21 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import org.joda.time.DateTime;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hu.vadasz.peter.knockmessenger.Adapters.MessageAdapter;
 import hu.vadasz.peter.knockmessenger.Controllers.Validators.ExternalStorageValidator;
-import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator;
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Friend;
-import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Message;
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.CodeDataManager;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
@@ -45,7 +38,7 @@ import hu.vadasz.peter.knockmessenger.Services.MessageReceiverService;
 import hu.vadasz.peter.morsecodedecoder.Decoder.Utils.MorseCodeTable;
 
 /**
- * The application'MORSE_CODE main screen.
+ * The application's main screen.
  */
 
 public class MainScreenActivity extends BaseActivity implements MessageAdapter.MessageAdapterListener,
@@ -57,7 +50,6 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
 
     /// CONSTANTS
 
-    public static final boolean MENU_ITEM_CHECKED = true;
     public static final int SYSTEM_HALT = 0;
 
     /// CONSTANTS -- END
@@ -103,16 +95,6 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*for (int i = 0; i < 250; ++i) {
-            Message m = new Message();
-            m.setDeleted(false);
-            m.setKey("key");
-            m.setDateTime(new DateTime().getMillis());
-            m.setFromTelephone("111111111");
-            m.setToTelephone("123456789");
-            m.setMessage("aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbcccccccccccccccccccccccccc");
-            messageDataManager.newMessage(m);
-        }*/
         setContentView(R.layout.activity_main_screen);
         ButterKnife.bind(this);
 
@@ -201,8 +183,76 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// MessageAdapter.MessageAdapterListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public Friend getActualFriend() {
+        return null;
+    }
+
+    @Override
+    public boolean isFriend(String tel) {
+        return userDataManager.isFriend(tel);
+    }
+
+    @Override
+    public String getUserTel() {
+        return userDataManager.getUser().getTelephone();
+    }
+
+    @Override
+    public User getUser() { return userDataManager.getUser(); }
+
+    @Override
+    public void loading() {
+        //progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dataLoaded() {
+        //progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void noMessages() {
+        Log.i("MAIN_SCREEN", "NO messages");
+        imageView.setVisibility(View.VISIBLE);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ///MessageAdapter.MessageAdapterListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.MessageReceivedListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public void messageReceived() {
+        adapter.dataSetChanged();
+        adapter.notifyDataSetChanged();
+        if (adapter.getItemCount() != 0) {
+            imageView.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.MessageReceivedListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
     /// METHODS
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This method initializes the floating action button's actions listener.
+     */
 
     private void initOnClickListeners() {
         messageSendingButton.setOnClickListener(new View.OnClickListener() {
@@ -237,6 +287,10 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
             codeDataManager.saveAllCodesJson(MorseCodeTable.getDefaultCodeTable(), CodeDataManager.CODE_TABLE_NAME);
         }
     }
+
+    /**
+     * This method initializes the action listener of the main menu's (navigation drawer) items.
+     */
 
     private void initMainMenuEventListeners() {
         navigationView.bringToFront();
@@ -287,6 +341,10 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         userDataManager.loadUser();
     }
 
+    /**
+     * This method deletes the user's data.
+     */
+
     private void deleteUser() {
         messageDataManager.deleteAllMessages();
         userDataManager.deleteAllFriends();
@@ -333,9 +391,18 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         }
     }
 
+    /**
+     * Message sending can be started by this method.
+     */
+
     private void showMessageSendingActivity() {
         showFriendsActivity();
     }
+
+    /**
+     * This method starts the ProfileActivity. If the user already registered then with the persisted
+     * data.
+     */
 
     private void showProfileActivity() {
         if (userDataManager.isLoggedIn()) {
@@ -350,6 +417,10 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         }
     }
 
+    /**
+     * This method starts the FriendActivity if the user is logged in (has registered).
+     */
+
     private void showFriendsActivity() {
         if (!userDataManager.isLoggedIn()) {
             showErrorMessage(getString(R.string.mainScreenActivity_user_dataNotFound_error));
@@ -359,11 +430,19 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
         startActivity(new Intent(this, FriendsActivity.class));
     }
 
+    /**
+     * This method stops the application, but the background services will be running.
+     */
+
     private void exit() {
         moveTaskToBack(true);
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(SYSTEM_HALT);
     }
+
+    /**
+     * This method is used to confirm the deletion of messages.
+     */
 
     private void conFirmDelete() {
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.mainScreenActivity_confirm_delete_text), Snackbar.LENGTH_LONG)
@@ -377,59 +456,15 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
                 .show();
     }
 
+    /**
+     * This method deletes the messages.
+     */
+
     private void deleteAllMessages() {
         messageDataManager.deleteAllMessages();
         adapter.dataSetChanged();
         adapter.notifyDataSetChanged();
         imageView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public Activity getActivity() {
-        return this;
-    }
-
-    @Override
-    public Friend getActualFriend() {
-        return null;
-    }
-
-    @Override
-    public boolean isFriend(String tel) {
-        return userDataManager.isFriend(tel);
-    }
-
-    @Override
-    public String getUserTel() {
-        return userDataManager.getUser().getTelephone();
-    }
-
-    @Override
-    public User getUser() { return userDataManager.getUser(); }
-
-    @Override
-    public void loading() {
-        //progressBar.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void dataLoaded() {
-        //progressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void noMessages() {
-        Log.i("MAIN_SCREEN", "NO messages");
-        imageView.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void messageReceived() {
-        adapter.dataSetChanged();
-        adapter.notifyDataSetChanged();
-        if (adapter.getItemCount() != 0) {
-            imageView.setVisibility(View.INVISIBLE);
-        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

@@ -10,10 +10,6 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Peti on 2018. 05. 13..
- */
-
 @RunWith(MockitoJUnitRunner.class)
 public class MessageSenderTest {
 

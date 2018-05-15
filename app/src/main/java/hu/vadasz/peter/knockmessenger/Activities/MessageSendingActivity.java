@@ -222,6 +222,10 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         soundPreference = sharedPreferenceManager.getBoolean(SharedPreferenceManager.SOUNDS_PREFERENCE_KEY);
     }
 
+    /**
+     * This method initializes the RecyclerView which contains the cards of messages.
+     */
+
     private void initRecyclerView() {
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MessageAdapter(messageDataManager.getMessages(), this);
@@ -257,6 +261,11 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         }
     }
 
+    /**
+     * This method is responsible for showing the detected syllable by vibrating.
+     * @param syllable
+     */
+
     private void visualizeDetectedSyllable(int syllable) {
         if (vibratePreference) {
             if (syllable == ComplexAudioKnockDetector.SHORT_SYLLABLE) {
@@ -267,9 +276,17 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         }
     }
 
+    /**
+     * This method clears the text which represents detected syllables.
+     */
+
     private void clear() {
         detectedSyllableText.setText(EMPTY_TEXT);
     }
+
+    /**
+     * This method changes the icon which represents the state of the decoder (input or edit).
+     */
 
     private void changeModeIcon() {
         if (inputMode) {
@@ -483,15 +500,13 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
     }
 
     @Override
-    public void timeout() {
-        sendingInProgress.setVisibility(View.GONE);
-        showErrorMessage(getString(R.string.connection_timeout_error));
-    }
-
-    @Override
     public void requestUser(ValueEventListener listener) {
         userDataManager.findUser(friend, listener);
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.FriendChangeListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void friendChanged(Friend friend) {
@@ -512,15 +527,13 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
         //this.friend = null;
     }
 
-    @Override
-    public Activity getActivity() {
-        return this;
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.FriendChangeListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @Override
-    public Friend getActualFriend() {
-        return friend;
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.MessageReceivedListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void messageReceived() {
@@ -531,7 +544,24 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
                 adapter.dataSetChanged();
             }
         });
+    }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.MessageReceivedListener -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// MessageAdapter.MessageAdapterListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public Friend getActualFriend() {
+        return friend;
     }
 
     @Override
@@ -550,17 +580,29 @@ public class MessageSendingActivity extends BaseActivityWithKnockDecoder impleme
     }
 
     @Override
-    public void loading() {
-
-    }
+    public void loading() {}
 
     @Override
-    public void dataLoaded() {
-
-    }
+    public void dataLoaded() {}
 
     @Override
-    public void noMessages() {
+    public void noMessages() {}
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// MessageAdapter.MessageAdapterListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// TimeoutHandler.TimeoutListener OVERRIDES END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public void timeout() {
+        sendingInProgress.setVisibility(View.GONE);
+        showErrorMessage(getString(R.string.connection_timeout_error));
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// TimeoutHandler.TimeoutListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

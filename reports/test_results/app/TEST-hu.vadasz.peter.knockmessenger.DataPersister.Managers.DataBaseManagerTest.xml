@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-05-13T14:19:48" hostname="DESKTOP-GBLJLQR" time="0.023">
+<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2018-05-15T00:21:16" hostname="DESKTOP-GBLJLQR" time="0.015">
   <properties/>
-  <testcase name="testLoadAllMessages_ShouldReturnListWithMessages" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.002"/>
-  <testcase name="testFindUser_ShouldReturnNull" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.003"/>
-  <testcase name="testLoadAllFriends_ShouldReturnEmptyList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.006"/>
-  <testcase name="testLoadAllMessages_ShouldReturnEmptyList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.002"/>
-  <testcase name="testFindUser_ShouldReturnCorrectUser" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.002"/>
-  <testcase name="testLoadAllFriends_ShouldReturnListWithFriends" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.003"/>
+  <testcase name="testLoadAllMessages_ShouldReturnListWithMessages" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.003"/>
+  <testcase name="testFindUser_ShouldReturnNull" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.002"/>
+  <testcase name="testLoadAllFriends_ShouldReturnEmptyList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.002"/>
+  <testcase name="testLoadAllMessages_ShouldReturnEmptyList" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.001"/>
+  <testcase name="testFindUser_ShouldReturnCorrectUser" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.001"/>
+  <testcase name="testLoadAllFriends_ShouldReturnListWithFriends" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.DataBaseManagerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

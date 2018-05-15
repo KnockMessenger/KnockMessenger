@@ -1,6 +1,5 @@
 package hu.vadasz.peter.knockmessenger.Controllers;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -9,17 +8,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 import hu.vadasz.peter.knockmessenger.Controllers.Exceptions.CanNotDeleteCharacterException;
 import hu.vadasz.peter.knockmessenger.Controllers.Exceptions.DeviceIsOfflineException;
 import hu.vadasz.peter.knockmessenger.Controllers.Exceptions.EmptyMessageException;
-import hu.vadasz.peter.knockmessenger.Controllers.Validators.InternetConnectionValidator;
 import hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManager;
 import hu.vadasz.peter.knockmessenger.MessageSending.MessageSender;
 import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
-
-/**
- * Created by Peti on 2018. 05. 12..
- */
 
 @RunWith(MockitoJUnitRunner.class)
 public class MessageSendingControllerTest {

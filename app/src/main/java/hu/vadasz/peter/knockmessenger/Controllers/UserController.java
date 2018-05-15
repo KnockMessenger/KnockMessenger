@@ -14,14 +14,26 @@ import hu.vadasz.peter.knockmessenger.R;
 import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
 
 /**
- * Created by Peti on 2018. 04. 11..
+ * This class controls the user data managing.
  */
 
 public class UserController {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     private UserDataManager dataManager;
     private InternetConnectionValidator internetConnectionValidator;
     private Context context;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public UserController(UserDataManager dataManager, Context context) {
         this.dataManager = dataManager;
@@ -35,6 +47,21 @@ public class UserController {
         internetConnectionValidator = new InternetConnectionValidator(internetConnectionChecker);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This method checks if the user's data is valid.
+     * @param user the user to check.
+     * @throws DeviceIsOfflineException
+     * @throws InvalidUserException
+     */
+
     private void checkConditions(User user) throws DeviceIsOfflineException, InvalidUserException {
         if (!internetConnectionValidator.validateConnection()) {
             throw new DeviceIsOfflineException(context.getString(R.string.device_offline_error));
@@ -43,12 +70,20 @@ public class UserController {
         }
     }
 
+    /**
+     * This method tries to save the user's data by accessing the server.
+     * @param user the user to save.
+     * @param listener the class which receives the server's answers.
+     * @throws DeviceIsOfflineException
+     * @throws InvalidUserException
+     */
     public void trySaveUser(User user, ValueEventListener listener) throws DeviceIsOfflineException, InvalidUserException {
         checkConditions(user);
         dataManager.trySaveUser(user.getTelephone(), listener);
     }
 
-    public void deleteUser(User user) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    }
 }

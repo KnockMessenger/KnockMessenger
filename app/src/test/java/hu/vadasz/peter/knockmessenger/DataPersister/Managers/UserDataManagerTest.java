@@ -3,7 +3,6 @@ package hu.vadasz.peter.knockmessenger.DataPersister.Managers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.internal.invocation.CapturesArgumensFromInvocation;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
@@ -17,9 +16,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by Peti on 2018. 05. 13..
- */
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserDataManagerTest {

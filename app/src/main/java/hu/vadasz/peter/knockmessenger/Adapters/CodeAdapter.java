@@ -140,6 +140,10 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.ViewHolder> {
     /// CONTENT UTILS
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * This method sorts the codes in alfabetical order using the text.
+     */
+
     public void sortCodes() {
         Collections.sort(this.codes, new Comparator<Code>() {
 
@@ -150,6 +154,11 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.ViewHolder> {
         });
     }
 
+    /**
+     * This method is called when a code is deleted.
+     * @param position the position of the code in the code's list to be deleted.
+     */
+
     public void onItemDismiss(int position) {
         if (filteredCodes != codes) {
             filteredCodes.remove(position);
@@ -157,12 +166,22 @@ public class CodeAdapter extends RecyclerView.Adapter<CodeAdapter.ViewHolder> {
         codeSettingsListener.deleteCode(codes.get(position));
     }
 
+    /**
+     * This method starts the CodeSettingsActivity.
+     * @param position the position of the code in the code's list to be edited.
+     */
+
     public void showSettings(int position) {
         Intent intent = new Intent(codeSettingsListener.getActivity(), CodeSettingActivity.class);
         intent.putExtra(CodeSettingActivity.EXTRA_IS_UPDATE_CODE,true);
         intent.putExtra(CodeSettingActivity.EXTRA_CODE, filteredCodes.get(position));
         codeSettingsListener.getActivity().startActivityForResult(intent, CODE_UPDATE_REQUEST);
     }
+
+    /**
+     * This method filters the code based on the filterText, this can be used to search among codes.
+     * @param filterText the base text of the filtering.
+     */
 
     public void filter(String filterText) {
         if (filterText == null || filterText.isEmpty()) {

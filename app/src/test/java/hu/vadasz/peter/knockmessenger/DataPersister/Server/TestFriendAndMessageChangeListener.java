@@ -2,10 +2,6 @@ package hu.vadasz.peter.knockmessenger.DataPersister.Server;
 
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Friend;
 
-/**
- * Created by Peti on 2018. 05. 13..
- */
-
 public class TestFriendAndMessageChangeListener implements ServerDataChangeHandler.FriendChangeListener,
         ServerDataChangeHandler.MessageReceivedListener {
 

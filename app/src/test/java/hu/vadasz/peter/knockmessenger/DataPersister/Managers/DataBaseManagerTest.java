@@ -20,10 +20,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by Peti on 2018. 05. 13..
- */
-
 @RunWith(MockitoJUnitRunner.class)
 public class DataBaseManagerTest {
 

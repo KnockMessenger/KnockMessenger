@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-05-13T14:19:48" hostname="DESKTOP-GBLJLQR" time="0.005">
+<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-05-15T00:21:16" hostname="DESKTOP-GBLJLQR" time="0.023">
   <properties/>
-  <testcase name="testFriendAdded_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.0"/>
-  <testcase name="testFriendRemoved_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.001"/>
-  <testcase name="testFriendChanged_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.001"/>
-  <testcase name="testMessageReceived_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.002"/>
+  <testcase name="testFriendAdded_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.009"/>
+  <testcase name="testFriendRemoved_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.002"/>
+  <testcase name="testFriendChanged_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.009"/>
+  <testcase name="testMessageReceived_ListenerMethodShouldBeCalled" classname="hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandlerTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

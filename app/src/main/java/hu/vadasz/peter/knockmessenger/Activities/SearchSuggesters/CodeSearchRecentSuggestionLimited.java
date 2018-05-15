@@ -5,7 +5,7 @@ import android.content.Context;
 import android.provider.SearchRecentSuggestions;
 
 /**
- * Created by Peti on 2018. 03. 23..
+ * This class works with CodeSearchSuggestionProvider and was created for later use.
  */
 
 public class CodeSearchRecentSuggestionLimited extends SearchRecentSuggestions {

@@ -3,7 +3,7 @@ package hu.vadasz.peter.knockmessenger.Activities.SearchSuggesters;
 import android.content.SearchRecentSuggestionsProvider;
 
 /**
- * Created by Peti on 2018. 03. 23..
+ * This class is responsible for providing search suggestions. This class is planned for later use.
  */
 
 public class CodeSearchSuggestionProvider extends SearchRecentSuggestionsProvider {

@@ -1,7 +1,6 @@
 package hu.vadasz.peter.knockmessenger.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -9,6 +8,10 @@ import android.widget.ImageButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import hu.vadasz.peter.knockmessenger.R;
+
+/**
+ * This activity is used when the user denies a permission which was required by the application.
+ */
 
 public class PermissionDeniedActivity extends BaseActivity {
 

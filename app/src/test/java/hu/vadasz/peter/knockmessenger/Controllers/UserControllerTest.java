@@ -16,10 +16,6 @@ import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by Peti on 2018. 05. 12..
- */
-
 @RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 

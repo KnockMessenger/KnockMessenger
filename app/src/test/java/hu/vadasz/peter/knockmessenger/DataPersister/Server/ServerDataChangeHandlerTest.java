@@ -8,9 +8,6 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Message;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Peti on 2018. 05. 13..
- */
 public class ServerDataChangeHandlerTest {
 
     public static final boolean OK = true;

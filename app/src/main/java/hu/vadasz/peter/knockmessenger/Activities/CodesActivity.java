@@ -124,7 +124,7 @@ public class CodesActivity extends BaseActivity implements CodeAdapter.CodeSetti
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-    /// FIELDS -- END
+    /// ACTIVITY OVERRIDES -- END
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -166,13 +166,28 @@ public class CodesActivity extends BaseActivity implements CodeAdapter.CodeSetti
         codeAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * This method persists a new code.
+     * @param code the code to save.
+     */
+
     private void saveCode(Code code) {
         codeDataManager.addCode(code);
     }
 
+    /**
+     * This method updates an existing code.
+     * @param code the code to update.
+     */
+
     private void updateCode(Code code) {
         codeDataManager.updateCode(code);
     }
+
+    /**
+     * This method shows a message and requires confirmation before deleting a code.
+     * @param code the code to be deleted.
+     */
 
     private void conFirmDelete(final Code code) {
         Snackbar.make(findViewById(android.R.id.content), getString(R.string.codesActivity_confirm_delete_text), Snackbar.LENGTH_LONG)

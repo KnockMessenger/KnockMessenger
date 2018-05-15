@@ -7,7 +7,7 @@ import dagger.Provides;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
 
 /**
- * Created by Peti on 2018. 04. 15..
+ * This class provides singleton ServerDatachange object.
  */
 
 @Module

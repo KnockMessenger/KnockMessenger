@@ -3,14 +3,32 @@ package hu.vadasz.peter.knockmessenger.DataPersister.Server;
 import android.os.CountDownTimer;
 
 /**
- * Created by Peti on 2018. 04. 16..
+ * This class is used for timeout handling while communicating with the server.
  */
 
 public class TimeoutHandler {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// INTERFACES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This interface is implemented by the class which receives timeout events.
+     */
+
     public interface TimeoutListener {
         void timeout();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// INTERFACES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// CONSTANTS
 
     public static final int DEFAULT_SHORT_TIMEOUT = 10000;
     public static final int DEFAULT_MEDIUM_TIMEOUT = 30000;
@@ -18,11 +36,21 @@ public class TimeoutHandler {
     public static final int DEFAULT_EXTRA_LONG_TIMEOUT = 90000;
     public static final int TICK_TIME = 1000;
 
+    /// CONSTANTS -- END
+
     private CountDownTimer timer;
 
     private int timeout;
 
     private TimeoutListener listener;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public TimeoutHandler(int timeout, final TimeoutListener listener) {
         this.timeout = timeout;
@@ -40,25 +68,21 @@ public class TimeoutHandler {
         };
     }
 
-    public TimeoutHandler(int timeout, int tickTime, final TimeoutListener listener) {
-        this.timeout = timeout;
-        this.listener = listener;
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-        timer = new CountDownTimer(timeout, tickTime) {
-
-            @Override
-            public void onTick(long millisUntilFinished) {}
-
-            @Override
-            public void onFinish() {
-                listener.timeout();
-            }
-        };
-    }
+    /**
+     * This method starts the timer (timeout).
+     */
 
     public void start() {
         timer.start();
     }
+
+    /**
+     * This method stops the timer.
+     */
 
     public void stop() {
         timer.cancel();

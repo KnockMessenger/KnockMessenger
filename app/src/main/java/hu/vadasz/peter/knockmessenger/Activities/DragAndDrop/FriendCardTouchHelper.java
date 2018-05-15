@@ -6,17 +6,33 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import hu.vadasz.peter.knockmessenger.Adapters.FriendsAdapter;
 
 /**
- * Created by Peti on 2018. 04. 14..
+ * This class is responsible for swiping FriendCards. Friends can be deleted by swiping its card.
  */
 
 public class FriendCardTouchHelper extends ItemTouchHelper.Callback {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// CONSTANTS
+
     public static final boolean DRAG_ENABLED = true;
     public static final boolean SWIPE_ENABLED = true;
 
+    /// CONSTANTS -- END
+
     private FriendsAdapter friendAdapter;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     public FriendCardTouchHelper(FriendsAdapter friendAdapter) { this.friendAdapter = friendAdapter; }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ItemTouchHelper.Callback INTERFACE OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean isLongPressDragEnabled(){
@@ -42,4 +58,8 @@ public class FriendCardTouchHelper extends ItemTouchHelper.Callback {
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
         friendAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ItemTouchHelper.Callback INTERFACE OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

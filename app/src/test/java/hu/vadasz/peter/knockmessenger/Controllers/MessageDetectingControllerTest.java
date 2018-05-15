@@ -9,11 +9,6 @@ import hu.vadasz.peter.morsecodedecoder.Code.Code;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Peti on 2018. 05. 12..
- */
-
-
 public class MessageDetectingControllerTest {
 
     public static final boolean OK = true;
