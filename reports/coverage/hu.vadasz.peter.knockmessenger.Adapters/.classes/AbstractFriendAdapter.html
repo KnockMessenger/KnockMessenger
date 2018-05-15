@@ -1,0 +1,259 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AbstractFriendAdapter</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.Adapters</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AbstractFriendAdapter (hu.vadasz.peter.knockmessenger.Adapters)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AbstractFriendAdapter</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 31)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AbstractFriendAdapter$ViewHolder</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">AbstractFriendAdapter$ViewHolder_ViewBinding</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 17)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 52)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.Adapters;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import android.support.v7.widget.CardView;
+<i>4</i>&nbsp;import android.support.v7.widget.RecyclerView;
+<i>5</i>&nbsp;import android.view.LayoutInflater;
+<i>6</i>&nbsp;import android.view.ViewGroup;
+<i>7</i>&nbsp;import android.widget.ImageButton;
+<i>8</i>&nbsp;import android.widget.RelativeLayout;
+<i>9</i>&nbsp;import android.widget.TextView;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;import java.util.ArrayList;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;import butterknife.BindView;
+<i>15</i>&nbsp;import butterknife.ButterKnife;
+<i>16</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Friend;
+<i>17</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>18</i>&nbsp;import lombok.Setter;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;/**
+<b class="nc"><i>21</i>&nbsp; * Created by Peti on 2018. 04. 13..</b>
+<b class="nc"><i>22</i>&nbsp; */</b>
+<i>23</i>&nbsp;
+<b class="nc"><i>24</i>&nbsp;public abstract class AbstractFriendAdapter extends RecyclerView.Adapter&lt;AbstractFriendAdapter.ViewHolder&gt; {</b>
+<b class="nc"><i>25</i>&nbsp;</b>
+<b class="nc"><i>26</i>&nbsp;    @Setter</b>
+<b class="nc"><i>27</i>&nbsp;    protected List&lt;Friend&gt; friends;</b>
+<b class="nc"><i>28</i>&nbsp;</b>
+<b class="nc"><i>29</i>&nbsp;    protected List&lt;Friend&gt; filteredFriends;</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    protected String filterText;
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;    public AbstractFriendAdapter(List&lt;Friend&gt; friends) {</b>
+<b class="nc"><i>34</i>&nbsp;        this.friends = friends;</b>
+<b class="nc"><i>35</i>&nbsp;        filteredFriends = friends;</b>
+<b class="nc"><i>36</i>&nbsp;    }</b>
+<b class="nc"><i>37</i>&nbsp;</b>
+<i>38</i>&nbsp;    @Override
+<b class="nc"><i>39</i>&nbsp;    public AbstractFriendAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {</b>
+<b class="nc"><i>40</i>&nbsp;        CardView card = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.friend_card, parent, false);</b>
+<b class="nc"><i>41</i>&nbsp;        return new AbstractFriendAdapter.ViewHolder(card);</b>
+<b class="nc"><i>42</i>&nbsp;    }</b>
+<b class="nc"><i>43</i>&nbsp;</b>
+<b class="nc"><i>44</i>&nbsp;    @Override</b>
+<i>45</i>&nbsp;    public void onBindViewHolder(AbstractFriendAdapter.ViewHolder holder, final int position) {
+<b class="nc"><i>46</i>&nbsp;        holder.name.setText(filteredFriends.get(position).getName());</b>
+<b class="nc"><i>47</i>&nbsp;        holder.tel.setText(filteredFriends.get(position).getTel());</b>
+<i>48</i>&nbsp;
+<b class="nc"><i>49</i>&nbsp;        setViewItems(holder, position);</b>
+<i>50</i>&nbsp;    }
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;    @Override
+<i>53</i>&nbsp;    public int getItemCount() {
+<b class="nc"><i>54</i>&nbsp;        return filteredFriends.size();</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;    public class ViewHolder extends RecyclerView.ViewHolder {
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;        protected CardView card;
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;        @BindView(R.id.friendCard_nameText)
+<i>62</i>&nbsp;        TextView name;
+<i>63</i>&nbsp;
+<i>64</i>&nbsp;        @BindView(R.id.friendCard_telText)
+<i>65</i>&nbsp;        TextView tel;
+<i>66</i>&nbsp;
+<i>67</i>&nbsp;        @BindView(R.id.friendCard_addFriend_button)
+<i>68</i>&nbsp;        ImageButton addFriend;
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;        @BindView(R.id.friendCard_removeFriend_button)
+<i>71</i>&nbsp;        ImageButton removeFriend;
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;        @BindView(R.id.friendCard_sendMessageToFriend_button)
+<i>74</i>&nbsp;        ImageButton sendMessage;
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;        @BindView(R.id.friendCard_mainPanel)
+<i>77</i>&nbsp;        RelativeLayout mainPanel;
+<i>78</i>&nbsp;
+<b class="nc"><i>79</i>&nbsp;        ViewHolder(CardView card) {</b>
+<b class="nc"><i>80</i>&nbsp;            super(card);</b>
+<b class="nc"><i>81</i>&nbsp;            this.card = card;</b>
+<b class="nc"><i>82</i>&nbsp;            ButterKnife.bind(this, card);</b>
+<i>83</i>&nbsp;        }
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    }
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    protected abstract void setViewItems(ViewHolder holder, final int position);
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    public void filter(String filterText) {
+<b class="nc"><i>90</i>&nbsp;        if (filterText == null || filterText.isEmpty()) {</b>
+<b class="nc"><i>91</i>&nbsp;            filteredFriends = friends;</b>
+<b class="nc"><i>92</i>&nbsp;            this.filterText = null;</b>
+<i>93</i>&nbsp;        } else {
+<b class="nc"><i>94</i>&nbsp;            List&lt;Friend&gt; filteredTmp = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>95</i>&nbsp;            for (Friend friend : friends) {</b>
+<b class="nc"><i>96</i>&nbsp;                if (friend.getName().toLowerCase().contains(filterText.toLowerCase()) || friend.getTel().contains(filterText.toLowerCase())) {</b>
+<b class="nc"><i>97</i>&nbsp;                    filteredTmp.add(friend);</b>
+<i>98</i>&nbsp;                }
+<b class="nc"><i>99</i>&nbsp;            }</b>
+<i>100</i>&nbsp;
+<b class="nc"><i>101</i>&nbsp;            filteredFriends = filteredTmp;</b>
+<b class="nc"><i>102</i>&nbsp;            this.filterText = filterText;</b>
+<i>103</i>&nbsp;        }
+<i>104</i>&nbsp;
+<b class="nc"><i>105</i>&nbsp;        notifyDataSetChanged();</b>
+<i>106</i>&nbsp;    }
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;    public void dataSetChanged() {
+<b class="nc"><i>109</i>&nbsp;        filter(filterText);</b>
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    public void friendRemoved(Friend friend) {
+<b class="nc"><i>113</i>&nbsp;        friends.remove(friend);</b>
+<b class="nc"><i>114</i>&nbsp;        dataSetChanged();</b>
+<i>115</i>&nbsp;    }
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;    public void friendAdded(Friend friend) {
+<b class="nc"><i>118</i>&nbsp;        friends.add(friend);</b>
+<b class="nc"><i>119</i>&nbsp;        dataSetChanged();</b>
+<i>120</i>&nbsp;    }
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    public void friendChanged(Friend friend) {
+<b class="nc"><i>123</i>&nbsp;        for (int i = 0; i &lt; friends.size(); ++i) {</b>
+<b class="nc"><i>124</i>&nbsp;            if (friends.get(i).equals(friend)) {</b>
+<b class="nc"><i>125</i>&nbsp;                friends.set(i, friend);</b>
+<b class="nc"><i>126</i>&nbsp;                break;</b>
+<i>127</i>&nbsp;            }
+<i>128</i>&nbsp;        }
+<b class="nc"><i>129</i>&nbsp;        dataSetChanged();</b>
+<i>130</i>&nbsp;    }
+<i>131</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

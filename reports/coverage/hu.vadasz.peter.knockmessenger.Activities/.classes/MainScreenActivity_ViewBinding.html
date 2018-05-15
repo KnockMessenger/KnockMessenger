@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 12)
+    (0/ 22)
   </span>
 </td>
 </tr>
@@ -78,49 +78,64 @@
 <i>4</i>&nbsp;import android.support.annotation.CallSuper;
 <i>5</i>&nbsp;import android.support.annotation.UiThread;
 <i>6</i>&nbsp;import android.support.design.widget.FloatingActionButton;
-<i>7</i>&nbsp;import android.support.v7.widget.Toolbar;
-<i>8</i>&nbsp;import android.view.View;
-<i>9</i>&nbsp;import butterknife.Unbinder;
-<i>10</i>&nbsp;import butterknife.internal.Utils;
-<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
-<i>12</i>&nbsp;import java.lang.IllegalStateException;
-<i>13</i>&nbsp;import java.lang.Override;
-<i>14</i>&nbsp;
-<i>15</i>&nbsp;public class MainScreenActivity_ViewBinding implements Unbinder {
-<i>16</i>&nbsp;  private MainScreenActivity target;
-<i>17</i>&nbsp;
-<i>18</i>&nbsp;  @UiThread
-<i>19</i>&nbsp;  public MainScreenActivity_ViewBinding(MainScreenActivity target) {
-<b class="nc"><i>20</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
-<i>21</i>&nbsp;  }
+<i>7</i>&nbsp;import android.support.design.widget.NavigationView;
+<i>8</i>&nbsp;import android.support.v4.widget.DrawerLayout;
+<i>9</i>&nbsp;import android.support.v7.widget.RecyclerView;
+<i>10</i>&nbsp;import android.support.v7.widget.Toolbar;
+<i>11</i>&nbsp;import android.view.View;
+<i>12</i>&nbsp;import android.widget.ImageView;
+<i>13</i>&nbsp;import android.widget.ProgressBar;
+<i>14</i>&nbsp;import butterknife.Unbinder;
+<i>15</i>&nbsp;import butterknife.internal.Utils;
+<i>16</i>&nbsp;import hu.vadasz.peter.knockmessenger.R;
+<i>17</i>&nbsp;import java.lang.IllegalStateException;
+<i>18</i>&nbsp;import java.lang.Override;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;public class MainScreenActivity_ViewBinding implements Unbinder {
+<i>21</i>&nbsp;  private MainScreenActivity target;
 <i>22</i>&nbsp;
 <i>23</i>&nbsp;  @UiThread
-<b class="nc"><i>24</i>&nbsp;  public MainScreenActivity_ViewBinding(MainScreenActivity target, View source) {</b>
-<b class="nc"><i>25</i>&nbsp;    this.target = target;</b>
-<i>26</i>&nbsp;
-<b class="nc"><i>27</i>&nbsp;    target.toolbar = Utils.findRequiredViewAsType(source, R.id.toolbar, &quot;field &#39;toolbar&#39;&quot;, Toolbar.class);</b>
-<b class="nc"><i>28</i>&nbsp;    target.messageSendingButton = Utils.findRequiredViewAsType(source, R.id.message_sendingActivity_button, &quot;field &#39;messageSendingButton&#39;&quot;, FloatingActionButton.class);</b>
-<b class="nc"><i>29</i>&nbsp;    target.profilerButton = Utils.findRequiredViewAsType(source, R.id.profiler_button, &quot;field &#39;profilerButton&#39;&quot;, FloatingActionButton.class);</b>
-<i>30</i>&nbsp;  }
+<i>24</i>&nbsp;  public MainScreenActivity_ViewBinding(MainScreenActivity target) {
+<b class="nc"><i>25</i>&nbsp;    this(target, target.getWindow().getDecorView());</b>
+<i>26</i>&nbsp;  }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;  @UiThread
+<b class="nc"><i>29</i>&nbsp;  public MainScreenActivity_ViewBinding(MainScreenActivity target, View source) {</b>
+<b class="nc"><i>30</i>&nbsp;    this.target = target;</b>
 <i>31</i>&nbsp;
-<i>32</i>&nbsp;  @Override
-<i>33</i>&nbsp;  @CallSuper
-<i>34</i>&nbsp;  public void unbind() {
-<b class="nc"><i>35</i>&nbsp;    MainScreenActivity target = this.target;</b>
-<b class="nc"><i>36</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
-<b class="nc"><i>37</i>&nbsp;    this.target = null;</b>
-<i>38</i>&nbsp;
-<b class="nc"><i>39</i>&nbsp;    target.toolbar = null;</b>
-<b class="nc"><i>40</i>&nbsp;    target.messageSendingButton = null;</b>
-<b class="nc"><i>41</i>&nbsp;    target.profilerButton = null;</b>
-<i>42</i>&nbsp;  }
-<i>43</i>&nbsp;}
+<b class="nc"><i>32</i>&nbsp;    target.toolbar = Utils.findRequiredViewAsType(source, R.id.toolbar, &quot;field &#39;toolbar&#39;&quot;, Toolbar.class);</b>
+<b class="nc"><i>33</i>&nbsp;    target.messageSendingButton = Utils.findRequiredViewAsType(source, R.id.message_sendingActivity_button, &quot;field &#39;messageSendingButton&#39;&quot;, FloatingActionButton.class);</b>
+<b class="nc"><i>34</i>&nbsp;    target.profilerButton = Utils.findRequiredViewAsType(source, R.id.profiler_button, &quot;field &#39;profilerButton&#39;&quot;, FloatingActionButton.class);</b>
+<b class="nc"><i>35</i>&nbsp;    target.drawerLayout = Utils.findRequiredViewAsType(source, R.id.mainScreenActivity_drawer_layout, &quot;field &#39;drawerLayout&#39;&quot;, DrawerLayout.class);</b>
+<b class="nc"><i>36</i>&nbsp;    target.navigationView = Utils.findRequiredViewAsType(source, R.id.mainScreenActivity_main_menu, &quot;field &#39;navigationView&#39;&quot;, NavigationView.class);</b>
+<b class="nc"><i>37</i>&nbsp;    target.messagesRecyclerView = Utils.findRequiredViewAsType(source, R.id.mainScreenActivity_messages, &quot;field &#39;messagesRecyclerView&#39;&quot;, RecyclerView.class);</b>
+<b class="nc"><i>38</i>&nbsp;    target.progressBar = Utils.findRequiredViewAsType(source, R.id.mainScreen_progressBar, &quot;field &#39;progressBar&#39;&quot;, ProgressBar.class);</b>
+<b class="nc"><i>39</i>&nbsp;    target.imageView = Utils.findRequiredViewAsType(source, R.id.mainScreenActivity_messages_icon, &quot;field &#39;imageView&#39;&quot;, ImageView.class);</b>
+<i>40</i>&nbsp;  }
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;  @Override
+<i>43</i>&nbsp;  @CallSuper
+<i>44</i>&nbsp;  public void unbind() {
+<b class="nc"><i>45</i>&nbsp;    MainScreenActivity target = this.target;</b>
+<b class="nc"><i>46</i>&nbsp;    if (target == null) throw new IllegalStateException(&quot;Bindings already cleared.&quot;);</b>
+<b class="nc"><i>47</i>&nbsp;    this.target = null;</b>
+<i>48</i>&nbsp;
+<b class="nc"><i>49</i>&nbsp;    target.toolbar = null;</b>
+<b class="nc"><i>50</i>&nbsp;    target.messageSendingButton = null;</b>
+<b class="nc"><i>51</i>&nbsp;    target.profilerButton = null;</b>
+<b class="nc"><i>52</i>&nbsp;    target.drawerLayout = null;</b>
+<b class="nc"><i>53</i>&nbsp;    target.navigationView = null;</b>
+<b class="nc"><i>54</i>&nbsp;    target.messagesRecyclerView = null;</b>
+<b class="nc"><i>55</i>&nbsp;    target.progressBar = null;</b>
+<b class="nc"><i>56</i>&nbsp;    target.imageView = null;</b>
+<i>57</i>&nbsp;  }
+<i>58</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

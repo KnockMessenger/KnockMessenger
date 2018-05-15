@@ -123,5 +123,9 @@
     <string name="pref_system_notification_summary">Show notification fired by system.</string>
     <string name="pref_system_notification_title">Show system notifications</string>
     <string name="moreMessage_notification_title">You received new mwssages...</string>
+    <string name="friendsActivity_confirm_delete_text">Are you sure you want to delete?</string>
+    <string name="friendsActivity_confirm_delete_yes_text">YES</string>
+    <string name="mainScreenActivity_confirm_delete_text">Are you sure you want to delete?</string>
+    <string name="save_success">Transaction Successful! :)</string>
 
 </resources>

@@ -26,10 +26,18 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
 import hu.vadasz.peter.knockmessenger.R;
 
 /**
- * Created by Peti on 2018. 04. 22..
+ * This class is the adapter of the Message's RecyclerView.
  */
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// INTERFACES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This interface is implemented by the class which contains the Message's RecyclerView
+     */
 
     public interface MessageAdapterListener {
         Activity getActivity();
@@ -42,10 +50,26 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         void dataLoaded();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// INTERFACES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     private List<Message> allMessages;
     private List<Message> messages;
 
     private MessageAdapterListener listener;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public MessageAdapter(List<Message> allMessages, MessageAdapterListener listener) {
         this.allMessages = allMessages;
@@ -54,38 +78,13 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         filter();
     }
 
-    private void filter() {
-        messages.clear();
-        if (listener.getUser() == null) {
-            return;
-        }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-        for (Message message : allMessages) {
-            if (listener.getActualFriend() != null) {
-                if (!message.getDeleted() && (message.getFromTelephone().equals(listener.getActualFriend().getTel())
-                        || message.getToTelephone().equals(listener.getActualFriend().getTel()))) {
-                    messages.add(message);
-                }
-            } else {
-                if (!message.getDeleted() && !message.getFromTelephone().equals(listener.getUserTel()) && !listener.isFriend(message.getFromTelephone())) {
-                    messages.add(message);
-                }
-            }
-        }
-        if (messages.isEmpty()) {
-            listener.noMessages();
-        }
-        sort();
-    }
-
-    private void sort() {
-        Collections.sort(messages, new Comparator<Message>() {
-            @Override
-            public int compare(Message o1, Message o2) {
-                return (int) (o1.getDateTime() - o2.getDateTime());
-            }
-        });
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// RecyclerView.Adapter OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -143,6 +142,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return messages.size();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// RecyclerView.Adapter OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ViewHolder PATTERN
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.messageCard_messageText)
@@ -166,26 +173,33 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ViewHolder PATTERN -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This method is called when the data messages changed, f. e. new message arrived.
+     */
+
     public void dataSetChanged() {
         listener.loading();
         filter();
         notifyDataSetChanged();
         listener.dataLoaded();
-        /*new Thread(new Runnable() {
-            @Override
-            public void run() {
-                filter();
-                listener.getActivity().runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        notifyDataSetChanged();
-                        listener.dataLoaded();
-                    }
-                });
-            }
-        }).start();*/
     }
+
+    /**
+     * This method us used to style the message cards.
+     * @param card the card to be styled.
+     * @param leftPx the left margin of the card in pixel.
+     * @param bottomPx the bottom margin of the card in pixel.
+     * @param rightPx the right margin of the card in pixel.
+     * @param topPx the top margin of the card in pixel.
+     */
 
     private void setCardMargin(CardView card, int leftPx, int bottomPx, int rightPx, int topPx) {
         ViewGroup.MarginLayoutParams layoutParams =
@@ -194,10 +208,22 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         card.requestLayout();
     }
 
+    /**
+     * This method converts a dp value to pixel.
+     * @param dp the dp to be converted.
+     * @return the pixel value od the given dp.
+     */
+
     private int dpToPx(int dp) {
         DisplayMetrics displayMetrics = listener.getActivity().getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
+
+    /**
+     * This method sets the timestamp of the sending of the message.
+     * @param holder the holder of the chosen message.
+     * @param message the chosen message.
+     */
 
     private void setTimestampVisibility(ViewHolder holder, Message message) {
         if (message.isShowTimeStamp()) {
@@ -207,6 +233,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }
     }
 
+    /**
+     * This method sets the timestamp of the sending of the message.
+     * @param holder the holder of the chosen message.
+     * @param message the chosen message.
+     */
+
     private void showTimestamp(Message message, ViewHolder holder) {
         if (message.isShowTimeStamp()) {
             holder.timestamp.setVisibility(View.VISIBLE);
@@ -214,4 +246,49 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             holder.timestamp.setVisibility(View.INVISIBLE);
         }
     }
+
+    /**
+     * This message filter the messages based on telephone.
+     */
+
+    private void filter() {
+        messages.clear();
+        if (listener.getUser() == null) {
+            return;
+        }
+
+        for (Message message : allMessages) {
+            if (listener.getActualFriend() != null) {
+                if (!message.getDeleted() && (message.getFromTelephone().equals(listener.getActualFriend().getTel())
+                        || message.getToTelephone().equals(listener.getActualFriend().getTel()))) {
+                    messages.add(message);
+                }
+            } else {
+                if (!message.getDeleted() && !message.getFromTelephone().equals(listener.getUserTel()) && !listener.isFriend(message.getFromTelephone())) {
+                    messages.add(message);
+                }
+            }
+        }
+        if (messages.isEmpty()) {
+            listener.noMessages();
+        }
+        sort();
+    }
+
+    /**
+     * This method sorts the messages based on timestamp.
+     */
+
+    private void sort() {
+        Collections.sort(messages, new Comparator<Message>() {
+            @Override
+            public int compare(Message o1, Message o2) {
+                return (int) (o2.getDateTime() - o1.getDateTime());
+            }
+        });
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

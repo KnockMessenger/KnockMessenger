@@ -19,14 +19,68 @@ import java.security.spec.PSSParameterSpec;
 import java.util.Date;
 
 /**
- *
+ * This class is used to persist messages.
  */
 
 @Entity(generateGettersSetters = false, generateConstructors = false)
 @AllArgsConstructor
 public class Message implements Parcelable {
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONVERTER CLASSES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This method class converts JodaDateTime to long.
+     */
+
+    public static class JodaDateTimeConverter implements PropertyConverter<DateTime, Long> {
+
+        @Override
+        public DateTime convertToEntityProperty(Long databaseValue) {
+            return new DateTime(databaseValue);
+        }
+
+        @Override
+        public Long convertToDatabaseValue(DateTime entityProperty) {
+            return entityProperty.getMillis();
+        }
+    }
+
+    /**
+     * This method converts MessageType enumerator to string.
+     */
+
+    public static class MessageTypeConverter implements PropertyConverter<MessageType, String> {
+
+        @Override
+        public MessageType convertToEntityProperty(String databaseValue) {
+            return MessageType.valueOf(databaseValue);
+        }
+
+        @Override
+        public String convertToDatabaseValue(MessageType entityProperty) {
+            return entityProperty.toString();
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONVERTER CLASSES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ENUMS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     public enum MessageType {IN, OUT}
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ENUMS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static final boolean SHOW_TIMESTAMP = true;
 
@@ -70,16 +124,46 @@ public class Message implements Parcelable {
     @Transient
     private boolean showTimeStamp;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public Message() {
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONSTRUCTION -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Gives the DataTime (jodaTime) representation of the stored timestamp.
+     * @return
+     */
+
     public DateTime convertDateTimeAsToTimestamp() {
         return new DateTime(dateTime);
     }
+
+    /**
+     * This method sets the timeStamp from a DateTime (jodaTime) representation.
+     * @param dateTime
+     */
 
     public void setDateTimeFromTimestamp(DateTime dateTime) {
         this.dateTime = dateTime.getMillis();
     }
 
-    public Message() {
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public boolean equals(Object other) {
@@ -92,31 +176,9 @@ public class Message implements Parcelable {
         return false;
     }
 
-    public static class JodaDateTimeConverter implements PropertyConverter<DateTime, Long> {
-
-        @Override
-        public DateTime convertToEntityProperty(Long databaseValue) {
-            return new DateTime(databaseValue);
-        }
-
-        @Override
-        public Long convertToDatabaseValue(DateTime entityProperty) {
-            return entityProperty.getMillis();
-        }
-    }
-
-    public static class MessageTypeConverter implements PropertyConverter<MessageType, String> {
-
-        @Override
-        public MessageType convertToEntityProperty(String databaseValue) {
-            return MessageType.valueOf(databaseValue);
-        }
-
-        @Override
-        public String convertToDatabaseValue(MessageType entityProperty) {
-            return entityProperty.toString();
-        }
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// PARCELABLE INTERFACE OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public int describeContents() {
@@ -154,4 +216,8 @@ public class Message implements Parcelable {
         messageType = MessageType.valueOf(in.readString());
         dateTime = in.readLong();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// PARCELABLE INTERFACE OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 }

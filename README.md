@@ -19,7 +19,7 @@
 ## [Bevezetés](#intro)
 
 Az alkalmazás Morzekód formájú kommunikációt valósít meg mobiltelefonok között. Küldő oldalon az üzenet megadása a készülék egyenletes sima felületre (pl. asztal) történő helyezése után a telefon melletti ritmikus - pl a Morzekódnak megfelelő - kopogás segítségével lehetséges.
-A kopogás detektálás az eszköz mikrofonján keresztül a mértz zajszintek segítségével történik. A telefontól megkapott nyers adatok feldolgozásával értelmezhető jelsorozatot állítunk elő, ami továbbküldhető a választott címzettnek. Üzenete írás közben speciális kopogás minta hatására az alkalmazás szerkesztő üzemmódba kapcsol, ami lehetővé teszi az aktuális pozíción lévő karakter törlését és a szövegben való ugrásokat.
+A kopogás detektálás az eszköz mikrofonján keresztül a mért zajszintek segítségével történik. A telefontól megkapott nyers adatok feldolgozásával értelmezhető jelsorozatot állítunk elő, ami továbbküldhető a választott címzettnek. Üzenet írás közben speciális kopogás minta hatására az alkalmazás szerkesztő üzemmódba kapcsol, ami lehetővé teszi az aktuális pozíción lévő karakter törlését és a szövegben való ugrásokat.
 
 ## [Funkciók](#features)
 
@@ -29,14 +29,14 @@ Az alkalmazás rövid üdvözlőképernyő után indul.
 
 ### Főablak
 
-A főablakok jelenik meg az összes olyan üzenet, ami nem közvetlen ismerősöktől, vagy korábbi ismerősöktől érkezett. Az választott üzenetre kattintva megjelenik küldés időpontja, ismét rákattintva eltűnik. Az ablako két további gomb foglal helyet alul, a felső segítségével üzenet küldést kezdeményezhetünk, az alsó a kopogás erősségének felmérését teszi lehetővé. A főablakban az állapotsorban lévő ikon segítségével, illetve jobbra pöccintéssel hozható elő a főmenü.
+A főablakon jelenik meg az összes olyan üzenet, ami nem közvetlen ismerősöktől, vagy korábbi ismerősöktől érkezett. Az választott üzenetre kattintva megjelenik küldés időpontja, ismét rákattintva eltűnik. Az ablakon két további gomb foglal helyet alul, a felső segítségével üzenet küldést kezdeményezhetünk, az alsó a kopogás erősségének felmérését teszi lehetővé. A főablakban az állapotsorban lévő ikon segítségével, illetve jobbra pöccintéssel hozható elő a főmenü.
 Az alkalmazás két féle formájú ábécé feldolgozására képes, hagyományos Morse-Code a nemzetközi Morse ábécével, ez esetben a betűk és szavak között szünetet kell tartani, illetve Huffman-kód formájú ábécé, prefix kódokkal.
 
 ![Main](screen_shots/main_small.png)
 
 ### Profil
 
-Első használat előtt megadandó egy választott név és telefonszám. A név tetszőleges, de nem leet üres, a telefonszám globálisan egyedi kell, hogy legyen, csak számjegyeket tartalmazhat, legfeljebb az első karakter lehet egy + jel és legalább 9 karakter hosszúnak kell lennie. Ha ezek a feltételek nem teljesülnek az alkalmazás hibaüzenet formájában jelzi és nem kerül sor az adatok mentésére. A mentéshez internetkapcsolatra van szükség, ha nem sikerül csatlakozni, akkor a mentés sikertelen lesz. A mentés a floppy ikon segítségével lehetséges.
+Első használat előtt megadandó egy választott név és telefonszám. A név tetszőleges, de nem lehet üres, a telefonszám globálisan egyedi kell, hogy legyen, csak számjegyeket tartalmazhat, legfeljebb az első karakter lehet egy + jel és legalább 9 karakter hosszúnak kell lennie. Ha ezek a feltételek nem teljesülnek az alkalmazás hibaüzenet formájában jelzi és nem kerül sor az adatok mentésére. A mentéshez internetkapcsolatra van szükség, ha nem sikerül csatlakozni, akkor a mentés sikertelen lesz. A mentés a floppy ikon segítségével lehetséges.
 Az adatok megváltoztatása később ugyanitt lehetséges, a név változhat a telefonszám nem, a fenti feltételek továbbra is érvényesek. 
 A kuka ikon segítségével lehetőség van a felhasználó törlésére is, ehhez internatkapcsolatra van szükség.
 **Figyelem: törlés után az összes üzenet elveszik és a megadott telefonszám nem lesz újrahasználható.** 
@@ -45,13 +45,13 @@ A kuka ikon segítségével lehetőség van a felhasználó törlésére is, ehh
 
 ### Code abc
 
-A felületen kártyákon megjelennek a tárolt ábécé karakterei s vezérlő szimbólumai, lehetőség van a kódok törlésére szerkesztésére, új kód felvételére. A vezérlő szimbólumok szerkeszthetőek, de nem törölhetőek. A menüsörban lévő nyíl ikon segítségével bármikor visszaállhatunk az alapértelmezett ábécére. Balra swpe esetén az adottkártya törlésre kerül, ezt meg kell erősíteni, jobbra swipe esetén szerkeszthető lesz. Ezeket a funkciókat a kártyákon elhelyezett gombok segítségével is kezdeményezhetjük.
+A felületen kártyákon megjelennek a tárolt ábécé karakterei s vezérlő szimbólumai, lehetőség van a kódok törlésére szerkesztésére, új kód felvételére. A vezérlő szimbólumok szerkeszthetőek, de nem törölhetőek. A menüsörban lévő nyíl ikon segítségével bármikor visszaállhatunk az alapértelmezett ábécére. Balra pöccintés esetén az adott kártya törlésre kerül, ezt meg kell erősíteni, jobbra pöccintés esetén szerkeszthető lesz. Ezeket a funkciókat a kártyákon elhelyezett gombok segítségével is kezdeményezhetjük.
 
 ![Codes](screen_shots/codes_small.png)
 
 ### Friends
 
-Az ismerősök lapon a felvett ismerősök jelennek meg, a mensorban lévő szinkronizációs gomb (nyilak) segítségével bármikor kérhetjük az aadatok frissítését, de ez a funkció indulásakor magától is megtörténik. A kártyákon lévő gombok segítségével törölhetjük az ismerősöket illetve üzenetküldést kezdeményezhetünk. A menüsorban található jobboldali ikon segítségével pedig az alkalmazás felhasználói között böngészhetünk és ismerősöket vehetünk fel. Üzenetküldés csak ismerősnek lehetséges, azonban nincs szükség az ismerettség visszaigazolására fogadó oldalon. Ha nincs internetkapcsolat, az adatok nem frissülnek, ezt jelzi az alkalmazás.
+Az ismerősök lapon a felvett ismerősök jelennek meg, a menüsorban lévő szinkronizációs gomb (nyílak) segítségével bármikor kérhetjük az adatok frissítését, de ez a funkció indulásakor magától is megtörténik. A kártyákon lévő gombok segítségével törölhetjük az ismerősöket illetve üzenetküldést kezdeményezhetünk. A menüsorban található jobboldali ikon segítségével pedig az alkalmazás felhasználói között böngészhetünk és ismerősöket vehetünk fel. Üzenetküldés csak ismerősnek lehetséges, azonban nincs szükség az ismerettség visszaigazolására fogadó oldalon. Ha nincs internetkapcsolat, az adatok nem frissülnek, ezt jelzi az alkalmazás.
 
 ![Friends](screen_shots/friends_small.png)
 
@@ -85,7 +85,7 @@ Az alkalmazás által támogatott Android verziók:
 
 ## [Telepítés](#install)
 
-Az alkalmazás a build-elt apk-t a megadott platformra letöltve telepíthető. A telepítéshez emulátor is használható, de mindenképpen engedélyezni kell az Ismeretlen forrásokból való telepítést a Beállítások menü Biztonság füle alatt, lásd az alábbi képet. A szükséges engedélyek megadása után az apk fájl kiválasztásával a Telepítés lehetőségre kattintva automatikusan elindul a telepítés és az alkalmazás az eszköz kapacitásától függően néhány másodperc alatt kész a használatra. 
+Az alkalmazás a build-elt apk-t a megadott platformra letöltve telepíthető. A telepítéshez emulátor is használható, de mindenképpen engedélyezni kell az *Ismeretlen forrásokból* való telepítést a Beállítások menü Biztonság füle alatt, lásd az alábbi képet. A szükséges engedélyek megadása után az apk fájl kiválasztásával a Telepítés lehetőségre kattintva automatikusan elindul a telepítés és az alkalmazás az eszköz kapacitásától függően néhány másodperc alatt kész a használatra. 
 
 ![Security](screen_shots/security_small.png)
 

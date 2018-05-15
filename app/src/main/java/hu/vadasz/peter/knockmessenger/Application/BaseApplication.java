@@ -109,6 +109,10 @@ public class BaseApplication extends Application {
         startMessageReceivingService();
     }
 
+    /**
+     * This method starts the background service which receives incoming messages.
+     */
+
     public void startMessageReceivingService() {
         stopService(new Intent(this, MessageReceiverService.class));
         startService(new Intent(this, MessageReceiverService.class));

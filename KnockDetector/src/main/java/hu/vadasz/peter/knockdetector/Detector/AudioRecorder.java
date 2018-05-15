@@ -118,6 +118,14 @@ public class AudioRecorder {
         this.amplitudeThreshold = DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND;
     }
 
+    public AudioRecorder(MediaRecorder mediaRecorder, RawSignalReceiver rawSignalReceiver) {
+        this.rawSignalReceiver = rawSignalReceiver;
+        this.mediaRecorder = mediaRecorder;
+        this.shortUnitLength = DEFAULT_MEASURE_TIME;
+        this.tmpAudioFile = TMP_FILE_NAME;
+        this.amplitudeThreshold = DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND;
+    }
+
     public AudioRecorder(RawSignalReceiver rawSignalReceiver) {
         KnockDetector.getInstance().getMainComponent().inject(this);
         this.rawSignalReceiver = rawSignalReceiver;

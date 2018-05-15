@@ -40,6 +40,10 @@ public class InternetConnectionValidator {
         BaseApplication.getInstance().getmMainComponent().inject(this);
     }
 
+    public InternetConnectionValidator(InternetConnectionChecker internetConnectionChecker) {
+        this.internetConnectionChecker = internetConnectionChecker;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     /// CONSTRUCTION -- END
     ////////////////////////////////////////////////////////////////////////////////////////////////

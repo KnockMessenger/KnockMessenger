@@ -9,7 +9,7 @@ import dagger.Provides;
 import hu.vadasz.peter.knockmessenger.Managers.ServiceAlarmManager;
 
 /**
- * Created by Peti on 2018. 04. 25..
+ * This class provides a singleton ServiceAlarmManager object.
  */
 
 @Module(includes = {ApplicationModule.class})

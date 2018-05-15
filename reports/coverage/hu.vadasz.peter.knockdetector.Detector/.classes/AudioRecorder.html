@@ -23,9 +23,12 @@
 <h1>Coverage Summary for Class: AudioRecorder (hu.vadasz.peter.knockdetector.Detector)</h1>
 
 <table class="coverageStats">
-
 <tr>
   <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
 <th class="coverageStat 
 ">
   Method, %
@@ -39,49 +42,30 @@
   <td class="name">AudioRecorder</td>
 <td class="coverageStat">
   <span class="percent">
-    21,1%
+    0%
   </span>
   <span class="absValue">
-    (4/ 19)
+    (0/ 1)
   </span>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    15%
+    0%
   </span>
   <span class="absValue">
-    (9/ 60)
+    (0/ 20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 57)
   </span>
 </td>
 </tr>
-  <tr>
-    <td class="name">AudioRecorder$$EnhancerByMockitoWithCGLIB$$475301d1</td>
-  </tr>
-  <tr>
-    <td class="name">AudioRecorder$NoiseLevelReceiver</td>
-  </tr>
-  <tr>
-    <td class="name">AudioRecorder$RawSignalReceiver</td>
-  </tr>
-<tr>
-  <td class="name"><strong>total</strong></td>
-<td class="coverageStat">
-  <span class="percent">
-    21,1%
-  </span>
-  <span class="absValue">
-    (4/ 19)
-  </span>
-</td>
-<td class="coverageStat">
-  <span class="percent">
-    15%
-  </span>
-  <span class="absValue">
-    (9/ 60)
-  </span>
-</td>
-</tr>
+
 </table>
 
 <br/>
@@ -164,10 +148,10 @@
 <i>74</i>&nbsp;    /// CONSTANTS -- END
 <i>75</i>&nbsp;
 <b class="nc"><i>76</i>&nbsp;    @Getter</b>
-<b class="fc"><i>77</i>&nbsp;    @Setter</b>
+<b class="nc"><i>77</i>&nbsp;    @Setter</b>
 <i>78</i>&nbsp;    private int amplitudeThreshold;
 <i>79</i>&nbsp;
-<b class="fc"><i>80</i>&nbsp;    @Setter</b>
+<b class="nc"><i>80</i>&nbsp;    @Setter</b>
 <b class="nc"><i>81</i>&nbsp;    @Getter</b>
 <i>82</i>&nbsp;    private RawSignalReceiver rawSignalReceiver;
 <i>83</i>&nbsp;
@@ -181,7 +165,7 @@
 <b class="nc"><i>91</i>&nbsp;    @Getter</b>
 <i>92</i>&nbsp;    private String tmpAudioFile;
 <i>93</i>&nbsp;
-<b class="fc"><i>94</i>&nbsp;    @Setter</b>
+<b class="nc"><i>94</i>&nbsp;    @Setter</b>
 <b class="nc"><i>95</i>&nbsp;    @Getter</b>
 <i>96</i>&nbsp;    private long shortUnitLength;
 <i>97</i>&nbsp;
@@ -199,121 +183,129 @@
 <b class="nc"><i>109</i>&nbsp;    public AudioRecorder(NoiseLevelReceiver noiseLevelReceiver) {</b>
 <b class="nc"><i>110</i>&nbsp;        this.tmpAudioFile = TMP_FILE_NAME;</b>
 <b class="nc"><i>111</i>&nbsp;        this.noiseLevelReceiver = noiseLevelReceiver;</b>
-<b class="nc"><i>112</i>&nbsp;    }</b>
+<i>112</i>&nbsp;    }
 <i>113</i>&nbsp;
-<b class="fc"><i>114</i>&nbsp;    public AudioRecorder() {</b>
-<b class="fc"><i>115</i>&nbsp;        KnockDetector.getInstance().getMainComponent().inject(this);</b>
-<b class="fc"><i>116</i>&nbsp;        this.shortUnitLength = DEFAULT_MEASURE_TIME;</b>
-<b class="fc"><i>117</i>&nbsp;        this.tmpAudioFile = TMP_FILE_NAME;</b>
-<b class="fc"><i>118</i>&nbsp;        this.amplitudeThreshold = DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND;</b>
-<b class="fc"><i>119</i>&nbsp;    }</b>
+<b class="nc"><i>114</i>&nbsp;    public AudioRecorder() {</b>
+<b class="nc"><i>115</i>&nbsp;        KnockDetector.getInstance().getMainComponent().inject(this);</b>
+<b class="nc"><i>116</i>&nbsp;        this.shortUnitLength = DEFAULT_MEASURE_TIME;</b>
+<b class="nc"><i>117</i>&nbsp;        this.tmpAudioFile = TMP_FILE_NAME;</b>
+<b class="nc"><i>118</i>&nbsp;        this.amplitudeThreshold = DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND;</b>
+<i>119</i>&nbsp;    }
 <i>120</i>&nbsp;
-<b class="nc"><i>121</i>&nbsp;    public AudioRecorder(RawSignalReceiver rawSignalReceiver) {</b>
-<b class="nc"><i>122</i>&nbsp;        KnockDetector.getInstance().getMainComponent().inject(this);</b>
-<b class="nc"><i>123</i>&nbsp;        this.rawSignalReceiver = rawSignalReceiver;</b>
+<b class="nc"><i>121</i>&nbsp;    public AudioRecorder(MediaRecorder mediaRecorder, RawSignalReceiver rawSignalReceiver) {</b>
+<b class="nc"><i>122</i>&nbsp;        this.rawSignalReceiver = rawSignalReceiver;</b>
+<b class="nc"><i>123</i>&nbsp;        this.mediaRecorder = mediaRecorder;</b>
 <b class="nc"><i>124</i>&nbsp;        this.shortUnitLength = DEFAULT_MEASURE_TIME;</b>
 <b class="nc"><i>125</i>&nbsp;        this.tmpAudioFile = TMP_FILE_NAME;</b>
 <b class="nc"><i>126</i>&nbsp;        this.amplitudeThreshold = DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND;</b>
-<b class="nc"><i>127</i>&nbsp;    }</b>
+<i>127</i>&nbsp;    }
 <i>128</i>&nbsp;
-<b class="nc"><i>129</i>&nbsp;    public AudioRecorder(RawSignalReceiver rawSignalReceiver, int shortUnitLength, int theresold) {</b>
+<b class="nc"><i>129</i>&nbsp;    public AudioRecorder(RawSignalReceiver rawSignalReceiver) {</b>
 <b class="nc"><i>130</i>&nbsp;        KnockDetector.getInstance().getMainComponent().inject(this);</b>
 <b class="nc"><i>131</i>&nbsp;        this.rawSignalReceiver = rawSignalReceiver;</b>
-<b class="nc"><i>132</i>&nbsp;        this.shortUnitLength = shortUnitLength;</b>
+<b class="nc"><i>132</i>&nbsp;        this.shortUnitLength = DEFAULT_MEASURE_TIME;</b>
 <b class="nc"><i>133</i>&nbsp;        this.tmpAudioFile = TMP_FILE_NAME;</b>
-<b class="nc"><i>134</i>&nbsp;        this.amplitudeThreshold = theresold;</b>
-<b class="nc"><i>135</i>&nbsp;    }</b>
+<b class="nc"><i>134</i>&nbsp;        this.amplitudeThreshold = DEFAULT_AMPLITUDE_DIFF_LOWER_BOUND;</b>
+<i>135</i>&nbsp;    }
 <i>136</i>&nbsp;
-<i>137</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>138</i>&nbsp;    /// CONSTRUCTION -- END
-<i>139</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>140</i>&nbsp;
-<i>141</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>142</i>&nbsp;    /// METHODS
-<i>143</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<b class="nc"><i>137</i>&nbsp;    public AudioRecorder(RawSignalReceiver rawSignalReceiver, int shortUnitLength, int theresold) {</b>
+<b class="nc"><i>138</i>&nbsp;        KnockDetector.getInstance().getMainComponent().inject(this);</b>
+<b class="nc"><i>139</i>&nbsp;        this.rawSignalReceiver = rawSignalReceiver;</b>
+<b class="nc"><i>140</i>&nbsp;        this.shortUnitLength = shortUnitLength;</b>
+<b class="nc"><i>141</i>&nbsp;        this.tmpAudioFile = TMP_FILE_NAME;</b>
+<b class="nc"><i>142</i>&nbsp;        this.amplitudeThreshold = theresold;</b>
+<i>143</i>&nbsp;    }
 <i>144</i>&nbsp;
-<i>145</i>&nbsp;    /**
-<i>146</i>&nbsp;     * Starts the recording.
-<i>147</i>&nbsp;     * @throws AudioRecorderInitException
-<i>148</i>&nbsp;     */
-<i>149</i>&nbsp;
-<i>150</i>&nbsp;    public void start()  {
-<b class="nc"><i>151</i>&nbsp;        MediaRecorderInitializer.initializeRecorder(mediaRecorder, tmpAudioFile);</b>
-<b class="nc"><i>152</i>&nbsp;        recordKnock();</b>
-<b class="nc"><i>153</i>&nbsp;    }</b>
-<i>154</i>&nbsp;
-<i>155</i>&nbsp;    /**
-<i>156</i>&nbsp;     * Stops  the recording.
-<i>157</i>&nbsp;     */
-<i>158</i>&nbsp;
-<i>159</i>&nbsp;    public void stop() {
-<b class="nc"><i>160</i>&nbsp;        recording = !IS_RECORDING;</b>
-<b class="nc"><i>161</i>&nbsp;    }</b>
+<i>145</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>146</i>&nbsp;    /// CONSTRUCTION -- END
+<i>147</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>148</i>&nbsp;
+<i>149</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>150</i>&nbsp;    /// METHODS
+<i>151</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>152</i>&nbsp;
+<i>153</i>&nbsp;    /**
+<i>154</i>&nbsp;     * Starts the recording.
+<i>155</i>&nbsp;     * @throws AudioRecorderInitException
+<i>156</i>&nbsp;     */
+<i>157</i>&nbsp;
+<i>158</i>&nbsp;    public void start()  {
+<b class="nc"><i>159</i>&nbsp;        MediaRecorderInitializer.initializeRecorder(mediaRecorder, tmpAudioFile);</b>
+<b class="nc"><i>160</i>&nbsp;        recordKnock();</b>
+<i>161</i>&nbsp;    }
 <i>162</i>&nbsp;
 <i>163</i>&nbsp;    /**
-<i>164</i>&nbsp;     * This method initializes and starts the MediaRecorder. This method should run in separate
-<i>165</i>&nbsp;     * thread. The main cycle of the method is running until the stop method is called.
-<i>166</i>&nbsp;     * @throws AudioRecorderInitException
-<i>167</i>&nbsp;     */
-<i>168</i>&nbsp;
-<i>169</i>&nbsp;    private void recordKnock() {
-<b class="nc"><i>170</i>&nbsp;        recording = IS_RECORDING;</b>
-<i>171</i>&nbsp;
-<b class="nc"><i>172</i>&nbsp;        mediaRecorder.start();</b>
-<i>173</i>&nbsp;
-<i>174</i>&nbsp;        do {
-<b class="nc"><i>175</i>&nbsp;            int amplitudeIntervalStart = mediaRecorder.getMaxAmplitude();</b>
-<b class="nc"><i>176</i>&nbsp;            waitIntervalLength();</b>
-<i>177</i>&nbsp;
-<b class="nc"><i>178</i>&nbsp;            int amplitudeIntervalEnd = mediaRecorder.getMaxAmplitude();</b>
-<b class="nc"><i>179</i>&nbsp;            Log.i(&quot;AUDIO_RECORD&quot;, Integer.toString(amplitudeIntervalEnd));</b>
-<i>180</i>&nbsp;
-<b class="nc"><i>181</i>&nbsp;            if (rawSignalReceiver != null &amp;&amp; amplitudeIntervalEnd - amplitudeIntervalStart &gt;= amplitudeThreshold) {</b>
-<b class="nc"><i>182</i>&nbsp;                rawSignalReceiver.rawSignalReceived(KNOCK);</b>
-<b class="nc"><i>183</i>&nbsp;            } else if (rawSignalReceiver != null) {</b>
-<b class="nc"><i>184</i>&nbsp;                rawSignalReceiver.rawSignalReceived(NONE);</b>
-<i>185</i>&nbsp;            }
-<i>186</i>&nbsp;
-<b class="nc"><i>187</i>&nbsp;            if (noiseLevelReceiver != null) {</b>
-<b class="nc"><i>188</i>&nbsp;                noiseLevelReceiver.noiseLevelReceived(Math.abs(amplitudeIntervalEnd - amplitudeIntervalStart));</b>
-<i>189</i>&nbsp;            }
-<i>190</i>&nbsp;
-<b class="nc"><i>191</i>&nbsp;        } while (recording);</b>
-<i>192</i>&nbsp;
-<b class="nc"><i>193</i>&nbsp;        finish();</b>
-<b class="nc"><i>194</i>&nbsp;    }</b>
-<i>195</i>&nbsp;
-<i>196</i>&nbsp;    /**
-<i>197</i>&nbsp;     * Wait until the end of the signal interval.
-<i>198</i>&nbsp;     */
-<i>199</i>&nbsp;
-<i>200</i>&nbsp;    private void waitIntervalLength() {
-<i>201</i>&nbsp;        try {
-<b class="nc"><i>202</i>&nbsp;            Thread.sleep(shortUnitLength);</b>
-<b class="nc"><i>203</i>&nbsp;        } catch (InterruptedException e) {}</b>
-<b class="nc"><i>204</i>&nbsp;    }</b>
-<i>205</i>&nbsp;
-<i>206</i>&nbsp;    /**
-<i>207</i>&nbsp;     * Closes the MediaRecorder, stops the recording.
-<i>208</i>&nbsp;     */
-<i>209</i>&nbsp;
-<i>210</i>&nbsp;    public void finish() {
-<b class="nc"><i>211</i>&nbsp;        if (mediaRecorder != null)</b>
-<i>212</i>&nbsp;        {
-<b class="nc"><i>213</i>&nbsp;            mediaRecorder.stop();</b>
-<i>214</i>&nbsp;        }
-<b class="nc"><i>215</i>&nbsp;    }</b>
-<i>216</i>&nbsp;
-<i>217</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>218</i>&nbsp;    /// METHODS -- END
-<i>219</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
-<i>220</i>&nbsp;}
+<i>164</i>&nbsp;     * Stops  the recording.
+<i>165</i>&nbsp;     */
+<i>166</i>&nbsp;
+<i>167</i>&nbsp;    public void stop() {
+<b class="nc"><i>168</i>&nbsp;        recording = !IS_RECORDING;</b>
+<i>169</i>&nbsp;    }
+<i>170</i>&nbsp;
+<i>171</i>&nbsp;    /**
+<i>172</i>&nbsp;     * This method initializes and starts the MediaRecorder. This method should run in separate
+<i>173</i>&nbsp;     * thread. The main cycle of the method is running until the stop method is called.
+<i>174</i>&nbsp;     * @throws AudioRecorderInitException
+<i>175</i>&nbsp;     */
+<i>176</i>&nbsp;
+<i>177</i>&nbsp;    private void recordKnock() {
+<b class="nc"><i>178</i>&nbsp;        recording = IS_RECORDING;</b>
+<i>179</i>&nbsp;
+<b class="nc"><i>180</i>&nbsp;        mediaRecorder.start();</b>
+<i>181</i>&nbsp;
+<i>182</i>&nbsp;        do {
+<b class="nc"><i>183</i>&nbsp;            int amplitudeIntervalStart = mediaRecorder.getMaxAmplitude();</b>
+<b class="nc"><i>184</i>&nbsp;            waitIntervalLength();</b>
+<i>185</i>&nbsp;
+<b class="nc"><i>186</i>&nbsp;            int amplitudeIntervalEnd = mediaRecorder.getMaxAmplitude();</b>
+<b class="nc"><i>187</i>&nbsp;            Log.i(&quot;AUDIO_RECORD&quot;, Integer.toString(amplitudeIntervalEnd));</b>
+<i>188</i>&nbsp;
+<b class="nc"><i>189</i>&nbsp;            if (rawSignalReceiver != null &amp;&amp; amplitudeIntervalEnd - amplitudeIntervalStart &gt;= amplitudeThreshold) {</b>
+<b class="nc"><i>190</i>&nbsp;                rawSignalReceiver.rawSignalReceived(KNOCK);</b>
+<b class="nc"><i>191</i>&nbsp;            } else if (rawSignalReceiver != null) {</b>
+<b class="nc"><i>192</i>&nbsp;                rawSignalReceiver.rawSignalReceived(NONE);</b>
+<i>193</i>&nbsp;            }
+<i>194</i>&nbsp;
+<b class="nc"><i>195</i>&nbsp;            if (noiseLevelReceiver != null) {</b>
+<b class="nc"><i>196</i>&nbsp;                noiseLevelReceiver.noiseLevelReceived(Math.abs(amplitudeIntervalEnd - amplitudeIntervalStart));</b>
+<i>197</i>&nbsp;            }
+<i>198</i>&nbsp;
+<b class="nc"><i>199</i>&nbsp;        } while (recording);</b>
+<i>200</i>&nbsp;
+<b class="nc"><i>201</i>&nbsp;        finish();</b>
+<i>202</i>&nbsp;    }
+<i>203</i>&nbsp;
+<i>204</i>&nbsp;    /**
+<i>205</i>&nbsp;     * Wait until the end of the signal interval.
+<i>206</i>&nbsp;     */
+<i>207</i>&nbsp;
+<i>208</i>&nbsp;    private void waitIntervalLength() {
+<i>209</i>&nbsp;        try {
+<b class="nc"><i>210</i>&nbsp;            Thread.sleep(shortUnitLength);</b>
+<b class="nc"><i>211</i>&nbsp;        } catch (InterruptedException e) {}</b>
+<i>212</i>&nbsp;    }
+<i>213</i>&nbsp;
+<i>214</i>&nbsp;    /**
+<i>215</i>&nbsp;     * Closes the MediaRecorder, stops the recording.
+<i>216</i>&nbsp;     */
+<i>217</i>&nbsp;
+<i>218</i>&nbsp;    public void finish() {
+<b class="nc"><i>219</i>&nbsp;        if (mediaRecorder != null)</b>
+<i>220</i>&nbsp;        {
+<b class="nc"><i>221</i>&nbsp;            mediaRecorder.stop();</b>
+<i>222</i>&nbsp;        }
+<i>223</i>&nbsp;    }
+<i>224</i>&nbsp;
+<i>225</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>226</i>&nbsp;    /// METHODS -- END
+<i>227</i>&nbsp;    ////////////////////////////////////////////////////////////////////////////////////////////////
+<i>228</i>&nbsp;}
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

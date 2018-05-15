@@ -61,7 +61,7 @@
     0%
   </span>
   <span class="absValue">
-    (0/ 63)
+    (0/ 67)
   </span>
 </td>
 </tr>
@@ -90,51 +90,59 @@
 <b class="nc"><i>16</i>&nbsp;        android:foreground=&quot;?android:attr/selectableItemBackground&quot;</b>
 <b class="nc"><i>17</i>&nbsp;        android:clickable=&quot;true&quot; &gt;</b>
 <b class="nc"><i>18</i>&nbsp;</b>
-<b class="nc"><i>19</i>&nbsp;        &lt;RelativeLayout</b>
-<i>20</i>&nbsp;            android:layout_width=&quot;wrap_content&quot;
-<i>21</i>&nbsp;            android:layout_height=&quot;wrap_content&quot;
-<i>22</i>&nbsp;            android:layout_centerHorizontal=&quot;true&quot;
-<i>23</i>&nbsp;            android:layout_centerVertical=&quot;true&quot;&gt;
-<i>24</i>&nbsp;
-<i>25</i>&nbsp;            &lt;ImageView
-<i>26</i>&nbsp;                android:id=&quot;@+id/profileActivity_nameIcon&quot;
-<i>27</i>&nbsp;                android:layout_width=&quot;wrap_content&quot;
-<i>28</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;
-<i>29</i>&nbsp;                android:src=&quot;@mipmap/ic_person_black_48dp&quot;/&gt;
-<i>30</i>&nbsp;
-<i>31</i>&nbsp;            &lt;ImageView
-<i>32</i>&nbsp;                android:id=&quot;@+id/profileActivity_telIcon&quot;
-<i>33</i>&nbsp;                android:layout_width=&quot;wrap_content&quot;
-<i>34</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;
-<i>35</i>&nbsp;                android:src=&quot;@mipmap/ic_local_phone_black_48dp&quot;
-<i>36</i>&nbsp;                android:layout_below=&quot;@id/profileActivity_nameIcon&quot;/&gt;
-<i>37</i>&nbsp;
-<i>38</i>&nbsp;            &lt;EditText
-<i>39</i>&nbsp;                android:id=&quot;@+id/profileActivity_nameText&quot;
-<b class="nc"><i>40</i>&nbsp;                android:layout_width=&quot;@dimen/profileActivity_nameText_length&quot;</b>
-<b class="nc"><i>41</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;</b>
-<b class="nc"><i>42</i>&nbsp;                android:layout_toRightOf=&quot;@id/profileActivity_nameIcon&quot;</b>
-<b class="nc"><i>43</i>&nbsp;                android:hint=&quot;@string/profileActivity_nameText_hint&quot;</b>
-<b class="nc"><i>44</i>&nbsp;                android:text=&quot;@{user.name}&quot;/&gt;</b>
-<b class="nc"><i>45</i>&nbsp;</b>
+<b class="nc"><i>19</i>&nbsp;        &lt;ProgressBar</b>
+<b class="nc"><i>20</i>&nbsp;            android:id=&quot;@+id/profileActivity_progressBar&quot;</b>
+<b class="nc"><i>21</i>&nbsp;            android:layout_width=&quot;wrap_content&quot;</b>
+<i>22</i>&nbsp;            android:layout_height=&quot;wrap_content&quot;
+<i>23</i>&nbsp;            android:layout_above=&quot;@id/profileActivity_form&quot;
+<i>24</i>&nbsp;            android:layout_centerHorizontal=&quot;true&quot;/&gt;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;        &lt;RelativeLayout
+<i>27</i>&nbsp;            android:id=&quot;@+id/profileActivity_form&quot;
+<i>28</i>&nbsp;            android:layout_width=&quot;wrap_content&quot;
+<i>29</i>&nbsp;            android:layout_height=&quot;wrap_content&quot;
+<i>30</i>&nbsp;            android:layout_centerHorizontal=&quot;true&quot;
+<i>31</i>&nbsp;            android:layout_centerVertical=&quot;true&quot;&gt;
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;            &lt;ImageView
+<i>34</i>&nbsp;                android:id=&quot;@+id/profileActivity_nameIcon&quot;
+<i>35</i>&nbsp;                android:layout_width=&quot;wrap_content&quot;
+<i>36</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;
+<i>37</i>&nbsp;                android:src=&quot;@mipmap/ic_person_black_48dp&quot;/&gt;
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;            &lt;ImageView
+<i>40</i>&nbsp;                android:id=&quot;@+id/profileActivity_telIcon&quot;
+<i>41</i>&nbsp;                android:layout_width=&quot;wrap_content&quot;
+<i>42</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;
+<i>43</i>&nbsp;                android:src=&quot;@mipmap/ic_local_phone_black_48dp&quot;
+<i>44</i>&nbsp;                android:layout_below=&quot;@id/profileActivity_nameIcon&quot;/&gt;
+<i>45</i>&nbsp;
 <b class="nc"><i>46</i>&nbsp;            &lt;EditText</b>
-<b class="nc"><i>47</i>&nbsp;                android:id=&quot;@+id/profileActivity_telText&quot;</b>
-<b class="nc"><i>48</i>&nbsp;                android:layout_width=&quot;@dimen/profileActivity_telText_length&quot;</b>
+<b class="nc"><i>47</i>&nbsp;                android:id=&quot;@+id/profileActivity_nameText&quot;</b>
+<b class="nc"><i>48</i>&nbsp;                android:layout_width=&quot;@dimen/profileActivity_nameText_length&quot;</b>
 <b class="nc"><i>49</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;</b>
-<b class="nc"><i>50</i>&nbsp;                android:layout_toRightOf=&quot;@id/profileActivity_telIcon&quot;</b>
-<i>51</i>&nbsp;                android:layout_below=&quot;@id/profileActivity_nameText&quot;
-<b class="nc"><i>52</i>&nbsp;                android:hint=&quot;@string/profileActivity_telText_hint&quot;</b>
-<i>53</i>&nbsp;                android:text=&quot;@{user.telephone}&quot;/&gt;
-<i>54</i>&nbsp;
-<i>55</i>&nbsp;        &lt;/RelativeLayout&gt;
-<i>56</i>&nbsp;    &lt;/RelativeLayout&gt;
-<b class="nc"><i>57</i>&nbsp;&lt;/layout&gt;</b>
+<b class="nc"><i>50</i>&nbsp;                android:layout_toRightOf=&quot;@id/profileActivity_nameIcon&quot;</b>
+<b class="nc"><i>51</i>&nbsp;                android:hint=&quot;@string/profileActivity_nameText_hint&quot;</b>
+<b class="nc"><i>52</i>&nbsp;                android:text=&quot;@{user.name}&quot;/&gt;</b>
+<b class="nc"><i>53</i>&nbsp;</b>
+<b class="nc"><i>54</i>&nbsp;            &lt;EditText</b>
+<b class="nc"><i>55</i>&nbsp;                android:id=&quot;@+id/profileActivity_telText&quot;</b>
+<b class="nc"><i>56</i>&nbsp;                android:layout_width=&quot;@dimen/profileActivity_telText_length&quot;</b>
+<b class="nc"><i>57</i>&nbsp;                android:layout_height=&quot;wrap_content&quot;</b>
+<b class="nc"><i>58</i>&nbsp;                android:layout_toRightOf=&quot;@id/profileActivity_telIcon&quot;</b>
+<i>59</i>&nbsp;                android:layout_below=&quot;@id/profileActivity_nameText&quot;
+<b class="nc"><i>60</i>&nbsp;                android:hint=&quot;@string/profileActivity_telText_hint&quot;</b>
+<i>61</i>&nbsp;                android:text=&quot;@{user.telephone}&quot;/&gt;
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;        &lt;/RelativeLayout&gt;
+<i>64</i>&nbsp;    &lt;/RelativeLayout&gt;
+<b class="nc"><i>65</i>&nbsp;&lt;/layout&gt;</b>
 </div>
 </div>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2018-04-03 20:16</div>
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
 </div>
 </body>
 </html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-05-15T00:21:16" hostname="DESKTOP-GBLJLQR" time="0.008">
+  <properties/>
+  <testcase name="testNewMessages_ShouldSaveMessage" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManagerTest" time="0.003"/>
+  <testcase name="testDeleteMessages_ShouldDeleteMessage" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManagerTest" time="0.001"/>
+  <testcase name="testCacheMessages_ShouldSaveMessage" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.MessageDataManagerTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -10,7 +10,7 @@ import lombok.Setter;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
- * Entity to store the application's basic settings.
+ * Entity to store the application's basic settings. This class is planned for later use!
  */
 
 @AllArgsConstructor

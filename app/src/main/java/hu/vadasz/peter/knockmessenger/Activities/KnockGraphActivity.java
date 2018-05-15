@@ -233,6 +233,12 @@ public class KnockGraphActivity extends BaseActivity implements AudioRecorder.No
         series.resetData(dataPoints);
     }
 
+    /**
+     * This method animates the graph using simple linear interpolation of colors.
+     * @param level the level to arrive to use color green.
+     * @return the calculated color.
+     */
+
     private int interpolateColor(double level) {
         double rate = (level / limit);
         rate = rate > 1 ? 1.0 : rate;

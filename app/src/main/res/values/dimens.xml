@@ -40,4 +40,5 @@
     <dimen name="friendCard_text_marginRight">100dp</dimen>
     <dimen name="mainScreen_messageLogo_size">180dp</dimen>
     <dimen name="friendsActivity_image_size">180dp</dimen>
+    <dimen name="friendCard_messageIcon_rightMargin">15dp</dimen>
 </resources>

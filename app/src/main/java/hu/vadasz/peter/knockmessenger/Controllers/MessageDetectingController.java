@@ -1,6 +1,5 @@
 package hu.vadasz.peter.knockmessenger.Controllers;
 
-import java.util.HashMap;
 import java.util.List;
 
 import hu.vadasz.peter.knockdetector.Detector.AbstractAudioKnockDetector;
@@ -12,7 +11,6 @@ import hu.vadasz.peter.morsecodedecoder.Code.Code;
 import hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoder;
 import hu.vadasz.peter.morsecodedecoder.Interfaces.MorseCodeDecoderInterface;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Main class of the MessageDetecting service's controller layer. This class is responsible for message

@@ -1,0 +1,237 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: UserDataManager</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">hu.vadasz.peter.knockmessenger.DataPersister.Managers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: UserDataManager (hu.vadasz.peter.knockmessenger.DataPersister.Managers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserDataManager</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 22)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 54)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package hu.vadasz.peter.knockmessenger.DataPersister.Managers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.google.firebase.database.ChildEventListener;
+<i>4</i>&nbsp;import com.google.firebase.database.ValueEventListener;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Friend;
+<i>10</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
+<i>11</i>&nbsp;import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerSideDatabase;
+<i>12</i>&nbsp;import lombok.Getter;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;/**
+<i>15</i>&nbsp; * This class provides cache and data from local database.
+<i>16</i>&nbsp; */
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;public class UserDataManager {
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public static final boolean IS_FRIEND = true;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    private DataBaseManager dataBaseManager;
+<i>23</i>&nbsp;    private ServerSideDatabase serverSideDatabase;
+<i>24</i>&nbsp;
+<b class="nc"><i>25</i>&nbsp;    @Getter</b>
+<i>26</i>&nbsp;    private User user;
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;    @Getter</b>
+<i>29</i>&nbsp;    private List&lt;Friend&gt; friends;
+<i>30</i>&nbsp;
+<b class="nc"><i>31</i>&nbsp;    public UserDataManager(DataBaseManager dataBaseManager, ServerSideDatabase serverSideDatabase) {</b>
+<b class="nc"><i>32</i>&nbsp;        this.dataBaseManager = dataBaseManager;</b>
+<b class="nc"><i>33</i>&nbsp;        this.serverSideDatabase = serverSideDatabase;</b>
+<b class="nc"><i>34</i>&nbsp;        friends = new ArrayList&lt;&gt;();</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public void trySaveUser(String telephone, ValueEventListener listener) {
+<b class="nc"><i>38</i>&nbsp;        findUser(telephone, listener);</b>
+<i>39</i>&nbsp;    }
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    public void findUser(String telephone, ValueEventListener listener) {
+<b class="nc"><i>42</i>&nbsp;        serverSideDatabase.findUserByTelephone(telephone, listener);</b>
+<i>43</i>&nbsp;    }
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    public void findUser(Friend friend, ValueEventListener listener) {
+<b class="nc"><i>46</i>&nbsp;        serverSideDatabase.findUser(friend.getTel(), listener);</b>
+<i>47</i>&nbsp;    }
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    public void registrate(User user) {
+<b class="nc"><i>50</i>&nbsp;        Long id = dataBaseManager.insertUser(user);</b>
+<b class="nc"><i>51</i>&nbsp;        user.setId(id);</b>
+<b class="nc"><i>52</i>&nbsp;        this.user = user;</b>
+<b class="nc"><i>53</i>&nbsp;        serverSideDatabase.addUser(user);</b>
+<i>54</i>&nbsp;    }
+<i>55</i>&nbsp;
+<i>56</i>&nbsp;    public void loadUser() {
+<b class="nc"><i>57</i>&nbsp;        user = dataBaseManager.findUser();</b>
+<i>58</i>&nbsp;    }
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    public void updateUser(User user) {
+<b class="nc"><i>61</i>&nbsp;        dataBaseManager.updateUser(user);</b>
+<b class="nc"><i>62</i>&nbsp;        this.user = user;</b>
+<b class="nc"><i>63</i>&nbsp;        serverSideDatabase.updateUser(user);</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    public boolean isLoggedIn() {
+<b class="nc"><i>67</i>&nbsp;        return user != null;</b>
+<i>68</i>&nbsp;    }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    public void deleteUser() {
+<b class="nc"><i>71</i>&nbsp;        dataBaseManager.deleteUser(user);</b>
+<b class="nc"><i>72</i>&nbsp;        serverSideDatabase.deleteUser(user);</b>
+<b class="nc"><i>73</i>&nbsp;        user = null;</b>
+<i>74</i>&nbsp;    }
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    /// FRIENDS
+<i>78</i>&nbsp;
+<i>79</i>&nbsp;    public void requestAllContacts(ValueEventListener listener) {
+<b class="nc"><i>80</i>&nbsp;        serverSideDatabase.findAllUsers(listener);</b>
+<i>81</i>&nbsp;    }
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    public void loadFriends() {
+<b class="nc"><i>84</i>&nbsp;        friends = dataBaseManager.loadAllFriends();</b>
+<i>85</i>&nbsp;    }
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    public synchronized void insertFriend(Friend friend) {
+<b class="nc"><i>88</i>&nbsp;        friend.setId(dataBaseManager.insertFriend(friend));</b>
+<b class="nc"><i>89</i>&nbsp;        friends.add(friend);</b>
+<i>90</i>&nbsp;    }
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    public synchronized void deleteFriend(Friend friend) {
+<b class="nc"><i>93</i>&nbsp;        for (Friend f : friends) {</b>
+<b class="nc"><i>94</i>&nbsp;            if (f.equals(friend)) {</b>
+<b class="nc"><i>95</i>&nbsp;                friend.setId(f.getId());</b>
+<b class="nc"><i>96</i>&nbsp;                break;</b>
+<i>97</i>&nbsp;            }
+<b class="nc"><i>98</i>&nbsp;        }</b>
+<b class="nc"><i>99</i>&nbsp;        dataBaseManager.deleteFriend(friend);</b>
+<b class="nc"><i>100</i>&nbsp;        friends.remove(friend);</b>
+<i>101</i>&nbsp;    }
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;    public void deleteAllFriends() {
+<b class="nc"><i>104</i>&nbsp;        friends.clear();</b>
+<b class="nc"><i>105</i>&nbsp;        dataBaseManager.deleteAllFriend();</b>
+<i>106</i>&nbsp;    }
+<i>107</i>&nbsp;
+<i>108</i>&nbsp;    public synchronized boolean isFriend(Friend friend) {
+<b class="nc"><i>109</i>&nbsp;        return friends.contains(friend);</b>
+<i>110</i>&nbsp;    }
+<i>111</i>&nbsp;
+<i>112</i>&nbsp;    public boolean isFriend(String tel) {
+<b class="nc"><i>113</i>&nbsp;        for (Friend friend :  friends) {</b>
+<b class="nc"><i>114</i>&nbsp;            if (friend.getTel().equals(tel)) {</b>
+<b class="nc"><i>115</i>&nbsp;                return IS_FRIEND;</b>
+<i>116</i>&nbsp;            }
+<b class="nc"><i>117</i>&nbsp;        }</b>
+<i>118</i>&nbsp;
+<b class="nc"><i>119</i>&nbsp;        return !IS_FRIEND;</b>
+<i>120</i>&nbsp;    }
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    public Friend getFriendByTelephone(String telephone) {
+<b class="nc"><i>123</i>&nbsp;        for (Friend friend : friends) {</b>
+<b class="nc"><i>124</i>&nbsp;            if (friend.getTel().equals(telephone)) {</b>
+<b class="nc"><i>125</i>&nbsp;                return friend;</b>
+<i>126</i>&nbsp;            }
+<b class="nc"><i>127</i>&nbsp;        }</b>
+<i>128</i>&nbsp;
+<b class="nc"><i>129</i>&nbsp;        return null;</b>
+<i>130</i>&nbsp;    }
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;    public synchronized void updateFriend(Friend friend) {
+<b class="nc"><i>133</i>&nbsp;        for (Friend f : friends) {</b>
+<b class="nc"><i>134</i>&nbsp;            if (f.equals(friend)) {</b>
+<b class="nc"><i>135</i>&nbsp;                f.setName(friend.getName());</b>
+<b class="nc"><i>136</i>&nbsp;                friend.setId(f.getId());</b>
+<b class="nc"><i>137</i>&nbsp;                break;</b>
+<i>138</i>&nbsp;            }
+<b class="nc"><i>139</i>&nbsp;        }</b>
+<i>140</i>&nbsp;
+<b class="nc"><i>141</i>&nbsp;        dataBaseManager.updateFriend(friend);</b>
+<i>142</i>&nbsp;    }
+<i>143</i>&nbsp;
+<i>144</i>&nbsp;    public void setServerDataChangeListener(ChildEventListener listener) {
+<b class="nc"><i>145</i>&nbsp;        serverSideDatabase.setUserChangedListener(listener);</b>
+<i>146</i>&nbsp;    }
+<i>147</i>&nbsp;
+<i>148</i>&nbsp;    public void removeServerDataChaneListener(ChildEventListener listener) {
+<b class="nc"><i>149</i>&nbsp;        serverSideDatabase.removeEventListener(listener);</b>
+<i>150</i>&nbsp;    }
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;    /// FRIENDS -- END
+<i>153</i>&nbsp;
+<i>154</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-05-07 01:18</div>
+</div>
+</body>
+</html>

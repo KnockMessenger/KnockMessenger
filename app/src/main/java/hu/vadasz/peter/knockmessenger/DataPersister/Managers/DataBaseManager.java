@@ -10,8 +10,6 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Entities.Message;
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.MessageDao;
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
 import hu.vadasz.peter.knockmessenger.DataPersister.Entities.UserDao;
-import hu.vadasz.peter.knockmessenger.DataPersister.Entities.UserSettings;
-import hu.vadasz.peter.knockmessenger.DataPersister.Entities.UserSettingsDao;
 
 /**
  * This class is responsible for collecting database operations.
