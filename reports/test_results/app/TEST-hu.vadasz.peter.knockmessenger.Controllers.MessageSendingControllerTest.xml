@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockmessenger.Controllers.MessageSendingControllerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-05-15T00:21:15" hostname="DESKTOP-GBLJLQR" time="0.024">
+  <properties/>
+  <testcase name="testSend_ShouldThrowEmptyMessageException" classname="hu.vadasz.peter.knockmessenger.Controllers.MessageSendingControllerTest" time="0.019"/>
+  <testcase name="testSend_ShouldThrowDeviceIsOfflineException" classname="hu.vadasz.peter.knockmessenger.Controllers.MessageSendingControllerTest" time="0.002"/>
+  <testcase name="testDelete_ShouldThrowException" classname="hu.vadasz.peter.knockmessenger.Controllers.MessageSendingControllerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

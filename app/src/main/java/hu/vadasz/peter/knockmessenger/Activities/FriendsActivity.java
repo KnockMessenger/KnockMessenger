@@ -4,7 +4,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,10 +32,17 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Entities.User;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.ServerDataChangeHandler;
 import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
 import hu.vadasz.peter.knockmessenger.R;
-import hu.vadasz.peter.morsecodedecoder.Code.Code;
+
+/**
+ * This class is responsible for displaying friends represented by list of cards.
+ */
 
 public class FriendsActivity extends BaseActivity implements FriendsAdapter.FriendListener,
         ServerDataChangeHandler.FriendChangeListener, ValueEventListener, TimeoutHandler.TimeoutListener {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @BindView(R.id.friendsActivity_recyclerView)
     RecyclerView friendsRecyclerView;
@@ -54,6 +60,14 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
     private InternetConnectionValidator internetConnectionValidator;
 
     private TimeoutHandler timeoutHandler;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ACTIVITY OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -139,6 +153,10 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
         return super.onOptionsItemSelected(menuItem);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ACTIVITY OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void removeFriend(Friend friend) {
         userDataManager.deleteFriend(friend);
@@ -150,36 +168,6 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
     @Override
     public void sendMessage(String telephone) {
         showMessageSendingActivity(telephone);
-    }
-
-    private void showBrowseFriendsActivity() {
-        if (internetConnectionValidator.validateConnection()) {
-            startActivity(new Intent(this, BrowseFriendsActivity.class));
-        } else {
-            showErrorMessage(getString(R.string.device_offline_error));
-        }
-    }
-
-    private void showMessageSendingActivity(String telephone) {
-        Intent intent = new Intent(this, MessageSendingActivity.class);
-        intent.putExtra(MessageSendingActivity.EXTRA_FRIEND_TELEPHONE_KEY, telephone);
-        startActivity(intent);
-    }
-
-    private void initRecyclerView() {
-        friendsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        friendsAdapter = new FriendsAdapter(userDataManager.getFriends(), this);
-        friendsRecyclerView.setAdapter(friendsAdapter);
-    }
-
-    private void syncFriends() {
-        if (internetConnectionValidator.validateConnection()) {
-            userDataManager.requestAllContacts(this);
-            progressBar.setVisibility(View.VISIBLE);
-            timeoutHandler.start();
-        } else {
-            showErrorMessage(getString(R.string.syncError));
-        }
     }
 
     @Override
@@ -202,6 +190,14 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
                 .show();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.FriendChangeListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FriendsAdapter.FriendListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void friendChanged(Friend friend) {
         friendsAdapter.dataSetChanged();
@@ -214,6 +210,18 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
     public void friendRemoved(Friend friend) {
         friendsAdapter.dataSetChanged();
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FriendsAdapter.FriendListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ServerDataChangeHandler.FriendChangeListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ValueEventListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -239,9 +247,77 @@ public class FriendsActivity extends BaseActivity implements FriendsAdapter.Frie
         progressBar.setVisibility(View.GONE);
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ValueEventListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// TimeoutHandler.TimeoutListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void timeout() {
         progressBar.setVisibility(View.GONE);
         showErrorMessage(getString(R.string.syncError));
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// TimeoutHandler.TimeoutListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This method starts the BrowseFriendsActivity if the device is online.
+     */
+
+    private void showBrowseFriendsActivity() {
+        if (internetConnectionValidator.validateConnection()) {
+            startActivity(new Intent(this, BrowseFriendsActivity.class));
+        } else {
+            showErrorMessage(getString(R.string.device_offline_error));
+        }
+    }
+
+    /**
+     * This method starts the MessageSendingActivity to chat with a specified user.
+     * @param telephone the user to chat with.
+     */
+
+    private void showMessageSendingActivity(String telephone) {
+        Intent intent = new Intent(this, MessageSendingActivity.class);
+        intent.putExtra(MessageSendingActivity.EXTRA_FRIEND_TELEPHONE_KEY, telephone);
+        startActivity(intent);
+    }
+
+    /**
+     * This method initializes the RecyclerView with the cards of friends.
+     */
+
+    private void initRecyclerView() {
+        friendsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        friendsAdapter = new FriendsAdapter(userDataManager.getFriends(), this);
+        friendsRecyclerView.setAdapter(friendsAdapter);
+    }
+
+    /**
+     * This method tries to synchronize the data of friends by requesting the server's data.
+     */
+
+    private void syncFriends() {
+        if (internetConnectionValidator.validateConnection()) {
+            userDataManager.requestAllContacts(this);
+            progressBar.setVisibility(View.VISIBLE);
+            timeoutHandler.start();
+        } else {
+            showErrorMessage(getString(R.string.syncError));
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
 }

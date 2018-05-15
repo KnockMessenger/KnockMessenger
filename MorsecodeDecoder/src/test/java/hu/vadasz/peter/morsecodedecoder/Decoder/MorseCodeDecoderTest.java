@@ -347,7 +347,7 @@ public class MorseCodeDecoderTest {
     }
 
     @Test(timeout = MAX_TIME)
-    public void testDecode_huffmanModedecoderShouldChangeStateToInputMode() {
+    public void testDecode_huffmanModeDecoderShouldChangeStateToInputMode() {
         morseCodeDecoder = new MorseCodeDecoder(receiver, MorseCodeTable.getDefaultHuffmanCodes(), !MORSE_MODE);
         morseCodeDecoder.setMode(MorseCodeDecoder.EDIT_MODE);
         Thread testThread = new Thread(new Runnable() {

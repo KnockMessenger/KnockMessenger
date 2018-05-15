@@ -1,13 +1,11 @@
 package hu.vadasz.peter.knockmessenger.Activities;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import javax.inject.Inject;
 
 import hu.vadasz.peter.knockdetector.Interfaces.DetectionVisualizer;
 import hu.vadasz.peter.knockmessenger.Application.BaseApplication;
-import hu.vadasz.peter.knockmessenger.PermissionHandler.PermissionHandler;
 import hu.vadasz.peter.knockmessenger.Tools.InternetConnectionChecker;
 import hu.vadasz.peter.morsecodedecoder.Decoder.MorseCodeDecoder;
 

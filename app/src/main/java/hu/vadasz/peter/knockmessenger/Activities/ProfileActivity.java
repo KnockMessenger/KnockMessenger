@@ -26,8 +26,18 @@ import hu.vadasz.peter.knockmessenger.DataPersister.Server.TimeoutHandler;
 import hu.vadasz.peter.knockmessenger.R;
 import hu.vadasz.peter.knockmessenger.databinding.ActivityProfileBinding;
 
+/**
+ * This activity is responsible for displaying the user's data and managing the changes.
+ */
+
 public class ProfileActivity extends BaseActivity implements ValueEventListener,
         TimeoutHandler.TimeoutListener {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// CONSTANTS
 
     public static final int REGISTRATE_USER_REQUEST = 1;
     public static final int UPDATE_USER_REQUEST = 2;
@@ -48,6 +58,8 @@ public class ProfileActivity extends BaseActivity implements ValueEventListener,
 
     public static final String EMPTY_TEXT = "";
 
+    /// CONSTANTS -- END
+
     @BindView(R.id.profileActivity_nameText)
     EditText name;
 
@@ -67,6 +79,14 @@ public class ProfileActivity extends BaseActivity implements ValueEventListener,
     private TimeoutHandler timeoutHandler;
 
     private boolean saving;
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// FIELDS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ACTIVITY OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -134,106 +154,13 @@ public class ProfileActivity extends BaseActivity implements ValueEventListener,
         return super.onOptionsItemSelected(menuItem);
     }
 
-    private void initChangeListeners() {
-        name.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ACTIVITY OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                user.setName(name.getText().toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-
-        tel.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                user.setTelephone(tel.getText().toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-    }
-
-    private void saveChanges() {
-        saveProgress.setVisibility(View.VISIBLE);
-        try {
-            userController.trySaveUser(user, this);
-            saving = SAVING;
-            timeoutHandler.start();
-        } catch (DeviceIsOfflineException | InvalidUserException e) {
-            saveProgress.setVisibility(View.GONE);
-            showErrorMessage(e.getMessage());
-            timeoutHandler.stop();
-        }
-
-    }
-
-    private void saveData() {
-        Intent intent = new Intent(this, MainScreenActivity.class);
-        intent.putExtra(EXTRA_USER, user);
-        setResult(SAVE_SUCCESS, intent);
-        finish();
-    }
-
-    private void closeAndDelete() {
-        Intent intent = new Intent(ProfileActivity.this, MainScreenActivity.class);
-        intent.putExtra(EXTRA_USER, user);
-        intent.putExtra(EXTRA_DELETE_USER, DELETE_USER);
-        setResult(SAVE_SUCCESS, intent);
-        finish();
-    }
-
-    private void deleteConfirmed() {
-        if(saving) {
-            return;
-        }
-
-        saveProgress.setVisibility(View.VISIBLE);
-        try {
-            delete = DELETE_USER;
-            userController.trySaveUser(user, ProfileActivity.this);
-            saving = SAVING;
-            timeoutHandler.start();
-        } catch (InvalidUserException | DeviceIsOfflineException e) {
-            saveProgress.setVisibility(View.GONE);
-            showErrorMessage(e.getMessage());
-        }
-    }
-
-    private void requestDelete() {
-
-        if (create) {
-            showErrorMessage(getString(R.string.profileActivity_invalid_delete_error));
-            return;
-        }
-        Snackbar.make(findViewById(android.R.id.content), getString(R.string.codesActivity_confirm_delete_text), Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.codesActivity_confirm_delete_yes_text), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                      deleteConfirmed();
-                    }
-                })
-                .setActionTextColor(getColor(android.R.color.holo_red_light))
-                .show();
-    }
-
-    /**
-     * This method sets th editText type field's cursors to the end of the text.
-     */
-
-    private void setCursors() {
-        name.setSelection(name.getText().length());
-        tel.setSelection(tel.getText().length());
-        name.append(EMPTY_TEXT);
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ValueEventListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public void onDataChange(final DataSnapshot dataSnapshot) {
@@ -267,6 +194,14 @@ public class ProfileActivity extends BaseActivity implements ValueEventListener,
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// ValueEventListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// TimeoutHandler.TimeoutListener OVERRIDES
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     public void timeout() {
         saveProgress.setVisibility(View.GONE);
@@ -274,4 +209,142 @@ public class ProfileActivity extends BaseActivity implements ValueEventListener,
 
         showErrorMessage(getString(R.string.connection_timeout_error));
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// TimeoutHandler.TimeoutListener OVERRIDES -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * This method initializes the EditText fields change listeners.
+     */
+
+    private void initChangeListeners() {
+        name.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                user.setName(name.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        tel.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                user.setTelephone(tel.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    /**
+     * This method tries to save the user data by accessing the server.
+     */
+
+    private void saveChanges() {
+        saveProgress.setVisibility(View.VISIBLE);
+        try {
+            userController.trySaveUser(user, this);
+            saving = SAVING;
+            timeoutHandler.start();
+        } catch (DeviceIsOfflineException | InvalidUserException e) {
+            saveProgress.setVisibility(View.GONE);
+            showErrorMessage(e.getMessage());
+            timeoutHandler.stop();
+        }
+
+    }
+
+    /**
+     * This method sends to user data to the parent activity to save it.
+     */
+
+    private void saveData() {
+        Intent intent = new Intent(this, MainScreenActivity.class);
+        intent.putExtra(EXTRA_USER, user);
+        setResult(SAVE_SUCCESS, intent);
+        finish();
+    }
+
+    /**
+     * This method closes the Activity and sends the user data to the parent activity to delete it.
+     */
+
+    private void closeAndDelete() {
+        Intent intent = new Intent(ProfileActivity.this, MainScreenActivity.class);
+        intent.putExtra(EXTRA_USER, user);
+        intent.putExtra(EXTRA_DELETE_USER, DELETE_USER);
+        setResult(SAVE_SUCCESS, intent);
+        finish();
+    }
+
+    /**
+     * This method is called when the deletion of the user date is confirmed.
+     */
+
+    private void deleteConfirmed() {
+        if(saving) {
+            return;
+        }
+
+        saveProgress.setVisibility(View.VISIBLE);
+        try {
+            delete = DELETE_USER;
+            userController.trySaveUser(user, ProfileActivity.this);
+            saving = SAVING;
+            timeoutHandler.start();
+        } catch (InvalidUserException | DeviceIsOfflineException e) {
+            saveProgress.setVisibility(View.GONE);
+            showErrorMessage(e.getMessage());
+        }
+    }
+
+    /**
+     * This method request confirmation before deleting user's data.
+     */
+
+    private void requestDelete() {
+
+        if (create) {
+            showErrorMessage(getString(R.string.profileActivity_invalid_delete_error));
+            return;
+        }
+        Snackbar.make(findViewById(android.R.id.content), getString(R.string.codesActivity_confirm_delete_text), Snackbar.LENGTH_LONG)
+                .setAction(getString(R.string.codesActivity_confirm_delete_yes_text), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                      deleteConfirmed();
+                    }
+                })
+                .setActionTextColor(getColor(android.R.color.holo_red_light))
+                .show();
+    }
+
+    /**
+     * This method sets th editText type field's cursors to the end of the text.
+     */
+
+    private void setCursors() {
+        name.setSelection(name.getText().length());
+        tel.setSelection(tel.getText().length());
+        name.append(EMPTY_TEXT);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    /// CONTENT UTILS -- END
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
 }

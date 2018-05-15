@@ -126,5 +126,6 @@
     <string name="friendsActivity_confirm_delete_text">Are you sure you want to delete?</string>
     <string name="friendsActivity_confirm_delete_yes_text">YES</string>
     <string name="mainScreenActivity_confirm_delete_text">Are you sure you want to delete?</string>
+    <string name="save_success">Transaction Successful! :)</string>
 
 </resources>

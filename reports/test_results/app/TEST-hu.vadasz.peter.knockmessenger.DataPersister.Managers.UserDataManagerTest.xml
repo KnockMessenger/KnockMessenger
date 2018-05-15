@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2018-05-15T00:21:16" hostname="DESKTOP-GBLJLQR" time="0.063">
+  <properties/>
+  <testcase name="testIsLoggedIn_ShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.003"/>
+  <testcase name="testGetFriendByTelephone_ShouldReturnFriend" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.002"/>
+  <testcase name="testDeleteFriend_ShouldDeleteFriend" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.002"/>
+  <testcase name="testDeleteAllFriends_ShouldDeleteAllFriend" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.001"/>
+  <testcase name="testInsertFriend_ShouldSaveFriend" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.001"/>
+  <testcase name="testRegistrate_ShouldSaveUser" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.002"/>
+  <testcase name="testIsFriend_ShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.005"/>
+  <testcase name="testDeleteUser_UserDataShouldBeDeleted" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.001"/>
+  <testcase name="testIsFriend_ByTelephoneShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.002"/>
+  <testcase name="testIsFriend_ByTelephoneShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.003"/>
+  <testcase name="testUpdateFriend_FriendShouldBeUpdated" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.002"/>
+  <testcase name="testUpdateUser_ShouldUpdateUserData" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.003"/>
+  <testcase name="testIsFriend_ShouldReturnFalse" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.012"/>
+  <testcase name="testGetFriendByTelephone_ShouldReturnNull" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.003"/>
+  <testcase name="testLoadUser_ShouldLoadCorrectUserData" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.003"/>
+  <testcase name="testIsLoggedIn_ShouldReturnTrue" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.002"/>
+  <testcase name="testLoadFriends_ShouldReturnListWithFriends" classname="hu.vadasz.peter.knockmessenger.DataPersister.Managers.UserDataManagerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

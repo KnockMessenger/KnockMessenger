@@ -56,9 +56,22 @@ public class JsonParser {
     /// JSON OPERATIONS
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
+    /**
+     * This method encodes list of Code objects to json format and saves to a file.
+     * @param codes the list of codes.
+     * @param fileName the nam of the output file.
+     * @throws JsonFileSavingException
+     */
+
     public void encodeCodeList(List<Code> codes, String fileName) throws JsonFileSavingException {
         saveJsonToFile(gson.toJson(codes), fileName);
     }
+
+    /**
+     * This method decodes list of Code objects from a json file.
+     * @param fileName the name of the json file.
+     * @return the list of codes.
+     */
 
     public List<Code> decodeCodeList(String fileName) {
         Type collectionType = new TypeToken<Collection<Code>>(){}.getType();
@@ -103,6 +116,12 @@ public class JsonParser {
             return null;
         }
     }
+
+    /**
+     * This method decides whether a json file exists or not.
+     * @param fileName then nam of the file.
+     * @return true if the file exists.
+     */
 
     public boolean jsonFileExists(String fileName) {
         File file = new File(context.getFilesDir().getAbsolutePath() + "/" + fileName);

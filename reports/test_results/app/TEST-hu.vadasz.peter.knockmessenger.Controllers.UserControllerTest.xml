@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="hu.vadasz.peter.knockmessenger.Controllers.UserControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2018-05-15T00:21:15" hostname="DESKTOP-GBLJLQR" time="0.032">
+  <properties/>
+  <testcase name="testTrySaveUser_ShouldThrowDeviceIsOfflineException" classname="hu.vadasz.peter.knockmessenger.Controllers.UserControllerTest" time="0.017"/>
+  <testcase name="testTrySaveUser_ShouldThrowInvalidUserException" classname="hu.vadasz.peter.knockmessenger.Controllers.UserControllerTest" time="0.013"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
