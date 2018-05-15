@@ -151,12 +151,14 @@ public class MainScreenActivity extends BaseActivity implements MessageAdapter.M
             userDataManager.registrate(user);
             stopService(new Intent(this, MessageReceiverService.class));
             startService(new Intent(this, MessageReceiverService.class));
+            showMessage(getString(R.string.save_success));
         } else if (requestCode == ProfileActivity.UPDATE_USER_REQUEST && resultCode == ProfileActivity.SAVE_SUCCESS) {
             if (data.getBooleanExtra(ProfileActivity.EXTRA_DELETE_USER, !ProfileActivity.DELETE_USER)) {
                 deleteUser();
             } else {
                 userDataManager.updateUser((User) data.getParcelableExtra(ProfileActivity.EXTRA_USER));
             }
+            showMessage(getString(R.string.save_success));
         }
     }
 

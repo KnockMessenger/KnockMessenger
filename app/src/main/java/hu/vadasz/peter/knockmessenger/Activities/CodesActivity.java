@@ -72,9 +72,11 @@ public class CodesActivity extends BaseActivity implements CodeAdapter.CodeSetti
         if (requestCode == CodeSettingActivity.CODE_UPDATE_REQUEST && resultCode == CodeSettingActivity.CODE_UPDATE_SUCCESS) {
             updateCode((Code) data.getParcelableExtra(CodeSettingActivity.EXTRA_CODE));
             codeAdapter.setCodes(codeDataManager.getActualCodes());
+            showMessage(getString(R.string.save_success));
         } else if (requestCode == CodeSettingActivity.CODE_CREATE_REQUEST && resultCode == CodeSettingActivity.CODE_CREATE_SUCCESS) {
             saveCode((Code) data.getParcelableExtra(CodeSettingActivity.EXTRA_CODE));
             codeAdapter.setCodes(codeDataManager.getActualCodes());
+            showMessage(getString(R.string.save_success));
         }
     }
 

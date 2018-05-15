@@ -178,6 +178,15 @@ public abstract class BaseActivity extends AppCompatActivity implements ChildEve
     }
 
     /**
+     * This method pop ups a snackbBar with the given message.
+     * @param message the message to show.
+     */
+
+    protected void showMessage(String message) {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show();
+    }
+
+    /**
      * This method pop ups a snackbBar with the given error message and finishes the activity.
      * @param message the error.
      */
