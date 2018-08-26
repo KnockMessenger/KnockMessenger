@@ -114,7 +114,7 @@ A forrásfájlok elemzéséhez és az esetleges hibás kiszűrésére [Lint](htt
 
 ## [Deploy](#deploy)
 
-A build-elt alkalmazás közzététele automatikusan megtörténi a build scriptek segítségével, a telepíthető alkalmazás az alábbi helyen érhető el [vadaszfoto.hu/KnockMessenger/](http://vadaszfoto.hu/KnockMessenger/).
+A build-elt alkalmazás közzététele automatikusan megtörténi a build scriptek segítségével, a telepíthető alkalmazás az alábbi helyen érhető el [vadaszfoto.hu/projects/KnockMessenger/](http://vadaszfoto.hu/projects/KnockMessenger/).
 
 ## [Megjegyzés](#notification)
 
